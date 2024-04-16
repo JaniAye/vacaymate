@@ -6,30 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <style>
-        .slider .btn {
-            margin-top: 20px;
-        }
-
-        .section-search input {
-            padding: 5px !important;
-            font-size: 18px !important;
-            width: 90% !important;
-            border: #f4f4f4 3px solid !important;
-        }
-
-        .section-follow .fa-4x {
-            margin: 5px 10px;
-        }
-
-        .section-contact h5 {
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
 </head>
 
 <body>
@@ -37,7 +17,7 @@
         <nav class="teal">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#!" class="brand-logo">TravelVille</a>
+                    <a href="#!" class="brand-logo">VacyMate</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                             class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
@@ -221,7 +201,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h4>Follow Travelville</h4>
+                    <h4>Follow VacayMate</h4>
                     <p>Follow us on social media for special offers</p>
                     <a href="htttps://facebook.com" target="_blank" class="white-text">
                         <i class="fab fa-facebook fa-4x"></i>
@@ -324,7 +304,7 @@
                         <li class="collection-header">
                             <h4>Location</h4>
                         </li>
-                        <li class="collection-item">Travelville Agency</li>
+                        <li class="collection-item">VacayMate Agency</li>
                         <li class="collection-item">555 Beach rd, Suite 33</li>
                         <li class="collection-item">Miami FL, 55555</li>
                     </ul>
@@ -357,12 +337,10 @@
 
     <!-- Footer -->
     <footer class="section teal darken-2 white-text center">
-        <p class="flow-text">Travelville &copy; 2018</p>
+        <p class="flow-text">VacayMate &copy; 2018</p>
     </footer>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 <script>
     // Side Menu
     const sideNav = document.querySelector('.sidenav');
