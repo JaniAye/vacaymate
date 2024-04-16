@@ -6,7 +6,6 @@
     padding: 5px !important;
     font-size: 18px !important;
     width: 90% !important;
-    border: #f4f4f4 3px solid !important;
   }
 
   .section-follow .fa-4x {
@@ -16,3 +15,33 @@
   .section-contact h5 {
     margin-bottom: 30px;
   }
+  input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+    border-bottom: 0px;
+    margin: 0;
+    margin-left: 5px;
+}
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover,
+.btn-floating:hover,
+.btn-large:hover,
+.btn-small:hover,
+.btn-flat:hover,
+.btn-large:hover,
+.btn-small:hover,
+.btn-floating:hover {
+    border-bottom: 0px;
+    margin: 0;
+    margin-left: 5px;
+}
