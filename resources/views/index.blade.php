@@ -957,8 +957,8 @@
                 ]
             });
             setInterval(function() {
-                $carousel.slick('slickPrev');
-            }, 10000);
+                $(".package-carousel").slick('slickNext');
+            }, 4000);
         });
     </script>
 </body>
