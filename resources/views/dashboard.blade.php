@@ -198,12 +198,12 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="https://image.ibb.co/hbEMux/resort1.jpg" alt="">
-                            <span class="card-title">Cancun, Mexico</span>
+                            <span class="card-title">Hill Country</span>
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas aliquid fugiat
-                                corporis laudantium, architecto
-                                delectus?
+                            <p>The Hill Country is a cool and scenic region in central Sri Lanka. It is famous for its
+                                rolling hills, tea plantations, and colonial-era towns like Nuwara Eliya. Visitors can
+                                enjoy hiking, trekking, and scenic train journeys in this beautiful part of the country.
                             </p>
                         </div>
                     </div>
@@ -212,12 +212,12 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="https://image.ibb.co/mn1egc/resort2.jpg" alt="">
-                            <span class="card-title">The Bahamas</span>
+                            <span class="card-title">Southern Beaches</span>
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas aliquid fugiat
-                                corporis laudantium, architecto
-                                delectus?
+                            <p>The southern coast of Sri Lanka is home to some of the country's most beautiful beaches.
+                                Popular beach destinations include Bentota, Hikkaduwa, and Unawatuna. These beaches
+                                offer a variety of water sports activities, such as swimming, surfing, and diving.
                             </p>
                         </div>
                     </div>
@@ -226,12 +226,59 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="https://image.ibb.co/mbCVnH/resort3.jpg" alt="">
-                            <span class="card-title">Nova Scotia</span>
+                            <span class="card-title">Northern Sri Lanka</span>
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas aliquid fugiat
-                                corporis laudantium, architecto
-                                delectus?
+                            <p>The north of Sri Lanka is home to Jaffna, a culturally distinct region with a strong
+                                Tamil influence. Jaffna is known for its Hindu temples, colonial architecture, and
+                                delicious cuisine. Visitors can also explore the Jaffna Peninsula's beaches and lagoons.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://image.ibb.co/hbEMux/resort1.jpg" alt="">
+                            <span class="card-title">Cultural Triangle</span>
+                        </div>
+                        <div class="card-content">
+                            <p>This region in central Sri Lanka is home to some of the country's most important ancient
+                                cities, including Anuradhapura, Polonnaruwa, and Kandy. These cities are filled with
+                                ruins of temples, palaces, and monasteries, offering a glimpse into Sri Lanka's rich
+                                history.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://image.ibb.co/mn1egc/resort2.jpg" alt="">
+                            <span class="card-title">Eastern Beaches</span>
+                        </div>
+                        <div class="card-content">
+                            <p>The eastern coast of Sri Lanka is less developed than the south, but it offers some
+                                stunning beaches and wildlife sanctuaries. Popular destinations include Trincomalee and
+                                Arugam Bay. Trincomalee is a historic town with a beautiful harbor, while Arugam Bay is
+                                a popular surfing spot.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://image.ibb.co/mbCVnH/resort3.jpg" alt="">
+                            <span class="card-title">Island of a Thousand Waterfalls</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Sri Lanka isn't just beaches. Here, emerald jungles whisper secrets as hidden waterfalls
+                                erupt, their veils shimmering rainbows. Trek through lush landscapes and discover
+                                cascading wonders, each a testament to the island's vibrant soul.
                             </p>
                         </div>
                     </div>
@@ -278,7 +325,7 @@
     <section id="gallery" class="section section-gallery scrollspy">
         <div class="container">
             <h4 class="center">
-                <span class="teal-text">Photo </span> Gallery
+                <span class="teal-text">Paradise </span> of the Indian Ocean
             </h4>
             <div class="row">
                 <div class="col s12 m3">

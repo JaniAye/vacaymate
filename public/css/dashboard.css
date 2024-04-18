@@ -45,3 +45,12 @@ textarea.materialize-textarea {
     margin: 0;
     margin-left: 5px;
 }
+.card-content{
+    height: 30vh;
+}
+.carousel{
+    height: 700px;
+}
+.carousel-item {
+    height: 700px;
+}
