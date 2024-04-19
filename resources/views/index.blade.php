@@ -699,41 +699,6 @@
                 <h1 class="mb-5">Travel Guides</h1>
             </div>
             <div class="package-carousel " id="guides-carousel">
-                {{-- @for ($i = 0; $i < 6; $i++)
-                    <div class="col-lg-3 col-md-6 wow fadeInUp guidesDiv" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            </div>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp guidesDiv" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            </div>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                            </div>
-                        </div>
-                    </div>
-                @endfor --}}
-
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
@@ -750,7 +715,33 @@
             </button>
         </div>
     </div>
-    <!-- Team End -->
+    <!-- guides End -->
+
+    <!-- translator Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Translators</h6>
+                <h1 class="mb-5">Translators</h1>
+            </div>
+            <div class="package-carousel " id="translator-carousel">
+            </div>
+        </div>
+        <div style="width:99%; display: flex; justify-content: flex-end;">
+            <button class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
+                    </path>
+                </svg>
+                <div class="text">
+                    See more
+                </div>
+            </button>
+        </div>
+    </div>
+    <!-- Translators End -->
 
 
     <!-- Testimonial Start -->
@@ -906,6 +897,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             getGuides();
+            getTranslator();
         });
 
         function getGuides() {
@@ -937,6 +929,34 @@
             }
         }
 
+        function getTranslator() {
+            for (var i = 0; i < 4; i++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'col-lg-3 col-md-6 wow fadeInUp guidesDiv';
+                divElement.setAttribute('data-wow-delay', '0.1s');
+
+                // Generate dynamic content
+                // <img class="img-fluid" src="img/team-${i + 1}.jpg" alt="">
+                divElement.innerHTML = `
+                <div class="team-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/team-${i + 1}.jpg" alt="">
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-0">Full Name ${i + 1}</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            `;
+
+                document.getElementById('translator-carousel').appendChild(divElement);
+            }
+        }
 
         $(document).ready(function() {
             $(".package-carousel").slick({
