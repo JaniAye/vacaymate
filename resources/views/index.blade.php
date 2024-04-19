@@ -691,79 +691,49 @@
     </div>
     <!-- Process Start -->
 
-
-    <!-- Team Start -->
+    <!-- guides Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Travel Guide</h6>
+                <h6 class="section-title bg-white text-center text-primary px-3">TRAVEL GUIDE</h6>
                 <h1 class="mb-5">Travel Guides</h1>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+            <div class="package-carousel " id="guides-carousel">
+                {{-- @for ($i = 0; $i < 6; $i++)
+                    <div class="col-lg-3 col-md-6 wow fadeInUp guidesDiv" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp guidesDiv" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endfor --}}
+
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
@@ -777,7 +747,6 @@
                 <div class="text">
                     See more
                 </div>
-
             </button>
         </div>
     </div>
@@ -935,9 +904,43 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            getGuides();
+        });
+
+        function getGuides() {
+            for (var i = 0; i < 6; i++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'col-lg-3 col-md-6 wow fadeInUp guidesDiv';
+                divElement.setAttribute('data-wow-delay', '0.1s');
+
+                // Generate dynamic content
+                // <img class="img-fluid" src="img/team-${i + 1}.jpg" alt="">
+                divElement.innerHTML = `
+                <div class="team-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/team-4.jpg" alt="">
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-0">Full Name ${i + 1}</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            `;
+
+                document.getElementById('guides-carousel').appendChild(divElement);
+            }
+        }
+
+
         $(document).ready(function() {
             $(".package-carousel").slick({
-                slidesToShow: 3,
+                slidesToShow: 4,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
