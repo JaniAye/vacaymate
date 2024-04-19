@@ -368,6 +368,31 @@
     </div>
     <!-- Package End -->
 
+    <!-- Hotel Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Hotels</h6>
+                <h1 class="mb-5">Hotel Reservation</h1>
+            </div>
+            <div class="package-carousel" id="hotel-carousel">
+            </div>
+        </div>
+        <div style="width:99%; display: flex; justify-content: flex-end;">
+            <button class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
+                    </path>
+                </svg>
+                <div class="text">
+                    See more
+                </div>
+            </button>
+        </div>
+    </div>
+    <!-- Hotel End -->
 
     <!-- Booking Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -697,6 +722,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             getGuides();
+            getHotels();
             getTranslators();
             getPackages();
         });
@@ -798,6 +824,44 @@
             }
         }
 
+        function getHotels() {
+            for (var i = 0; i < 6; i++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'col-lg-4 col-md-6 wow fadeInUp carousel-itm';
+                divElement.setAttribute('data-wow-delay', '0.5s');
+
+                // Generate dynamic content
+                divElement.innerHTML = `
+            <div class="package-item">
+                <div class="overflow-hidden">
+                    <img class="img-fluid" src="img/package-${i + 1}.jpg" alt="">
+                </div>
+                <div class="d-flex border-bottom">
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Malaysia</small>
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3 days</small>
+                    <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
+                </div>
+                <div class="text-center p-4">
+                    <h3 class="mb-0">$189.00</h3>
+                    <div class="mb-3">
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                    </div>
+                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
+                    <div class="d-flex justify-content-center mb-2">
+                        <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                        <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                document.getElementById('hotel-carousel').appendChild(divElement);
+            }
+        }
         $(document).ready(function() {
             $(".package-carousel").slick({
                 slidesToShow: 4,
