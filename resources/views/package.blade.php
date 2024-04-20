@@ -32,6 +32,119 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* demo-grid.css */
+        /* Controls */
+
+        .controls {
+            margin: 30px -10px;
+
+        }
+
+        .control {
+            position: relative;
+
+            float: left;
+            width: 25%;
+            padding: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            .control {
+                float: none;
+                width: auto;
+                margin: 0 0 15px 0;
+            }
+
+            .control.layout {
+                margin: 0;
+            }
+        }
+
+        .control-icon {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+
+            line-height: 40px;
+            text-align: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .control-field {
+
+            position: relative;
+            padding-left: 40px;
+            z-index: 1;
+        }
+
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        .material-icons {
+            display: inline-block;
+            vertical-align: top;
+            line-height: inherit;
+            font-size: inherit;
+        }
+
+
+        select.form-control {
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        select.form-control::-ms-expand {
+            display: none;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+
+
+
+        section {
+            margin: 1px auto;
+            padding-top: 0;
+            max-width: 940px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -96,8 +209,93 @@
         </div>
     </div>
     <!-- Navbar & Hero End -->
+
+
+    <div class="position-relative w-75 mx-auto animated slideInDown">
+        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+            placeholder="Place to go, things to do, hotels... ">
+        <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+            style="margin-top: 7px;">Search</button>
+    </div>
+
+
+    <section class="grid-demo">
+
+        <div class="controls cf">
+
+            <div class="control filter">
+                <div class="control-icon">
+                    <i class="material-icons">&#xE152;</i>
+                </div>
+                <div class="select-arrow">
+                    <i class="material-icons">&#xE313;</i>
+                </div>
+                <select class="control-field filter-field form-control">
+                    <option value="package" selected>Packages</option>
+                    <option value="rentVehicle">Hire a vehicle</option>
+                    <option value="hotels">Hotels</option>
+                    <option value="guides">Guides</option>
+                    <option value="tanslators">Translators</option>
+                </select>
+            </div>
+            <div class="control sort">
+                <div class="control-icon">
+                    <i class="material-icons">&#xE164;</i>
+                </div>
+                <div class="select-arrow">
+                    <i class="material-icons">&#xE313;</i>
+                </div>
+                <select class="control-field sort-field form-control">
+                    <option value="order" selected>Drag</option>
+                    <option value="title">Title (drag disabled)</option>
+                    <option value="color">Color (drag disabled)</option>
+                </select>
+            </div>
+            <div class="control layout">
+                <div class="control-icon">
+                    <i class="material-icons">&#xE871;</i>
+                </div>
+                <div class="select-arrow">
+                    <i class="material-icons">&#xE313;</i>
+                </div>
+                <select class="control-field layout-field form-control">
+                    <option value="left-top" selected>Left Top</option>
+                    <option value="left-top-fillgaps">Left Top (fill gaps)</option>
+                    <option value="right-top">Right Top</option>
+                    <option value="right-top-fillgaps">Right Top (fill gaps)</option>
+                    <option value="left-bottom">Left Bottom</option>
+                    <option value="left-bottom-fillgaps">Left Bottom (fill gaps)</option>
+                    <option value="right-bottom">Right Bottom</option>
+                    <option value="right-bottom-fillgaps">Right Bottom (fill gaps)</option>
+                </select>
+            </div>
+            <div class="control layout">
+                <div class="control-icon">
+                    <i class="material-icons">&#xE871;</i>
+                </div>
+                <div class="select-arrow">
+                    <i class="material-icons">&#xE313;</i>
+                </div>
+                <select class="control-field layout-field form-control">
+                    <option value="left-top" selected>Left Top</option>
+                    <option value="left-top-fillgaps">Left Top (fill gaps)</option>
+                    <option value="right-top">Right Top</option>
+                    <option value="right-top-fillgaps">Right Top (fill gaps)</option>
+                    <option value="left-bottom">Left Bottom</option>
+                    <option value="left-bottom-fillgaps">Left Bottom (fill gaps)</option>
+                    <option value="right-bottom">Right Bottom</option>
+                    <option value="right-bottom-fillgaps">Right Bottom (fill gaps)</option>
+                </select>
+            </div>
+        </div>
+
+    </section>
+
+    <div style="background-color: red; height-20px; width:10px">
+        <h1 style="display:none">.</h1>
+    </div>
     <!-- Package start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 " style="margin-top: 16vh">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
