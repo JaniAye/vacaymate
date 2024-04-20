@@ -22,3 +22,6 @@ Route::get('/home', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+Route::get('/package', function () {
+    return view('package');
+});
