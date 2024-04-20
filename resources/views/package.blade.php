@@ -33,7 +33,32 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
 
+    <style>
+        #overlay {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+
+        }
+
+        #overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            height: 92vh;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 17px;
+        }
+    </style>
 </head>
 
 <body>
@@ -179,8 +204,81 @@
 
     </section>
 
-    <div style="background-color: red; height-20px; width:10px">
+    {{-- <div style="background-color: red; height-20px; width:10px">
         <h1 style="display:none">.</h1>
+    </div> --}}
+
+    <div id="overlay">
+        <div id="overlay-content">
+            <div id="clsbtn">
+                <button type="button" class="btn-close">
+                    <span class="icon-cross"></span>
+                    <span class="visually-hidden">Close</span>
+                </button>
+            </div>
+
+            <H3 class="text-center ">D & W Touers</H3>
+            <div style="height: 25px; width : 100%; color:black">
+                <div class="row " style="position: fixed;">
+                    <div class="col-lg-3 ">
+                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3 col-md-6" style=" width : 70%">
+                        <p>Welcome to D & W Touers! Your journey through Sri Lanka starts with us. We cover
+                            the most breathtaking destinations: Galle, Matara, Hambantota, Badulla, Ella,
+                            Nuwara Eliya, Kandy, Kegalle, and Colombo. From the moment we pick you up at the
+                            airport, your comfort and adventure are our top priorities. Let us show you the
+                            beauty and culture of Sri Lanka, ensuring an unforgettable experience at every
+                            step.</p>
+                        <div style="margin-left: 60px;margin-right:60px">
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Airport
+                                        pickup
+                                        and drop
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked
+                                        Hotels
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
+                                        complete package
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                        Translators
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>
+                                        Fully Luxary Vehicles</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7
+                                        Service</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
     </div>
     <!-- Package start -->
     <div class="container-xxl py-5 " style="margin-top: 16vh">
@@ -188,6 +286,9 @@
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
                 <h1 class="mb-5">Awesome Packages</h1>
+
+                <button id="toggleButton">Toggle Content</button>
+
             </div>
             <div id="packageList">
 
@@ -335,8 +436,8 @@
                                 <h3 class="travelAgancyName">D&W Travels</h2>
                                     <p class="coverAreas">Based on Galle, Matara, Ella,Nuwaraeliya</p>
                                     <div class="d-flex justify-content-center mb-2">
-                                        <a href="#" class="btn btn-sm btn-primary px-3 border-end"
-                                            style="border-radius: 30px 0 0 30px;">Read More</a>
+                                        <button id="seeMoreBtn${j}${i}" class="btn btn-sm btn-primary px-3 border-end"
+                                            style="border-radius: 30px 0 0 30px;" onclick="seeMore(${j}${i})">Read More</button>
                                         <a href="#" class="btn btn-sm btn-primary px-3"
                                             style="border-radius: 0 30px 30px 0;">Book Now</a>
                                     </div>
@@ -350,6 +451,41 @@
                 divElement.innerHTML = content;
                 document.getElementById('packageList').appendChild(divElement);
             }
+        }
+
+
+        var overlay = document.getElementById('overlay');
+        var isOverlayVisible = 0;
+        var seeMoreClicked = false;
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+            seeMoreClicked = true;
+        });
+
+
+        document.addEventListener('click', function(event) {
+            console.log(seeMoreClicked);
+            if (seeMoreClicked) {
+                isOverlayVisible++;
+            }
+            console.log(isOverlayVisible);
+            if (isOverlayVisible > 1) {
+                if (overlay.style.display !== 'none') {
+                    overlay.style.display = 'none';
+                }
+                isOverlayVisible = 0;
+                seeMoreClicked = false;
+            }
+
+        });
+
+        function seeMore(btnId) {
+            // console.log('seeMoreBtn' + btnId);
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+            seeMoreClicked = true;
+
         }
     </script>
 </body>
