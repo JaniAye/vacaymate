@@ -309,7 +309,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="index.html" class="nav-item nav-link">Home</a>
                     <a href="./view/about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
                     <a href="package.html" class="nav-item nav-link">Packages</a>
@@ -379,16 +379,6 @@
                         </div>
                     </div>
                 </div>
-
-                <footer>
-                    <p>
-                        Created with <i class="fa fa-heart"></i> by
-                        <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-                        - Read how I created this and how you can join the challenge
-                        <a target="_blank"
-                            href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-                    </p>
-                </footer>
                 {{-- </div> --}}
             </div>
         </div>
