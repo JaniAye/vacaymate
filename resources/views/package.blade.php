@@ -245,7 +245,6 @@
                                 </div>
                             </div>
 
-
                             <div class="row ">
                                 <div class="col-sm-6">
                                     <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
@@ -271,12 +270,90 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
+                    {{-- locations --}}
+                    <h3 class="text-center mt-4 ">Locations so see</h3>
+                    <div style="margin-left: 4% ;margin-right:3%">
+                        <div class="row ">
+                            <div class="col-sm-4">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Airport
+                                    pickup
+                                    and drop
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                    Translators
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                    Translators
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
+                                    complete package
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                    Translators
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                    Translators
+                                </p>
+                            </div>
+                        </div>
 
 
+                        <div class="row ">
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>
+                                    Fully Luxary Vehicles</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7
+                                    Service</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7
+                                    Service</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="mt-3 ml-2 mr-3" style="height: 50px; width :95%;">
+                        <p>We are thrilled to present our carefully curated travel packages, taking
+                            you to
+                            some of the most
+                            enchanting locations in Sri Lanka. Whether you're seeking a peaceful escape, a vibrant city
+                            adventure, or a serene beach retreat, we have a package that's perfect for you.
+
+                            If you're interested, simply press the "Book Now" button to reserve your spot and start
+                            planning
+                            your trip to explore the beauty of Sri Lanka. With just a few clicks, you can be on your way
+                            to
+                            discovering the unique charm this island has to offer.</p>
+                        <h2 class="text-center ">only for : $189.00</h2>
+                        <button href="#" class="btn btn-sm btn-primary px-5 py-2"
+                            style="border-radius: 0 30px 30px 0;">Book Now</button>
+
+                    </div>
                 </div>
             </div>
+
+
+
 
         </div>
     </div>
