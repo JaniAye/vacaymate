@@ -32,119 +32,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        /* demo-grid.css */
-        /* Controls */
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
 
-        .controls {
-            margin: 30px -10px;
-
-        }
-
-        .control {
-            position: relative;
-
-            float: left;
-            width: 25%;
-            padding: 0 10px;
-        }
-
-        @media (max-width: 600px) {
-            .control {
-                float: none;
-                width: auto;
-                margin: 0 0 15px 0;
-            }
-
-            .control.layout {
-                margin: 0;
-            }
-        }
-
-        .control-icon {
-            position: absolute;
-            left: 10px;
-            top: 0;
-            width: 40px;
-            height: 40px;
-
-            line-height: 40px;
-            text-align: center;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .control-field {
-
-            position: relative;
-            padding-left: 40px;
-            z-index: 1;
-        }
-
-
-        @font-face {
-            font-family: 'Material Icons';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
-        }
-
-        .material-icons {
-            font-family: 'Material Icons';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
-        }
-
-
-        .material-icons {
-            display: inline-block;
-            vertical-align: top;
-            line-height: inherit;
-            font-size: inherit;
-        }
-
-
-        select.form-control {
-            padding-right: 40px;
-            cursor: pointer;
-        }
-
-        select.form-control::-ms-expand {
-            display: none;
-        }
-
-        .select-arrow {
-            position: absolute;
-            right: 10px;
-            top: 0;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-
-
-
-        section {
-            margin: 1px auto;
-            padding-top: 0;
-            max-width: 940px;
-            text-align: left;
-        }
-    </style>
 </head>
 
 <body>
@@ -209,7 +98,6 @@
         </div>
     </div>
     <!-- Navbar & Hero End -->
-
 
     <div class="position-relative w-75 mx-auto animated slideInDown">
         <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
