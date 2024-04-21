@@ -35,30 +35,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
 
-    <style>
-        #overlay {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-
-        }
-
-        #overlay-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80vw;
-            height: 92vh;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 17px;
-        }
-    </style>
 </head>
 
 <body>
@@ -208,7 +184,7 @@
         <h1 style="display:none">.</h1>
     </div> --}}
 
-    <div id="overlay">
+    <div id="overlay" style="display: none;">
         <div id="overlay-content">
             <div id="clsbtn">
                 <button type="button" class="btn-close">
@@ -274,7 +250,7 @@
                     </div>
 
                     {{-- locations --}}
-                    <h3 class="text-center mt-4 ">Locations so see</h3>
+                    <h3 class="text-center mt-3 ">Locations To See</h3>
                     <div style="margin-left: 4% ;margin-right:3%">
                         <div class="row ">
                             <div class="col-sm-4">
@@ -332,8 +308,8 @@
                         </div>
 
                     </div>
-                    <div class="mt-3 ml-2 mr-3" style="height: 50px; width :95%;">
-                        <p>We are thrilled to present our carefully curated travel packages, taking
+                    <div class="mt-3 ml-2 mr-3 mb-0" style="height: 50px; width :95%;">
+                        <p class="mb-0">We are thrilled to present our carefully curated travel packages, taking
                             you to
                             some of the most
                             enchanting locations in Sri Lanka. Whether you're seeking a peaceful escape, a vibrant city
@@ -344,9 +320,34 @@
                             your trip to explore the beauty of Sri Lanka. With just a few clicks, you can be on your way
                             to
                             discovering the unique charm this island has to offer.</p>
-                        <h2 class="text-center ">only for : $189.00</h2>
-                        <button href="#" class="btn btn-sm btn-primary px-5 py-2"
-                            style="border-radius: 0 30px 30px 0;">Book Now</button>
+
+
+                        <h2 class="text-center mt-3">only for : $189.00</h2>
+                        {{-- <button href="#" class="btn btn-sm btn-primary px-5 py-3"
+                            style="border-radius: 0 30px 30px 0;">Book Now</button> --}}
+                        <div style=" width:100%; display: flex; justify-content: flex-end;">
+                            <a style="--clr: #7808d0" class="button mt-3" href="#">
+                                <span class="button__icon-wrapper">
+                                    <svg width="10" class="button__icon-svg" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 15">
+                                        <path fill="currentColor"
+                                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z">
+                                        </path>
+                                    </svg>
+
+                                    <svg class="button__icon-svg  button__icon-svg--copy"
+                                        xmlns="http://www.w3.org/2000/svg" width="10" fill="none"
+                                        viewBox="0 0 14 15">
+                                        <path fill="currentColor"
+                                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                Book Now
+                            </a>
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -363,9 +364,6 @@
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
                 <h1 class="mb-5">Awesome Packages</h1>
-
-                <button id="toggleButton">Toggle Content</button>
-
             </div>
             <div id="packageList">
 
@@ -534,19 +532,13 @@
         var overlay = document.getElementById('overlay');
         var isOverlayVisible = 0;
         var seeMoreClicked = false;
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var overlay = document.getElementById('overlay');
-            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-            seeMoreClicked = true;
-        });
 
 
         document.addEventListener('click', function(event) {
-            console.log(seeMoreClicked);
             if (seeMoreClicked) {
+
                 isOverlayVisible++;
             }
-            console.log(isOverlayVisible);
             if (isOverlayVisible > 1) {
                 if (overlay.style.display !== 'none') {
                     overlay.style.display = 'none';
@@ -558,7 +550,7 @@
         });
 
         function seeMore(btnId) {
-            // console.log('seeMoreBtn' + btnId);
+
             var overlay = document.getElementById('overlay');
             overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
             seeMoreClicked = true;
