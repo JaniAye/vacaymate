@@ -1,0 +1,354 @@
+/* *, *:before, *:after {
+  box-sizing: border-box;
+  transition: all 0.24s;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+} */
+
+
+
+body {
+  background-color: #F5F5F5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hidden-2 {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+  transform-origin: left center;
+}
+
+#date-picker-section {
+    min-height: 80vh;
+}
+
+#date-picker-container {
+  margin: 0 auto;
+  padding: 40px;
+  background: white;
+  max-width: 500px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.2), 30px 30px 50px 0 rgba(0, 0, 0, 0.06);
+}
+
+#date-picker-title {
+  font-family: "Coda", serif;
+  margin-bottom: 5px;
+  font-size: 56px;
+}
+
+#date-picker-dates {
+  background: #F5F5F5;
+  padding: 10px;
+  margin-bottom: 30px;
+  user-select: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.date-picker-date {
+  position: relative;
+  display: inline-block;
+  background: white;
+  padding: 10px 15px;
+  padding-right: 50px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15), 3px 3px 5px 0 rgba(0, 0, 0, 0.06);
+  transition: none;
+}
+.date-picker-date:hover, .date-picker-date.active {
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.2), 3px 3px 5px 0 rgba(0, 0, 0, 0.15);
+}
+.date-picker-date.active {
+  font-weight: bold;
+}
+.date-picker-date:after {
+  position: absolute;
+  display: block;
+  height: 24px;
+  width: 24px;
+  top: 10px;
+  right: 10px;
+  content: "";
+  background: url("https://image.freepik.com/free-icon/calendar-icon-in-black_318-9776.jpg");
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+#date-picker-display-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.date-picker-display-pair {
+  margin: 10px;
+}
+
+.date-picker-display {
+  font-family: "Coda", serif;
+  font-size: 40px;
+}
+
+.date-picker-display-label {
+  text-align: center;
+  font-size: 0.8rem;
+  position: relative;
+  top: -8px;
+  text-transform: uppercase;
+}
+
+#date-picker-modal {
+  width: 310px;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3), 30px 30px 40px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  position: absolute;
+  overflow: hidden;
+  user-select: none;
+  transition: transform 0.1s;
+  background: white;
+}
+#date-picker-modal:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -5px;
+  right: -5px;
+  height: 96px;
+  background: hsl(157, 79%, 49%);
+  content: "";
+}
+
+#date-picker-top-bar {
+  position: relative;
+  color: #666;
+  background: white;
+  width: 195px;
+  margin: 0 auto;
+  margin-bottom: 3px;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.date-picker-change-month {
+  font-size: 23px;
+  line-height: 23px;
+  padding: 0 10px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 4px;
+}
+.date-picker-change-month:hover {
+  background: #F5F5F5;
+}
+
+#date-picker-previous-month {
+  left: 5px;
+}
+
+#date-picker-next-month {
+  right: 5px;
+}
+
+#date-picker-month {
+  margin: 0 20px;
+}
+
+#date-picker-exit {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+  padding: 0 10px;
+  font-size: 23px;
+  cursor: pointer;
+  color: white;
+}
+#date-picker-exit:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+}
+
+#date-picker {
+  width: 280px;
+  table-layout: fixed;
+  position: relative;
+}
+#date-picker th, #date-picker td {
+  text-align: center;
+}
+#date-picker th {
+  cursor: default;
+  border-radius: 0;
+  height: 50px;
+  border-color: hsl(157, 79%, 49%);
+}
+#date-picker td {
+  cursor: pointer;
+  color: #666;
+  border-radius: 50%;
+  height: 38px;
+}
+#date-picker td:hover {
+  background: #eee;
+}
+#date-picker td.active {
+  background: hsl(157, 79%, 49%);
+  color: white;
+}
+#date-picker td.previous-month, #date-picker td.next-month {
+  color: #bbb;
+}
+
+#date-picker-weekdays {
+  color: white;
+}
+
+.checkbox-wrapper-46 input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .checkbox-wrapper-46 .cbx {
+    margin: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+  .checkbox-wrapper-46 .cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+  .checkbox-wrapper-46 .cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #9098a9;
+    transition: all 0.2s ease;
+  }
+  .checkbox-wrapper-46 .cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+  .checkbox-wrapper-46 .cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #86B817;;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+  }
+  .checkbox-wrapper-46 .cbx span:last-child {
+    padding-left: 8px;
+  }
+  .checkbox-wrapper-46 .cbx:hover span:first-child {
+    border-color: #86B817;;
+  }
+
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+    background: #86B817;;
+    border-color: #86B817;;
+    animation: wave-46 0.4s ease;
+  }
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+    transform: scale(3.5);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+
+  @keyframes wave-46 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+  .checkboxTxt{
+    font-weight: bold;
+    font-size: 18px;
+    color:  #666;;
+  }
+
+  .cssbuttons-io-button {
+    background: #86B817;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #86B817;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+    width: 14vw;
+  }
+
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #86B817;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #86B817;
+  }
+
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  /* .element.style {
+    top: 945.6px;
+    left: 8px;
+} */

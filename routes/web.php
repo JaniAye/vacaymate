@@ -25,3 +25,6 @@ Route::get('/signup', function () {
 Route::get('/package', function () {
     return view('package');
 });
+Route::get('/booking', function () {
+    return view('package-details');
+});
