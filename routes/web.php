@@ -28,3 +28,6 @@ Route::get('/package', function () {
 Route::get('/booking', function () {
     return view('package-details');
 });
+Route::get('/custormize', function () {
+    return view('package-custormize');
+});
