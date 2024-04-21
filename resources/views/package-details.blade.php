@@ -100,10 +100,6 @@
     <!-- Navbar & Hero End -->
     <div class="container-xxl py-5">
         <div class="container">
-            {{-- <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="mb-5">Discover Our Services</h1>
-            </div> --}}
             <div class="row g-4">
                 <div class="col-lg-3 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <link href="https://fonts.googleapis.com/css?family=Coda|Open+Sans" rel="stylesheet">
@@ -179,7 +175,7 @@
                                 </div>
                             </div>
 
-                            <div id="date-picker-modal" class="hidden-2">
+                            <div id="date-picker-modal" class="hidden-2" style="margin-left: -150px">
                                 <div id="date-picker-top-bar">
                                     <div id="date-picker-previous-month" class="date-picker-change-month">&lsaquo;
                                     </div>
@@ -216,6 +212,7 @@
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
                         </div>
+                        <h4>Our this package</h4>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nulla deleniti a aut
                             perferendis dicta sit dolores voluptate asperiores ipsa ullam incidunt repudiandae amet
                             quisquam, sunt tempora ea hic quia?</p>
@@ -282,6 +279,97 @@
 
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5" style="background-color: #fff; width:88%">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <h3 class="text-center">Locations Covers From This Package</h3>
+                    <div id="packageList">
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
+                    <div id="Vehicle-list">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
+                    <div id="accommodation-list">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <h3 class="text-center mt-5">Guides And Language Translators</h3>
+                    <div id="translators-list">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <p class="mt-5" style=" font-size: 17px; color:black">If this package feels
+                        just right for
+                        your Sri Lanka
+                        adventure, you can book it
+                        and get started on
+                        your journey with us. But if you’d like to make it your own, our customization options let you
+                        tweak every detail from destinations and accommodations to vehicles and activities. The choice
+                        is yours! Either way, we’re excited to help you create unforgettable memories.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <h2 class="text-center">For this Complete Package Price Only :<span
+                        class="text-primary">$187.52</span>
+                </h2>
+                <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
+                    data-wow-delay="0.4s">
+                    <button class="animated-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                            <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                        <span class="text" style="font-size: 20px">Customize</span>
+                        <span class="circle"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                            <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="col-lg-6 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <button class="animated-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                            <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                        <span class="text" style="font-size: 20px">Book Now</span>
+                        <span class="circle"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                            <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -385,6 +473,12 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            getLocations();
+            getVehicles();
+            getAccommodation();
+            getTranslators();
+        });
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
             month: "long"
         });
@@ -725,6 +819,150 @@
 
             updateDateBox.text(formattedDate);
             updateDisplayBox.text(dayAndMonth);
+        }
+
+        function getLocations() {
+            for (var j = 0; j < 4; j++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'row g-2 mt-1 justify-content-center';
+                let content = "";
+                for (var i = 0; i < 6; i++) {
+                    content += `
+                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0">Ella Rock</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>Nice view point. You can see beauti of neture</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                }
+                divElement.innerHTML = content;
+                document.getElementById('packageList').appendChild(divElement);
+            }
+        }
+
+        function getVehicles() {
+            for (var j = 0; j < 2; j++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'row g-2 mt-1 justify-content-center';
+                let content = "";
+                for (var i = 0; i < 4; i++) {
+                    content += `
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0">Totota KDH</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>Very comfortable vehicle with fully ac</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                }
+                divElement.innerHTML = content;
+                document.getElementById('Vehicle-list').appendChild(divElement);
+            }
+        }
+
+        function getAccommodation() {
+            for (var j = 0; j < 2; j++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'row g-2 mt-1 justify-content-center';
+                let content = "";
+                for (var i = 0; i < 4; i++) {
+                    content += `
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0">Hotel Galadari</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>5 Start Hotel for you comfortable accommodation</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                }
+                divElement.innerHTML = content;
+                document.getElementById('accommodation-list').appendChild(divElement);
+            }
+        }
+
+        function getTranslators() {
+            for (var j = 0; j < 1; j++) {
+                var divElement = document.createElement('div');
+                divElement.className = 'row g-2 mt-1 justify-content-center';
+                let content = "";
+                for (var i = 0; i < 4; i++) {
+                    content += `
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0">Mr. Kasun</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>Guide And Language Translator</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                }
+                divElement.innerHTML = content;
+                document.getElementById('translators-list').appendChild(divElement);
+            }
         }
     </script>
 </body>
