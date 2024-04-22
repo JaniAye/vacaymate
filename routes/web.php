@@ -28,6 +28,9 @@ Route::get('/package', function () {
 Route::get('/booking', function () {
     return view('package-details');
 });
+Route::get('/create-package', function () {
+    return view('add-package');
+});
 Route::get('/custormize', function () {
     return view('package-custormize');
 });

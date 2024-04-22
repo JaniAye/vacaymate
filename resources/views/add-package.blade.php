@@ -26,6 +26,7 @@
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +36,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/delete.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/imageUploader.css') }}">
 
 </head>
 
@@ -204,64 +207,120 @@
                 <div class="col-lg-3 col-xl-8 wow fadeInUp " style="background-color: #fff; width : 75%;"
                     data-wow-delay="0.3s">
                     <div class="m-3">
-                        <h3 class="m-0">D & W Touers</h3>
-                        <div class="mb-3">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
+                        <h3 class="m-0 mt-2">D & W Touers</h3>
+                        <h4 class="mt-3">Create New Package</h4>
+                        <h5 class="mt-4">Add some breif discription about your package</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" id="packageBreifDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                                placeholder="Enter a brief description..."></textarea>
                         </div>
-                        <h4>Our this package</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nulla deleniti a aut
-                            perferendis dicta sit dolores voluptate asperiores ipsa ullam incidunt repudiandae amet
-                            quisquam, sunt tempora ea hic quia?</p>
-                        <h4>See How Our Customers Explore and Enjoy</h4>
+                        <h4 class="mt-5">Add Main Images Here</h4>
+
                         <div class="row g-3">
                             <div class="col-lg-7 col-md-6">
                                 <div class="row g-3">
                                     <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                                        <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                                            {{-- <div
-                                                class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                                Thailand</div> --}}
-                                        </a>
+                                        <div id="file-upload-form" class="uploader">
+                                            <input id="file-upload" type="file" name="fileUpload"
+                                                accept="image/*" />
+
+                                            <label for="file-upload" id="file-drag">
+                                                <img id="file-image" src="#" alt="Preview"
+                                                    class="hidden file-image">
+                                                <div id="start">
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <div>Select a file or drag here</div>
+                                                    <div id="notimage" class="hidden">Please select an image</div>
+                                                    <span id="file-upload-btn" class="btn btn-primary">Select a
+                                                        file</span>
+                                                </div>
+                                                <div id="response" class="hidden">
+                                                    <div id="messages"></div>
+                                                    <progress class="progress" id="file-progress" value="0">
+                                                        <span>0</span>%
+                                                    </progress>
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                                        <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-2.jpg" alt="">
+                                        <div id="file-upload-form-2" class="uploader">
+                                            <input id="file-upload-2" type="file" name="fileUpload"
+                                                accept="image/*" />
 
-                                            {{-- <div
-                                                class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                                Malaysia</div> --}}
-                                        </a>
+                                            <label for="file-upload-2" id="file-drag-2">
+                                                <img id="file-image-2" src="#" alt="Preview"
+                                                    class="hidden file-image">
+                                                <div id="start-2">
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <div>Select a file or drag here</div>
+                                                    <div id="notimage-2" class="hidden">Please select an image</div>
+                                                    <span id="file-upload-btn-2" class="btn btn-primary">Select a
+                                                        file</span>
+                                                </div>
+                                                <div id="response-2" class="hidden">
+                                                    <div id="messages-2"></div>
+                                                    <progress class="progress" id="file-progress-2" value="0">
+                                                        <span>0</span>%
+                                                    </progress>
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                                        <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                                            {{-- <div
-                                                class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                                Australia</div> --}}
-                                        </a>
+                                        <div id="file-upload-form-3" class="uploader">
+                                            <input id="file-upload-3" type="file" name="fileUpload"
+                                                accept="image/*" />
+
+                                            <label for="file-upload-3" id="file-drag-3">
+                                                <img id="file-image-3" src="#" alt="Preview"
+                                                    class="hidden file-image">
+                                                <div id="start-3">
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <div>Select a file or drag here</div>
+                                                    <div id="notimage-3" class="hidden">Please select an image</div>
+                                                    <span id="file-upload-btn-3" class="btn btn-primary">Select a
+                                                        file</span>
+                                                </div>
+                                                <div id="response-3" class="hidden">
+                                                    <div id="messages-3"></div>
+                                                    <progress class="progress" id="file-progress-3" value="0">
+                                                        <span>0</span>%
+                                                    </progress>
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s"
                                 style="min-height: 350px;">
-                                <a class="position-relative d-block h-100 overflow-hidden" href="">
-                                    <img class="img-fluid position-absolute w-100 h-100" src="img/destination-4.jpg"
-                                        alt="" style="object-fit: cover;">
+                                <div id="file-upload-form-4" class="uploader">
+                                    <input id="file-upload-4" type="file" name="fileUpload" accept="image/*" />
 
-                                    {{-- <div
-                                        class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                        Indonesia</div> --}}
-                                </a>
+                                    <label for="file-upload-4" id="file-drag-4" style=" height: 68vh">
+                                        <img id="file-image-4" src="#" alt="Preview"
+                                            class="hidden file-image">
+                                        <div id="start-4">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                            <div>Select a file or drag here</div>
+                                            <div id="notimage-4" class="hidden">Please select an image</div>
+                                            <span id="file-upload-btn-4" class="btn btn-primary">Select a
+                                                file</span>
+                                        </div>
+                                        <div id="response-4" class="hidden">
+                                            <div id="messages-4"></div>
+                                            <progress class="progress" id="file-progress-4" value="0">
+                                                <span>0</span>%
+                                            </progress>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div style="width: 100%; display: flex; justify-content: flex-end;">
                             <button class="cssbuttons-io-button mt-2">
-                                See All Images
+                                Upload More
                                 <div class="icon">
                                     <svg height="24" width="24" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -282,21 +341,150 @@
             </div>
         </div>
     </div>
+    <div id="overlay" style="display: none;">
+        <div id="overlay-content">
+            <div id="clsbtn">
+                <button type="button" class="btn-close" onclick="createLocation()">
+                    <span class="icon-cross"></span>
+                    <span class="visually-hidden">Close</span>
+                </button>
+            </div>
 
+            <H3 class="text-center ">Jungle Beach Unawatuna</H3>
+            <div style="height: 25px; width : 100%; color:black">
+                <div class="row " style="position: fixed;">
+                    <div class="col-lg-3 ">
+                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3 col-md-6" style=" width : 70%">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit voluptates aliquam molestias
+                            mollitia? Modi ducimus vel incidunt alias quo rem at. Et facere voluptates illum id unde
+                            adipisci, ad fugiat.</p>
+                        <div style="margin-left: 60px;margin-right:60px">
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Airport
+                                        pickup
+                                        and drop
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked
+                                        Hotels
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
+                                        complete package
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
+                                        Translators
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>
+                                        Fully Luxary Vehicles</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7
+                                        Service</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h3 class="text-center mt-3 ">Add More Images</h3>
+
+                    {{-- image uploader --}}
+
+
+                    <section>
+                        <div id="dropzone">
+                            <form class="dropzone needsclick" id="demo-upload" action="/upload">
+                                <div class="dz-message needsclick">
+                                    Drop files here or click to upload.<br>
+                                    <span class="note needsclick">(This is just a demo dropzone. Selected
+                                        files are <strong>not</strong> actually uploaded.)</span>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+
+
+                    {{-- Image uploader end --}}
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
     <div class="container-xxl py-5" style="background-color: #fff; width:88%">
         <div class="container">
             <div class="row g-4">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="text-center">Locations Covers From This Package</h3>
+                    <h3 class="text-center">Add Locations For Package</h3>
+                    <div class="row g-4">
+
+                        <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                                style="width:50vw; margin-left:10%">
+                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Search Locations ">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div style="width: 100%; display: flex; justify-content: flex-start;">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                    Add New Location
+                                    <div class="icon">
+                                        <svg height="24" width="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div id="packageList">
                     </div>
                 </div>
+
             </div>
             <div class="row g-4">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
+                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
+                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Search Locations ">
+                        <button type="button"
+                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                            style="margin-top: 8px;">Search</button>
+                    </div>
                     <div id="Vehicle-list">
                     </div>
                 </div>
@@ -306,6 +494,13 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
+                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
+                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Search Locations ">
+                        <button type="button"
+                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                            style="margin-top: 8px;">Search</button>
+                    </div>
                     <div id="accommodation-list">
                     </div>
                 </div>
@@ -315,6 +510,13 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Guides And Language Translators</h3>
+                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
+                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Search Locations ">
+                        <button type="button"
+                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                            style="margin-top: 8px;">Search</button>
+                    </div>
                     <div id="translators-list">
                     </div>
                 </div>
@@ -328,59 +530,27 @@
                         your Sri Lanka
                         adventure, you can book it
                         and get started on
-                        your journey with us. But if you’d like to make it your own, our customization options let you
-                        tweak every detail from destinations and accommodations to vehicles and activities. The choice
+                        your journey with us. But if you’d like to make it your own, our customization options
+                        let you
+                        tweak every detail from destinations and accommodations to vehicles and activities. The
+                        choice
                         is yours! Either way, we’re excited to help you create unforgettable memories.</p>
                 </div>
             </div>
-            <h3 class="text-center mb-3 mt-4">Clients Thoughts</h3>
-            <div class="owl-carousel testimonial-carousel position-relative mb-5">
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-1.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-2.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-3.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-4.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-            </div>
+
             <div class="row g-4">
-                <h2 class="text-center">For this Complete Package Price Only :<span
-                        class="text-primary">$187.52</span>
-                </h2>
-                <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
+                <h3 class="text-center">Submit Your Customized Package We Will Give Quotation As Soon As
+                    Possible
+                </h3>
+                <div class="col-lg-12 col-sm-4 wow fadeInUp " style=" display: flex; justify-content: center;"
                     data-wow-delay="0.4s">
-                    <button class="animated-button">
+                    <button class="animated-button" style="width: 15vw">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                             </path>
                         </svg>
-                        <span class="text" style="font-size: 20px">Customize</span>
+                        <span class="text" style="font-size: 20px">Submit</span>
                         <span class="circle"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
                             <path
@@ -389,22 +559,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="col-lg-6 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <button class="animated-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
-                            <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                            </path>
-                        </svg>
-                        <span class="text" style="font-size: 20px">Book Now</span>
-                        <span class="circle"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
-                            <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -504,6 +659,7 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -879,7 +1035,13 @@
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
                                 <p>Nice view point. You can see beauti of neture</p>
-
+                                <button class="rmv-btn " style=" margin-left: 30%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -915,6 +1077,13 @@
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
                                 <p>Very comfortable vehicle with fully ac</p>
+                                <button class="rmv-btn " style=" margin-left: 40%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
 
                             </div>
                         </div>
@@ -951,7 +1120,13 @@
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
                                 <p>5 Start Hotel for you comfortable accommodation</p>
-
+                                <button class="rmv-btn " style=" margin-left: 40%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -987,7 +1162,13 @@
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
                                 <p>Guide And Language Translator</p>
-
+                                <button class="rmv-btn " style=" margin-left: 40%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -998,6 +1179,217 @@
                 divElement.innerHTML = content;
                 document.getElementById('translators-list').appendChild(divElement);
             }
+        }
+
+        //main image upload
+        function ekUpload() {
+            function Init() {
+
+                console.log("Upload Initialised");
+
+                var fileSelect = document.getElementById('file-upload'),
+                    fileDrag = document.getElementById('file-drag'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                console.log(file.name);
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                // var fileType = file.type;
+                // console.log(fileType);
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+                    document.getElementById('start').classList.add("hidden");
+                    document.getElementById('response').classList.remove("hidden");
+                    document.getElementById('notimage').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image').classList.remove("hidden");
+                    document.getElementById('file-image').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image').classList.add("hidden");
+                    document.getElementById('notimage').classList.remove("hidden");
+                    document.getElementById('start').classList.remove("hidden");
+                    document.getElementById('response').classList.add("hidden");
+                    document.getElementById("file-upload-form").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+
+                var xhr = new XMLHttpRequest(),
+                    fileInput = document.getElementById('class-roster-file'),
+                    pBar = document.getElementById('file-progress'),
+                    fileSizeLimit = 1024; // In MB
+                if (xhr.upload) {
+                    // Check if file is less than x MB
+                    if (file.size <= fileSizeLimit * 1024 * 1024) {
+                        // Progress bar
+                        pBar.style.display = 'inline';
+                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+                        xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+                        // File received / failed
+                        xhr.onreadystatechange = function(e) {
+                            if (xhr.readyState == 4) {
+                                // Everything is good!
+
+                                // progress.className = (xhr.status == 200 ? "success" : "failure");
+                                // document.location.reload(true);
+                            }
+                        };
+
+                        // Start upload
+                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                        xhr.setRequestHeader('X-File-Name', file.name);
+                        xhr.setRequestHeader('X-File-Size', file.size);
+                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                        xhr.send(file);
+                    } else {
+                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                    }
+                }
+            }
+
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload();
+        var dropzone = new Dropzone('#demo-upload', {
+            previewTemplate: document.querySelector('#preview-template').innerHTML,
+            parallelUploads: 2,
+            thumbnailHeight: 120,
+            thumbnailWidth: 120,
+            maxFilesize: 3,
+            filesizeBase: 1000,
+            thumbnail: function(file, dataUrl) {
+                if (file.previewElement) {
+                    file.previewElement.classList.remove("dz-file-preview");
+                    var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+                    for (var i = 0; i < images.length; i++) {
+                        var thumbnailElement = images[i];
+                        thumbnailElement.alt = file.name;
+                        thumbnailElement.src = dataUrl;
+                    }
+                    setTimeout(function() {
+                        file.previewElement.classList.add("dz-image-preview");
+                    }, 1);
+                }
+            }
+
+        });
+
+
+        // Now fake the file upload, since GitHub does not handle file uploads
+        // and returns a 404
+
+        var minSteps = 6,
+            maxSteps = 60,
+            timeBetweenSteps = 100,
+            bytesPerStep = 100000;
+
+        dropzone.uploadFiles = function(files) {
+            var self = this;
+
+            for (var i = 0; i < files.length; i++) {
+
+                var file = files[i];
+                totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
+
+                for (var step = 0; step < totalSteps; step++) {
+                    var duration = timeBetweenSteps * (step + 1);
+                    setTimeout(function(file, totalSteps, step) {
+                        return function() {
+                            file.upload = {
+                                progress: 100 * (step + 1) / totalSteps,
+                                total: file.size,
+                                bytesSent: (step + 1) * file.size / totalSteps
+                            };
+
+                            self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
+                            if (file.upload.progress == 100) {
+                                file.status = Dropzone.SUCCESS;
+                                self.emit("success", file, 'success', null);
+                                self.emit("complete", file);
+                                self.processQueue();
+                                //document.getElementsByClassName("dz-success-mark").style.opacity = "1";
+                            }
+                        };
+                    }(file, totalSteps, step), duration);
+                }
+            }
+        }
+
+        function createLocation() {
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+
         }
     </script>
 </body>
