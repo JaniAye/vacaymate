@@ -478,12 +478,34 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="row g-4">
+
+                        <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                                style="width:50vw; margin-left:10%">
+                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Search Locations ">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div style="width: 100%; display: flex; justify-content: flex-start;">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                    Add New Vehicle
+                                    <div class="icon">
+                                        <svg height="24" width="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div id="Vehicle-list">
                     </div>
@@ -493,13 +515,35 @@
             <div class="row g-4">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <h3 class="text-center mt-5">Add Accommodation That Provide For Package </h3>
+                    <div class="row g-4">
+
+                        <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                                style="width:50vw; margin-left:10%">
+                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Search Locations ">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div style="width: 100%; display: flex; justify-content: flex-start;">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                    Add New Hotels
+                                    <div class="icon">
+                                        <svg height="24" width="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div id="accommodation-list">
                     </div>
@@ -510,12 +554,34 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Guides And Language Translators</h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="row g-4">
+
+                        <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                                style="width:50vw; margin-left:10%">
+                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Search Locations ">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div style="width: 100%; display: flex; justify-content: flex-start;">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                    Add Guides/Translators
+                                    <div class="icon">
+                                        <svg height="24" width="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div id="translators-list">
                     </div>
