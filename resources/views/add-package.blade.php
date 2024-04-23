@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/delete.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/imageUploader.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
 
 </head>
 
@@ -350,61 +351,51 @@
                 </button>
             </div>
 
-            <H3 class="text-center ">Jungle Beach Unawatuna</H3>
+            {{-- <H3 class="text-center ">Jungle Beach Unawatuna</H3> --}}
+
+            <div class="text-center" style=" width:100%">
+                <input type="text" name="search" placeholder="Enter Location Name" class="input text-center">
+            </div>
+
             <div style="height: 25px; width : 100%; color:black">
                 <div class="row " style="position: fixed;">
                     <div class="col-lg-3 ">
-                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+
+                        <div class="wrapper">
+                            <div class="box">
+                                <div class="js--image-preview"></div>
+                                <div class="upload-options">
+                                    <label>
+                                        <input type="file" class="image-upload" accept="image/*" />
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                        </div>
                     </div>
                     <div class="col-lg-3 col-md-6" style=" width : 70%">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit voluptates aliquam molestias
-                            mollitia? Modi ducimus vel incidunt alias quo rem at. Et facere voluptates illum id unde
-                            adipisci, ad fugiat.</p>
-                        <div style="margin-left: 60px;margin-right:60px">
-                            <div class="row ">
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Airport
-                                        pickup
-                                        and drop
-                                    </p>
+                        <h5 class="mt-4">Add some breif discription about this location</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" id="packageBreifDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                                placeholder="Enter a brief description..."></textarea>
+                        </div>
+                        <div style="margin-right:60px" class="mt-2">
+                            <div class="row " style="position: fixed;">
+                                <div class="col-lg-6 ">
+                                    <h5>Enter Location : </h5>
                                 </div>
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked
-                                        Hotels
-                                    </p>
+                                <div class="col-lg-6">
+                                    <input placeholder="Location" type="text" name="text" class="input">
                                 </div>
                             </div>
 
-                            <div class="row ">
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
-                                        complete package
-                                    </p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
-                                        Translators
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="row ">
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>
-                                        Fully Luxary Vehicles</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7
-                                        Service</p>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
 
-                    <h3 class="text-center mt-3 ">Add More Images</h3>
-
+                    <h3 class="text-center mt-5 ">Add More Images</h3>
                     {{-- image uploader --}}
 
 
@@ -419,11 +410,23 @@
                             </form>
                         </div>
                     </section>
-
-
-
                     {{-- Image uploader end --}}
-
+                    <div class="mt-3" style="width: 92%; display: flex; justify-content: flex-end;">
+                        <button class="animated-button" style="width: 15vw ; height:50px">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                </path>
+                            </svg>
+                            <span class="text" style="font-size: 20px">Submit</span>
+                            <span class="circle"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
