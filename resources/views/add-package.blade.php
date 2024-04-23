@@ -342,6 +342,7 @@
             </div>
         </div>
     </div>
+
     <div id="overlay" style="display: none;">
         <div id="overlay-content">
             <div id="clsbtn">
@@ -354,7 +355,8 @@
             {{-- <H3 class="text-center ">Jungle Beach Unawatuna</H3> --}}
 
             <div class="text-center" style=" width:100%">
-                <input type="text" name="search" placeholder="Enter Location Name" class="input text-center">
+                <input type="text" id="locationName" name="search" placeholder="Enter Location Name"
+                    class="input text-center">
             </div>
 
             <div style="height: 25px; width : 100%; color:black">
@@ -378,7 +380,7 @@
                     <div class="col-lg-3 col-md-6" style=" width : 70%">
                         <h5 class="mt-4">Add some breif discription about this location</h5>
                         <div class="form-group">
-                            <textarea class="form-control" id="packageBreifDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                            <textarea class="form-control" id="locationDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
                                 placeholder="Enter a brief description..."></textarea>
                         </div>
                         <div style="margin-right:60px" class="mt-2">
@@ -387,7 +389,8 @@
                                     <h5>Enter Location : </h5>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input placeholder="Location" type="text" name="text" class="input">
+                                    <input placeholder="Location" id="city" type="text" name="text"
+                                        class="input">
                                 </div>
                             </div>
 
@@ -412,7 +415,8 @@
                     </section>
                     {{-- Image uploader end --}}
                     <div class="mt-3" style="width: 92%; display: flex; justify-content: flex-end;">
-                        <button class="animated-button" style="width: 15vw ; height:50px">
+                        <button class="animated-button" style="width: 15vw ; height:50px"
+                            onclick="createNewLocation()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                                 <path
                                     d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -435,6 +439,7 @@
 
         </div>
     </div>
+
     <div class="container-xxl py-5" style="background-color: #fff; width:88%">
         <div class="container">
             <div class="row g-4">
@@ -733,6 +738,36 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        function createNewLocation() {
+
+            var locationData = {
+                name: document.getElementById('locationName').value,
+                created: 'UserTS2',
+                discription: document.getElementById('locationDiscription').value,
+                city: document.getElementById('city').value,
+                reviews: '',
+            };
+
+            $.ajax({
+                url: '{{ route('product.create') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: locationData,
+                success: function(response) {
+                    alert(response.message);
+                    document.getElementById('locationName').value = '';
+                    document.getElementById('locationDiscription').value = '';
+                    document.getElementById('city').value = '';
+                    var overlay = document.getElementById('overlay');
+                    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Failed to create location: ' + textStatus);
+                }
+            });
+        }
         document.addEventListener('DOMContentLoaded', function() {
             getLocations();
             getVehicles();

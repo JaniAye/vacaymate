@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,6 @@ Route::get('/create-package', function () {
 Route::get('/custormize', function () {
     return view('package-custormize');
 });
+
+Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
+// Route::post('/product', [ProductController::class, 'store'])->name('product.store');
