@@ -414,14 +414,14 @@
                                 <h5>Enter Vehicle Model: </h5>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" id="locationName" name="search"
-                                    placeholder="Enter Location Name" class="input text-center">
+                                <input type="text" id="vehicleModel" name="search" placeholder="Enter Here..."
+                                    class="input text-center">
                             </div>
                         </div>
 
                         <h5 class="mt-4">Add some breif discription about this Vehicle</h5>
                         <div class="form-group">
-                            <textarea class="form-control" id="locationDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                            <textarea class="form-control" id="vehicleDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
                                 placeholder="Enter a brief description..."></textarea>
                         </div>
                         <div style="margin-right:60px" class="mt-2">
@@ -430,7 +430,7 @@
                                     <h5>Vehicle Number : </h5>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input placeholder="Enter Here..." id="city" type="text" name="text"
+                                    <input placeholder="Enter Here..." id="vehicleNo" type="text" name="text"
                                         class="input">
                                 </div>
                             </div>
@@ -445,17 +445,17 @@
                                 <div class="radio-button-container">
                                     <h5>Type</h5>
                                     <div class="radio-button">
-                                        <input type="radio" class="radio-button__input" id="radio1"
+                                        <input type="radio" class="radio-button__input" id="car"
                                             name="radio-group">
-                                        <label class="radio-button__label" for="radio1">
+                                        <label class="radio-button__label" for="car">
                                             <span class="radio-button__custom"></span>
                                             Car
                                         </label>
                                     </div>
                                     <div class="radio-button">
-                                        <input type="radio" class="radio-button__input" id="radio2"
+                                        <input type="radio" class="radio-button__input" id="van"
                                             name="radio-group">
-                                        <label class="radio-button__label" for="radio2">
+                                        <label class="radio-button__label" for="van">
                                             <span class="radio-button__custom"></span>
                                             Van
                                         </label>
@@ -471,17 +471,17 @@
                                     </div>
                                     <div class="col-lg-2 ">
                                         <label class="cyberpunk-checkbox-label">
-                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            <input id="ac" type="checkbox" class="cyberpunk-checkbox">
                                             Fully AC</label>
                                     </div>
                                     <div class="col-lg-3 ">
                                         <label class="cyberpunk-checkbox-label">
-                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            <input id="adjSeat" type="checkbox" class="cyberpunk-checkbox">
                                             Adjustable Seat</label>
                                     </div>
                                     <div class="col-lg-3 ">
                                         <label class="cyberpunk-checkbox-label">
-                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            <input id="ps" type="checkbox" class="cyberpunk-checkbox">
                                             Power Shutter</label>
                                     </div>
                                 </div>
@@ -832,9 +832,51 @@
     <script>
         function createNewLocation() {
             const type = localStorage.getItem('type');
-            console.log(type);
+
             if (type === 'vehicle') {
-                alert('asdsda');
+                const checkCar = document.getElementById('car').checked;
+                const checkVan = document.getElementById('van').checked;
+                var vehiceType = '';
+
+                if (checkCar) {
+                    vehiceType = 'car';
+                } else if (checkVan) {
+                    vehiceType = 'van';
+                }
+                var locationData = {
+                    vehicleNo: document.getElementById('vehicleNo').value,
+                    model: document.getElementById('vehicleModel').value,
+                    discription: document.getElementById('vehicleDiscription').value,
+                    type: vehiceType,
+                    is_ac: document.getElementById('ac').checked ? 1 : 0,
+                    isAdjustableSeat: document.getElementById('adjSeat').checked ? 1 : 0,
+                    isPowerShutter: document.getElementById('ps').checked ? 1 : 0,
+                    reviews: ''
+                };
+                console.log(document.getElementById('vehicleNo').value);
+
+                $.ajax({
+                    url: '{{ route('vehicle.create') }}',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: locationData,
+                    success: function(response) {
+                        alert(response.message);
+                        document.getElementById('vehicleNo').value = '';
+                        document.getElementById('vehicleDiscription').value = '';
+                        document.getElementById('vehicleModel').value = '';
+                        document.getElementById('ac').checked = false;;
+                        document.getElementById('adjSeat').checked = false;
+                        document.getElementById('ps').checked = false;
+                        var overlay = document.getElementById('overlay');
+                        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Failed to create location: ' + textStatus);
+                    }
+                });
             } else if (type === 'location') {
                 var locationData = {
                     name: document.getElementById('locationName').value,

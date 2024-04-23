@@ -10,23 +10,24 @@ class VehicleControler extends Controller
     public function saveVehicle(Request $request)
     {
 
-        $request->validate([
-            'vehicle_no' => 'required',
-            'model' => 'required',
-            'discription' => 'required',
-            'type' => 'required',
-            'is_ac' => 'required',
-            'is_adjustable_seat' => 'required',
-            'is_power_shutter' => 'required',
-            'reviews' => 'required'
-        ]);
-        $isExsistloc = Vehicle::where('vehicle_no', $request->vehicleNo)
+        // $request->validate([
+        //     'vehicleNo' => 'required',
+        //     'model' => 'required',
+        //     'discription' => 'required',
+        //     'type' => 'required',
+        //     'is_ac' => 'required',
+        //     'is_adjustable_seat' => 'required',
+        //     'is_power_shutter' => 'required',
+        //     'reviews' => 'required'
+        // ]);
+
+        $isExsistVehicle = Vehicle::where('vehicle_no', $request->vehicleNo)
             ->get();
 
-        if (count($isExsistloc) > 0) {
+        if (count($isExsistVehicle) > 0) {
             return response()->json([
                 'success' => true,
-                'message' => 'Already Have'
+                'message' => 'Already Registerd'
             ], 200);
         }
         Vehicle::create([
@@ -34,16 +35,16 @@ class VehicleControler extends Controller
             'model' => $request->model,
             'discription' => $request->discription,
             'type' => $request->type,
-            'is_ac' => $request->is_ac,
-            'is_adjustable_seat' => $request->isAdjustableSeat,
-            'is_power_shutter' => $request->isPowerShutter,
+            'is_ac' => (int) $request->is_ac,
+            'is_adjustable_seat' => (int) $request->isAdjustableSeat,
+            'is_power_shutter' => (int)  $request->isPowerShutter,
             'reviews' => $request->reviews
         ]);
 
 
         return response()->json([
             'success' => true,
-            'message' => 'Location Created'
+            'message' => 'Location Added'
         ], 201);
     }
 }
