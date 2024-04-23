@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\VehicleControler;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,4 +38,4 @@ Route::get('/custormize', function () {
 });
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
-// Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle']);
