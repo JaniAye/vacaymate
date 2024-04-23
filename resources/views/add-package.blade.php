@@ -354,11 +354,6 @@
 
             {{-- <H3 class="text-center ">Jungle Beach Unawatuna</H3> --}}
 
-            <div class="text-center" style=" width:100%">
-                <input type="text" id="locationName" name="search" placeholder="Enter Location Name"
-                    class="input text-center">
-            </div>
-
             <div style="height: 25px; width : 100%; color:black">
                 <div class="row " style="position: fixed;">
                     <div class="col-lg-3 ">
@@ -377,7 +372,18 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6" style=" width : 70%">
+                    {{-- Content for create location  --}}
+                    <div class="col-lg-3 col-md-6" style=" width : 70% ; ">
+                        <div class="row ">
+                            <div class="col-lg-4 ">
+                                <h5>Enter Location Name: </h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" id="locationName" name="search"
+                                    placeholder="Enter Location Name" class="input text-center">
+                            </div>
+                        </div>
+
                         <h5 class="mt-4">Add some breif discription about this location</h5>
                         <div class="form-group">
                             <textarea class="form-control" id="locationDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
@@ -386,7 +392,7 @@
                         <div style="margin-right:60px" class="mt-2">
                             <div class="row " style="position: fixed;">
                                 <div class="col-lg-6 ">
-                                    <h5>Enter Location : </h5>
+                                    <h5>Enter City : </h5>
                                 </div>
                                 <div class="col-lg-6">
                                     <input placeholder="Location" id="city" type="text" name="text"
@@ -396,7 +402,12 @@
 
                         </div>
 
+
                     </div>
+                    {{-- Content for create location  --}}
+
+                    {{-- Content for add vehicle  --}}
+                    {{-- Content for create location  --}}
 
                     <h3 class="text-center mt-5 ">Add More Images</h3>
                     {{-- image uploader --}}
