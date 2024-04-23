@@ -39,6 +39,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/delete.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/imageUploader.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/add-vehicle.css') }}">
 
 </head>
 
@@ -346,7 +347,7 @@
     <div id="overlay" style="display: none;">
         <div id="overlay-content">
             <div id="clsbtn">
-                <button type="button" class="btn-close" onclick="createLocation()">
+                <button type="button" class="btn-close" onclick="closeBtn()">
                     <span class="icon-cross"></span>
                     <span class="visually-hidden">Close</span>
                 </button>
@@ -373,7 +374,7 @@
                         </div>
                     </div>
                     {{-- Content for create location  --}}
-                    <div class="col-lg-3 col-md-6" style=" width : 70% ; ">
+                    <div id="locationContent" class="col-lg-3 col-md-6" style=" width : 70% ; display: none;">
                         <div class="row ">
                             <div class="col-lg-4 ">
                                 <h5>Enter Location Name: </h5>
@@ -389,7 +390,7 @@
                             <textarea class="form-control" id="locationDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
                                 placeholder="Enter a brief description..."></textarea>
                         </div>
-                        <div style="margin-right:60px" class="mt-2">
+                        <div style="margin-right:60px" class="mt-2 mb-5">
                             <div class="row " style="position: fixed;">
                                 <div class="col-lg-6 ">
                                     <h5>Enter City : </h5>
@@ -407,9 +408,89 @@
                     {{-- Content for create location  --}}
 
                     {{-- Content for add vehicle  --}}
-                    {{-- Content for create location  --}}
+                    <div id="vehcleContent" class="col-lg-3 col-md-6" style=" width : 70% ; display: none;">
+                        <div class="row ">
+                            <div class="col-lg-4 ">
+                                <h5>Enter Vehicle Model: </h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" id="locationName" name="search"
+                                    placeholder="Enter Location Name" class="input text-center">
+                            </div>
+                        </div>
 
-                    <h3 class="text-center mt-5 ">Add More Images</h3>
+                        <h5 class="mt-4">Add some breif discription about this Vehicle</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" id="locationDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                                placeholder="Enter a brief description..."></textarea>
+                        </div>
+                        <div style="margin-right:60px" class="mt-2">
+                            <div class="row " style="position: fixed;">
+                                <div class="col-lg-6 ">
+                                    <h5>Vehicle Number : </h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input placeholder="Enter Here..." id="city" type="text" name="text"
+                                        class="input">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="vehcleOption" style=" margin: 25px; width:96% ; display:none;">
+                        <div class="row ">
+
+                            <div class="col-lg-4 pl-5 pr-0">
+
+                                <div class="radio-button-container">
+                                    <h5>Type</h5>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="radio1"
+                                            name="radio-group">
+                                        <label class="radio-button__label" for="radio1">
+                                            <span class="radio-button__custom"></span>
+                                            Car
+                                        </label>
+                                    </div>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="radio2"
+                                            name="radio-group">
+                                        <label class="radio-button__label" for="radio2">
+                                            <span class="radio-button__custom"></span>
+                                            Van
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-8 ">
+                                <div class="row " style=" width:98%">
+                                    <div class="col-lg-2 ">
+                                        <h5 class="ml-5">Options: </h5>
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            Fully AC</label>
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            Adjustable Seat</label>
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input type="checkbox" class="cyberpunk-checkbox">
+                                            Power Shutter</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Content for add vehicle  --}}
+                    <h3 class="text-center ">Add More Images</h3>
                     {{-- image uploader --}}
 
 
@@ -471,7 +552,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="addLocation()">
                                     Add New Location
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -511,7 +592,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="addVehicle()">
                                     Add New Vehicle
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -549,7 +630,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="openCreateTab()">
                                     Add New Hotels
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -587,7 +668,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="createLocation()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="openCreateTab()">
                                     Add Guides/Translators
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -750,34 +831,40 @@
     <script src="js/main.js"></script>
     <script>
         function createNewLocation() {
+            const type = localStorage.getItem('type');
+            console.log(type);
+            if (type === 'vehicle') {
+                alert('asdsda');
+            } else if (type === 'location') {
+                var locationData = {
+                    name: document.getElementById('locationName').value,
+                    created: 'UserTS2',
+                    discription: document.getElementById('locationDiscription').value,
+                    city: document.getElementById('city').value,
+                    reviews: '',
+                };
 
-            var locationData = {
-                name: document.getElementById('locationName').value,
-                created: 'UserTS2',
-                discription: document.getElementById('locationDiscription').value,
-                city: document.getElementById('city').value,
-                reviews: '',
-            };
+                $.ajax({
+                    url: '{{ route('product.create') }}',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: locationData,
+                    success: function(response) {
+                        alert(response.message);
+                        document.getElementById('locationName').value = '';
+                        document.getElementById('locationDiscription').value = '';
+                        document.getElementById('city').value = '';
+                        var overlay = document.getElementById('overlay');
+                        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Failed to create location: ' + textStatus);
+                    }
+                });
+            }
 
-            $.ajax({
-                url: '{{ route('product.create') }}',
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                data: locationData,
-                success: function(response) {
-                    alert(response.message);
-                    document.getElementById('locationName').value = '';
-                    document.getElementById('locationDiscription').value = '';
-                    document.getElementById('city').value = '';
-                    var overlay = document.getElementById('overlay');
-                    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Failed to create location: ' + textStatus);
-                }
-            });
         }
         document.addEventListener('DOMContentLoaded', function() {
             getLocations();
@@ -1501,10 +1588,33 @@
             }
         }
 
-        function createLocation() {
+        function openCreateTab() {
             var overlay = document.getElementById('overlay');
             overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+        }
 
+        function addVehicle() {
+            openCreateTab();
+            document.getElementById('vehcleContent').style.display = 'block';
+            document.getElementById('vehcleOption').style.display = 'block';
+            document.getElementById('locationContent').style.display = 'none';
+            localStorage.setItem('type', 'vehicle');
+
+        }
+
+
+        function addLocation() {
+            openCreateTab();
+            document.getElementById('vehcleContent').style.display = 'none';
+            document.getElementById('vehcleOption').style.display = 'none';
+            document.getElementById('locationContent').style.display = 'block';
+            localStorage.setItem('type', 'location');
+
+        }
+
+        function closeBtn() {
+            localStorage.removeItem('type');
+            openCreateTab();
         }
     </script>
 </body>
