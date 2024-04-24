@@ -27,7 +27,7 @@ class VehicleControler extends Controller
         if (count($isExsistVehicle) > 0) {
             return response()->json([
                 'success' => true,
-                'message' => 'Already Registerd'
+                'message' => 'Already Registerd Vehicle'
             ], 200);
         }
         Vehicle::create([
@@ -44,7 +44,7 @@ class VehicleControler extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Location Added'
+            'message' => 'New Vehicle Added'
         ], 201);
     }
 }

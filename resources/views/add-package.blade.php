@@ -692,22 +692,11 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
                     <p class="mt-5" style=" font-size: 17px; color:black">If this package feels
-                        just right for
-                        your Sri Lanka
-                        adventure, you can book it
-                        and get started on
-                        your journey with us. But if you’d like to make it your own, our customization options
-                        let you
-                        tweak every detail from destinations and accommodations to vehicles and activities. The
-                        choice
-                        is yours! Either way, we’re excited to help you create unforgettable memories.</p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem est quidem unde voluptatem, et facere tenetur beatae neque debitis commodi illum eos fuga, assumenda aliquam asperiores accusantium. Cumque, vel reprehenderit?</p>
                 </div>
             </div>
 
             <div class="row g-4">
-                <h3 class="text-center">Submit Your Customized Package We Will Give Quotation As Soon As
-                    Possible
-                </h3>
                 <div class="col-lg-12 col-sm-4 wow fadeInUp " style=" display: flex; justify-content: center;"
                     data-wow-delay="0.4s">
                     <button class="animated-button" style="width: 15vw">
@@ -870,8 +859,8 @@
                         document.getElementById('ac').checked = false;;
                         document.getElementById('adjSeat').checked = false;
                         document.getElementById('ps').checked = false;
-                        var overlay = document.getElementById('overlay');
-                        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                        // var overlay = document.getElementById('overlay');
+                        // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Failed to create location: ' + textStatus);
