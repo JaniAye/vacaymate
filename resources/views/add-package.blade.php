@@ -490,6 +490,93 @@
                         </div>
                     </div>
                     {{-- Content for add vehicle  --}}
+
+
+                    {{-- Hotel Create  --}}
+                    <div id="hotelontent" class="col-lg-3 col-md-6" style=" width : 70% ; display: none;">
+                        <div class="row ">
+                            <div class="col-lg-4 ">
+                                <h5>Enter Hotel Name : </h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" id="hotelName" name="search" placeholder="Enter Here..."
+                                    class="input text-center">
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">Add some breif discription about this Hotel</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" id="vehicleDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                                placeholder="Enter a brief description..."></textarea>
+                        </div>
+                        <div style="margin-right:60px" class="mt-2">
+                            <div class="row " style="position: fixed;">
+                                <div class="col-lg-6 ">
+                                    <h5>Hotel Location:</h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input placeholder="Enter Here..." id="hotelCity" type="text" name="text"
+                                        class="input">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="hotelOption" style=" margin: 25px; width:96% ; display:none;">
+                        <div class="row ">
+
+                            <div class="col-lg-4 pl-5 pr-0">
+
+                                <div class="radio-button-container">
+                                    <h5>Type</h5>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="withAc"
+                                            name="radio-group">
+                                        <label class="radio-button__label" for="withAc">
+                                            <span class="radio-button__custom"></span>
+                                            AC
+                                        </label>
+                                    </div>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="nonAc"
+                                            name="radio-group">
+                                        <label class="radio-button__label" for="nonAc">
+                                            <span class="radio-button__custom"></span>
+                                            Non-AC
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-8 ">
+                                <div class="row " style=" width:98%">
+                                    <div class="col-lg-2 ">
+                                        <h5 class="ml-5">Options: </h5>
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input id="breakfast" type="checkbox" class="cyberpunk-checkbox">
+                                            Breakfast</label>
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input id="lunch" type="checkbox" class="cyberpunk-checkbox">
+                                            Lunch</label>
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <label class="cyberpunk-checkbox-label">
+                                            <input id="dinner" type="checkbox" class="cyberpunk-checkbox">
+                                            Dinner</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Hotel create --}}
+
+
                     <h3 class="text-center ">Add More Images</h3>
                     {{-- image uploader --}}
 
@@ -630,7 +717,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="openCreateTab()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="addHotel()">
                                     Add New Hotels
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -692,7 +779,9 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
                     <p class="mt-5" style=" font-size: 17px; color:black">If this package feels
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem est quidem unde voluptatem, et facere tenetur beatae neque debitis commodi illum eos fuga, assumenda aliquam asperiores accusantium. Cumque, vel reprehenderit?</p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem est quidem unde voluptatem, et
+                        facere tenetur beatae neque debitis commodi illum eos fuga, assumenda aliquam asperiores
+                        accusantium. Cumque, vel reprehenderit?</p>
                 </div>
             </div>
 
@@ -1626,8 +1715,21 @@
 
         function addVehicle() {
             openCreateTab();
+            document.getElementById('hotelontent').style.display = 'none';
+            document.getElementById('hotelontent').style.display = 'none';
             document.getElementById('vehcleContent').style.display = 'block';
             document.getElementById('vehcleOption').style.display = 'block';
+            document.getElementById('locationContent').style.display = 'none';
+            localStorage.setItem('type', 'hotel');
+
+        }
+
+        function addHotel() {
+            openCreateTab();
+            document.getElementById('hotelontent').style.display = 'block';
+            document.getElementById('hotelOption').style.display = 'block';
+            document.getElementById('vehcleContent').style.display = 'none';
+            document.getElementById('vehcleOption').style.display = 'none';
             document.getElementById('locationContent').style.display = 'none';
             localStorage.setItem('type', 'vehicle');
 
@@ -1636,6 +1738,8 @@
 
         function addLocation() {
             openCreateTab();
+            document.getElementById('hotelontent').style.display = 'none';
+            document.getElementById('hotelontent').style.display = 'none';
             document.getElementById('vehcleContent').style.display = 'none';
             document.getElementById('vehcleOption').style.display = 'none';
             document.getElementById('locationContent').style.display = 'block';
