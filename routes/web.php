@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\VehicleControler;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,4 @@ Route::get('/custormize', function () {
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle'])->name('vehicle.create');
+Route::withoutMiddleware(['web', 'auth'])->post('/add-hotel', [HotelsController::class, 'saveHotel'])->name('hotel.create');
