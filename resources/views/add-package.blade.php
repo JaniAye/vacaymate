@@ -1124,6 +1124,54 @@
                         alert('Failed to create location: ' + textStatus);
                     }
                 });
+            } else if (type === 'guide') {
+                const translator = document.getElementById('translator').checked;
+                // const checkNonAc = document.getElementById('nonAc').checked;
+                var isTranslator = '';
+
+                if (translator) {
+                    isTranslator = 'translator';
+                } else if (checkNonAc) {
+                    isTranslator = 'notTranslator';
+                }
+                var guideData = {
+                    guideName: document.getElementById('guideName').value,
+                    guideLocation: document.getElementById('guideDiscription').value,
+                    guideDiscription: document.getElementById('guideCity').value,
+                    guideType: isTranslator,
+                    is_eng: document.getElementById('eng').checked ? 1 : 0,
+                    is_spanish: document.getElementById('spanish').checked ? 1 : 0,
+                    is_Russ: document.getElementById('rus').checked ? 1 : 0,
+                    is_jpn: document.getElementById('jpn').checked ? 1 : 0,
+                    is_chn: document.getElementById('chn').checked ? 1 : 0,
+                    reviews: ''
+                };
+                // console.log(document.getElementById('vehicleNo').value);
+
+                $.ajax({
+                    url: '{{ route('guide.create') }}',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: guideData,
+                    success: function(response) {
+                        alert(response.message);
+                        document.getElementById('guideName').value = '';
+                        document.getElementById('guideDiscription').value = '';
+                        document.getElementById('guideCity').value = '';
+                        document.getElementById('eng').checked = false;;
+                        document.getElementById('spanish').checked = false;
+                        document.getElementById('rus').checked = false;
+                        document.getElementById('jpn').checked = false;
+                        document.getElementById('chn').checked = false;
+                        // var overlay = document.getElementById('overlay');
+                        // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Failed to create location: ' + textStatus);
+                    }
+                });
             }
 
         }
