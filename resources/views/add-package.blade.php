@@ -506,7 +506,7 @@
 
                         <h5 class="mt-4">Add some breif discription about this Hotel</h5>
                         <div class="form-group">
-                            <textarea class="form-control" id="vehicleDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                            <textarea class="form-control" id="hotelDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
                                 placeholder="Enter a brief description..."></textarea>
                         </div>
                         <div style="margin-right:60px" class="mt-2">
@@ -576,8 +576,105 @@
                     </div>
                     {{-- Hotel create --}}
 
+                    {{-- Guides --}}
+                    <div id="guideContent" class="col-lg-3 col-md-6" style=" width : 70% ; display: none;">
+                        <div class="row ">
+                            <div class="col-lg-4 ">
+                                <h5>Enter Guide Name : </h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" id="guideName" name="search" placeholder="Enter Here..."
+                                    class="input text-center">
+                            </div>
+                        </div>
 
-                    <h3 class="text-center ">Add More Images</h3>
+                        <h5 class="mt-4">Add some breif discription about Travel Guide</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" id="guideDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
+                                placeholder="Enter a brief description..."></textarea>
+                        </div>
+                        <div style="margin-right:60px" class="mt-2">
+                            <div class="row " style="position: fixed;">
+                                <div class="col-lg-6 ">
+                                    <h5>Guide Location:</h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input placeholder="Enter Here..." id="guideCity" type="text" name="text"
+                                        class="input">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="guideOption" style=" margin: 15px; width:96% ; display:none;">
+                        <div class="row ">
+
+                            <div class="col-lg-3 pl-5 pr-0">
+
+                                <div class="radio-button-container">
+                                    <h5>Translator:</h5>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="translator"
+                                            name="radio-group" onclick="checkBoxClick(true)" checked>
+                                        <label class="radio-button__label" for="translator">
+                                            <span class="radio-button__custom"></span>
+                                            True
+                                        </label>
+                                    </div>
+                                    <div class="radio-button">
+                                        <input type="radio" class="radio-button__input" id="notTranslator"
+                                            name="radio-group" onclick="checkBoxClick(false)">
+                                        <label class="radio-button__label" for="notTranslator">
+                                            <span class="radio-button__custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-9 ">
+
+
+                            </div>
+                        </div>
+                        <div id="languageTrans">
+                            <div class="row " style=" width:98%">
+                                <div class="col-lg-1 " style="padding: 0; width:120px; margin-left:15px ">
+                                    <h5 class="ml-5">Language:</h5>
+                                </div>
+                                <div class="col-lg-1 " style="padding: 0;">
+                                    <label class="cyberpunk-checkbox-label">
+                                        <input id="eng" type="checkbox" class="cyberpunk-checkbox">
+                                        English</label>
+                                </div>
+                                <div class="col-lg-1 " style="padding: 0; margin-left:15px">
+                                    <label class="cyberpunk-checkbox-label">
+                                        <input id="spanish" type="checkbox" class="cyberpunk-checkbox">
+                                        Spanish</label>
+                                </div>
+                                <div class="col-lg-1 " style="padding: 0; margin-left:15px">
+                                    <label class="cyberpunk-checkbox-label">
+                                        <input id="rus" type="checkbox" class="cyberpunk-checkbox">
+                                        Russian</label>
+                                </div>
+                                <div class="col-lg-1" style="padding: 0; width:115px; margin-left:15px">
+                                    <label class="cyberpunk-checkbox-label">
+                                        <input id="jpn" type="checkbox" class="cyberpunk-checkbox">
+                                        Japanese</label>
+                                </div>
+                                <div class="col-lg-1 " style="padding: 0; margin-left:15px">
+                                    <label class="cyberpunk-checkbox-label">
+                                        <input id="chn" type="checkbox" class="cyberpunk-checkbox">
+                                        Chinese</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Guides --}}
+
+
+                    <h3 class="text-center " style="margin: 0">Add More Images</h3>
                     {{-- image uploader --}}
 
 
@@ -755,7 +852,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div style="width: 100%; display: flex; justify-content: flex-start;">
-                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="openCreateTab()">
+                                <button class="cssbuttons-io-button mt-2 ml-3" onclick="addguide()">
                                     Add Guides/Translators
                                     <div class="icon">
                                         <svg height="24" width="24" viewBox="0 0 24 24"
@@ -910,7 +1007,7 @@
     <script>
         function createNewLocation() {
             const type = localStorage.getItem('type');
-
+            console.log(type);
             if (type === 'vehicle') {
                 const checkCar = document.getElementById('car').checked;
                 const checkVan = document.getElementById('van').checked;
@@ -978,6 +1075,50 @@
                         document.getElementById('city').value = '';
                         var overlay = document.getElementById('overlay');
                         overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Failed to create location: ' + textStatus);
+                    }
+                });
+            } else if (type === 'hotel') {
+                const checkWithAc = document.getElementById('withAc').checked;
+                const checkNonAc = document.getElementById('nonAc').checked;
+                var hotelType = '';
+
+                if (checkWithAc) {
+                    hotelType = 'withAc';
+                } else if (checkNonAc) {
+                    hotelType = 'nonAc';
+                }
+                var hotelData = {
+                    hotelName: document.getElementById('hotelName').value,
+                    hotelCity: document.getElementById('hotelCity').value,
+                    hotelDiscription: document.getElementById('hotelDiscription').value,
+                    hotelType: hotelType,
+                    isBreakfast: document.getElementById('breakfast').checked ? 1 : 0,
+                    isLunch: document.getElementById('lunch').checked ? 1 : 0,
+                    isDinner: document.getElementById('dinner').checked ? 1 : 0,
+                    reviews: ''
+                };
+                // console.log(document.getElementById('vehicleNo').value);
+
+                $.ajax({
+                    url: '{{ route('hotel.create') }}',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: hotelData,
+                    success: function(response) {
+                        alert(response.message);
+                        document.getElementById('hotelName').value = '';
+                        document.getElementById('hotelDiscription').value = '';
+                        document.getElementById('hotelCity').value = '';
+                        document.getElementById('breakfast').checked = false;;
+                        document.getElementById('lunch').checked = false;
+                        document.getElementById('dinner').checked = false;
+                        // var overlay = document.getElementById('overlay');
+                        // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Failed to create location: ' + textStatus);
@@ -1716,11 +1857,13 @@
         function addVehicle() {
             openCreateTab();
             document.getElementById('hotelontent').style.display = 'none';
-            document.getElementById('hotelontent').style.display = 'none';
+            document.getElementById('hotelOption').style.display = 'none';
             document.getElementById('vehcleContent').style.display = 'block';
             document.getElementById('vehcleOption').style.display = 'block';
             document.getElementById('locationContent').style.display = 'none';
-            localStorage.setItem('type', 'hotel');
+            document.getElementById('guideContent').style.display = 'none';
+            document.getElementById('guideOption').style.display = 'none';
+            localStorage.setItem('type', 'vehicle');
 
         }
 
@@ -1731,7 +1874,22 @@
             document.getElementById('vehcleContent').style.display = 'none';
             document.getElementById('vehcleOption').style.display = 'none';
             document.getElementById('locationContent').style.display = 'none';
-            localStorage.setItem('type', 'vehicle');
+            document.getElementById('guideContent').style.display = 'none';
+            document.getElementById('guideOption').style.display = 'none';
+            localStorage.setItem('type', 'hotel');
+
+        }
+
+        function addguide() {
+            openCreateTab();
+            document.getElementById('guideContent').style.display = 'block';
+            document.getElementById('guideOption').style.display = 'block';
+            document.getElementById('hotelontent').style.display = 'none';
+            document.getElementById('hotelOption').style.display = 'none';
+            document.getElementById('vehcleContent').style.display = 'none';
+            document.getElementById('vehcleOption').style.display = 'none';
+            document.getElementById('locationContent').style.display = 'none';
+            localStorage.setItem('type', 'guide');
 
         }
 
@@ -1739,10 +1897,12 @@
         function addLocation() {
             openCreateTab();
             document.getElementById('hotelontent').style.display = 'none';
-            document.getElementById('hotelontent').style.display = 'none';
+            document.getElementById('hotelOption').style.display = 'none';
             document.getElementById('vehcleContent').style.display = 'none';
             document.getElementById('vehcleOption').style.display = 'none';
             document.getElementById('locationContent').style.display = 'block';
+            document.getElementById('guideContent').style.display = 'none';
+            document.getElementById('guideOption').style.display = 'none';
             localStorage.setItem('type', 'location');
 
         }
@@ -1750,6 +1910,16 @@
         function closeBtn() {
             localStorage.removeItem('type');
             openCreateTab();
+        }
+
+        function checkBoxClick(trans) {
+            if (trans) {
+                document.getElementById('languageTrans').style.display = 'block';
+
+            } else {
+                document.getElementById('languageTrans').style.display = 'none';
+
+            }
         }
     </script>
 </body>
