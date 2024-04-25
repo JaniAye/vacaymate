@@ -730,8 +730,8 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Enter Here..."
-                                        onkeypress="searchResults()">
+                                    <input type="text" id="locationSearch" name="" value=""
+                                        placeholder="Enter Here..." oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
@@ -1243,6 +1243,7 @@
             getVehicles();
             getAccommodation();
             getTranslators();
+            var locationName = '';
         });
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
             month: "long"
@@ -2033,13 +2034,92 @@
             }
         }
 
+        var loc = '';
+        var cnt = 0;
 
-        function searchResults() {
+        function searchResults(event) {
 
-            var searchQuery = document.getElementById('query').value;
-            var wikiAPICall =
-                "https://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" +
-                searchQuery;
+            var endpointUrl = `http://localhost:8000/getLocations/${event.target.value}`;
+            console.log("asssaasas");
+            if (event.target.value.length > 0) {
+                $.ajax({
+                    url: endpointUrl,
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+
+                        if (response.success) {
+                            var data = response.data;
+
+
+                            for (ij = 0; ij < cnt; ij++) {
+                                $(".r" + ij).empty();
+                            }
+                            if (data.length > 0) {
+                                for (i = 0; i < data.length; i++) {
+                                    $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
+                                        "56" + "' target='_blank'><p>" +
+                                        data[i].name + "</p></a></div>");
+                                }
+                                cnt = i;
+                            } else {
+
+                                for (j = 0; j < cnt; j++) {
+                                    $(".r" + j).empty();
+                                }
+                                cnt = 1;
+                                $(".r" + 0).html("<div class='wow fadeInUp'><a href='" +
+                                    "56" + "' target='_blank'><p>" +
+                                    "no data found" + "</p></a></div>");
+                            }
+
+
+                        } else {
+
+                            console.log('Error: ' + response.message);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+
+                        alert('Failed to fetch customer bill: ' + textStatus);
+                    }
+                });
+            } else {
+                console.log("++++++++");
+                console.log(i);
+                for (j = 0; j < cnt; j++) {
+                    $(".r" + j).empty();
+                }
+            }
+
+
+
+            // $.ajax({
+            //     url: '{{ route('vehicle.create') }}',
+            //     method: 'POST',
+            //     headers: {
+            //         'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            //     },
+            //     data: locationData,
+            //     success: function(response) {
+            //         alert(response.message);
+            //         document.getElementById('vehicleNo').value = '';
+            //         document.getElementById('vehicleDiscription').value = '';
+            //         document.getElementById('vehicleModel').value = '';
+            //         document.getElementById('ac').checked = false;;
+            //         document.getElementById('adjSeat').checked = false;
+            //         document.getElementById('ps').checked = false;
+            //         // var overlay = document.getElementById('overlay');
+            //         // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+            //     },
+            //     error: function(jqXHR, textStatus, errorThrown) {
+            //         alert('Failed to create location: ' + textStatus);
+            //     }
+            // });
+
+
             // $.ajax({
             //     url: wikiAPICall,
             //     type: "GET",
@@ -2069,11 +2149,7 @@
             //         }
             //     }
             // });
-            for (i = 0; i < 5; i++) {
-                $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
-                    "56" + "' target='_blank'><p>" +
-                    "12" + "</p></a></div>");
-            }
+
 
         }
     </script>

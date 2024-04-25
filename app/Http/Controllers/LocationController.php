@@ -40,4 +40,29 @@ class LocationController extends Controller
             'message' => 'Location Created'
         ], 201);
     }
+    public function getAllLocations($locationName)
+    {
+        try {
+            $allLocations = Location::where('name', 'like', $locationName . '%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            if ($allLocations->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allLocations
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }
