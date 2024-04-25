@@ -68,7 +68,8 @@
 .search-corner .search-result > div {
   background-color: #fff;
   padding: 10px 20px;
-  margin: 30px 10px;
+  margin: 5px 10px;
+  height: 7vh;
   border-radius: 6px;
   transition: all 0.3s;
   text-align: left;

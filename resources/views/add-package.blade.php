@@ -90,7 +90,7 @@
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white animated slideInDown">Booking</h1>
+                        <h1 class="display-3 text-white animated slideInDown">Create Package</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -729,23 +729,13 @@
 
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
-                                <div class="search-box mt-2 mb-5">
+                                <div class="search-box mt-2 mb-0">
                                     <input type="text" id="query" name="" placeholder="Enter Here..."
                                         onkeypress="searchResults()">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
                                 </div>
-
-                                {{-- <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                                    style="width:50vw; margin-left:10%">
-                                    <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5"
-                                        type="text" placeholder="Search Locations " onkeypress="searchResults()">
-                                    <button type="button"
-                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                        style="margin-top: 8px;">Search</button>
-                                </div> --}}
-
                                 <div class="search-results">
                                     <h2 class="query-title"></h2>
                                     <div class="search-result r0"></div>
@@ -781,7 +771,7 @@
                     </div>
 
 
-                    <div id="packageList">
+                    <div id="packageList" class="mt-4">
                     </div>
                 </div>
 
@@ -793,13 +783,28 @@
                     <div class="row g-4">
 
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                                style="width:50vw; margin-left:10%">
-                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                    placeholder="Search Locations ">
-                                <button type="button"
-                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 8px;">Search</button>
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-0">
+                                    <input type="text" id="query" name="" placeholder="Enter Here..."
+                                        onkeypress="searchResults()">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result r0"></div>
+                                    <div class="search-result r1"></div>
+                                    <div class="search-result r2"></div>
+                                    <div class="search-result r3"></div>
+                                    <div class="search-result r4"></div>
+                                    <div class="search-result r5"></div>
+                                    <div class="search-result r6"></div>
+                                    <div class="search-result r7"></div>
+                                    <div class="search-result r8"></div>
+                                    <div class="search-result r9"></div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -831,13 +836,28 @@
                     <div class="row g-4">
 
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                                style="width:50vw; margin-left:10%">
-                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                    placeholder="Search Locations ">
-                                <button type="button"
-                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 8px;">Search</button>
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-0">
+                                    <input type="text" id="query" name="" placeholder="Enter Here..."
+                                        onkeypress="searchResults()">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result r0"></div>
+                                    <div class="search-result r1"></div>
+                                    <div class="search-result r2"></div>
+                                    <div class="search-result r3"></div>
+                                    <div class="search-result r4"></div>
+                                    <div class="search-result r5"></div>
+                                    <div class="search-result r6"></div>
+                                    <div class="search-result r7"></div>
+                                    <div class="search-result r8"></div>
+                                    <div class="search-result r9"></div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -869,13 +889,28 @@
                     <div class="row g-4">
 
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                                style="width:50vw; margin-left:10%">
-                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                    placeholder="Search Locations ">
-                                <button type="button"
-                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 8px;">Search</button>
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-0">
+                                    <input type="text" id="query" name="" placeholder="Enter Here..."
+                                        onkeypress="searchResults()">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result r0"></div>
+                                    <div class="search-result r1"></div>
+                                    <div class="search-result r2"></div>
+                                    <div class="search-result r3"></div>
+                                    <div class="search-result r4"></div>
+                                    <div class="search-result r5"></div>
+                                    <div class="search-result r6"></div>
+                                    <div class="search-result r7"></div>
+                                    <div class="search-result r8"></div>
+                                    <div class="search-result r9"></div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -2001,8 +2036,6 @@
 
         function searchResults() {
 
-            // $("#search").submit(function() {
-            //Fetching the value from input element
             var searchQuery = document.getElementById('query').value;
             var wikiAPICall =
                 "https://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" +
@@ -2036,24 +2069,13 @@
             //         }
             //     }
             // });
-            for (i = 0; i < 2; i++) {
+            for (i = 0; i < 5; i++) {
                 $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
-                    "sss" + "' target='_blank'><p>" +
-                    "sss" + "</p></a><p>" + "sss" +
-                    "</p></div>");
+                    "56" + "' target='_blank'><p>" +
+                    "12" + "</p></a></div>");
             }
-            // event.preventDefault();
-            // });
-
-
 
         }
-
-
-        // //Calling the function.
-        // fetchQuery(); new WOW().init();
-
-        // });
     </script>
 </body>
 
