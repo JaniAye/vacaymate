@@ -12,7 +12,7 @@
 
 .search-corner {
   width: 60%;
-  margin: 0 auto;
+    margin-left: 5vw;
   text-align: center;
   position: relative;
   padding-top: 15%;
@@ -41,29 +41,28 @@
   top: 0;
   border: none;
   outline: none;
-  background-color: #FF681D;
+  background-color: #86B817;
   font-family: "Raleway";
-  font-size: 24px;
   font-weight: 500;
   text-align: center;
   color: #fff;
 }
 .search-corner .search-box button:hover {
-  background-color: #e94d00;
+  background-color: #86B817;
 }
 .search-corner > p {
   padding-top: 30px;
 }
 .search-corner > p a {
-  border: 1px solid #FF681D;
-  color: #FF681D;
+  border: 1px solid #86B817;
+  color: #86B817;
   font-weight: 500;
   margin: 20px 0 50px;
 }
 .search-corner > p a:hover {
-  background-color: #FF681D;
+  background-color: #86B817;
   color: #fff;
-  box-shadow: 1px 3px 20px 1px #ff8c54;
+  box-shadow: 1px 3px 20px 1px #86B817;
   transform: scale(1.1);
 }
 .search-corner .search-result > div {
@@ -80,7 +79,7 @@
   font-weight: 700;
 }
 .search-corner .search-result > div a:hover {
-  color: #FF681D;
+  color: #86B817;
 }
 .search-corner .search-result > div > p {
   font-size: 15px;

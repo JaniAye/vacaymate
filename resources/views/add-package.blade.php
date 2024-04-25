@@ -723,49 +723,42 @@
             <div class="row g-4">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="search-corner">
-                        <div class="search-box">
-                            <input type="text" id="query" name="" placeholder="Search Wikipedia"
-                                onkeypress="searchResults()">
-                            <button type="button" onclick="searchResults()">Search</button>
-                        </div>
 
-                        {{-- <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                            style="width:50vw; margin-left:10%">
-                            <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Search Locations " onkeypress="searchResults()">
-                            <button type="button"
-                                class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                style="margin-top: 8px;">Search</button>
-                        </div> --}}
-
-                        <div class="search-results">
-                            <h2 class="query-title"></h2>
-                            <div class="search-result r0"></div>
-                            <div class="search-result r1"></div>
-                            <div class="search-result r2"></div>
-                            <div class="search-result r3"></div>
-                            <div class="search-result r4"></div>
-                            <div class="search-result r5"></div>
-                            <div class="search-result r6"></div>
-                            <div class="search-result r7"></div>
-                            <div class="search-result r8"></div>
-                            <div class="search-result r9"></div>
-                        </div>
-
-                    </div>
                     <h3 class="text-center">Add Locations For Package</h3>
                     <div class="row g-4">
 
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
-                                style="width:50vw; margin-left:10%">
-                                <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                    placeholder="Search Locations " onkeypress="searchResults()">
-                                <button type="button"
-                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 8px;">Searfch</button>
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-5">
+                                    <input type="text" id="query" name="" placeholder="Enter Here..."
+                                        onkeypress="searchResults()">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
 
+                                {{-- <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                                    style="width:50vw; margin-left:10%">
+                                    <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5"
+                                        type="text" placeholder="Search Locations " onkeypress="searchResults()">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div> --}}
+
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result r0"></div>
+                                    <div class="search-result r1"></div>
+                                    <div class="search-result r2"></div>
+                                    <div class="search-result r3"></div>
+                                    <div class="search-result r4"></div>
+                                    <div class="search-result r5"></div>
+                                    <div class="search-result r6"></div>
+                                    <div class="search-result r7"></div>
+                                    <div class="search-result r8"></div>
+                                    <div class="search-result r9"></div>
+                                </div>
 
                             </div>
                         </div>
