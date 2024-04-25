@@ -1,0 +1,168 @@
+.search-results{
+    box-shadow: 1px 3px 40px 5px #c4d5ef;
+}
+
+#serchbtn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+
+.search-corner {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding-top: 15%;
+}
+.search-corner .search-box {
+  position: relative;
+}
+.search-corner .search-box input {
+  width: 100%;
+  border: none;
+  font-family: "Raleway";
+  font-weight: 300;
+  font-size: 24px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  outline: none;
+  box-shadow: 1px 3px 24px 3px #c4d5ef;
+  transition: box-shadow 0.3s;
+}
+.search-corner .search-box input:focus {
+  box-shadow: 1px 3px 40px 5px #c4d5ef;
+}
+.search-corner .search-box button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  background-color: #FF681D;
+  font-family: "Raleway";
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+.search-corner .search-box button:hover {
+  background-color: #e94d00;
+}
+.search-corner > p {
+  padding-top: 30px;
+}
+.search-corner > p a {
+  border: 1px solid #FF681D;
+  color: #FF681D;
+  font-weight: 500;
+  margin: 20px 0 50px;
+}
+.search-corner > p a:hover {
+  background-color: #FF681D;
+  color: #fff;
+  box-shadow: 1px 3px 20px 1px #ff8c54;
+  transform: scale(1.1);
+}
+.search-corner .search-result > div {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin: 30px 10px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  text-align: left;
+}
+.search-corner .search-result > div a {
+  padding-left: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.search-corner .search-result > div a:hover {
+  color: #FF681D;
+}
+.search-corner .search-result > div > p {
+  font-size: 15px;
+  font-weight: 500;
+}
+.search-corner .search-result > div:hover {
+  box-shadow: 1px 3px 40px 5px #c4d5ef;
+}
+
+@media (max-width: 576px) {
+  .search-corner {
+    width: 80%;
+    padding-top: 30%;
+  }
+  .search-corner .search-box input, .search-corner .search-box button {
+    font-size: 18px;
+  }
+  .search-corner p > a {
+    font-size: 14px;
+  }
+
+}
+@media (max-width: 321px) {
+  .search-corner {
+    width: 90%;
+  }
+  .search-corner p > a {
+    font-size: 12px;
+  }
+}
+@supports (display: grid) {
+  /* body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr auto;
+  } */
+  .search-corner {
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+    padding-top: 0;
+  }
+  footer {
+    grid-column: 2;
+    align-self: end;
+    justify-self: center;
+  }
+  footer .notice {
+    display: none;
+  }
+  @media (max-width: 921px) {
+    body {
+      grid-template-columns: 0.2fr 1fr 0.2fr;
+    }
+  }
+  @media (max-width: 576px) {
+    body {
+      grid-template-columns: 0 1fr 0;
+    }
+  }
+}
+/*Beating heart animation keyframe*/
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.3);
+  }
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(1.5);
+  }
+  30% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*# sourceMappingURL=search-btn.css.map */

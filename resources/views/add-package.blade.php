@@ -40,6 +40,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/imageUploader.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/add-vehicle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/search-btn.css') }}">
 
 </head>
 
@@ -718,9 +719,41 @@
 
     <div class="container-xxl py-5" style="background-color: #fff; width:88%">
         <div class="container">
+
             <div class="row g-4">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="search-corner">
+                        <div class="search-box">
+                            <input type="text" id="query" name="" placeholder="Search Wikipedia"
+                                onkeypress="searchResults()">
+                            <button type="button" onclick="searchResults()">Search</button>
+                        </div>
+
+                        {{-- <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
+                            style="width:50vw; margin-left:10%">
+                            <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
+                                placeholder="Search Locations " onkeypress="searchResults()">
+                            <button type="button"
+                                class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                style="margin-top: 8px;">Search</button>
+                        </div> --}}
+
+                        <div class="search-results">
+                            <h2 class="query-title"></h2>
+                            <div class="search-result r0"></div>
+                            <div class="search-result r1"></div>
+                            <div class="search-result r2"></div>
+                            <div class="search-result r3"></div>
+                            <div class="search-result r4"></div>
+                            <div class="search-result r5"></div>
+                            <div class="search-result r6"></div>
+                            <div class="search-result r7"></div>
+                            <div class="search-result r8"></div>
+                            <div class="search-result r9"></div>
+                        </div>
+
+                    </div>
                     <h3 class="text-center">Add Locations For Package</h3>
                     <div class="row g-4">
 
@@ -728,10 +761,12 @@
                             <div class="position-relative animated slideInDown mt-2 mb-5 ml-5"
                                 style="width:50vw; margin-left:10%">
                                 <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                                    placeholder="Search Locations ">
+                                    placeholder="Search Locations " onkeypress="searchResults()">
                                 <button type="button"
                                     class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 8px;">Search</button>
+                                    style="margin-top: 8px;">Searfch</button>
+
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -1969,6 +2004,63 @@
 
             }
         }
+
+
+        function searchResults() {
+
+            // $("#search").submit(function() {
+            //Fetching the value from input element
+            var searchQuery = document.getElementById('query').value;
+            var wikiAPICall =
+                "https://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" +
+                searchQuery;
+            // $.ajax({
+            //     url: wikiAPICall,
+            //     type: "GET",
+            //     dataType: "jsonp",
+            //     success: function(wikiData) {
+            //         //Removing existing results
+            //         console.log("------------------------ss");
+            //         $(".wow").remove();
+
+            //         $(".search-corner").css("padding-top", "50px");
+
+            //         //Checking weather any result found or not and showing the message
+            //         if (wikiData[1][0] == undefined) {
+            //             $(".query-title").text("No result found for '" + searchQuery +
+            //                 "' 😕");
+            //         } else {
+            //             $(".query-title").text("Search results for '" + searchQuery +
+            //                 "'");
+            //         }
+
+            //         //Inserting search results into UI
+            //         for (i = 0; i < wikiData[1].length; i++) {
+            //             $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
+            //                 wikiData[3][i] + "' target='_blank'><p>" +
+            //                 wikiData[1][i] + "</p></a><p>" + wikiData[2][i] +
+            //                 "</p></div>");
+            //         }
+            //     }
+            // });
+            for (i = 0; i < 2; i++) {
+                $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
+                    "sss" + "' target='_blank'><p>" +
+                    "sss" + "</p></a><p>" + "sss" +
+                    "</p></div>");
+            }
+            // event.preventDefault();
+            // });
+
+
+
+        }
+
+
+        // //Calling the function.
+        // fetchQuery(); new WOW().init();
+
+        // });
     </script>
 </body>
 
