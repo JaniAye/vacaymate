@@ -46,4 +46,4 @@ Route::withoutMiddleware(['web', 'auth'])->post('/add-guide', [GuidesController:
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocations/{location}', [LocationController::class, 'getAllLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicles/{vehicle}', [VehicleControler::class, 'getAllVehicles']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
-Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getguides/{guide}', [GuidesController::class, 'getAllGuides']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);

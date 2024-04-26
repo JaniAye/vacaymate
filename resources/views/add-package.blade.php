@@ -2136,7 +2136,9 @@
                                             "56" + "' target='_blank'><p>" +
                                             data[i].hotel_name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Guide Name') {
-
+                                        $(".c" + i).html("<div class='wow fadeInUp'><a href='" +
+                                            "56" + "' target='_blank'><p>" +
+                                            data[i].guide_name + "</p></a></div>");
                                     }
 
                                 }
@@ -2164,7 +2166,9 @@
                                         "no data found" + "</p></a></div>");
 
                                 } else if (event.target.placeholder === 'Guide Name') {
-
+                                    $(".c" + 0).html("<div class='wow fadeInUp'><a href='" +
+                                        "56" + "' target='_blank'><p>" +
+                                        "no data found" + "</p></a></div>");
                                 }
 
                             }
