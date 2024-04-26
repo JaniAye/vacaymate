@@ -145,18 +145,31 @@
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
+
                             <div id="date-picker-title">
                                 <h4> Select your dates </h4>
                             </div>
 
                             <p> Click on a date to open the date picker. </p>
 
-                            <div id="date-picker-dates">
+                            {{-- <div id="date-picker-dates">
                                 <div id="date-picker-date-first" class="date-picker-date">
                                     24/12/2017
                                 </div>
                                 <div class="date-picker-date">
                                     28/12/2017
+                                </div>
+                            </div> --}}
+                            <div class="container">
+
+                                <div class="input-group spinner">
+                                    <input type="text" class="form-control" value="1">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default" type="button" onclick="incrementDt()"><i
+                                                class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-default" type="button" onclick="decrementDt()"><i
+                                                class="fa fa-caret-down"></i></button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -2150,6 +2163,20 @@
             //     }
             // });
 
+
+        }
+
+
+        // date counter
+        function incrementDt() {
+
+            $('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
+        }
+
+        function decrementDt() {
+            if (parseInt($('.spinner input').val(), 10) > 1) {
+                $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
+            }
 
         }
     </script>
