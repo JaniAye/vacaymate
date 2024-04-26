@@ -189,7 +189,7 @@
                                 <label for="cbx-49" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </svg></span><span class="checkboxTxt">Up to 6 Persons</span>
+                                        </svg></span><span class="checkboxTxt">Free Tour Guide</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
@@ -197,7 +197,7 @@
                                 <label for="cbx-50" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </svg></span><span class="checkboxTxt">Airport Pickup</span>
+                                        </svg></span><span class="checkboxTxt">24/7 Service</span>
                                 </label>
                             </div>
                             <h5>Persons Count : </h5>
