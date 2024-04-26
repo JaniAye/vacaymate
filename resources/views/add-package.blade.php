@@ -41,7 +41,62 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/add-vehicle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/search-btn.css') }}">
+    <style>
+        /*  */
 
+
+        .spinnerPerson {
+            width: 60px;
+            margin-left: 5vw;
+        }
+
+        .spinnerPerson input {
+            text-align: right;
+        }
+
+        .spinner {
+            width: 60px;
+            margin-left: 5vw;
+        }
+
+        .spinner input {
+            text-align: right;
+        }
+
+        .input-group-btn-vertical {
+            position: relative;
+            white-space: nowrap;
+            width: 1%;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .input-group-btn-vertical>.btn {
+            display: block;
+            float: none;
+            width: 100%;
+            max-width: 100%;
+            padding: 8px;
+            margin-left: -1px;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .input-group-btn-vertical>.btn:first-child {
+            border-top-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical>.btn:last-child {
+            margin-top: -2px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical i {
+            position: absolute;
+            top: 0;
+            left: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -145,21 +200,21 @@
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
+                            <h5>Persons Count : </h5>
+                            <div class="container">
 
-                            <div id="date-picker-title">
-                                <h4> Select your dates </h4>
+                                <div class="input-group spinnerPerson">
+                                    <input type="text" class="form-control" value="1">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default" type="button"
+                                            onclick="incrementPersons()"><i class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-default" type="button"
+                                            onclick="decrementPersons()"><i class="fa fa-caret-down"></i></button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <p> Click on a date to open the date picker. </p>
-
-                            {{-- <div id="date-picker-dates">
-                                <div id="date-picker-date-first" class="date-picker-date">
-                                    24/12/2017
-                                </div>
-                                <div class="date-picker-date">
-                                    28/12/2017
-                                </div>
-                            </div> --}}
+                            <h5>Date Count : </h5>
                             <div class="container">
 
                                 <div class="input-group spinner">
@@ -169,27 +224,6 @@
                                                 class="fa fa-caret-up"></i></button>
                                         <button class="btn btn-default" type="button" onclick="decrementDt()"><i
                                                 class="fa fa-caret-down"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <p> Revel in how big the dates are now. </p>
-
-                            <div id="date-picker-display-container">
-                                <div class="date-picker-display-pair">
-                                    <div class="date-picker-display">
-                                        24 Dec
-                                    </div>
-                                    <div class="date-picker-display-label">
-                                        Date one
-                                    </div>
-                                </div>
-                                <div class="date-picker-display-pair">
-                                    <div class="date-picker-display">
-                                        28 Dec
-                                    </div>
-                                    <div class="date-picker-display-label">
-                                        Date two
                                     </div>
                                 </div>
                             </div>
@@ -2176,6 +2210,19 @@
         function decrementDt() {
             if (parseInt($('.spinner input').val(), 10) > 1) {
                 $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
+            }
+
+        }
+
+        // persons count
+        function incrementPersons() {
+
+            $('.spinnerPerson input').val(parseInt($('.spinnerPerson input').val(), 10) + 1);
+        }
+
+        function decrementPersons() {
+            if (parseInt($('.spinnerPerson input').val(), 10) > 1) {
+                $('.spinnerPerson input').val(parseInt($('.spinnerPerson input').val(), 10) - 1);
             }
 
         }
