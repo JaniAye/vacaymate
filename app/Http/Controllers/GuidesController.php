@@ -50,4 +50,29 @@ class GuidesController extends Controller
             'message' => 'New Guide Added'
         ], 201);
     }
+    public function getAllGuides($guideName)
+    {
+        try {
+            $allGuides = Guides::where('guide_name', 'like', $guideName . '%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            if ($allGuides->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allGuides
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }
