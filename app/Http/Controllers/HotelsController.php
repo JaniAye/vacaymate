@@ -48,4 +48,30 @@ class HotelsController extends Controller
             'message' => 'New Hotel Added'
         ], 201);
     }
+
+    public function getAllhotels($hotelName)
+    {
+        try {
+            $allHotels = Hotels::where('hotel_name', 'like', $hotelName . '%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            if ($allHotels->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allHotels
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }

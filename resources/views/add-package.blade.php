@@ -2127,12 +2127,14 @@
                                             "56" + "' target='_blank'><p>" +
                                             data[i].name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Vehicle Number') {
-                                        console.log("sadasd---");
+
                                         $(".a" + i).html("<div class='wow fadeInUp'><a href='" +
                                             "56" + "' target='_blank'><p>" +
                                             data[i].vehicle_no + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Hotel Name') {
-
+                                        $(".b" + i).html("<div class='wow fadeInUp'><a href='" +
+                                            "56" + "' target='_blank'><p>" +
+                                            data[i].hotel_name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Guide Name') {
 
                                     }
@@ -2157,6 +2159,9 @@
                                         "56" + "' target='_blank'><p>" +
                                         "no data found" + "</p></a></div>");
                                 } else if (event.target.placeholder === 'Hotel Name') {
+                                    $(".b" + 0).html("<div class='wow fadeInUp'><a href='" +
+                                        "56" + "' target='_blank'><p>" +
+                                        "no data found" + "</p></a></div>");
 
                                 } else if (event.target.placeholder === 'Guide Name') {
 
