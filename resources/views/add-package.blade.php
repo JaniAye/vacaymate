@@ -778,7 +778,7 @@
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
                                     <input type="text" id="locationSearch" name="" value=""
-                                        placeholder="Enter Here..." oninput="searchResults(event)">
+                                        placeholder="Location Name" oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
@@ -832,24 +832,24 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Enter Here..."
-                                        onkeypress="searchResults()">
+                                    <input type="text" id="query" name="" placeholder="Vehicle Number"
+                                        oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
                                 </div>
                                 <div class="search-results">
                                     <h2 class="query-title"></h2>
-                                    <div class="search-result r0"></div>
-                                    <div class="search-result r1"></div>
-                                    <div class="search-result r2"></div>
-                                    <div class="search-result r3"></div>
-                                    <div class="search-result r4"></div>
-                                    <div class="search-result r5"></div>
-                                    <div class="search-result r6"></div>
-                                    <div class="search-result r7"></div>
-                                    <div class="search-result r8"></div>
-                                    <div class="search-result r9"></div>
+                                    <div class="search-result a0"></div>
+                                    <div class="search-result a1"></div>
+                                    <div class="search-result a2"></div>
+                                    <div class="search-result a3"></div>
+                                    <div class="search-result a4"></div>
+                                    <div class="search-result a5"></div>
+                                    <div class="search-result a6"></div>
+                                    <div class="search-result a7"></div>
+                                    <div class="search-result a8"></div>
+                                    <div class="search-result a9"></div>
                                 </div>
 
                             </div>
@@ -885,24 +885,24 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Enter Here..."
-                                        onkeypress="searchResults()">
+                                    <input type="text" id="query" name="" placeholder="Hotel Name"
+                                        oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
                                 </div>
                                 <div class="search-results">
                                     <h2 class="query-title"></h2>
-                                    <div class="search-result r0"></div>
-                                    <div class="search-result r1"></div>
-                                    <div class="search-result r2"></div>
-                                    <div class="search-result r3"></div>
-                                    <div class="search-result r4"></div>
-                                    <div class="search-result r5"></div>
-                                    <div class="search-result r6"></div>
-                                    <div class="search-result r7"></div>
-                                    <div class="search-result r8"></div>
-                                    <div class="search-result r9"></div>
+                                    <div class="search-result b0"></div>
+                                    <div class="search-result b1"></div>
+                                    <div class="search-result b2"></div>
+                                    <div class="search-result b3"></div>
+                                    <div class="search-result b4"></div>
+                                    <div class="search-result b5"></div>
+                                    <div class="search-result b6"></div>
+                                    <div class="search-result b7"></div>
+                                    <div class="search-result b8"></div>
+                                    <div class="search-result b9"></div>
                                 </div>
 
                             </div>
@@ -938,24 +938,24 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Enter Here..."
-                                        onkeypress="searchResults()">
+                                    <input type="text" id="query" name="" placeholder="Guide Name"
+                                        oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
                                         style="margin-top: 8px;">Search</button>
                                 </div>
                                 <div class="search-results">
                                     <h2 class="query-title"></h2>
-                                    <div class="search-result r0"></div>
-                                    <div class="search-result r1"></div>
-                                    <div class="search-result r2"></div>
-                                    <div class="search-result r3"></div>
-                                    <div class="search-result r4"></div>
-                                    <div class="search-result r5"></div>
-                                    <div class="search-result r6"></div>
-                                    <div class="search-result r7"></div>
-                                    <div class="search-result r8"></div>
-                                    <div class="search-result r9"></div>
+                                    <div class="search-result c0"></div>
+                                    <div class="search-result c1"></div>
+                                    <div class="search-result c2"></div>
+                                    <div class="search-result c3"></div>
+                                    <div class="search-result c4"></div>
+                                    <div class="search-result c5"></div>
+                                    <div class="search-result c6"></div>
+                                    <div class="search-result c7"></div>
+                                    <div class="search-result c8"></div>
+                                    <div class="search-result c9"></div>
                                 </div>
 
                             </div>
@@ -2085,9 +2085,21 @@
         var cnt = 0;
 
         function searchResults(event) {
+            console.log(event.target.placeholder);
 
+            const type = localStorage.getItem('type');
             var endpointUrl = `http://localhost:8000/getLocations/${event.target.value}`;
-            console.log("asssaasas");
+            if (event.target.placeholder === 'Location Name') {
+                endpointUrl = `http://localhost:8000/getLocations/${event.target.value}`;
+            } else if (event.target.placeholder === 'Vehicle Number') {
+                endpointUrl = `http://localhost:8000/getVehicles/${event.target.value}`;
+            } else if (event.target.placeholder === 'Hotel Name') {
+                endpointUrl = `http://localhost:8000/getHotels/${event.target.value}`;
+            } else if (event.target.placeholder === 'Guide Name') {
+                endpointUrl = `http://localhost:8000/getGuides/${event.target.value}`;
+            }
+
+
             if (event.target.value.length > 0) {
                 $.ajax({
                     url: endpointUrl,
@@ -2103,23 +2115,53 @@
 
                             for (ij = 0; ij < cnt; ij++) {
                                 $(".r" + ij).empty();
+                                $(".a" + ij).empty();
+                                $(".b" + ij).empty();
+                                $(".c" + ij).empty();
                             }
                             if (data.length > 0) {
                                 for (i = 0; i < data.length; i++) {
-                                    $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
-                                        "56" + "' target='_blank'><p>" +
-                                        data[i].name + "</p></a></div>");
+
+                                    if (event.target.placeholder === 'Location Name') {
+                                        $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
+                                            "56" + "' target='_blank'><p>" +
+                                            data[i].name + "</p></a></div>");
+                                    } else if (event.target.placeholder === 'Vehicle Number') {
+                                        console.log("sadasd---");
+                                        $(".a" + i).html("<div class='wow fadeInUp'><a href='" +
+                                            "56" + "' target='_blank'><p>" +
+                                            data[i].vehicle_no + "</p></a></div>");
+                                    } else if (event.target.placeholder === 'Hotel Name') {
+
+                                    } else if (event.target.placeholder === 'Guide Name') {
+
+                                    }
+
                                 }
                                 cnt = i;
                             } else {
 
                                 for (j = 0; j < cnt; j++) {
                                     $(".r" + j).empty();
+                                    $(".a" + j).empty();
+                                    $(".b" + j).empty();
+                                    $(".c" + j).empty();
                                 }
                                 cnt = 1;
-                                $(".r" + 0).html("<div class='wow fadeInUp'><a href='" +
-                                    "56" + "' target='_blank'><p>" +
-                                    "no data found" + "</p></a></div>");
+                                if (event.target.placeholder === 'Location Name') {
+                                    $(".r" + 0).html("<div class='wow fadeInUp'><a href='" +
+                                        "56" + "' target='_blank'><p>" +
+                                        "no data found" + "</p></a></div>");
+                                } else if (event.target.placeholder === 'Vehicle Number') {
+                                    $(".a" + 0).html("<div class='wow fadeInUp'><a href='" +
+                                        "56" + "' target='_blank'><p>" +
+                                        "no data found" + "</p></a></div>");
+                                } else if (event.target.placeholder === 'Hotel Name') {
+
+                                } else if (event.target.placeholder === 'Guide Name') {
+
+                                }
+
                             }
 
 
@@ -2130,14 +2172,15 @@
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
 
-                        alert('Failed to fetch customer bill: ' + textStatus);
+                        alert('Failed to fetch data: ' + textStatus);
                     }
                 });
             } else {
-                console.log("++++++++");
-                console.log(i);
                 for (j = 0; j < cnt; j++) {
                     $(".r" + j).empty();
+                    $(".a" + j).empty();
+                    $(".b" + j).empty();
+                    $(".c" + j).empty();
                 }
             }
 

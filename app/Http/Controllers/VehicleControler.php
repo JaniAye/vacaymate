@@ -47,4 +47,30 @@ class VehicleControler extends Controller
             'message' => 'New Vehicle Added'
         ], 201);
     }
+
+    public function getAllVehicles($vehicleName)
+    {
+        try {
+            $allVehicles = Vehicle::where('vehicle_no', 'like', $vehicleName . '%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            if ($allVehicles->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allVehicles
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }
