@@ -1635,45 +1635,45 @@
         }
 
         function getLocations() {
-            for (var j = 0; j < 4; j++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row g-2 mt-1 justify-content-center';
-                let content = "";
-                for (var i = 0; i < 6; i++) {
-                    content += `
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="package-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
-                            </div>
+            //     for (var j = 0; j < 4; j++) {
+            //         var divElement = document.createElement('div');
+            //         divElement.className = 'row g-2 mt-1 justify-content-center';
+            //         let content = "";
+            //         for (var i = 0; i < 6; i++) {
+            //             content += `
+        //         <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+        //                 <div class="package-item">
+        //                     <div class="overflow-hidden">
+        //                         <img class="img-fluid" src="img/package-1.jpg" alt="">
+        //                     </div>
 
-                            <div class="text-center p-2">
-                                <h4 class="mb-0">Ella Rock</h4>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                                <p>Nice view point. You can see beauti of neture</p>
-                                <button class="rmv-btn " style=" margin-left: 30%;">
-                                    <svg viewBox="0 0 448 512" class="svgIcon">
-                                        <path
-                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+        //                     <div class="text-center p-2">
+        //                         <h4 class="mb-0">Ella Rock</h4>
+        //                         <div class="mb-3">
+        //                             <small class="fa fa-star text-primary"></small>
+        //                             <small class="fa fa-star text-primary"></small>
+        //                             <small class="fa fa-star text-primary"></small>
+        //                             <small class="fa fa-star text-primary"></small>
+        //                             <small class="fa fa-star text-primary"></small>
+        //                         </div>
+        //                         <p>Nice view point. You can see beauti of neture</p>
+        //                         <button class="rmv-btn " style=" margin-left: 30%;">
+        //                             <svg viewBox="0 0 448 512" class="svgIcon">
+        //                                 <path
+        //                                     d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+        //                                 </path>
+        //                             </svg>
+        //                         </button>
+        //                     </div>
+        //                 </div>
+        //             </div>
 
-        `;
+        // `;
 
-                }
-                divElement.innerHTML = content;
-                document.getElementById('packageList').appendChild(divElement);
-            }
+            //         }
+            //         divElement.innerHTML = content;
+            //         document.getElementById('packageList').appendChild(divElement);
+            //     }
         }
 
         function getVehicles() {
@@ -2124,20 +2124,20 @@
 
                                     if (event.target.placeholder === 'Location Name') {
                                         $(".r" + i).html(
-                                            "<div class='wow fadeInUp' onclick='addToList(event)'><a><p>" +
+                                            "<div class='wow fadeInUp' onclick='addToList(event)' style='cursor: pointer;'><a><p>" +
                                             data[i].name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Vehicle Number') {
 
-                                        $(".a" + i).html("<div class='wow fadeInUp'><a href='" +
-                                            "56" + "' target='_blank'><p>" +
+                                        $(".a" + i).html(
+                                            "<div class='wow fadeInUp' style='cursor: pointer;'><a><p>" +
                                             data[i].vehicle_no + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Hotel Name') {
-                                        $(".b" + i).html("<div class='wow fadeInUp'><a href='" +
-                                            "56" + "' target='_blank'><p>" +
+                                        $(".b" + i).html(
+                                            "<div class='wow fadeInUp' style='cursor: pointer;'><a><p>" +
                                             data[i].hotel_name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Guide Name') {
-                                        $(".c" + i).html("<div class='wow fadeInUp'><a href='" +
-                                            "56" + "' target='_blank'><p>" +
+                                        $(".c" + i).html(
+                                            "<div class='wow fadeInUp' style='cursor: pointer;'><a><p>" +
                                             data[i].guide_name + "</p></a></div>");
                                     }
 
@@ -2153,21 +2153,17 @@
                                 }
                                 cnt = 1;
                                 if (event.target.placeholder === 'Location Name') {
-                                    $(".r" + 0).html("<div class='wow fadeInUp'><a href='" +
-                                        "56" + "' target='_blank'><p>" +
+                                    $(".r" + 0).html("<div class='wow fadeInUp'><a><p>" +
                                         "no data found" + "</p></a></div>");
                                 } else if (event.target.placeholder === 'Vehicle Number') {
-                                    $(".a" + 0).html("<div class='wow fadeInUp'><a href='" +
-                                        "56" + "' target='_blank'><p>" +
+                                    $(".a" + 0).html("<div class='wow fadeInUp'><a><p>" +
                                         "no data found" + "</p></a></div>");
                                 } else if (event.target.placeholder === 'Hotel Name') {
-                                    $(".b" + 0).html("<div class='wow fadeInUp'><a href='" +
-                                        "56" + "' target='_blank'><p>" +
+                                    $(".b" + 0).html("<div class='wow fadeInUp'><a><p>" +
                                         "no data found" + "</p></a></div>");
 
                                 } else if (event.target.placeholder === 'Guide Name') {
-                                    $(".c" + 0).html("<div class='wow fadeInUp'><a href='" +
-                                        "56" + "' target='_blank'><p>" +
+                                    $(".c" + 0).html("<div class='wow fadeInUp'><a><p>" +
                                         "no data found" + "</p></a></div>");
                                 }
 
@@ -2256,7 +2252,126 @@
             const clickedElement = event.target;
             const parentElement = $(clickedElement).closest('.wow');
             const name = parentElement.find('p').text();
-            
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getLocations/${name}`;
+            if (event.target.placeholder === 'Location Name') {
+                endpointUrl = `http://localhost:8000/getLocations/${name}`;
+            } else if (event.target.placeholder === 'Vehicle Number') {
+                endpointUrl = `http://localhost:8000/getVehicles/${name}`;
+            } else if (event.target.placeholder === 'Hotel Name') {
+                endpointUrl = `http://localhost:8000/getHotels/${name}`;
+            } else if (event.target.placeholder === 'Guide Name') {
+                endpointUrl = `http://localhost:8000/getGuides/${name}`;
+            }
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = packageList.querySelectorAll(
+                                    '.col-lg-2.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+                                // if (columnElementsff === null) {} else {
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = packageList.querySelector(
+                                        `.col-lg-2.col-md-6.wow.fadeInUp.loc${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+
+                                // }
+
+                                var packageListuda = document.getElementById('packageList');
+                                var divElement = '';
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = packageList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+
+
+                                content += `
+                <div class="col-lg-2 col-md-6 wow fadeInUp loc${columnCount+1}" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h5 class="mb-0">${data[0].name}</h5>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>${data[0].discription}</p>
+                                <button class="rmv-btn " style=" margin-left: 30%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+        `;
+
+
+                                divElement.innerHTML = content;
+                                document.getElementById('packageList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
 
         }
         // date counter
