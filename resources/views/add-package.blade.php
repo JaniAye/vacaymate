@@ -832,7 +832,7 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Vehicle Number"
+                                    <input type="text" id="vehicSrh" name="" placeholder="Vehicle Number"
                                         oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
@@ -885,7 +885,7 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Hotel Name"
+                                    <input type="text" id="accSearch" name="" placeholder="Hotel Name"
                                         oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
@@ -2257,6 +2257,13 @@
                 $(".r" + w).empty();
 
             }
+            var inputField = document.getElementById("locationSearch");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
             const clickedElement = event.target;
             const parentElement = $(clickedElement).closest('.wow');
             const name = parentElement.find('p').text();
@@ -2425,6 +2432,12 @@
             for (let w = 0; w < cnt; w++) {
                 $(".a" + w).empty();
 
+            }
+            var inputField = document.getElementById("vehicSrh");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
             }
 
             const clickedElement = event.target;
