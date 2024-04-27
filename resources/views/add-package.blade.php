@@ -2143,6 +2143,7 @@
 
                                 }
                                 cnt = i;
+                                localStorage.setItem('cnt', cnt);
                             } else {
 
                                 for (j = 0; j < cnt; j++) {
@@ -2250,6 +2251,12 @@
 
         //serch click result set
         function addToList(event) {
+
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".r" + w).empty();
+
+            }
             const clickedElement = event.target;
             const parentElement = $(clickedElement).closest('.wow');
             const name = parentElement.find('p').text();
@@ -2379,7 +2386,12 @@
 
         //vehicle search click result set
         function addToVehicleList(event) {
-            // console.log("awa hutt");
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".a" + w).empty();
+
+            }
+
             const clickedElement = event.target;
             const parentElement = $(clickedElement).closest('.wow');
             const name = parentElement.find('p').text();
