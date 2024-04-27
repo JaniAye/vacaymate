@@ -938,7 +938,7 @@
                         <div class="col-lg-8 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="search-corner">
                                 <div class="search-box mt-2 mb-0">
-                                    <input type="text" id="query" name="" placeholder="Guide Name"
+                                    <input type="text" id="guideSrch" name="" placeholder="Guide Name"
                                         oninput="searchResults(event)">
                                     <button type="button"
                                         class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
@@ -977,7 +977,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="translators-list">
+                    <div id="translatorsList">
                     </div>
                 </div>
             </div>
@@ -1289,7 +1289,7 @@
             // getLocations();
             // getVehicles();
             // getAccommodation();
-            getTranslators();
+            // getTranslators();
             var locationName = '';
         });
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
@@ -2137,8 +2137,9 @@
                                             data[i].hotel_name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Guide Name') {
                                         $(".c" + i).html(
-                                            "<div class='wow fadeInUp' style='cursor: pointer;'><a><p>" +
+                                            "<div class='wow fadeInUp' onclick='addGuideCard(event)' style='cursor: pointer;'><a><p>" +
                                             data[i].guide_name + "</p></a></div>");
+
                                     }
 
                                 }
@@ -2770,6 +2771,173 @@
 
         }
 
+        function removeGuideCard(event) {
+            var target = event.target;
+            var parentDiv = target.closest('.col-lg-3.col-md-6.wow.fadeInUp');
+
+            if (parentDiv) {
+                parentDiv.remove();
+
+
+                var guideList = document.getElementById("translatorsList");
+
+                if (guideList) {
+
+                    var hotelElements = guideList.querySelectorAll(".col-lg-3.col-md-6.wow.fadeInUp");
+
+                    for (let index = 0; index < hotelElements.length; index++) {
+                        var currentElement = hotelElements[index];
+                        var currentGUideClass = Array.from(currentElement.classList).find(cls => cls.startsWith('guide'));
+
+                        if (currentGUideClass) {
+                            currentElement.classList.remove(currentGUideClass);
+                        }
+
+
+                        currentElement.classList.add(`guide${index + 1}`);
+                    }
+                }
+
+            } else {
+                console.warn("Parent div not found for removal.");
+            }
+        }
+
+
+        function addGuideCard(event) {
+
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".b" + w).empty();
+
+            }
+            var inputField = document.getElementById("guideSrch");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            endpointUrl = `http://localhost:8000/getGuides/${name}`;
+
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = translatorsList.querySelectorAll(
+                                    '.col-lg-3.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+
+                                // if (columnElementsff === null) {} else {
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = translatorsList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.guide${idx}`);
+
+
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+                                // }
+
+                                var packageListuda = document.getElementById('translatorsList');
+                                console.log(packageListuda);
+                                var divElement = '';
+
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = translatorsList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+
+
+                                content += `
+    <div class="col-lg-3 col-md-6 wow fadeInUp guide${columnCount+1}" data-wow-delay="0.2s">
+            <div class="package-item">
+                <div class="overflow-hidden">
+                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                </div>
+
+                <div class="text-center p-2">
+                    <h4 class="mb-0">${data[0].guide_name}</h4>
+                    <div class="mb-3">
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                        <small class="fa fa-star text-primary"></small>
+                    </div>
+                    <p>${data[0].discription}</p>
+                    <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
+                        <svg viewBox="0 0 448 512" class="svgIcon">
+                            <path
+                                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+`;
+
+
+                                divElement.innerHTML = content;
+                                document.getElementById('translatorsList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
         // date counter
         function incrementDt() {
 
