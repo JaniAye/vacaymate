@@ -2123,8 +2123,8 @@
                                 for (i = 0; i < data.length; i++) {
 
                                     if (event.target.placeholder === 'Location Name') {
-                                        $(".r" + i).html("<div class='wow fadeInUp'><a href='" +
-                                            "56" + "' target='_blank'><p>" +
+                                        $(".r" + i).html(
+                                            "<div class='wow fadeInUp' onclick='addToList(event)'><a><p>" +
                                             data[i].name + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Vehicle Number') {
 
@@ -2252,7 +2252,13 @@
 
         }
 
+        function addToList(event) {
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            
 
+        }
         // date counter
         function incrementDt() {
 
