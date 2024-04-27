@@ -2302,14 +2302,7 @@
 
 
                                 // if (columnElementsff === null) {} else {
-                                for (let index = 0; index < columnCount; index++) {
-                                    // if (columnCount < 6) {
-                                    var idx = index + 1;
-                                    var columnElementsff = packageList.querySelector(
-                                        `.col-lg-2.col-md-6.wow.fadeInUp.loc${idx}`);
-                                    content += columnElementsff.outerHTML;
-                                    // }
-                                }
+
                                 // }
 
                                 var packageListuda = document.getElementById('packageList');
@@ -2367,6 +2360,14 @@
         `;
 
 
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = packageList.querySelector(
+                                        `.col-lg-2.col-md-6.wow.fadeInUp.loc${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
                                 divElement.innerHTML = content;
                                 document.getElementById('packageList').appendChild(divElement);
 
@@ -2679,16 +2680,7 @@
 
 
                                 // if (columnElementsff === null) {} else {
-                                for (let index = 0; index < columnCount; index++) {
-                                    // if (columnCount < 6) {
-                                    var idx = index + 1;
-                                    var columnElementsff = accommodationList.querySelector(
-                                        `.col-lg-3.col-md-6.wow.fadeInUp.hotel${idx}`);
 
-                                    console.log("mmm slll : " + columnElementsff);
-                                    content += columnElementsff.outerHTML;
-                                    // }
-                                }
                                 // }
 
                                 var packageListuda = document.getElementById('accommodationList');
@@ -2747,6 +2739,15 @@
         `;
 
 
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = accommodationList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.hotel${idx}`);
+
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
                                 divElement.innerHTML = content;
                                 document.getElementById('accommodationList').appendChild(divElement);
 
@@ -2808,7 +2809,7 @@
 
             const cnt = localStorage.getItem('cnt');
             for (let w = 0; w < cnt; w++) {
-                $(".b" + w).empty();
+                $(".c" + w).empty();
 
             }
             var inputField = document.getElementById("guideSrch");
@@ -2847,16 +2848,7 @@
 
 
                                 // if (columnElementsff === null) {} else {
-                                for (let index = 0; index < columnCount; index++) {
-                                    // if (columnCount < 6) {
-                                    var idx = index + 1;
-                                    var columnElementsff = translatorsList.querySelector(
-                                        `.col-lg-3.col-md-6.wow.fadeInUp.guide${idx}`);
 
-
-                                    content += columnElementsff.outerHTML;
-                                    // }
-                                }
                                 // }
 
                                 var packageListuda = document.getElementById('translatorsList');
@@ -2915,6 +2907,14 @@
 `;
 
 
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = translatorsList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.guide${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
                                 divElement.innerHTML = content;
                                 document.getElementById('translatorsList').appendChild(divElement);
 
