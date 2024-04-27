@@ -871,7 +871,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="Vehicle-list">
+                    <div id="VehicleList">
                     </div>
                 </div>
             </div>
@@ -1286,8 +1286,8 @@
 
         }
         document.addEventListener('DOMContentLoaded', function() {
-            getLocations();
-            getVehicles();
+            // getLocations();
+            // getVehicles();
             getAccommodation();
             getTranslators();
             var locationName = '';
@@ -1715,7 +1715,7 @@
 
                 }
                 divElement.innerHTML = content;
-                document.getElementById('Vehicle-list').appendChild(divElement);
+                document.getElementById('VehicleList').appendChild(divElement);
             }
         }
 
@@ -2129,7 +2129,7 @@
                                     } else if (event.target.placeholder === 'Vehicle Number') {
 
                                         $(".a" + i).html(
-                                            "<div class='wow fadeInUp' style='cursor: pointer;'><a><p>" +
+                                            "<div class='wow fadeInUp' onclick='addToVehicleList(event)' style='cursor: pointer;'><a><p>" +
                                             data[i].vehicle_no + "</p></a></div>");
                                     } else if (event.target.placeholder === 'Hotel Name') {
                                         $(".b" + i).html(
@@ -2248,6 +2248,7 @@
 
         }
 
+        //serch click result set
         function addToList(event) {
             const clickedElement = event.target;
             const parentElement = $(clickedElement).closest('.wow');
@@ -2353,6 +2354,139 @@
 
                                 divElement.innerHTML = content;
                                 document.getElementById('packageList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
+
+
+        //vehicle search click result set
+        function addToVehicleList(event) {
+            // console.log("awa hutt");
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getVehicles/${name}`;
+
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = VehicleList.querySelectorAll(
+                                    '.col-lg-3.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+                                console.log("vehicles set ---");
+                                console.log(VehicleList);
+
+                                // if (columnElementsff === null) {} else {
+                                // for (let index = 0; index < columnCount; index++) {
+                                //     // if (columnCount < 6) {
+                                //     var idx = index + 1;
+                                //     var columnElementsff = VehicleList.querySelector(
+                                //         `.col-lg-3.col-md-6.wow.fadeInUp.vehi${idx}`);
+                                //     content += columnElementsff.outerHTML;
+                                //     // }
+                                // }
+
+                                // }
+
+                                var packageListuda = document.getElementById('VehicleList');
+                                var divElement = '';
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = VehicleList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+                                console.log("--- " + columnCount);
+
+                                content += `
+                <div class="col-lg-3 col-md-6 wow fadeInUp vehi${columnCount+1}" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0">${data[0].model}</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>${data[0].discription}</p>
+                                <button class="rmv-btn " style=" margin-left: 40%;">
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = VehicleList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.vehi${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+
+                                divElement.innerHTML = content;
+                                document.getElementById('VehicleList').appendChild(divElement);
 
                             }
 
