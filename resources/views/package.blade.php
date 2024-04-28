@@ -187,7 +187,7 @@
     <div id="overlay" style="display: none;">
         <div id="overlay-content">
             <div id="clsbtn">
-                <button type="button" class="btn-close">
+                <button type="button" class="btn-close" onclick="closeDetail()">
                     <span class="icon-cross"></span>
                     <span class="visually-hidden">Close</span>
                 </button>
@@ -547,56 +547,6 @@
                 }
             });
 
-
-
-
-
-            //     for (var j = 0; j < 4; j++) {
-            //         var divElement = document.createElement('div');
-            //         divElement.className = 'row g-2 mt-1 justify-content-center';
-            //         let content = "";
-            //         for (var i = 0; i < 4; i++) {
-            //             content += `
-        //         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        //                 <div class="package-item">
-        //                     <div class="overflow-hidden">
-        //                         <img class="img-fluid" src="img/package-1.jpg" alt="">
-        //                     </div>
-        //                     <div class="d-flex border-bottom">
-        //                         <small class="flex-fill text-center border-end py-2"><i
-        //                                 class="fa fa-map-marker-alt text-primary me-2"></i>Airport Pickup</small>
-        //                         <small class="flex-fill text-center border-end py-2"><i
-        //                                 class="fa fa-calendar-alt text-primary me-2"></i>3 days</small>
-        //                         <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2
-        //                             Person</small>
-        //                     </div>
-        //                     <div class="text-center p-4">
-        //                         <h3 class="mb-0">$149.00</h3>
-        //                         <div class="mb-3">
-        //                             <small class="fa fa-star text-primary"></small>
-        //                             <small class="fa fa-star text-primary"></small>
-        //                             <small class="fa fa-star text-primary"></small>
-        //                             <small class="fa fa-star text-primary"></small>
-        //                             <small class="fa fa-star text-primary"></small>
-        //                         </div>
-        //                         <h3 class="travelAgancyName">D&W Travels</h2>
-        //                             <p class="coverAreas">Based on Galle, Matara, Ella,Nuwaraeliya</p>
-        //                             <div class="d-flex justify-content-center mb-2">
-        //                                 <button id="seeMoreBtn${j}${i}" class="btn btn-sm btn-primary px-3 border-end"
-        //                                     style="border-radius: 30px 0 0 30px;" onclick="seeMore(${j}${i})">Read More</button>
-        //                                 <a href="#" class="btn btn-sm btn-primary px-3"
-        //                                     style="border-radius: 0 30px 30px 0;">Book Now</a>
-        //                             </div>
-        //                     </div>
-        //                 </div>
-        //             </div>
-
-        // `;
-
-            //         }
-            //         divElement.innerHTML = content;
-            //         document.getElementById('packageList').appendChild(divElement);
-            //     }
         }
 
 
@@ -605,20 +555,13 @@
         var seeMoreClicked = false;
 
 
-        document.addEventListener('click', function(event) {
-            if (seeMoreClicked) {
+        function closeDetail() {
 
-                isOverlayVisible++;
-            }
-            if (isOverlayVisible > 1) {
-                if (overlay.style.display !== 'none') {
-                    overlay.style.display = 'none';
-                }
-                isOverlayVisible = 0;
-                seeMoreClicked = false;
+            if (overlay.style.display !== 'none') {
+                overlay.style.display = 'none';
             }
 
-        });
+        }
 
         function seeMore(btnId) {
 
