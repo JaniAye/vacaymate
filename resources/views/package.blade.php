@@ -200,12 +200,7 @@
                         <img class="img-fluid" src="img/package-1.jpg" alt="">
                     </div>
                     <div class="col-lg-3 col-md-6" style=" width : 70%">
-                        <p>Welcome to D & W Touers! Your journey through Sri Lanka starts with us. We cover
-                            the most breathtaking destinations: Galle, Matara, Hambantota, Badulla, Ella,
-                            Nuwara Eliya, Kandy, Kegalle, and Colombo. From the moment we pick you up at the
-                            airport, your comfort and adventure are our top priorities. Let us show you the
-                            beauty and culture of Sri Lanka, ensuring an unforgettable experience at every
-                            step.</p>
+                        <p id="packageDisc"></p>
                         <div style="margin-left: 60px;margin-right:60px">
                             <div class="row ">
                                 <div class="col-sm-6">
@@ -520,7 +515,7 @@
                                                     <p class="coverAreas">${response.data[i].package_name}</p>
                                                     <div class="d-flex justify-content-center mb-2">
                                                         <button id="seeMoreBtn${i}" class="btn btn-sm btn-primary px-3 border-end"
-                                                            style="border-radius: 30px 0 0 30px;" onclick="seeMore(${i})">Read More</button>
+                                                            style="border-radius: 30px 0 0 30px;" onclick="seeMore(${response.data[i].id})">Read More</button>
                                                         <a href="#" class="btn btn-sm btn-primary px-3"
                                                             style="border-radius: 0 30px 30px 0;">Book Now</a>
                                                     </div>
@@ -563,7 +558,32 @@
 
         }
 
-        function seeMore(btnId) {
+        function seeMore(clickedData) {
+            endpointUrl = `http://localhost:8000/getPackage/${clickedData}`;
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        console.log(response.data.discription);
+                        document.getElementById("packageDisc").textContent = response.data.discription;
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
 
             var overlay = document.getElementById('overlay');
             overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
