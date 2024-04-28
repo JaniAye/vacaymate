@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AgancyController;
 use App\Http\Controllers\GuidesController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\VehicleControler;
+use App\Models\Agancy;
 use App\Models\PackageLocations;
 use Illuminate\Support\Facades\Route;
 
@@ -53,3 +55,4 @@ Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesCont
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancyDetails/{agancyId}', [AgancyController::class, 'getAgancyDetails']);

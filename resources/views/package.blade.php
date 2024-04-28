@@ -289,7 +289,8 @@
 
                     </div>
                     <div class="mt-3 ml-2 mr-3 mb-0" style="height: 50px; width :95%;">
-                        <p class="mb-0">We are thrilled to present our carefully curated travel packages, taking
+                        <p class="mb-0" id="innerPdescrip"> he he We are thrilled to present our carefully curated
+                            travel packages, taking
                             you to
                             some of the most
                             enchanting locations in Sri Lanka. Whether you're seeking a peaceful escape, a vibrant city
@@ -587,6 +588,32 @@
                                     divElement.innerHTML = content;
                                     document.getElementById('locationsList').appendChild(
                                         divElement);
+                                } else {
+
+                                    alert('Error: ' + response.message);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+
+                                alert('Failed to fetch data: ' + textStatus);
+                            }
+                        });
+
+
+                        getLocUrl = `http://localhost:8000/getAgancyDetails/${response.data.agancy_id}`;
+
+                        $.ajax({
+                            url: getLocUrl,
+                            method: 'GET',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                var divElement = document.querySelector("#locationsList");
+                                if (response.success) {
+                                    document.getElementById("innerPdescrip").textContent = response
+                                        .data.discription;
+
                                 } else {
 
                                     alert('Error: ' + response.message);
