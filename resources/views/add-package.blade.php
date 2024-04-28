@@ -2724,6 +2724,7 @@
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
+                                <p style="display:none" id="hid${data[0].id}">${data[0].id}</p>
                                 <p>${data[0].discription}</p>
                                 <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeHotelCard(event)'>
                                     <svg viewBox="0 0 448 512" class="svgIcon">
@@ -2892,6 +2893,7 @@
                         <small class="fa fa-star text-primary"></small>
                         <small class="fa fa-star text-primary"></small>
                     </div>
+                    <p style="display:none" id="gid${data[0].id}">${data[0].id}</p>
                     <p>${data[0].discription}</p>
                     <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
                         <svg viewBox="0 0 448 512" class="svgIcon">
