@@ -24,7 +24,8 @@ class PackagesController extends Controller
             'airport_pickup' => (int) $request->chkAirportPick,
             'airport_drop' => (int) $request->chkAirportDrop,
             'free_guide' => (int)  $request->chkTourGuide,
-            'ultimate_service' => (int)  $request->ultimateService
+            'ultimate_service' => (int)  $request->ultimateService,
+            'price' => $request->price
 
             // 'reviews' => $request->reviews
         ]);

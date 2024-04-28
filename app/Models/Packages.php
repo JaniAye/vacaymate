@@ -17,6 +17,7 @@ class Packages extends Model
         'airport_pickup',
         'airport_drop',
         'free_guide',
-        'ultimate_service'
+        'ultimate_service',
+        'price'
     ];
 }

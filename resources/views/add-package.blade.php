@@ -998,6 +998,21 @@
                         facere tenetur beatae neque debitis commodi illum eos fuga, assumenda aliquam asperiores
                         accusantium. Cumque, vel reprehenderit?</p>
                 </div>
+
+            </div>
+            <div class="row g-4 mb-5">
+
+                <div class="col-lg-3 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <h4 class="mt-4">Price for this package</h4>
+
+                </div>
+                <div class="col-lg-5 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="inputGroup">
+                        <input type="number" required="" id="price" autocomplete="off">
+                        <label for="price">Price $</label>
+                    </div>
+                </div>
+
             </div>
 
             <div class="row g-4">
@@ -3081,6 +3096,7 @@
                 vehicleNo: vehicleNo,
                 hotelsIds: hotelsIds,
                 locIds: locIds,
+                price: document.getElementById("price").value,
                 reviews: ''
             };
 

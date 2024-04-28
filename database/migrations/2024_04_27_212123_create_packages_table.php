@@ -22,16 +22,16 @@ return new class extends Migration
             $table->boolean('airport_drop');
             $table->boolean('free_guide');
             $table->boolean('ultimate_service');
+            $table->double('price', 8, 2);
             $table->string('reviews')->nullable();
             $table->timestamps();
 
             $table->foreign("agancy_id")
-            ->references("id")
-            ->on("agancies")
-            ->onDelete("cascade")
-            ->onUpdate("cascade"); 
+                ->references("id")
+                ->on("agancies")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
         });
-
     }
 
     /**
