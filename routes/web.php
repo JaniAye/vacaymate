@@ -3,6 +3,7 @@
 use App\Http\Controllers\GuidesController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\VehicleControler;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocati
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicles/{vehicle}', [VehicleControler::class, 'getAllVehicles']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);
+Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createPackage'])->name('package.create');

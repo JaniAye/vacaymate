@@ -2,9 +2,74 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+use App\Models\PackageGuides;
+use App\Models\PackageHotels;
+use App\Models\PackageLocations;
+use App\Models\Packages;
+use App\Models\PackageVehicleDetails;
 use Illuminate\Http\Request;
 
 class PackagesController extends Controller
 {
-    //
+    public function createPackage(Request $request)
+    {
+
+        $res = Packages::create([
+            'package_name' => $request->packageName,
+            'agancy_id' => $request->agancy,
+            'discription' => $request->discription,
+            'person_count' => $request->personCount,
+            'day_count' => $request->dateCount,
+            'airport_pickup' => (int) $request->chkAirportPick,
+            'airport_drop' => (int) $request->chkAirportDrop,
+            'free_guide' => (int)  $request->chkTourGuide,
+            'ultimate_service' => (int)  $request->ultimateService
+
+            // 'reviews' => $request->reviews
+        ]);
+        if ($res) {
+            $gidSet = $request->input('gidSet');
+            for ($i = 0; $i < count($gidSet); $i++) {
+                PackageGuides::create([
+                    'package_id' => $res->id,
+                    'guide_id' => $gidSet[$i]
+                ]);
+            }
+        }
+        if ($res) {
+            $vehicleNo = $request->input('vehicleNo');
+            for ($i = 0; $i < count($vehicleNo); $i++) {
+                PackageVehicleDetails::create([
+                    'package_id' => $res->id,
+                    'vehicle_no' => $vehicleNo[$i]
+                ]);
+            }
+        }
+        if ($res) {
+            $hotelsIds = $request->input('hotelsIds');
+            for ($i = 0; $i < count($hotelsIds); $i++) {
+                PackageHotels::create([
+                    'package_id' => $res->id,
+                    'hotel_id' => $hotelsIds[$i]
+                ]);
+            }
+        }
+
+        if ($res) {
+            $locIds = $request->input('locIds');
+            for ($i = 0; $i < count($locIds); $i++) {
+                PackageLocations::create([
+                    'package_id' => $res->id,
+                    'loc_name' => $locIds[$i]
+                ]);
+            }
+        }
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'New Package Created'
+        ], 201);
+    }
 }

@@ -1146,7 +1146,6 @@
                     isPowerShutter: document.getElementById('ps').checked ? 1 : 0,
                     reviews: ''
                 };
-                console.log(document.getElementById('vehicleNo').value);
 
                 $.ajax({
                     url: '{{ route('vehicle.create') }}',
@@ -3037,7 +3036,6 @@
 
                 var htlElement = columnElementsHtl.querySelector(`p#hid${i}`);
                 if (htlElement) {
-                    console.log(" hyewsade  " + htlElement.textContent);
                     hotelsIds.push(htlElement.textContent);
                 }
             }
@@ -3062,22 +3060,55 @@
 
                 var gidElement = columnElementsff.querySelector(`p#gid${i}`);
                 if (gidElement) {
-                    gids.push(gidElement.textContent);
+                    guidsIds.push(gidElement.textContent);
                 }
 
 
             }
 
-            // alert(columnCount);
 
-            console.log(document.getElementById("packageName").value);
-            console.log(document.getElementById("packageBreifDiscription").value);
-            console.log(document.getElementById("chkAirportPick").checked);
-            console.log(document.getElementById("chkAirportDrop").checked);
-            console.log(document.getElementById("chkTourGuide").checked);
-            console.log(document.getElementById("ultimateService").checked);
-            console.log(document.getElementById("personCount").value);
-            console.log(document.getElementById("dateCount").value);
+            var packageData = {
+                packageName: document.getElementById("packageName").value,
+                agancy: 1,
+                discription: document.getElementById("packageBreifDiscription").value,
+                chkAirportPick: document.getElementById("chkAirportPick").checked ? 1 : 0,
+                chkAirportDrop: document.getElementById("chkAirportDrop").checked ? 1 : 0,
+                chkTourGuide: document.getElementById("chkTourGuide").checked ? 1 : 0,
+                ultimateService: document.getElementById("ultimateService").checked ? 1 : 0,
+                personCount: document.getElementById("personCount").value,
+                dateCount: document.getElementById("dateCount").value,
+                gidSet: guidsIds,
+                vehicleNo: vehicleNo,
+                hotelsIds: hotelsIds,
+                locIds: locIds,
+                reviews: ''
+            };
+
+            $.ajax({
+                url: '{{ route('package.create') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    alert(response.message);
+                    document.getElementById('packageName').value = '';
+                    document.getElementById('packageBreifDiscription').value = '';
+                    document.getElementById('personCount').value = '1';
+                    document.getElementById('dateCount').value = '1';
+                    document.getElementById('chkAirportPick').checked = false;;
+                    document.getElementById('chkAirportDrop').checked = false;
+                    document.getElementById('chkTourGuide').checked = false;
+                    document.getElementById('ultimateService').checked = false;
+                    location.reload();
+                    // var overlay = document.getElementById('overlay');
+                    // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Failed to create Package: ' + textStatus);
+                }
+            });
 
 
         }

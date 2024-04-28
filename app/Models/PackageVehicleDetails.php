@@ -10,6 +10,6 @@ class PackageVehicleDetails extends Model
     use HasFactory;
     protected $fillable = [
         'package_id',
-        'vehicles_id'
+        'vehicle_no'
     ];
 }
