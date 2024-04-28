@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PackageVehicleDetails extends Model
+class PackageGuides extends Model
 {
     use HasFactory;
     protected $fillable = [
         'package_id',
-        'vehicles_id'
+        'guide_id'
     ];
 }
