@@ -2523,6 +2523,7 @@
                             </div>
 
                             <div class="text-center p-2">
+                                <h4 class="mb-0" style="display:none;">${data[0].vehicle_no}</h4>
                                 <h4 class="mb-0">${data[0].model}</h4>
                                 <div class="mb-3">
                                     <small class="fa fa-star text-primary"></small>
@@ -2635,6 +2636,11 @@
 
 
                         currentElement.classList.add(`hotel${index + 1}`);
+
+                        var pTag = currentElement.querySelector("p[id^='hid']");
+                        if (pTag) {
+                            pTag.id = `hid${index + 1}`;
+                        }
                     }
                 }
 
@@ -2732,7 +2738,7 @@
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
-                                <p style="display:none" id="hid${data[0].id}">${data[0].id}</p>
+                                <p style="display:none" id="hid${columnCount+1}">${data[0].id}</p>
                                 <p>${data[0].discription}</p>
                                 <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeHotelCard(event)'>
                                     <svg viewBox="0 0 448 512" class="svgIcon">
@@ -2983,7 +2989,11 @@
 
         // create final package
         function createPackage() {
-            // alert("Package Created Successfully...");
+
+            var locIds = [];
+            var hotelsIds = [];
+            var vehicleNo = [];
+            var guidsIds = [];
 
             var columnElementsLoc = packageList.querySelectorAll(
                 '.col-lg-2.col-md-6.wow.fadeInUp');
@@ -3004,21 +3014,59 @@
                 '.col-lg-3.col-md-6.wow.fadeInUp');
             var TransColumnCount = columnElementsTrans.length;
 
+
+            //for get location ids
+            for (let i = 1; i <= locColumnCount; i++) {
+                var columnElementsLoc = packageList.querySelector(
+                    `.col-lg-2.col-md-6.wow.fadeInUp.loc${i}`);
+
+                var h5Element = columnElementsLoc.querySelector("h5.mb-0");
+
+                if (h5Element) {
+                    var name = h5Element.textContent;
+                    locIds.push(name);
+                }
+
+
+            }
+
+            //for get Hotel name
+            for (let i = 1; i <= accColumnCount; i++) {
+                var columnElementsHtl = accommodationList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.hotel${i}`);
+
+                var htlElement = columnElementsHtl.querySelector(`p#hid${i}`);
+                if (htlElement) {
+                    console.log(" hyewsade  " + htlElement.textContent);
+                    hotelsIds.push(htlElement.textContent);
+                }
+            }
+
+            //for get vehicle no
+            for (let i = 1; i <= vehiColumnCount; i++) {
+                var columnElementsLoc = VehicleList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.vehi${i}`);
+
+                var h4Element = columnElementsLoc.querySelector("h4.mb-0");
+
+                if (h4Element) {
+                    var no = h4Element.textContent;
+                    vehicleNo.push(no);
+                }
+            }
+
+            //for get guide ids
             for (let i = 1; i <= TransColumnCount; i++) {
                 var columnElementsff = translatorsList.querySelector(
                     `.col-lg-3.col-md-6.wow.fadeInUp.guide${i}`);
-                console.log(columnElementsff);
-
-                // var val = columnElementsff.getElementById(`gid${i}`).value;
 
                 var gidElement = columnElementsff.querySelector(`p#gid${i}`);
+                if (gidElement) {
+                    gids.push(gidElement.textContent);
+                }
 
 
-                console.log("mokoL");
-                console.log(gidElement.textContent);
             }
-
-
 
             // alert(columnCount);
 
