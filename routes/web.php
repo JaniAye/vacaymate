@@ -49,3 +49,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicl
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);
 Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createPackage'])->name('package.create');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
