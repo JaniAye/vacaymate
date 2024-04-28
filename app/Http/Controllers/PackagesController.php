@@ -73,4 +73,66 @@ class PackagesController extends Controller
             'message' => 'New Package Created'
         ], 201);
     }
+
+    public function getAllPackages()
+    {
+        try {
+            $allPackages = Packages::all();
+
+            if ($allPackages->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allPackages
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+
+    public function getPackageDetail($packageId)
+    {
+        try {
+            $package = Packages::find($packageId);
+
+            if ($package->isNotEmpty()) {
+                $packageLocations = PackageLocations::where('package_id', $packageId)->get();
+                $packageVehicles = PackageVehicleDetails::where('package_id', $packageId)->get();
+                $packageHotels = PackageHotels::where('package_id', $packageId)->get();
+                $packageGuides = PackageGuides::where('package_id', $packageId)->get();
+
+                $packageDetails = [
+                    'package' => $package,
+                    'locations' => $packageLocations->toArray(),
+                    'vehicles' => $packageVehicles->toArray(),
+                    'hotels' => $packageHotels->toArray(),
+                    'guides' => $packageGuides->toArray(),
+                ];
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $packageDetails
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }
