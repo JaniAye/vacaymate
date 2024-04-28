@@ -41,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/add-vehicle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/search-btn.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/add-package.css') }}">
     <style>
         /*  */
 
@@ -169,32 +170,32 @@
                         <div id="date-picker-container">
 
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-46" class="inp-cbx" />
-                                <label for="cbx-46" class="cbx"><span>
+                                <input type="checkbox" id="chkAirportPick" class="inp-cbx" />
+                                <label for="chkAirportPick" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-48" class="inp-cbx" />
-                                <label for="cbx-48" class="cbx"><span>
+                                <input type="checkbox" id="chkAirportDrop" class="inp-cbx" />
+                                <label for="chkAirportDrop" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Drop</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-49" class="inp-cbx" />
-                                <label for="cbx-49" class="cbx"><span>
+                                <input type="checkbox" id="chkTourGuide" class="inp-cbx" />
+                                <label for="chkTourGuide" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Free Tour Guide</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-50" class="inp-cbx" />
-                                <label for="cbx-50" class="cbx"><span>
+                                <input type="checkbox" id="ultimateService" class="inp-cbx" />
+                                <label for="ultimateService" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">24/7 Service</span>
@@ -204,7 +205,7 @@
                             <div class="container">
 
                                 <div class="input-group spinnerPerson">
-                                    <input type="text" class="form-control" value="1">
+                                    <input id="personCount" type="text" class="form-control" value="1">
                                     <div class="input-group-btn-vertical">
                                         <button class="btn btn-default" type="button"
                                             onclick="incrementPersons()"><i class="fa fa-caret-up"></i></button>
@@ -218,7 +219,7 @@
                             <div class="container">
 
                                 <div class="input-group spinner">
-                                    <input type="text" class="form-control" value="1">
+                                    <input id="dateCount" type="text" class="form-control" value="1">
                                     <div class="input-group-btn-vertical">
                                         <button class="btn btn-default" type="button" onclick="incrementDt()"><i
                                                 class="fa fa-caret-up"></i></button>
@@ -259,6 +260,13 @@
                     <div class="m-3">
                         <h3 class="m-0 mt-2">D & W Touers</h3>
                         <h4 class="mt-3">Create New Package</h4>
+
+                        <div class="form__group field mt-4">
+                            <input type="input" class="form__field" placeholder="Name" required=""
+                                id="packageName">
+                            <label for="name" class="form__label">Enter Package Name</label>
+                        </div>
+
                         <h5 class="mt-4">Add some breif discription about your package</h5>
                         <div class="form-group">
                             <textarea class="form-control" id="packageBreifDiscription" rows="3" style=" border-color: rgb(157, 156, 156)"
@@ -995,7 +1003,7 @@
             <div class="row g-4">
                 <div class="col-lg-12 col-sm-4 wow fadeInUp " style=" display: flex; justify-content: center;"
                     data-wow-delay="0.4s">
-                    <button class="animated-button" style="width: 15vw">
+                    <button class="animated-button" style="width: 15vw" onclick="createPackage()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -2963,6 +2971,23 @@
             if (parseInt($('.spinnerPerson input').val(), 10) > 1) {
                 $('.spinnerPerson input').val(parseInt($('.spinnerPerson input').val(), 10) - 1);
             }
+
+        }
+
+
+        // create final package
+        function createPackage() {
+            alert("Package Created Successfully...");
+
+            console.log(document.getElementById("packageName").value);
+            console.log(document.getElementById("packageBreifDiscription").value);
+            console.log(document.getElementById("chkAirportPick").checked);
+            console.log(document.getElementById("chkAirportDrop").checked);
+            console.log(document.getElementById("chkTourGuide").checked);
+            console.log(document.getElementById("ultimateService").checked);
+            console.log(document.getElementById("personCount").value);
+            console.log(document.getElementById("dateCount").value);
+
 
         }
     </script>
