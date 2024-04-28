@@ -2805,6 +2805,12 @@
 
 
                         currentElement.classList.add(`guide${index + 1}`);
+
+                        //add for update p tag id
+                        var pTag = currentElement.querySelector("p[id^='gid']");
+                        if (pTag) {
+                            pTag.id = `gid${index + 1}`;
+                        }
                     }
                 }
 
@@ -2901,7 +2907,7 @@
                         <small class="fa fa-star text-primary"></small>
                         <small class="fa fa-star text-primary"></small>
                     </div>
-                    <p style="display:none" id="gid${data[0].id}">${data[0].id}</p>
+                    <p style="display:none" id="gid${columnCount+1}">${data[0].id}</p>
                     <p>${data[0].discription}</p>
                     <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
                         <svg viewBox="0 0 448 512" class="svgIcon">
@@ -2977,7 +2983,44 @@
 
         // create final package
         function createPackage() {
-            alert("Package Created Successfully...");
+            // alert("Package Created Successfully...");
+
+            var columnElementsLoc = packageList.querySelectorAll(
+                '.col-lg-2.col-md-6.wow.fadeInUp');
+            var locColumnCount = columnElementsLoc.length;
+
+
+            var columnElementsVehi = VehicleList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var vehiColumnCount = columnElementsVehi.length;
+
+
+            var columnElementsAcc = accommodationList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var accColumnCount = columnElementsAcc.length;
+
+
+            var columnElementsTrans = translatorsList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var TransColumnCount = columnElementsTrans.length;
+
+            for (let i = 1; i <= TransColumnCount; i++) {
+                var columnElementsff = translatorsList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.guide${i}`);
+                console.log(columnElementsff);
+
+                // var val = columnElementsff.getElementById(`gid${i}`).value;
+
+                var gidElement = columnElementsff.querySelector(`p#gid${i}`);
+
+
+                console.log("mokoL");
+                console.log(gidElement.textContent);
+            }
+
+
+
+            // alert(columnCount);
 
             console.log(document.getElementById("packageName").value);
             console.log(document.getElementById("packageBreifDiscription").value);
