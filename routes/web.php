@@ -5,6 +5,7 @@ use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\VehicleControler;
+use App\Models\PackageLocations;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides
 Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createPackage'])->name('package.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);

@@ -246,28 +246,13 @@
 
                     {{-- locations --}}
                     <h3 class="text-center mt-3 ">Locations To See</h3>
-                    <div style="margin-left: 4% ;margin-right:3%">
-                        <div class="row ">
-                            <div class="col-sm-4">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Airport
-                                    pickup
-                                    and drop
-                                </p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
-                                    Translators
-                                </p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Free Language
-                                    Translators
-                                </p>
-                            </div>
+                    <div style="margin-left: 8% ;margin-right:3%">
+                        <div class="row " id="locationsList" style="width:72vw">
+
+
                         </div>
 
-                        <div class="row ">
+                        {{-- <div class="row ">
                             <div class="col-sm-4">
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>16-30 days
                                     complete package
@@ -300,7 +285,7 @@
                                     Service</p>
                             </div>
 
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="mt-3 ml-2 mr-3 mb-0" style="height: 50px; width :95%;">
@@ -317,7 +302,7 @@
                             discovering the unique charm this island has to offer.</p>
 
 
-                        <h2 class="text-center mt-3">only for : $189.00</h2>
+                        <h2 class="text-center mt-3" id="insidePriceH2">only for : $189.00</h2>
                         {{-- <button href="#" class="btn btn-sm btn-primary px-5 py-3"
                             style="border-radius: 0 30px 30px 0;">Book Now</button> --}}
                         <div style=" width:100%; display: flex; justify-content: flex-end;">
@@ -568,10 +553,50 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 success: function(response) {
-
+                    let content = "";
                     if (response.success) {
                         console.log(response.data.discription);
                         document.getElementById("packageDisc").textContent = response.data.discription;
+                        document.getElementById("insidePriceH2").textContent = "only for : $" + response.data
+                            .price;
+
+                        getLocUrl = `http://localhost:8000/getLocationsByPackage/${clickedData}`;
+
+                        $.ajax({
+                            url: getLocUrl,
+                            method: 'GET',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                var divElement = document.querySelector("#locationsList");
+                                if (response.success) {
+                                    for (let i = 0; i < response.data.length; i++) {
+                                        content += `
+                                            <div class="col-sm-4">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <h5 class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>${response.data[i]}
+                                                </h5>
+                                            </div>
+
+                                    `;
+
+                                    }
+
+
+                                    divElement.innerHTML = content;
+                                    document.getElementById('locationsList').appendChild(
+                                        divElement);
+                                } else {
+
+                                    alert('Error: ' + response.message);
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+
+                                alert('Failed to fetch data: ' + textStatus);
+                            }
+                        });
 
                     } else {
 

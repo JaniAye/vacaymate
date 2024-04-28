@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\PackageLocations;
 use Illuminate\Http\Request;
+use Locale;
 
 class LocationController extends Controller
 {
@@ -60,6 +62,35 @@ class LocationController extends Controller
                     'data' => []
                 ], 200);
             }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function getLocations($packageId)
+    {
+        try {
+            $packagesLoc = PackageLocations::where('package_id', $packageId)->get();
+
+            $locationNames = [];
+
+            for ($i = 0; $i < count($packagesLoc); $i++) {
+
+                $locationNames[] = $packagesLoc[$i]->loc_name;
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Success',
+                'data' => $locationNames
+            ], 200);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'No packages',
+                'data' => []
+            ], 200);
         } catch (\Exception $e) {
             info($e->getMessage());
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
