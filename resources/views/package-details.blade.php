@@ -142,6 +142,7 @@
                             <div class="mt-0 mb-4">
                                 <h5 id="dtCount">18 days Package </h5>
                             </div>
+                            <p id="dtCount2" style="display: none">18</p>
                             <div id="date-picker-title">
                                 <h4> Select your date </h4>
                             </div>
@@ -155,7 +156,7 @@
 
                             </div>
 
-                            <p> Revel in how big the dates are now. </p>
+                            <p> Date range of this package. </p>
 
                             <div id="date-picker-display-container">
                                 <div class="date-picker-display-pair">
@@ -547,11 +548,14 @@
             updateDatePicker();
 
             // update dates shown to correct dates
-            $(datesBoxes[0]).text(getDateString(dates[0]));
+            // $(datesBoxes[0]).text(getDateString(dates[0]));
+            $(datesBoxes[0]).text("dd/mm/yyyy");
             $(datesBoxes[1]).text(getDateString(dates[1]));
 
-            $(displayBoxes[0]).text(dates[0].getDate() + " " + monthFormatter.format(dates[0]).slice(0, 3));
-            $(displayBoxes[1]).text(dates[1].getDate() + " " + monthFormatter.format(dates[1]).slice(0, 3));
+            // $(displayBoxes[0]).text(dates[0].getDate() + " " + monthFormatter.format(dates[0]).slice(0, 3));
+            // $(displayBoxes[1]).text(dates[1].getDate() + " " + monthFormatter.format(dates[1]).slice(0, 3));
+            $(displayBoxes[0]).text("-- --");
+            $(displayBoxes[1]).text("-- --");
         });
 
         // add event listeners
@@ -859,6 +863,25 @@
 
             updateDateBox.text(formattedDate);
             updateDisplayBox.text(dayAndMonth);
+
+            var updateDisplayBox2 = $(displayBoxes[1]);
+            var dtCount = document.getElementById("dtCount2").textContent;
+            var futureDayAndMonth = getFormattedDayAndMonth(dayAndMonth, parseInt(dtCount, 10));
+            updateDisplayBox2.text(futureDayAndMonth);
+        }
+
+        function getFormattedDayAndMonth(date, daysToAdd) {
+
+            var resultDate = new Date(date);
+
+            resultDate.setDate(resultDate.getDate() + daysToAdd);
+
+            var day = resultDate.getDate();
+            var month = resultDate.toLocaleString('en-GB', {
+                month: 'short'
+            });
+
+            return day + " " + month;
         }
 
         function getLocations() {
@@ -1049,6 +1072,8 @@
 
                         if (dtCountElement) {
                             dtCountElement.textContent = response.data.package.day_count + " days Package";
+                            var dtCountElement2 = document.getElementById("dtCount2");
+                            dtCountElement2.textContent = response.data.package.day_count;
                         }
 
                         var pkgDiscripElement = document.getElementById("pkgDiscrip");
