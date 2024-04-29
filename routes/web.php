@@ -33,9 +33,12 @@ Route::get('/signup', function () {
 Route::get('/package', function () {
     return view('package');
 });
-Route::get('/booking', function () {
-    return view('package-details');
-});
+// Route::get('/booking', function () {
+//     return view('package-details');
+// });
+
+Route::get('/booking', [PackagesController::class, 'showBookingDetails']);
+
 Route::get('/create-package', function () {
     return view('add-package');
 });
@@ -48,6 +51,7 @@ Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControle
 Route::withoutMiddleware(['web', 'auth'])->post('/add-hotel', [HotelsController::class, 'saveHotel'])->name('hotel.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-guide', [GuidesController::class, 'saveGuide'])->name('guide.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocations/{location}', [LocationController::class, 'getAllLocations']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationById/{location}', [LocationController::class, 'getLocationById']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicles/{vehicle}', [VehicleControler::class, 'getAllVehicles']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);
@@ -56,3 +60,6 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPac
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancyDetails/{agancyId}', [AgancyController::class, 'getAgancyDetails']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackageDetail/{packageId}', [PackagesController::class, 'getPackageDetail']);
+
+
