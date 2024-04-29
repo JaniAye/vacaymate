@@ -110,37 +110,42 @@
                         <div id="date-picker-container">
 
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-46" class="inp-cbx" />
-                                <label for="cbx-46" class="cbx"><span>
+                                <input type="checkbox" id="airportPick" class="inp-cbx" />
+                                <label for="airportPick" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-48" class="inp-cbx" />
-                                <label for="cbx-48" class="cbx"><span>
+                                <input type="checkbox" id="airportDrop" class="inp-cbx" />
+                                <label for="airportDrop" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Drop</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-49" class="inp-cbx" />
-                                <label for="cbx-49" class="cbx"><span>
+                                <input type="checkbox" id="cntPerson" class="inp-cbx" checked disabled />
+                                <label for="cntPerson" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Up to 6 Persons</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-50" class="inp-cbx" />
-                                <label for="cbx-50" class="cbx"><span>
+                                <input type="checkbox" id="ultimateSerice" class="inp-cbx" checked disabled />
+                                <label for="ultimateSerice" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </svg></span><span class="checkboxTxt">Airport Pickup</span>
+                                        </svg></span><span class="checkboxTxt">24/7 Service</span>
                                 </label>
                             </div>
+
+                            <div class="mt-0 mb-4">
+                                <h5 id="dtCount">18 days Package </h5>
+                            </div>
+                            <p id="dtCount2" style="display: none">18</p>
                             <div id="date-picker-title">
                                 <h4> Select your dates </h4>
                             </div>
@@ -151,9 +156,9 @@
                                 <div id="date-picker-date-first" class="date-picker-date">
                                     24/12/2017
                                 </div>
-                                <div class="date-picker-date">
+                                {{-- <div class="date-picker-date">
                                     28/12/2017
-                                </div>
+                                </div> --}}
                             </div>
 
                             <p> Revel in how big the dates are now. </p>
@@ -215,7 +220,8 @@
                             <small class="fa fa-star text-primary"></small>
                         </div>
                         <h4>Our this package</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nulla deleniti a aut
+                        <p id="pkgDiscrip">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+                            nulla deleniti a aut
                             perferendis dicta sit dolores voluptate asperiores ipsa ullam incidunt repudiandae amet
                             quisquam, sunt tempora ea hic quia?</p>
                         <h4>See How Our Customers Explore and Enjoy</h4>
