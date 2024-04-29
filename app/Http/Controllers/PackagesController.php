@@ -23,6 +23,13 @@ class PackagesController extends Controller
         return view('package-details', ['packageId' => $packageId]);
     }
 
+    public function custormizepkg(Request $request)
+    {
+        $packageId = $request->query('id', 0);
+
+        return view('package-custormize', ['packageId' => $packageId]);
+    }
+
     public function createPackage(Request $request)
     {
 

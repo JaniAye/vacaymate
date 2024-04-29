@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/delete.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/search-btn.css') }}">
 
 </head>
 
@@ -290,12 +291,31 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <h3 class="text-center">Locations That You Need To Cover</h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="col-lg-10 col-sm-4 wow fadeInUp mt-2 mb-4" style="margin-left:50px"
+                        data-wow-delay="0.1s">
+                        <div class="search-corner">
+                            <div class="search-box mt-2 mb-0">
+                                <input type="text" id="locationSearch" name="" value=""
+                                    placeholder="Location Name" oninput="searchResults(event)">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                            <div class="search-results">
+                                <h2 class="query-title"></h2>
+                                <div class="search-result r0"></div>
+                                <div class="search-result r1"></div>
+                                <div class="search-result r2"></div>
+                                <div class="search-result r3"></div>
+                                <div class="search-result r4"></div>
+                                <div class="search-result r5"></div>
+                                <div class="search-result r6"></div>
+                                <div class="search-result r7"></div>
+                                <div class="search-result r8"></div>
+                                <div class="search-result r9"></div>
+                            </div>
+
+                        </div>
                     </div>
                     <div id="packageList">
                     </div>
@@ -305,30 +325,70 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="col-lg-10 col-sm-4 wow fadeInUp" style="margin-left:50px" data-wow-delay="0.1s">
+                        <div class="search-corner">
+                            <div class="search-box mt-2 mb-0">
+                                <input type="text" id="vehicSrh" name="" placeholder="Vehicle Number"
+                                    oninput="searchResults(event)">
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                    style="margin-top: 8px;">Search</button>
+                            </div>
+                            <div class="search-results">
+                                <h2 class="query-title"></h2>
+                                <div class="search-result a0"></div>
+                                <div class="search-result a1"></div>
+                                <div class="search-result a2"></div>
+                                <div class="search-result a3"></div>
+                                <div class="search-result a4"></div>
+                                <div class="search-result a5"></div>
+                                <div class="search-result a6"></div>
+                                <div class="search-result a7"></div>
+                                <div class="search-result a8"></div>
+                                <div class="search-result a9"></div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div id="Vehicle-list">
+                    <div id="VehicleList">
                     </div>
                 </div>
             </div>
 
             <div class="row g-4">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-10 col-sm-4 wow fadeInUp" style="margin-left:50px" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="row g-4">
+
+                        <div class="col-lg-10 col-sm-4 wow fadeInUp" style="margin-left:50px" data-wow-delay="0.1s">
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-0">
+                                    <input type="text" id="accSearch" name="" placeholder="Hotel Name"
+                                        oninput="searchResults(event)">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result b0"></div>
+                                    <div class="search-result b1"></div>
+                                    <div class="search-result b2"></div>
+                                    <div class="search-result b3"></div>
+                                    <div class="search-result b4"></div>
+                                    <div class="search-result b5"></div>
+                                    <div class="search-result b6"></div>
+                                    <div class="search-result b7"></div>
+                                    <div class="search-result b8"></div>
+                                    <div class="search-result b9"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
-                    <div id="accommodation-list">
+                    <div id="accommodationList">
                     </div>
                 </div>
             </div>
@@ -337,14 +397,36 @@
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Guides And Language Translators</h3>
-                    <div class="position-relative w-75 mx-auto animated slideInDown mt-2 mb-5">
-                        <input class="form-control border-2 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Search Locations ">
-                        <button type="button"
-                            class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
-                            style="margin-top: 8px;">Search</button>
+                    <div class="row g-4 ">
+
+                        <div class="col-lg-10 col-sm-4 wow fadeInUp " style="margin-left:50px" data-wow-delay="0.1s">
+                            <div class="search-corner">
+                                <div class="search-box mt-2 mb-0">
+                                    <input type="text" id="guideSrch" name="" placeholder="Guide Name"
+                                        oninput="searchResults(event)">
+                                    <button type="button"
+                                        class="btn btn-primary rounded-pill py-2 px-5 position-absolute top-0 end-0 me-2"
+                                        style="margin-top: 8px;">Search</button>
+                                </div>
+                                <div class="search-results">
+                                    <h2 class="query-title"></h2>
+                                    <div class="search-result c0"></div>
+                                    <div class="search-result c1"></div>
+                                    <div class="search-result c2"></div>
+                                    <div class="search-result c3"></div>
+                                    <div class="search-result c4"></div>
+                                    <div class="search-result c5"></div>
+                                    <div class="search-result c6"></div>
+                                    <div class="search-result c7"></div>
+                                    <div class="search-result c8"></div>
+                                    <div class="search-result c9"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
-                    <div id="translators-list">
+                    <div id="translatorsList">
                     </div>
                 </div>
             </div>
@@ -488,10 +570,11 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            getLocations();
-            getVehicles();
-            getAccommodation();
-            getTranslators();
+            getPackageData({{ $packageId }});
+            // getLocations();
+            // getVehicles();
+            // getAccommodation();
+            // getTranslators();
         });
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
             month: "long"
@@ -521,11 +604,11 @@
             updateDatePicker();
 
             // update dates shown to correct dates
-            $(datesBoxes[0]).text(getDateString(dates[0]));
-            $(datesBoxes[1]).text(getDateString(dates[1]));
+            $(datesBoxes[0]).text("dd/mm/yyyy");
+            // $(datesBoxes[1]).text(getDateString(dates[1]));
 
-            $(displayBoxes[0]).text(dates[0].getDate() + " " + monthFormatter.format(dates[0]).slice(0, 3));
-            $(displayBoxes[1]).text(dates[1].getDate() + " " + monthFormatter.format(dates[1]).slice(0, 3));
+            $(displayBoxes[0]).text("-- --");
+            $(displayBoxes[1]).text("-- --");
         });
 
         // add event listeners
@@ -833,6 +916,25 @@
 
             updateDateBox.text(formattedDate);
             updateDisplayBox.text(dayAndMonth);
+
+            var updateDisplayBox2 = $(displayBoxes[1]);
+            var dtCount = document.getElementById("dtCount2").textContent;
+            var futureDayAndMonth = getFormattedDayAndMonth(dayAndMonth, parseInt(dtCount, 10));
+            updateDisplayBox2.text(futureDayAndMonth);
+        }
+
+        function getFormattedDayAndMonth(date, daysToAdd) {
+
+            var resultDate = new Date(date);
+
+            resultDate.setDate(resultDate.getDate() + daysToAdd);
+
+            var day = resultDate.getDate();
+            var month = resultDate.toLocaleString('en-GB', {
+                month: 'short'
+            });
+
+            return day + " " + month;
         }
 
         function getLocations() {
@@ -916,7 +1018,7 @@
 
                 }
                 divElement.innerHTML = content;
-                document.getElementById('Vehicle-list').appendChild(divElement);
+                document.getElementById('VehicleList').appendChild(divElement);
             }
         }
 
@@ -958,7 +1060,7 @@
 
                 }
                 divElement.innerHTML = content;
-                document.getElementById('accommodation-list').appendChild(divElement);
+                document.getElementById('accommodationList').appendChild(divElement);
             }
         }
 
@@ -1000,8 +1102,1037 @@
 
                 }
                 divElement.innerHTML = content;
-                document.getElementById('translators-list').appendChild(divElement);
+                document.getElementById('translatorsList').appendChild(divElement);
             }
+        }
+
+        function getPackageData(pkgID) {
+            getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
+
+            $.ajax({
+                url: getLocUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    var divElement = document.querySelector("#locationsList");
+                    if (response.success) {
+
+                        var divElement = document.createElement('div');
+                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                        let content = "";
+                        for (var i = 0; i < response.data.locations.length; i++) {
+
+                            content += `
+                                    <div class="col-lg-2 col-md-6 wow fadeInUp loc${i+1}" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.locations[i].name}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.locations[i].discription}</p>
+                                                    <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeLocCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                        }
+                        divElement.innerHTML = content;
+                        document.getElementById('packageList').appendChild(divElement);
+
+
+                        // sets vehicles into package data
+                        var divElementVehicle = document.createElement('div');
+                        divElementVehicle.className = 'row g-2 mt-1 justify-content-center';
+                        let contentVehi = "";
+                        for (var i = 0; i < response.data.vehicles.length; i++) {
+                            contentVehi += `
+                                    <div class="col-lg-3 col-md-6 wow fadeInUp vehi${i+1}" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.vehicles[i].model}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.vehicles[i].discription}</p>
+                                                    <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeVehicleCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                        }
+                        divElementVehicle.innerHTML = contentVehi;
+                        document.getElementById('VehicleList').appendChild(divElementVehicle);
+
+
+                        //hotel sets from api
+
+
+                        var divElementhtl = document.createElement('div');
+                        divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                        let contenthtl = "";
+                        for (var i = 0; i < response.data.hotels.length; i++) {
+                            contenthtl += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp hotel${i+1}" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data.hotels[i].hotel_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data.hotels[i].discription}</p>
+                                                        <button class="rmv-btn " style=" margin-left: 40%;"  onclick='removeHotelCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                        }
+                        divElementhtl.innerHTML = contenthtl;
+                        document.getElementById('accommodationList').appendChild(divElementhtl);
+
+
+                        // Guides set from api
+
+                        var divElementGuide = document.createElement('div');
+                        divElementGuide.className = 'row g-2 mt-1 justify-content-center';
+                        let contentguide = "";
+                        for (var i = 0; i < response.data.guides.length; i++) {
+                            contentguide += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp guide${i+1}" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data.guides[i].guide_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data.guides[i].discription}</p>
+                                                        <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                        }
+                        divElementGuide.innerHTML = contentguide;
+                        document.getElementById('translatorsList').appendChild(divElementGuide);
+
+
+
+
+                        var pkgPriceElement = document.getElementById("pkgPrice");
+
+                        if (pkgPriceElement) {
+                            pkgPriceElement.textContent = "$" + response.data.package.price;
+                        }
+
+                        // document.getElementById("airportPick").checked = true,
+                        if (response.data.package.airport_pickup === 1) {
+                            document.getElementById("airportPick").checked = true;
+                        }
+                        if (response.data.package.airport_drop === 1) {
+                            document.getElementById("airportDrop").checked = true;
+                        }
+
+                        var dtCountElement = document.getElementById("dtCount");
+
+                        if (dtCountElement) {
+                            dtCountElement.textContent = response.data.package.day_count + " days Package";
+                            var dtCountElement2 = document.getElementById("dtCount2");
+                            dtCountElement2.textContent = response.data.package.day_count;
+                        }
+
+                        var pkgDiscripElement = document.getElementById("pkgDiscrip");
+
+                        if (pkgDiscripElement) {
+                            pkgDiscripElement.textContent = response.data.package.discription;
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+        }
+
+        function removeLocCard(event) {
+            var target = event.target;
+            var parentDiv = target.closest('.col-lg-2.col-md-6.wow.fadeInUp');
+
+            if (parentDiv) {
+                parentDiv.remove(); // Remove the element
+
+                // After removing, adjust the class names to maintain sequential order
+                var packageList = document.getElementById("packageList");
+
+                if (packageList) {
+                    // Find all the remaining elements with loc class
+                    var locElements = packageList.querySelectorAll(".col-lg-2.col-md-6.wow.fadeInUp");
+
+                    // Loop through all remaining elements to reset their loc class
+                    for (let index = 0; index < locElements.length; index++) {
+                        // Find the current loc class and remove it
+                        var currentElement = locElements[index];
+                        var currentLocClass = Array.from(currentElement.classList).find(cls => cls.startsWith('loc'));
+
+                        if (currentLocClass) {
+                            currentElement.classList.remove(currentLocClass); // Remove the existing loc class
+                        }
+
+                        // Assign the new loc class based on the current index
+                        currentElement.classList.add(`loc${index + 1}`); // Reset the loc classes
+                    }
+                }
+
+            } else {
+                console.warn("Parent div not found for removal.");
+            }
+        }
+
+        function removeGuideCard(event) {
+            var target = event.target;
+            var parentDiv = target.closest('.col-lg-3.col-md-6.wow.fadeInUp');
+
+            if (parentDiv) {
+                parentDiv.remove();
+
+
+                var guideList = document.getElementById("translatorsList");
+
+                if (guideList) {
+
+                    var hotelElements = guideList.querySelectorAll(".col-lg-3.col-md-6.wow.fadeInUp");
+
+                    for (let index = 0; index < hotelElements.length; index++) {
+                        var currentElement = hotelElements[index];
+                        var currentGUideClass = Array.from(currentElement.classList).find(cls => cls.startsWith('guide'));
+
+                        if (currentGUideClass) {
+                            currentElement.classList.remove(currentGUideClass);
+                        }
+
+
+                        currentElement.classList.add(`guide${index + 1}`);
+
+                        //add for update p tag id
+                        var pTag = currentElement.querySelector("p[id^='gid']");
+                        if (pTag) {
+                            pTag.id = `gid${index + 1}`;
+                        }
+                    }
+                }
+
+            } else {
+                console.warn("Parent div not found for removal.");
+            }
+        }
+
+        function removeHotelCard(event) {
+            var target = event.target;
+            var parentDiv = target.closest('.col-lg-3.col-md-6.wow.fadeInUp');
+
+            if (parentDiv) {
+                parentDiv.remove();
+
+
+                var hotelList = document.getElementById("accommodationList");
+
+                if (hotelList) {
+
+                    var hotelElements = hotelList.querySelectorAll(".col-lg-3.col-md-6.wow.fadeInUp");
+
+                    for (let index = 0; index < hotelElements.length; index++) {
+                        var currentElement = hotelElements[index];
+                        var currentVehiClass = Array.from(currentElement.classList).find(cls => cls.startsWith('hotel'));
+
+                        if (currentVehiClass) {
+                            currentElement.classList.remove(currentVehiClass);
+                        }
+
+
+                        currentElement.classList.add(`hotel${index + 1}`);
+
+                        var pTag = currentElement.querySelector("p[id^='hid']");
+                        if (pTag) {
+                            pTag.id = `hid${index + 1}`;
+                        }
+                    }
+                }
+
+            } else {
+                console.warn("Parent div not found for removal.");
+            }
+        }
+
+        function removeVehicleCard(event) {
+            var target = event.target;
+            var parentDiv = target.closest('.col-lg-3.col-md-6.wow.fadeInUp');
+
+            if (parentDiv) {
+                parentDiv.remove();
+
+
+                var VehicleList = document.getElementById("VehicleList");
+
+                if (VehicleList) {
+
+                    var vehiElements = VehicleList.querySelectorAll(".col-lg-3.col-md-6.wow.fadeInUp");
+
+                    for (let index = 0; index < vehiElements.length; index++) {
+                        var currentElement = vehiElements[index];
+                        var currentVehiClass = Array.from(currentElement.classList).find(cls => cls.startsWith('vehi'));
+
+                        if (currentVehiClass) {
+                            currentElement.classList.remove(currentVehiClass);
+                        }
+
+
+                        currentElement.classList.add(`vehi${index + 1}`);
+                    }
+                }
+
+            } else {
+                console.warn("Parent div not found for removal.");
+            }
+        }
+
+        var loc = '';
+        var cnt = 0;
+
+        function searchResults(event) {
+            console.log(event.target.placeholder);
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getLocations/${event.target.value}`;
+            if (event.target.placeholder === 'Location Name') {
+                endpointUrl = `http://localhost:8000/getLocations/${event.target.value}`;
+            } else if (event.target.placeholder === 'Vehicle Number') {
+                endpointUrl = `http://localhost:8000/getVehicles/${event.target.value}`;
+            } else if (event.target.placeholder === 'Hotel Name') {
+                endpointUrl = `http://localhost:8000/getHotels/${event.target.value}`;
+            } else if (event.target.placeholder === 'Guide Name') {
+                endpointUrl = `http://localhost:8000/getGuides/${event.target.value}`;
+            }
+
+
+            if (event.target.value.length > 0) {
+                $.ajax({
+                    url: endpointUrl,
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+
+                        if (response.success) {
+                            var data = response.data;
+
+
+                            for (ij = 0; ij < cnt; ij++) {
+                                $(".r" + ij).empty();
+                                $(".a" + ij).empty();
+                                $(".b" + ij).empty();
+                                $(".c" + ij).empty();
+                            }
+                            if (data.length > 0) {
+                                for (i = 0; i < data.length; i++) {
+
+                                    if (event.target.placeholder === 'Location Name') {
+                                        $(".r" + i).html(
+                                            "<div class='wow fadeInUp' onclick='addToList(event)' style='cursor: pointer;'><a><p>" +
+                                            data[i].name + "</p></a></div>");
+                                    } else if (event.target.placeholder === 'Vehicle Number') {
+
+                                        $(".a" + i).html(
+                                            "<div class='wow fadeInUp' onclick='addToVehicleList(event)' style='cursor: pointer;'><a><p>" +
+                                            data[i].vehicle_no + "</p></a></div>");
+                                    } else if (event.target.placeholder === 'Hotel Name') {
+                                        $(".b" + i).html(
+                                            "<div class='wow fadeInUp'  onclick='addHotels(event)' style='cursor: pointer;'><a><p>" +
+                                            data[i].hotel_name + "</p></a></div>");
+                                    } else if (event.target.placeholder === 'Guide Name') {
+                                        $(".c" + i).html(
+                                            "<div class='wow fadeInUp' onclick='addGuideCard(event)' style='cursor: pointer;'><a><p>" +
+                                            data[i].guide_name + "</p></a></div>");
+
+                                    }
+
+                                }
+                                cnt = i;
+                                localStorage.setItem('cnt', cnt);
+                            } else {
+
+                                for (j = 0; j < cnt; j++) {
+                                    $(".r" + j).empty();
+                                    $(".a" + j).empty();
+                                    $(".b" + j).empty();
+                                    $(".c" + j).empty();
+                                }
+                                cnt = 1;
+                                if (event.target.placeholder === 'Location Name') {
+                                    $(".r" + 0).html("<div class='wow fadeInUp'><a><p>" +
+                                        "no data found" + "</p></a></div>");
+                                } else if (event.target.placeholder === 'Vehicle Number') {
+                                    $(".a" + 0).html("<div class='wow fadeInUp'><a><p>" +
+                                        "no data found" + "</p></a></div>");
+                                } else if (event.target.placeholder === 'Hotel Name') {
+                                    $(".b" + 0).html("<div class='wow fadeInUp'><a><p>" +
+                                        "no data found" + "</p></a></div>");
+
+                                } else if (event.target.placeholder === 'Guide Name') {
+                                    $(".c" + 0).html("<div class='wow fadeInUp'><a><p>" +
+                                        "no data found" + "</p></a></div>");
+                                }
+
+                            }
+
+
+                        } else {
+
+                            console.log('Error: ' + response.message);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+
+                        alert('Failed to fetch data: ' + textStatus);
+                    }
+                });
+            } else {
+                for (j = 0; j < cnt; j++) {
+                    $(".r" + j).empty();
+                    $(".a" + j).empty();
+                    $(".b" + j).empty();
+                    $(".c" + j).empty();
+                }
+            }
+
+        }
+
+        //serch click result set
+        function addToList(event) {
+
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".r" + w).empty();
+
+            }
+            var inputField = document.getElementById("locationSearch");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getLocations/${name}`;
+            if (event.target.placeholder === 'Location Name') {
+                endpointUrl = `http://localhost:8000/getLocations/${name}`;
+            } else if (event.target.placeholder === 'Vehicle Number') {
+                endpointUrl = `http://localhost:8000/getVehicles/${name}`;
+            } else if (event.target.placeholder === 'Hotel Name') {
+                endpointUrl = `http://localhost:8000/getHotels/${name}`;
+            } else if (event.target.placeholder === 'Guide Name') {
+                endpointUrl = `http://localhost:8000/getGuides/${name}`;
+            }
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = packageList.querySelectorAll(
+                                    '.col-lg-2.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+
+                                // if (columnElementsff === null) {} else {
+
+                                // }
+
+                                var packageListuda = document.getElementById('packageList');
+                                var divElement = '';
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = packageList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+
+
+                                content += `
+                                        <div class="col-lg-2 col-md-6 wow fadeInUp loc${columnCount+1}" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h5 class="mb-0">${data[0].name}</h5>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${data[0].discription}</p>
+                                                        <button class="rmv-btn " style=" margin-left: 30%;" onclick='removeLocCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                    `;
+
+
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = packageList.querySelector(
+                                        `.col-lg-2.col-md-6.wow.fadeInUp.loc${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+                                divElement.innerHTML = content;
+                                document.getElementById('packageList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
+
+        function addHotels(event) {
+
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".b" + w).empty();
+
+            }
+            var inputField = document.getElementById("accSearch");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getHotels/${name}`;
+
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = accommodationList.querySelectorAll(
+                                    '.col-lg-3.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+
+                                // if (columnElementsff === null) {} else {
+
+                                // }
+
+                                var packageListuda = document.getElementById('accommodationList');
+                                console.log(packageListuda);
+                                var divElement = '';
+
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = accommodationList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+
+
+                                content += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp hotel${columnCount+1}" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${data[0].hotel_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p style="display:none" id="hid${columnCount+1}">${data[0].id}</p>
+                                                        <p>${data[0].discription}</p>
+                                                        <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeHotelCard(event)'>
+                                                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                                                <path
+                                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    `;
+
+
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = accommodationList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.hotel${idx}`);
+
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+                                divElement.innerHTML = content;
+                                document.getElementById('accommodationList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
+
+        function addGuideCard(event) {
+
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".c" + w).empty();
+
+            }
+            var inputField = document.getElementById("guideSrch");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            endpointUrl = `http://localhost:8000/getGuides/${name}`;
+
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = translatorsList.querySelectorAll(
+                                    '.col-lg-3.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+
+                                // if (columnElementsff === null) {} else {
+
+                                // }
+
+                                var packageListuda = document.getElementById('translatorsList');
+                                console.log(packageListuda);
+                                var divElement = '';
+
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = translatorsList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+
+
+                                content += `
+                                    <div class="col-lg-3 col-md-6 wow fadeInUp guide${columnCount+1}" data-wow-delay="0.2s">
+                                    <div class="package-item">
+                                        <div class="overflow-hidden">
+                                            <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                        </div>
+
+                                        <div class="text-center p-2">
+                                            <h4 class="mb-0">${data[0].guide_name}</h4>
+                                            <div class="mb-3">
+                                                <small class="fa fa-star text-primary"></small>
+                                                <small class="fa fa-star text-primary"></small>
+                                                <small class="fa fa-star text-primary"></small>
+                                                <small class="fa fa-star text-primary"></small>
+                                                <small class="fa fa-star text-primary"></small>
+                                            </div>
+                                            <p style="display:none" id="gid${columnCount+1}">${data[0].id}</p>
+                                            <p>${data[0].discription}</p>
+                                            <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
+                                                <svg viewBox="0 0 448 512" class="svgIcon">
+                                                    <path
+                                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    `;
+
+
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = translatorsList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.guide${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+                                divElement.innerHTML = content;
+                                document.getElementById('translatorsList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
+
+
+        //vehicle search click result set
+        function addToVehicleList(event) {
+            const cnt = localStorage.getItem('cnt');
+            for (let w = 0; w < cnt; w++) {
+                $(".a" + w).empty();
+
+            }
+            var inputField = document.getElementById("vehicSrh");
+
+            if (inputField) {
+                inputField.value = "";
+                inputField.focus();
+            }
+
+            const clickedElement = event.target;
+            const parentElement = $(clickedElement).closest('.wow');
+            const name = parentElement.find('p').text();
+            let content = "";
+
+            const type = localStorage.getItem('type');
+            var endpointUrl = `http://localhost:8000/getVehicles/${name}`;
+
+
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var data = response.data;
+
+                        if (data.length > 0) {
+                            for (i = 0; i < data.length; i++) {
+
+                                var columnElements = VehicleList.querySelectorAll(
+                                    '.col-lg-3.col-md-6.wow.fadeInUp');
+                                var columnCount = columnElements.length;
+
+
+
+                                // if (columnElementsff === null) {} else {
+                                // for (let index = 0; index < columnCount; index++) {
+                                //     // if (columnCount < 6) {
+                                //     var idx = index + 1;
+                                //     var columnElementsff = VehicleList.querySelector(
+                                //         `.col-lg-3.col-md-6.wow.fadeInUp.vehi${idx}`);
+                                //     content += columnElementsff.outerHTML;
+                                //     // }
+                                // }
+
+                                // }
+
+                                var packageListuda = document.getElementById('VehicleList');
+                                var divElement = '';
+                                if (packageListuda === null) {
+                                    divElement = document.createElement('div');
+                                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                                } else {
+                                    var divCount = packageListuda.children.length;
+                                    // if (columnCount % 6 === 0) {
+                                    if (columnCount == 0) {
+                                        content = "";
+                                        divElement = document.createElement('div');
+                                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                                    } else {
+                                        divElement = VehicleList.querySelector(
+                                            '.row.g-2.mt-1.justify-content-center');
+                                    }
+
+                                    // var divElement = document.createElement('div');
+                                    // divElement.className = 'row g-2 mt-1 justify-content-center';
+
+                                }
+                                console.log("--- " + columnCount);
+
+                                content += `
+                <div class="col-lg-3 col-md-6 wow fadeInUp vehi${columnCount+1}" data-wow-delay="0.2s">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            </div>
+
+                            <div class="text-center p-2">
+                                <h4 class="mb-0" style="display:none;">${data[0].vehicle_no}</h4>
+                                <h4 class="mb-0">${data[0].model}</h4>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>${data[0].discription}</p>
+                                <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeVehicleCard(event)'>
+                                    <svg viewBox="0 0 448 512" class="svgIcon">
+                                        <path
+                                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                        </path>
+                                    </svg>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+        `;
+
+                                for (let index = 0; index < columnCount; index++) {
+                                    // if (columnCount < 6) {
+                                    var idx = index + 1;
+                                    var columnElementsff = VehicleList.querySelector(
+                                        `.col-lg-3.col-md-6.wow.fadeInUp.vehi${idx}`);
+                                    content += columnElementsff.outerHTML;
+                                    // }
+                                }
+
+                                divElement.innerHTML = content;
+                                document.getElementById('VehicleList').appendChild(divElement);
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
         }
     </script>
 </body>

@@ -39,11 +39,10 @@ Route::get('/package', function () {
 
 Route::get('/booking', [PackagesController::class, 'showBookingDetails']);
 
+Route::get('/custormize', [PackagesController::class, 'custormizepkg']);
+
 Route::get('/create-package', function () {
     return view('add-package');
-});
-Route::get('/custormize', function () {
-    return view('package-custormize');
 });
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
@@ -61,5 +60,3 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackag
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancyDetails/{agancyId}', [AgancyController::class, 'getAgancyDetails']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackageDetail/{packageId}', [PackagesController::class, 'getPackageDetail']);
-
-

@@ -2672,7 +2672,7 @@
                 $(".b" + w).empty();
 
             }
-            var inputField = document.getElementById("vehicSrh");
+            var inputField = document.getElementById("accSearch");
 
             if (inputField) {
                 inputField.value = "";
