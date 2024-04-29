@@ -1292,7 +1292,7 @@
                         document.getElementById('guideName').value = '';
                         document.getElementById('guideDiscription').value = '';
                         document.getElementById('guideCity').value = '';
-                        document.getElementById('eng').checked = false;;
+                        document.getElementById('eng').checked = false;
                         document.getElementById('spanish').checked = false;
                         document.getElementById('rus').checked = false;
                         document.getElementById('jpn').checked = false;
