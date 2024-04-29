@@ -509,11 +509,14 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            getPackageData({{ $packageId }});
             getLocations();
             getVehicles();
             getAccommodation();
             getTranslators();
         });
+
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
             month: "long"
         });
@@ -857,39 +860,7 @@
         }
 
         function getLocations() {
-            for (var j = 0; j < 4; j++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row g-2 mt-1 justify-content-center';
-                let content = "";
-                for (var i = 0; i < 6; i++) {
-                    content += `
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="package-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
-                            </div>
 
-                            <div class="text-center p-2">
-                                <h4 class="mb-0">Ella Rock</h4>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                                <p>Nice view point. You can see beauti of neture</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-        `;
-
-                }
-                divElement.innerHTML = content;
-                document.getElementById('packageList').appendChild(divElement);
-            }
         }
 
         function getVehicles() {
@@ -998,6 +969,65 @@
                 divElement.innerHTML = content;
                 document.getElementById('translators-list').appendChild(divElement);
             }
+        }
+
+        function getPackageData(pkgID) {
+            getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
+
+            $.ajax({
+                url: getLocUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    var divElement = document.querySelector("#locationsList");
+                    if (response.success) {
+
+                        var divElement = document.createElement('div');
+                        divElement.className = 'row g-2 mt-1 justify-content-center';
+                        let content = "";
+                        for (var i = 0; i < response.data.locations.length; i++) {
+
+                            content += `
+                                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.locations[i].name}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.locations[i].discription}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                        }
+                        divElement.innerHTML = content;
+                        document.getElementById('packageList').appendChild(divElement);
+
+
+                    } else {
+
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
         }
     </script>
 </body>
