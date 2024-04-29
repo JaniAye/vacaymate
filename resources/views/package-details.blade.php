@@ -108,39 +108,42 @@
                         <div id="date-picker-container">
 
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-46" class="inp-cbx" />
-                                <label for="cbx-46" class="cbx"><span>
+                                <input type="checkbox" id="airportPick" class="inp-cbx" />
+                                <label for="airportPick" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-48" class="inp-cbx" />
-                                <label for="cbx-48" class="cbx"><span>
+                                <input type="checkbox" id="airportDrop" class="inp-cbx" />
+                                <label for="airportDrop" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Drop</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-49" class="inp-cbx" />
-                                <label for="cbx-49" class="cbx"><span>
+                                <input type="checkbox" id="cntPerson" class="inp-cbx" checked disabled />
+                                <label for="cntPerson" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Up to 6 Persons</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="cbx-50" class="inp-cbx" />
-                                <label for="cbx-50" class="cbx"><span>
+                                <input type="checkbox" id="ultimateSerice" class="inp-cbx" checked disabled />
+                                <label for="ultimateSerice" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </svg></span><span class="checkboxTxt">Airport Pickup</span>
+                                        </svg></span><span class="checkboxTxt">24/7 Service</span>
                                 </label>
                             </div>
+                            <div class="mt-0 mb-4">
+                                <h5 id="dtCount">18 days Package </h5>
+                            </div>
                             <div id="date-picker-title">
-                                <h4> Select your dates </h4>
+                                <h4> Select your date </h4>
                             </div>
 
                             <p> Click on a date to open the date picker. </p>
@@ -149,9 +152,7 @@
                                 <div id="date-picker-date-first" class="date-picker-date">
                                     24/12/2017
                                 </div>
-                                <div class="date-picker-date">
-                                    28/12/2017
-                                </div>
+
                             </div>
 
                             <p> Revel in how big the dates are now. </p>
@@ -162,7 +163,7 @@
                                         24 Dec
                                     </div>
                                     <div class="date-picker-display-label">
-                                        Date one
+                                        Starting Date
                                     </div>
                                 </div>
                                 <div class="date-picker-display-pair">
@@ -170,7 +171,7 @@
                                         28 Dec
                                     </div>
                                     <div class="date-picker-display-label">
-                                        Date two
+                                        Last Date
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +214,8 @@
                             <small class="fa fa-star text-primary"></small>
                         </div>
                         <h4>Our this package</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nulla deleniti a aut
+                        <p id="pkgDiscrip">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+                            nulla deleniti a aut
                             perferendis dicta sit dolores voluptate asperiores ipsa ullam incidunt repudiandae amet
                             quisquam, sunt tempora ea hic quia?</p>
                         <h4>See How Our Customers Explore and Enjoy</h4>
@@ -369,8 +371,8 @@
                 </div>
             </div>
             <div class="row g-4">
-                <h2 class="text-center">For this Complete Package Price Only :<span
-                        class="text-primary">$187.52</span>
+                <h2 class="text-center">For this Complete Package Price Only :<span class="text-primary"
+                        id="pkgPrice">$187.52</span>
                 </h2>
                 <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
                     data-wow-delay="0.4s">
@@ -864,111 +866,15 @@
         }
 
         function getVehicles() {
-            for (var j = 0; j < 2; j++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row g-2 mt-1 justify-content-center';
-                let content = "";
-                for (var i = 0; i < 4; i++) {
-                    content += `
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="package-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
-                            </div>
 
-                            <div class="text-center p-2">
-                                <h4 class="mb-0">Totota KDH</h4>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                                <p>Very comfortable vehicle with fully ac</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-        `;
-
-                }
-                divElement.innerHTML = content;
-                document.getElementById('Vehicle-list').appendChild(divElement);
-            }
         }
 
         function getAccommodation() {
-            for (var j = 0; j < 2; j++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row g-2 mt-1 justify-content-center';
-                let content = "";
-                for (var i = 0; i < 4; i++) {
-                    content += `
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="package-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
-                            </div>
 
-                            <div class="text-center p-2">
-                                <h4 class="mb-0">Hotel Galadari</h4>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                                <p>5 Start Hotel for you comfortable accommodation</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-        `;
-
-                }
-                divElement.innerHTML = content;
-                document.getElementById('accommodation-list').appendChild(divElement);
-            }
         }
 
         function getTranslators() {
-            for (var j = 0; j < 1; j++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row g-2 mt-1 justify-content-center';
-                let content = "";
-                for (var i = 0; i < 4; i++) {
-                    content += `
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="package-item">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
-                            </div>
 
-                            <div class="text-center p-2">
-                                <h4 class="mb-0">Mr. Kasun</h4>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                                <p>Guide And Language Translator</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-        `;
-
-                }
-                divElement.innerHTML = content;
-                document.getElementById('translators-list').appendChild(divElement);
-            }
         }
 
         function getPackageData(pkgID) {
@@ -1016,6 +922,140 @@
                         }
                         divElement.innerHTML = content;
                         document.getElementById('packageList').appendChild(divElement);
+
+
+                        // sets vehicles into package data
+                        var divElementVehicle = document.createElement('div');
+                        divElementVehicle.className = 'row g-2 mt-1 justify-content-center';
+                        let contentVehi = "";
+                        for (var i = 0; i < response.data.vehicles.length; i++) {
+                            contentVehi += `
+                                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.vehicles[i].model}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.vehicles[i].discription}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                        }
+                        divElementVehicle.innerHTML = contentVehi;
+                        document.getElementById('Vehicle-list').appendChild(divElementVehicle);
+
+
+                        //hotel sets from api
+
+
+                        var divElementhtl = document.createElement('div');
+                        divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                        let contenthtl = "";
+                        for (var i = 0; i < response.data.hotels.length; i++) {
+                            contenthtl += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data.hotels[i].hotel_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data.hotels[i].discription}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                        }
+                        divElementhtl.innerHTML = contenthtl;
+                        document.getElementById('accommodation-list').appendChild(divElementhtl);
+
+
+                        // Guides set from api
+
+                        var divElementGuide = document.createElement('div');
+                        divElementGuide.className = 'row g-2 mt-1 justify-content-center';
+                        let contentguide = "";
+                        for (var i = 0; i < response.data.guides.length; i++) {
+                            contentguide += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data.guides[i].guide_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data.guides[i].discription}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                        }
+                        divElementGuide.innerHTML = contentguide;
+                        document.getElementById('translators-list').appendChild(divElementGuide);
+
+
+
+
+                        var pkgPriceElement = document.getElementById("pkgPrice");
+
+                        if (pkgPriceElement) {
+                            pkgPriceElement.textContent = "$" + response.data.package.price;
+                        }
+
+                        // document.getElementById("airportPick").checked = true,
+                        if (response.data.package.airport_pickup === 1) {
+                            document.getElementById("airportPick").checked = true;
+                        }
+                        if (response.data.package.airport_drop === 1) {
+                            document.getElementById("airportDrop").checked = true;
+                        }
+
+                        var dtCountElement = document.getElementById("dtCount");
+
+                        if (dtCountElement) {
+                            dtCountElement.textContent = response.data.package.day_count + " days Package";
+                        }
+
+                        var pkgDiscripElement = document.getElementById("pkgDiscrip");
+
+                        if (pkgDiscripElement) {
+                            pkgDiscripElement.textContent = response.data.package.discription;
+                        }
 
 
                     } else {
