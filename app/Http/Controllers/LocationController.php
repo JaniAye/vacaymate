@@ -68,6 +68,30 @@ class LocationController extends Controller
         }
     }
 
+    public function getLocationById($locationName)
+    {
+        try {
+            $location = Location::find($locationName);
+
+            if ($location->isNotEmpty()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $location
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
     public function getLocations($packageId)
     {
         try {
