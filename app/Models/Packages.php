@@ -18,6 +18,8 @@ class Packages extends Model
         'airport_drop',
         'free_guide',
         'ultimate_service',
-        'price'
+        'price',
+        'type',
+        'status'
     ];
 }

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->boolean('free_guide');
             $table->boolean('ultimate_service');
             $table->double('price', 8, 2);
+            $table->string('type');
+            $table->boolean('status');
             $table->string('reviews')->nullable();
             $table->timestamps();
 
