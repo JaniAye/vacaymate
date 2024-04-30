@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgancyController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\GuidesController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
@@ -60,3 +61,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackag
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancyDetails/{agancyId}', [AgancyController::class, 'getAgancyDetails']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackageDetail/{packageId}', [PackagesController::class, 'getPackageDetail']);
+Route::withoutMiddleware(['web', 'auth'])->post('/package-book', [BookingController::class, 'createBooking'])->name('package.book');

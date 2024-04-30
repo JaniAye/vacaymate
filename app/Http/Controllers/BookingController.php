@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function createPackage(Request $request)
+    public function createBooking(Request $request)
     {
         $res = Booking::create([
             'cust_id' => $request->customerId,
