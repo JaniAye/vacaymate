@@ -11,27 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("cust_id");
+        Schema::create('booked_vehicle_details', function (Blueprint $table) {
             $table->unsignedBigInteger("pkg_id");
-            $table->string('status');
-            $table->string('type');
-            $table->date('st_date');
-            $table->date('end_date');
-            $table->double('price', 8, 2);
-            $table->text('comments');
+            $table->string("vehicle_no");
             $table->timestamps();
-
-            $table->foreign('cust_id')
-                ->references('id')
-                ->on('accounts')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->primary(['pkg_id', 'vehicle_no']);
 
             $table->foreign('pkg_id')
                 ->references('id')
-                ->on('packages')
+                ->on('booked_packages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('vehicle_no')
+                ->references('vehicle_no')
+                ->on('vehicles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -42,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('booked_vehicle_details');
     }
 };
