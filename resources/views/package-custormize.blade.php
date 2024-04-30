@@ -1136,10 +1136,7 @@
                         var divElement = document.createElement('div');
                         divElement.className = 'row g-2 mt-1 justify-content-center';
                         let content = "";
-                        console.log(response.data.locations.length+ " loca" );
-                        console.log(response.data.vehicles.length+ " response" );
-                        console.log(response.data.hotels.length+ " hotel" );
-                        console.log(response.data.guides.length+ " guides" );
+
                         for (var i = 0; i < response.data.locations.length; i++) {
 
                             content += `
@@ -2267,15 +2264,19 @@
                 data: packageData,
                 success: function(response) {
                     alert(response.message);
-                    document.getElementById('packageName').value = '';
-                    document.getElementById('packageBreifDiscription').value = '';
-                    document.getElementById('personCount').value = '1';
-                    document.getElementById('dateCount').value = '1';
-                    document.getElementById('chkAirportPick').checked = false;;
-                    document.getElementById('chkAirportDrop').checked = false;
-                    document.getElementById('chkTourGuide').checked = false;
-                    document.getElementById('ultimateService').checked = false;
-                    location.reload();
+                    // document.getElementById('packageName').value = '';
+                    // document.getElementById('packageBreifDiscription').value = '';
+                    // document.getElementById('personCount').value = '1';
+                    // document.getElementById('dateCount').value = '1';
+                    // document.getElementById('chkAirportPick').checked = false;;
+                    // document.getElementById('chkAirportDrop').checked = false;
+                    // document.getElementById('chkTourGuide').checked = false;
+                    // document.getElementById('ultimateService').checked = false;
+                    // console.log("sadsadsa");
+                    var bookingUrl = `/package`;
+
+                    window.location.href = bookingUrl;
+                    // location.reload();
                     // var overlay = document.getElementById('overlay');
                     // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
                 },

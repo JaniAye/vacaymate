@@ -9,6 +9,11 @@ use App\Models\BookedPackage;
 use App\Models\BookedVehicleDetails;
 use App\Models\Booking;
 use App\Models\CustormizedPackage;
+use App\Models\PackageGuides;
+use App\Models\PackageHotels;
+use App\Models\PackageLocations;
+use App\Models\Packages;
+use App\Models\PackageVehicleDetails;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -86,7 +91,88 @@ class BookingController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'New Package Created'
+            'message' => 'Thank you for submitting customized package we will review this and get back to you shortly'
         ], 201);
+    }
+
+    public function bookPackage(Request $request)
+    {
+
+
+        try {
+            $package = Packages::find($request->packageId);
+            if ($package) {
+
+                $res = BookedPackage::create([
+                    'pkg_id' => $request->packageId,
+                    'package_name' => $package->package_name,
+                    'agancy_id' => $package->agancy_id,
+                    'discription' => $package->discription,
+                    'person_count' => $package->person_count,
+                    'day_count' => $package->day_count,
+                    'airport_pickup' => (int) $package->airport_pickup,
+                    'airport_drop' => (int) $package->airport_drop,
+                    'free_guide' => (int)  $package->free_guide,
+                    'ultimate_service' => (int)  $package->ultimate_service,
+                    'price' => $package->price,
+                    'type' =>  $package->type,
+                    'status' => $package->status
+                    // 'reviews' => $request->reviews
+                ]);
+
+                $packageLocations = PackageLocations::where('package_id', $request->packageId)->get();
+                $packageVehicles = PackageVehicleDetails::where('package_id', $request->packageId)->get();
+                $packageHotels = PackageHotels::where('package_id', $request->packageId)->get();
+                $packageGuides = PackageGuides::where('package_id', $request->packageId)->get();
+
+
+                for ($i = 0; $i < count($packageLocations); $i++) {
+                    BookedLocations::create([
+                        'pkg_id' => $res->id,
+                        'loc_name' => $packageLocations[$i]->loc_name
+                    ]);
+                }
+
+                for ($i = 0; $i < count($packageVehicles); $i++) {
+                    BookedVehicleDetails::create([
+                        'pkg_id' => $res->id,
+                        'vehicle_no' => $packageVehicles[$i]->vehicle_no
+                    ]);
+                }
+
+                for ($i = 0; $i < count($packageHotels); $i++) {
+                    BookedHotels::create([
+                        'pkg_id' => $res->id,
+                        'hotel_id' => $packageHotels[$i]->id
+                    ]);
+                }
+
+                for ($i = 0; $i < count($packageGuides); $i++) {
+                    BookedGuides::create([
+                        'pkg_id' => $res->id,
+                        'guide_id' => $packageGuides[$i]->id
+                    ]);
+                }
+
+                $packageDetails = [
+                    'package' => $package
+                ];
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Package Booked Successfully.We will respond as soon as possible.',
+                    'data' => $packageDetails
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
     }
 }
