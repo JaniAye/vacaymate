@@ -136,9 +136,9 @@
                 0 10px 10px rgba(0, 0, 0, 0.22);
             position: relative;
             overflow: hidden;
-            width: 768px;
+            width: 820px;
             max-width: 100%;
-            min-height: 480px;
+            min-height: 560px;
         }
 
         .form-container {
@@ -293,13 +293,73 @@
             color: #3c97bf;
             text-decoration: none;
         }
+
+        .radio-button-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .radio-button {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-button__input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-button__label {
+            display: inline-block;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 15px;
+            color: #989898;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .radio-button__custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #555;
+            transition: all 0.3s ease;
+        }
+
+        .radio-button__input:checked+.radio-button__label .radio-button__custom {
+            background-color: #86B817;
+            border-color: transparent;
+            transform: scale(0.8);
+            box-shadow: 0 0 20px #ace625;
+        }
+
+        .radio-button__input:checked+.radio-button__label {
+            color: #86B817;
+        }
+
+        .radio-button__label:hover .radio-button__custom {
+            transform: scale(1.2);
+            border-color: #86B817;
+            box-shadow: 0 0 20px #ace625;
+        }
     </style>
 </head>
 
 
 <body>
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 mt-4 mb-5">
             <a href="" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>VacyMate</h1>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
@@ -330,13 +390,13 @@
         </nav>
         <div class="container-fluid bg-primary py-5 mb-1 mt-10px hero-header">
             <div class="container py-5">
-                <div style="height: 3.0em;"></div>
+                <div style="height: 1.0em;"></div>
 
-                <div class="container" id="container">
+                <div class="container mt-4" id="container">
 
                     <div class="form-container sign-up-container">
                         <form action="#">
-                            <h1>Create Account</h1>
+                            <h4>Create Account</h4>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -344,8 +404,29 @@
                             </div>
                             <span>or use your email for registration</span>
                             <input type="text" placeholder="Name" />
+                            <div class="radio-button-container">
+                                <div class="radio-button">
+                                    <input type="radio" class="radio-button__input" id="radio1"
+                                        name="radio-group" checked>
+                                    <label class="radio-button__label" for="radio1">
+                                        <span class="radio-button__custom"></span>
+                                        User
+                                    </label>
+                                </div>
+                                <div class="radio-button">
+                                    <input type="radio" class="radio-button__input" id="radio2"
+                                        name="radio-group">
+                                    <label class="radio-button__label" for="radio2">
+                                        <span class="radio-button__custom"></span>
+                                        service Provider
+                                    </label>
+                                </div>
+
+                            </div>
+
                             <input type="email" placeholder="Email" />
                             <input type="password" placeholder="Password" />
+                            <input type="password" placeholder="Re-Enter Password" />
                             <button>Sign Up</button>
                         </form>
                     </div>
