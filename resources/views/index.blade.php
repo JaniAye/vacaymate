@@ -287,34 +287,28 @@
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                                <div
-                                    class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    30% OFF</div>
+
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Thailand</div>
+                                    Galle</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                                <div
-                                    class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    25% OFF</div>
+
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Malaysia</div>
+                                    Nuwara Eliya</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                                <div
-                                    class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    35% OFF</div>
+
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Australia</div>
+                                    Jaffna</div>
                             </a>
                         </div>
                     </div>
@@ -323,10 +317,9 @@
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
                         <img class="img-fluid position-absolute w-100 h-100" src="img/destination-4.jpg"
                             alt="" style="object-fit: cover;">
-                        <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF
-                        </div>
+
                         <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                            Indonesia</div>
+                            Neluwa</div>
                     </a>
                 </div>
             </div>
