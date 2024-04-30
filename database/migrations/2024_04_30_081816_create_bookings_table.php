@@ -31,7 +31,7 @@ return new class extends Migration
 
             $table->foreign('pkg_id')
                 ->references('id')
-                ->on('packages')
+                ->on('booked_packages')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

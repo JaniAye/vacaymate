@@ -110,16 +110,16 @@
                         <div id="date-picker-container">
 
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="airportPick" class="inp-cbx" />
-                                <label for="airportPick" class="cbx"><span>
+                                <input type="checkbox" id="chkAirportPick" class="inp-cbx" />
+                                <label for="chkAirportPick" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Pickup</span>
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="airportDrop" class="inp-cbx" />
-                                <label for="airportDrop" class="cbx"><span>
+                                <input type="checkbox" id="chkAirportDrop" class="inp-cbx" />
+                                <label for="chkAirportDrop" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">Airport Drop</span>
@@ -134,8 +134,16 @@
                                 </label>
                             </div>
                             <div class="checkbox-wrapper-46 mb-2">
-                                <input type="checkbox" id="ultimateSerice" class="inp-cbx" checked disabled />
-                                <label for="ultimateSerice" class="cbx"><span>
+                                <input type="checkbox" id="chkTourGuide" class="inp-cbx" />
+                                <label for="chkTourGuide" class="cbx"><span>
+                                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span class="checkboxTxt">Free Tour Guide</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-wrapper-46 mb-2">
+                                <input type="checkbox" id="ultimateService" class="inp-cbx" checked disabled />
+                                <label for="ultimateService" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                         </svg></span><span class="checkboxTxt">24/7 Service</span>
@@ -456,7 +464,7 @@
                 </h3>
                 <div class="col-lg-12 col-sm-4 wow fadeInUp " style=" display: flex; justify-content: center;"
                     data-wow-delay="0.4s">
-                    <button class="animated-button" style="width: 15vw">
+                    <button class="animated-button" style="width: 15vw" onclick="submitPackage()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -1128,6 +1136,10 @@
                         var divElement = document.createElement('div');
                         divElement.className = 'row g-2 mt-1 justify-content-center';
                         let content = "";
+                        console.log(response.data.locations.length+ " loca" );
+                        console.log(response.data.vehicles.length+ " response" );
+                        console.log(response.data.hotels.length+ " hotel" );
+                        console.log(response.data.guides.length+ " guides" );
                         for (var i = 0; i < response.data.locations.length; i++) {
 
                             content += `
@@ -1178,6 +1190,7 @@
                                                 </div>
 
                                                 <div class="text-center p-2">
+                                                    <h4 class="mb-0" style="display:none;">${response.data.vehicles[i].vehicle_no}</h4>
                                                     <h4 class="mb-0">${ response.data.vehicles[i].model}</h4>
                                                     <div class="mb-3">
                                                         <small class="fa fa-star text-primary"></small>
@@ -1228,6 +1241,7 @@
                                                             <small class="fa fa-star text-primary"></small>
                                                             <small class="fa fa-star text-primary"></small>
                                                         </div>
+                                                        <p style="display:none" id="hid${i+1}">${response.data.hotels[i].id}</p>
                                                         <p>${ response.data.hotels[i].discription}</p>
                                                         <button class="rmv-btn " style=" margin-left: 40%;"  onclick='removeHotelCard(event)'>
                                                             <svg viewBox="0 0 448 512" class="svgIcon">
@@ -1269,6 +1283,7 @@
                                                             <small class="fa fa-star text-primary"></small>
                                                             <small class="fa fa-star text-primary"></small>
                                                         </div>
+                                                        <p style="display:none" id="gid${i+1}">${response.data.guides[i].id}</p>
                                                         <p>${ response.data.guides[i].discription}</p>
                                                         <button class="rmv-btn " style=" margin-left: 40%;" onclick='removeGuideCard(event)'>
                                                             <svg viewBox="0 0 448 512" class="svgIcon">
@@ -1296,12 +1311,12 @@
                             pkgPriceElement.textContent = "$" + response.data.package.price;
                         }
 
-                        // document.getElementById("airportPick").checked = true,
+                        // document.getElementById("chkAirportPick").checked = true,
                         if (response.data.package.airport_pickup === 1) {
-                            document.getElementById("airportPick").checked = true;
+                            document.getElementById("chkAirportPick").checked = true;
                         }
                         if (response.data.package.airport_drop === 1) {
-                            document.getElementById("airportDrop").checked = true;
+                            document.getElementById("chkAirportDrop").checked = true;
                         }
 
                         var dtCountElement = document.getElementById("dtCount");
@@ -1931,7 +1946,7 @@
                                     // divElement.className = 'row g-2 mt-1 justify-content-center';
 
                                 }
-
+                                console.log(columnCount);
 
                                 content += `
                                     <div class="col-lg-3 col-md-6 wow fadeInUp guide${columnCount+1}" data-wow-delay="0.2s">
@@ -2134,6 +2149,138 @@
                 error: function(jqXHR, textStatus, errorThrown) {
 
                     alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+
+
+        }
+
+        function submitPackage() {
+
+            // create final package
+            var locIds = [];
+            var hotelsIds = [];
+            var vehicleNo = [];
+            var guidsIds = [];
+
+            var columnElementsLoc = packageList.querySelectorAll(
+                '.col-lg-2.col-md-6.wow.fadeInUp');
+            var locColumnCount = columnElementsLoc.length;
+
+
+            var columnElementsVehi = VehicleList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var vehiColumnCount = columnElementsVehi.length;
+
+
+            var columnElementsAcc = accommodationList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var accColumnCount = columnElementsAcc.length;
+
+
+            var columnElementsTrans = translatorsList.querySelectorAll(
+                '.col-lg-3.col-md-6.wow.fadeInUp');
+            var TransColumnCount = columnElementsTrans.length;
+
+
+            //for get location ids
+            for (let i = 1; i <= locColumnCount; i++) {
+                var columnElementsLoc = packageList.querySelector(
+                    `.col-lg-2.col-md-6.wow.fadeInUp.loc${i}`);
+
+                var h4Element = columnElementsLoc.querySelector("h4.mb-0");
+
+                if (h4Element) {
+                    var name = h4Element.textContent;
+                    locIds.push(name);
+                }
+
+
+            }
+
+            //for get Hotel name
+            for (let i = 1; i <= accColumnCount; i++) {
+                var columnElementsHtl = accommodationList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.hotel${i}`);
+
+                var htlElement = columnElementsHtl.querySelector(`p#hid${i}`);
+                if (htlElement) {
+                    hotelsIds.push(htlElement.textContent);
+                }
+            }
+
+            //for get vehicle no
+            for (let i = 1; i <= vehiColumnCount; i++) {
+                var columnElementsLoc = VehicleList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.vehi${i}`);
+
+                var h4Element = columnElementsLoc.querySelector("h4.mb-0");
+
+                if (h4Element) {
+                    var no = h4Element.textContent;
+                    vehicleNo.push(no);
+                }
+            }
+
+            //for get guide ids
+            for (let i = 1; i <= TransColumnCount; i++) {
+                var columnElementsff = translatorsList.querySelector(
+                    `.col-lg-3.col-md-6.wow.fadeInUp.guide${i}`);
+
+                var gidElement = columnElementsff.querySelector(`p#gid${i}`);
+
+                if (gidElement) {
+                    console.log(gidElement.textContent);
+                    guidsIds.push(gidElement.textContent);
+                }
+
+
+            }
+            console.log(TransColumnCount);
+
+            var packageData = {
+                packageId: {{ $packageId }},
+                packageName: "sukk",
+                agancy: 1,
+                discription: "--",
+                chkAirportPick: document.getElementById("chkAirportPick").checked ? 1 : 0,
+                chkAirportDrop: document.getElementById("chkAirportDrop").checked ? 1 : 0,
+                chkTourGuide: document.getElementById("chkTourGuide").checked ? 1 : 0,
+                ultimateService: document.getElementById("ultimateService").checked ? 1 : 0,
+                personCount: 6,
+                dateCount: 6,
+                gidSet: guidsIds,
+                vehicleNo: vehicleNo,
+                hotelsIds: hotelsIds,
+                locIds: locIds,
+                price: 0,
+                reviews: ''
+            };
+
+            $.ajax({
+                url: '{{ route('package.book') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    alert(response.message);
+                    document.getElementById('packageName').value = '';
+                    document.getElementById('packageBreifDiscription').value = '';
+                    document.getElementById('personCount').value = '1';
+                    document.getElementById('dateCount').value = '1';
+                    document.getElementById('chkAirportPick').checked = false;;
+                    document.getElementById('chkAirportDrop').checked = false;
+                    document.getElementById('chkTourGuide').checked = false;
+                    document.getElementById('ultimateService').checked = false;
+                    location.reload();
+                    // var overlay = document.getElementById('overlay');
+                    // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Failed to create Package: ' + textStatus);
                 }
             });
 

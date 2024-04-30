@@ -143,19 +143,12 @@ class PackagesController extends Controller
     {
         try {
             $package = Packages::find($packageId);
-            info($package);
-
             if ($package) {
                 $packageLocations = PackageLocations::where('package_id', $packageId)->get();
                 $packageVehicles = PackageVehicleDetails::where('package_id', $packageId)->get();
                 $packageHotels = PackageHotels::where('package_id', $packageId)->get();
                 $packageGuides = PackageGuides::where('package_id', $packageId)->get();
 
-                // info("------------");
-                // info(count($packageLocations));
-                // info("------------");
-                // $relatedLocations = Location::whereIn('name', $packageLocations)->get();
-                // info($relatedLocations);
                 $allRelatedLocations = [];
                 $allVehicles = [];
                 $allhotels = [];
@@ -172,12 +165,14 @@ class PackagesController extends Controller
                 }
 
                 for ($i = 0; $i < count($packageHotels); $i++) {
-                    $relatedHotel = Hotels::whereIn('id', $packageHotels[$i])->get();
+
+                    $relatedHotel = Hotels::where('id', $packageHotels[$i]->id)->get();
+
                     $allhotels = array_merge($allhotels, $relatedHotel->toArray());
                 }
 
                 for ($i = 0; $i < count($packageGuides); $i++) {
-                    $relatedGuide = Guides::whereIn('id', $packageGuides[$i])->get();
+                    $relatedGuide = Guides::where('id', $packageGuides[$i]->id)->get();
                     $allGuides = array_merge($allGuides, $relatedGuide->toArray());
                 }
 

@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('booked_vehicle_details', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger("pkg_id");
             $table->string("vehicle_no");
             $table->timestamps();
-            $table->primary(['pkg_id', 'vehicle_no']);
 
             $table->foreign('pkg_id')
                 ->references('id')

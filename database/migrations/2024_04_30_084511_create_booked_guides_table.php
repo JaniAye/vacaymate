@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('booked_guides', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger("pkg_id");
             $table->unsignedBigInteger("guide_id");
             $table->timestamps();
-            $table->primary(['pkg_id', 'guide_id']);
 
             $table->foreign('pkg_id')
                 ->references('id')

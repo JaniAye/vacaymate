@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('package_locations', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger("package_id");
             $table->string("loc_name");
             $table->timestamps();
-            $table->primary(['package_id', 'loc_name']);
 
             $table->foreign('package_id')
                 ->references('id')
