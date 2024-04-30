@@ -856,9 +856,11 @@
 
         function updateDateShown() {
             var formattedDate = getDateString(dates[currentDate]);
+
             var updateDateBox = $(datesBoxes[currentDate]);
 
             var updateDisplayBox = $(displayBoxes[currentDate]);
+
             var dayAndMonth = dates[currentDate].getDate() + " " + monthFormatter.format(dates[currentDate]).slice(0, 3);
 
             updateDateBox.text(formattedDate);
@@ -867,6 +869,7 @@
             var updateDisplayBox2 = $(displayBoxes[1]);
             var dtCount = document.getElementById("dtCount2").textContent;
             var futureDayAndMonth = getFormattedDayAndMonth(dayAndMonth, parseInt(dtCount, 10));
+
             updateDisplayBox2.text(futureDayAndMonth);
         }
 
@@ -1103,12 +1106,41 @@
 
         }
 
+        function getFutureFormattedDate(formattedDate, daysToAdd) {
+
+            var parts = formattedDate.split("/");
+            var day = parseInt(parts[0], 10);
+            var month = parseInt(parts[1], 10) - 1;
+            var year = parseInt(parts[2], 10);
+
+            var date = new Date(year, month, day);
+
+            date.setDate(date.getDate() + daysToAdd);
+
+            var newDay = ("0" + date.getDate()).slice(-2);
+            var newMonth = ("0" + (date.getMonth() + 1)).slice(-2);
+            var formattedFutureDate = `${newDay}/${newMonth}/${date.getFullYear()}`;
+
+            return formattedFutureDate;
+        }
+
         function bookpkg() {
+
+
+
+
+            var formattedDate = getDateString(dates[currentDate]);
+
+            var fdate = document.getElementById("dtCount2").textContent;
+
+            var futureFormattedDate = getFutureFormattedDate(formattedDate, parseInt(fdate));
 
             var packageData = {
                 packageId: {{ $packageId }},
                 userId: 1,
-                agancy: 1
+                agancy: 1,
+                stDate: formattedDate,
+                endDate: futureFormattedDate
 
             };
 

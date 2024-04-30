@@ -14,6 +14,7 @@ use App\Models\PackageHotels;
 use App\Models\PackageLocations;
 use App\Models\Packages;
 use App\Models\PackageVehicleDetails;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -153,6 +154,23 @@ class BookingController extends Controller
                         'guide_id' => $packageGuides[$i]->id
                     ]);
                 }
+
+
+                $date = Carbon::createFromFormat('d/m/Y', $request->stDate);
+                $formattedSTDate = $date->format('Y-m-d');
+
+                $date2 = Carbon::createFromFormat('d/m/Y', $request->endDate);
+                $formattedENDDate = $date2->format('Y-m-d');
+                $res = Booking::create([
+                    'cust_id' => $request->userId,
+                    'pkg_id' =>  $res->id,
+                    'status' => "PENDING",
+                    'type' => "AAA",
+                    'st_date' => $formattedSTDate,
+                    'end_date' => $formattedENDDate,
+                    'price' => $package->price,
+                    'comments' => ""
+                ]);
 
                 $packageDetails = [
                     'package' => $package
