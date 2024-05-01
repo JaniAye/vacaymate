@@ -136,7 +136,7 @@
                                 <label for="ultimateSerice" class="cbx"><span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </svg></span><span class="checkboxTxt">24/7 Service</span>
+                                        </svg></span><span class="checkboxTxt" id="servicetype">24/7 Service</span>
                                 </label>
                             </div>
                             <div class="mt-0 mb-4">
@@ -288,7 +288,7 @@
 
     <div class="container-xxl py-5" style="background-color: #fff; width:88%">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4" id="locDiv">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <h3 class="text-center">Locations Covers From This Package</h3>
@@ -296,7 +296,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row g-4">
+            <div class="row g-4" id="vehiDiv">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
@@ -305,7 +305,7 @@
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4" id="accDiv">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
@@ -314,7 +314,7 @@
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4" id="gidDiv">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
                     <h3 class="text-center mt-5">Guides And Language Translators</h3>
@@ -375,7 +375,7 @@
                 <h2 class="text-center">For this Complete Package Price Only :<span class="text-primary"
                         id="pkgPrice">$187.52</span>
                 </h2>
-                <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
+                {{-- <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
                     data-wow-delay="0.4s">
                     <button class="animated-button" onclick="customizePkg()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
@@ -391,8 +391,8 @@
                             </path>
                         </svg>
                     </button>
-                </div>
-                <div class="col-lg-6 col-sm-4 wow fadeInUp" data-wow-delay="0.4s">
+                </div> --}}
+                <div class="col-lg-12 col-sm-4 wow fadeInUp text-center" data-wow-delay="0.4s">
                     <button class="animated-button" onclick="bookpkg()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
@@ -916,46 +916,28 @@
                     var divElement = document.querySelector("#locationsList");
                     if (response.success) {
 
-                        var divElement = document.createElement('div');
-                        divElement.className = 'row g-2 mt-1 justify-content-center';
-                        let content = "";
-                        for (var i = 0; i < response.data.locations.length; i++) {
-
-                            content += `
-                                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                                            <div class="package-item">
-                                                <div class="overflow-hidden">
-                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
-                                                </div>
-
-                                                <div class="text-center p-2">
-                                                    <h4 class="mb-0">${ response.data.locations[i].name}</h4>
-                                                    <div class="mb-3">
-                                                        <small class="fa fa-star text-primary"></small>
-                                                        <small class="fa fa-star text-primary"></small>
-                                                        <small class="fa fa-star text-primary"></small>
-                                                        <small class="fa fa-star text-primary"></small>
-                                                        <small class="fa fa-star text-primary"></small>
-                                                    </div>
-                                                    <p>${ response.data.locations[i].discription}</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                            `;
-
-                        }
-                        divElement.innerHTML = content;
-                        document.getElementById('packageList').appendChild(divElement);
+                        // log.
+                        if (response.data.package.type === 'VEHICLE') {
+                            document.getElementById("locDiv").style.display = "none";
+                            document.getElementById("gidDiv").style.display = "none";
+                            document.getElementById("accDiv").style.display = "none";
+                            document.getElementById("servicetype").textContent = "With Driver";
+                            document.getElementById("ultimateSerice").removeAttribute("disabled");
 
 
-                        // sets vehicles into package data
-                        var divElementVehicle = document.createElement('div');
-                        divElementVehicle.className = 'row g-2 mt-1 justify-content-center';
-                        let contentVehi = "";
-                        for (var i = 0; i < response.data.vehicles.length; i++) {
-                            contentVehi += `
+                            if (response.data.package.free_guide === 1) {
+                                document.getElementById("ultimateSerice").checked = true;
+                            } else {
+                                document.getElementById("ultimateSerice").checked = false;
+                            }
+
+
+                            var divElementVehicle = document.createElement('div');
+                            divElementVehicle.className = 'row g-2 mt-1 justify-content-center';
+                            let contentVehi = "";
+                            for (var i = 0; i < response.data.vehicles.length; i++) {
+                                console.log(response.data.vehicles[i].discription);
+                                contentVehi += `
                                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                             <div class="package-item">
                                                 <div class="overflow-hidden">
@@ -979,19 +961,87 @@
 
                             `;
 
-                        }
-                        divElementVehicle.innerHTML = contentVehi;
-                        document.getElementById('Vehicle-list').appendChild(divElementVehicle);
+                            }
+                            divElementVehicle.innerHTML = contentVehi;
+                            document.getElementById('Vehicle-list').appendChild(divElementVehicle);
+                        } else {
+
+                            var divElement = document.createElement('div');
+                            divElement.className = 'row g-2 mt-1 justify-content-center';
+                            let content = "";
+                            for (var i = 0; i < response.data.locations.length; i++) {
+
+                                content += `
+                                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.locations[i].name}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.locations[i].discription}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                            }
+                            divElement.innerHTML = content;
+                            document.getElementById('packageList').appendChild(divElement);
 
 
-                        //hotel sets from api
+                            // sets vehicles into package data
+                            var divElementVehicle = document.createElement('div');
+                            divElementVehicle.className = 'row g-2 mt-1 justify-content-center';
+                            let contentVehi = "";
+                            for (var i = 0; i < response.data.vehicles.length; i++) {
+                                contentVehi += `
+                                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data.vehicles[i].model}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data.vehicles[i].discription}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                            }
+                            divElementVehicle.innerHTML = contentVehi;
+                            document.getElementById('Vehicle-list').appendChild(divElementVehicle);
 
 
-                        var divElementhtl = document.createElement('div');
-                        divElementhtl.className = 'row g-2 mt-1 justify-content-center';
-                        let contenthtl = "";
-                        for (var i = 0; i < response.data.hotels.length; i++) {
-                            contenthtl += `
+                            //hotel sets from api
+
+
+                            var divElementhtl = document.createElement('div');
+                            divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                            let contenthtl = "";
+                            for (var i = 0; i < response.data.hotels.length; i++) {
+                                contenthtl += `
                                         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                                 <div class="package-item">
                                                     <div class="overflow-hidden">
@@ -1015,18 +1065,18 @@
 
                                 `;
 
-                        }
-                        divElementhtl.innerHTML = contenthtl;
-                        document.getElementById('accommodation-list').appendChild(divElementhtl);
+                            }
+                            divElementhtl.innerHTML = contenthtl;
+                            document.getElementById('accommodation-list').appendChild(divElementhtl);
 
 
-                        // Guides set from api
+                            // Guides set from api
 
-                        var divElementGuide = document.createElement('div');
-                        divElementGuide.className = 'row g-2 mt-1 justify-content-center';
-                        let contentguide = "";
-                        for (var i = 0; i < response.data.guides.length; i++) {
-                            contentguide += `
+                            var divElementGuide = document.createElement('div');
+                            divElementGuide.className = 'row g-2 mt-1 justify-content-center';
+                            let contentguide = "";
+                            for (var i = 0; i < response.data.guides.length; i++) {
+                                contentguide += `
                                         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                                 <div class="package-item">
                                                     <div class="overflow-hidden">
@@ -1050,11 +1100,11 @@
 
                                 `;
 
+                            }
+                            divElementGuide.innerHTML = contentguide;
+                            document.getElementById('translators-list').appendChild(divElementGuide);
+
                         }
-                        divElementGuide.innerHTML = contentguide;
-                        document.getElementById('translators-list').appendChild(divElementGuide);
-
-
 
 
                         var pkgPriceElement = document.getElementById("pkgPrice");
