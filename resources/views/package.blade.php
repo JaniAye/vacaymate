@@ -497,8 +497,8 @@
                                                     <small class="fa fa-star text-primary"></small>
                                                     <small class="fa fa-star text-primary"></small>
                                                 </div>
-                                                <h4 class="travelAgancyName">D&W Travels</h4>
-                                                    <p class="coverAreas">${response.data[i].package_name}</p>
+                                                <h4 class="travelAgancyName">${response.data[i].package_name}</h4>
+                                                    <p class="coverAreas">D&W Travels</p>
                                                     <div class="d-flex justify-content-center mb-2">
                                                         <button id="seeMoreBtn${i}" class="btn btn-sm btn-primary px-3 border-end"
                                                             style="border-radius: 30px 0 0 30px;" onclick="seeMore(${response.data[i].id})">Read More</button>
