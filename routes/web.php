@@ -45,6 +45,9 @@ Route::get('/custormize', [PackagesController::class, 'custormizepkg']);
 Route::get('/create-package', function () {
     return view('add-package');
 });
+Route::get('/vehicle-package', function () {
+    return view('add-vehicle-package');
+});
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle'])->name('vehicle.create');
@@ -56,6 +59,7 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicl
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);
 Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createPackage'])->name('package.create');
+Route::withoutMiddleware(['web', 'auth'])->post('/create-vehiclepackage', [PackagesController::class, 'createVehiclePackage'])->name('pkgVehicle.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);

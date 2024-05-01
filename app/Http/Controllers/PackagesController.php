@@ -94,6 +94,42 @@ class PackagesController extends Controller
         ], 201);
     }
 
+    public function createVehiclePackage(Request $request)
+    {
+
+        $res = Packages::create([
+            'package_name' => $request->packageName,
+            'agancy_id' => $request->agancy,
+            'discription' => $request->discription,
+            'person_count' => $request->personCount,
+            'day_count' => $request->dateCount,
+            'airport_pickup' => (int) $request->chkAirportPick,
+            'airport_drop' => (int) $request->chkAirportDrop,
+            'free_guide' => (int)  $request->withDriver,
+            'ultimate_service' => 0,
+            'price' => $request->price,
+            'type' => "VEHICLE",
+            'status' => 1
+
+            // 'reviews' => $request->reviews
+        ]);
+
+        if ($res) {
+            $vehicleNo = $request->input('vehicleNo');
+            for ($i = 0; $i < count($vehicleNo); $i++) {
+                PackageVehicleDetails::create([
+                    'package_id' => $res->id,
+                    'vehicle_no' => $vehicleNo[$i]
+                ]);
+            }
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'New Package Created'
+        ], 201);
+    }
+
     public function getAllPackages()
     {
         try {
