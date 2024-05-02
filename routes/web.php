@@ -55,6 +55,9 @@ Route::get('/guide-package', function () {
 Route::get('/hotel-package', function () {
     return view('add-hotelpackage');
 });
+Route::get('/provider-home', function () {
+    return view('provider-panel');
+});
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle'])->name('vehicle.create');
