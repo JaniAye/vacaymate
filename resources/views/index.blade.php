@@ -339,7 +339,7 @@
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button">
+            <button class="button" onclick="packageAll()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -365,7 +365,7 @@
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button">
+            <button class="button" onclick="htlPackage()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -391,7 +391,7 @@
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button">
+            <button class="button" onclick="vehiclePackage()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -539,7 +539,7 @@
             </div>
         </div>
         <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button">
+            <button class="button" onclick="guidePackage()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -937,6 +937,23 @@
                 $(".package-carousel").slick('slickNext');
             }, 4000);
         });
+
+        function packageAll() {
+            window.location.href = `/package?type=complete`;
+
+        }
+
+        function htlPackage() {
+            window.location.href = `/package?type=hotel`;
+        }
+
+        function vehiclePackage() {
+            window.location.href = `/package?type=vehicle`;
+        }
+
+        function guidePackage() {
+            window.location.href = `/package?type=guide`;
+        }
     </script>
 </body>
 
