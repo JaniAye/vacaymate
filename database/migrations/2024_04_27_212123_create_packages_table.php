@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('reviews')->nullable();
             $table->timestamps();
 
-            $table->foreign("agancy_id")
-                ->references("id")
+            $table->foreign("accounts")
+                ->references("accounts")
                 ->on("agancies")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
