@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AgancyController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\GuidesController;
@@ -57,6 +58,7 @@ Route::get('/hotel-package', function () {
 
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle'])->name('vehicle.create');
+Route::withoutMiddleware(['web', 'auth'])->post('/signup', [AccountsController::class, 'createAccount'])->name('account.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-hotel', [HotelsController::class, 'saveHotel'])->name('hotel.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-guide', [GuidesController::class, 'saveGuide'])->name('guide.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocations/{location}', [LocationController::class, 'getAllLocations']);
