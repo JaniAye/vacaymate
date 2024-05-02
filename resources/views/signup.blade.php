@@ -442,7 +442,7 @@
                             <input type="email" placeholder="Email" id="lgEmail" />
                             <input type="password" placeholder="Password" id="lgPw" />
                             <a href="#">Forgot your password?</a>
-                            <button>Sign In</button>
+                            <button onclick="logAcc()">Sign In</button>
                         </div>
                     </div>
                     <div class="overlay-container">
@@ -506,8 +506,7 @@
                 userType = 'SERVICE';
             }
 
-            if (name.trim() === '' || emil.trim() === '' || pwd.trim() === '' || repwd.trim() ===
-                '') {
+            if (name.trim() === '' || emil.trim() === '' || pwd.trim() === '' || repwd.trim() === '') {
                 alert("Enter All Details...");
             } else {
                 if (pwd === repwd) {
@@ -547,6 +546,68 @@
                 } else {
                     alert("Re-Check password again");
                 }
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function logAcc() {
+
+            var emil = document.getElementById('lgEmail').value;
+            var pwd = document.getElementById('lgPw').value;
+
+
+
+            if (emil.trim() === '' || pwd.trim() === '') {
+                alert("Enter All Details...");
+            } else {
+
+                if (isValidEmail(emil)) {
+                    var account = {
+                        email: emil,
+                        password: pwd
+                    };
+
+                    $.ajax({
+                        url: '{{ route('account.login') }}',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: account,
+                        success: function(response) {
+                            localStorage.setItem('user', response.user.id);
+                            localStorage.setItem('userType', response.user.type);
+
+                            if (response.user.type === 'USER') {
+                                var homeUrl = `/`;
+                                window.location.href = homeUrl;
+                            } else {
+
+                            }
+
+                            document.getElementById('lgPw').value = '';
+                            document.getElementById('lgEmail').value = '';
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (jqXHR.status === 401) {
+                                alert('Invalid email or password');
+                            } else {
+                                alert('Failed to log in: ' + textStatus);
+                            }
+                            document.getElementById('lgPw').value = '';
+                            document.getElementById('lgEmail').value = '';
+                        }
+                    });
+                } else {
+                    alert('Please enter a valid email address');
+                    document.getElementById('lgPw').value = '';
+                    document.getElementById('lgEmail').value = '';
+                }
+
             }
 
             // isUser

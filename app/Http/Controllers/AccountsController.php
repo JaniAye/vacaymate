@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AccountsController extends Controller
 {
@@ -44,5 +46,34 @@ class AccountsController extends Controller
             'message' => 'Account created successfully',
             'account' => $account
         ], 201);
+    }
+    public function loginAccount(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user = Accounts::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid',
+            ], 401);
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid',
+            ], 401);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'successful',
+            'user' => $user,
+        ], 200);
     }
 }
