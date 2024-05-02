@@ -71,6 +71,7 @@ Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesCont
 Route::withoutMiddleware(['web', 'auth'])->post('/create-htlpackage', [PackagesController::class, 'createHtlpackage'])->name('htlpackage.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/create-vehiclepackage', [PackagesController::class, 'createVehiclePackage'])->name('pkgVehicle.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllFilterPackages', [PackagesController::class, 'getAllFilterdPackages'])->name('package.filter');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationsByPackage/{packageId}', [LocationController::class, 'getLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancyDetails/{agancyId}', [AgancyController::class, 'getAgancyDetails']);

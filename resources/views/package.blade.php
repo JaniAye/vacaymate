@@ -119,12 +119,11 @@
                 <div class="select-arrow">
                     <i class="material-icons">&#xE313;</i>
                 </div>
-                <select class="control-field filter-field form-control">
-                    <option value="package" selected>Packages</option>
-                    <option value="rentVehicle">Hire a vehicle</option>
-                    <option value="hotels">Hotels</option>
-                    <option value="guides">Guides</option>
-                    <option value="tanslators">Translators</option>
+                <select class="control-field filter-field form-control" id="pkgFilter" onchange="filterAdd()">
+                    <option value="COMPLETE" selected>Packages</option>
+                    <option value="VEHICLE">Hire a vehicle</option>
+                    <option value="HOTEL">Hotels</option>
+                    <option value="GUIDE">Guides</option>
                 </select>
             </div>
             <div class="control sort">
@@ -454,27 +453,27 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            getPackages();
+            getPackages('ALL');
         });
 
-        function getPackages() {
+        function getPackages(filter) {
 
+            if (filter === 'ALL') {
+                $.ajax({
+                    url: '{{ route('package.all') }}',
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
 
-            $.ajax({
-                url: '{{ route('package.all') }}',
-                method: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                success: function(response) {
+                        if (response.success) {
+                            var divElement = document.createElement('div');
+                            divElement.className = 'row g-2 mt-1 justify-content-center';
+                            let content = "";
 
-                    if (response.success) {
-                        var divElement = document.createElement('div');
-                        divElement.className = 'row g-2 mt-1 justify-content-center';
-                        let content = "";
-
-                        for (let i = 0; i < response.data.length; i++) {
-                            content += `
+                            for (let i = 0; i < response.data.length; i++) {
+                                content += `
                                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                         <div class="package-item">
                                             <div class="overflow-hidden">
@@ -511,22 +510,98 @@
 
                         `;
 
+                            }
+
+                            divElement.innerHTML = content;
+                            document.getElementById('packageList').appendChild(divElement);
+
+
+                        } else {
+
+                            alert('Error: ' + response.message);
                         }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
 
-                        divElement.innerHTML = content;
-                        document.getElementById('packageList').appendChild(divElement);
-
-
-                    } else {
-
-                        alert('Error: ' + response.message);
+                        alert('Failed to fetch data: ' + textStatus);
                     }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
+                });
+            } else {
 
-                    alert('Failed to fetch data: ' + textStatus);
-                }
-            });
+                var filter = {
+                    type: filter
+                };
+
+                $.ajax({
+                    url: '{{ route('package.filter') }}',
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: filter,
+                    success: function(response) {
+
+                        if (response.success) {
+                            var divElement = document.createElement('div');
+                            divElement.className = 'row g-2 mt-1 justify-content-center';
+                            let content = "";
+
+                            for (let i = 0; i < response.data.length; i++) {
+                                content += `
+                                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                        <div class="package-item">
+                                            <div class="overflow-hidden">
+                                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                            </div>
+                                            <div class="d-flex border-bottom">
+                                                <small class="flex-fill text-center border-end py-2"><i
+                                                        class="fa fa-map-marker-alt text-primary me-2"></i>Airport Pickup</small>
+                                                <small class="flex-fill text-center border-end py-2"><i
+                                                        class="fa fa-calendar-alt text-primary me-2"></i>${response.data[i].day_count} days</small>
+                                                <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>${response.data[i].person_count}
+                                                    Person</small>
+                                            </div>
+                                            <div class="text-center p-4">
+                                                <h3 class="mb-0">$${response.data[i].price}</h3>
+                                                <div class="mb-3">
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                </div>
+                                                <h4 class="travelAgancyName">${response.data[i].package_name}</h4>
+                                                    <p class="coverAreas">D&W Travels</p>
+                                                    <div class="d-flex justify-content-center mb-2">
+                                                        <button id="seeMoreBtn${i}" class="btn btn-sm btn-primary px-3 border-end"
+                                                            style="border-radius: 30px 0 0 30px;" onclick="seeMore(${response.data[i].id})">Read More</button>
+                                                        <a href="/booking?id=${response.data[i].id}" class="btn btn-sm btn-primary px-3"
+                                                            style="border-radius: 0 30px 30px 0;">Book Now</a>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        `;
+
+                            }
+
+                            divElement.innerHTML = content;
+                            document.getElementById('packageList').appendChild(divElement);
+
+
+                        } else {
+
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+
+                        alert('Failed to fetch data: ' + textStatus);
+                    }
+                });
+            }
+
 
         }
 
@@ -641,6 +716,14 @@
             overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
             seeMoreClicked = true;
 
+        }
+
+        function filterAdd() {
+            // alert("sadasdsa");
+            document.getElementById('packageList').innerHTML = '';
+            var selected = document.getElementById("pkgFilter").value;
+
+            getPackages(selected);
         }
     </script>
 </body>
