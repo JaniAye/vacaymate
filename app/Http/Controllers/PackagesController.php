@@ -274,4 +274,39 @@ class PackagesController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function createGuidePackage(Request $request)
+    {
+
+        $res = Packages::create([
+            'package_name' => $request->packageName,
+            'agancy_id' => $request->agancy,
+            'discription' => $request->discription,
+            'person_count' => $request->personCount,
+            'day_count' => $request->dateCount,
+            'airport_pickup' => (int) $request->chkAirportPick,
+            'airport_drop' => (int) $request->chkAirportDrop,
+            'free_guide' => (int)  $request->chkTourGuide,
+            'ultimate_service' => (int)  $request->ultimateService,
+            'price' => $request->price,
+            'type' => "COMPLETE",
+            'status' => 1
+
+            // 'reviews' => $request->reviews
+        ]);
+        if ($res) {
+            $gidSet = $request->input('gidSet');
+            for ($i = 0; $i < count($gidSet); $i++) {
+                PackageGuides::create([
+                    'package_id' => $res->id,
+                    'guide_id' => $gidSet[$i]
+                ]);
+            }
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'New Package Created'
+        ], 201);
+    }
 }
