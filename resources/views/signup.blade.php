@@ -586,7 +586,7 @@
                                 var homeUrl = `/`;
                                 window.location.href = homeUrl;
                             } else {
-
+                                window.location.href = `/provider-home`;
                             }
 
                             document.getElementById('lgPw').value = '';
