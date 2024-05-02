@@ -110,7 +110,7 @@
             border-color: #FFFFFF;
         }
 
-        form {
+        .frm {
             background-color: #FFFFFF;
             display: flex;
             align-items: center;
@@ -395,7 +395,7 @@
                 <div class="container mt-4" id="container">
 
                     <div class="form-container sign-up-container">
-                        <form action="#">
+                        <div class="frm">
                             <h4>Create Account</h4>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -403,20 +403,20 @@
                                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>or use your email for registration</span>
-                            <input type="text" placeholder="Name" />
+                            <input type="text" placeholder="Name" id="name" />
                             <div class="radio-button-container">
                                 <div class="radio-button">
-                                    <input type="radio" class="radio-button__input" id="radio1"
+                                    <input type="radio" class="radio-button__input" id="isUser"
                                         name="radio-group" checked>
-                                    <label class="radio-button__label" for="radio1">
+                                    <label class="radio-button__label" for="isUser">
                                         <span class="radio-button__custom"></span>
                                         User
                                     </label>
                                 </div>
                                 <div class="radio-button">
-                                    <input type="radio" class="radio-button__input" id="radio2"
+                                    <input type="radio" class="radio-button__input" id="isSProvider"
                                         name="radio-group">
-                                    <label class="radio-button__label" for="radio2">
+                                    <label class="radio-button__label" for="isSProvider">
                                         <span class="radio-button__custom"></span>
                                         service Provider
                                     </label>
@@ -424,14 +424,14 @@
 
                             </div>
 
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
-                            <input type="password" placeholder="Re-Enter Password" />
-                            <button>Sign Up</button>
-                        </form>
+                            <input type="email" placeholder="Email" id="emailAddr" />
+                            <input type="password" placeholder="Password" id="pwd" />
+                            <input type="password" placeholder="Re-Enter Password" id="rePwd" />
+                            <button onclick="signInAcc()">Sign Up</button>
+                        </div>
                     </div>
                     <div class="form-container sign-in-container">
-                        <form action="#">
+                        <div class="frm">
                             <h1>Sign in</h1>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -439,11 +439,11 @@
                                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>or use your account</span>
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
+                            <input type="email" placeholder="Email" id="lgEmail" />
+                            <input type="password" placeholder="Password" id="lgPw" />
                             <a href="#">Forgot your password?</a>
                             <button>Sign In</button>
-                        </form>
+                        </div>
                     </div>
                     <div class="overlay-container">
                         <div class="overlay">
@@ -464,6 +464,20 @@
             </div>
         </div>
     </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
     <script>
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -476,6 +490,71 @@
         signInButton.addEventListener('click', () => {
             container.classList.remove("right-panel-active");
         });
+
+        function signInAcc() {
+            var name = document.getElementById('name').value;
+            var emil = document.getElementById('emailAddr').value;
+            var pwd = document.getElementById('pwd').value;
+            var repwd = document.getElementById('rePwd').value;
+            const isUser = document.getElementById('isUser').checked;
+            const isSProvider = document.getElementById('isSProvider').checked;
+            var userType = '';
+
+            if (isUser) {
+                userType = 'USER';
+            } else if (isSProvider) {
+                userType = 'SERVICE';
+            }
+
+            if (name.trim() === '' || emil.trim() === '' || pwd.trim() === '' || repwd.trim() ===
+                '') {
+                alert("Enter All Details...");
+            } else {
+                if (pwd === repwd) {
+
+                    var account = {
+                        name: name,
+                        email: emil,
+                        password: pwd,
+                        type: userType
+                    };
+
+                    $.ajax({
+                        url: '{{ route('account.create') }}',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: account,
+                        success: function(response) {
+                            alert(response.message);
+
+
+
+
+                            document.getElementById('name').value = '';
+                            document.getElementById('emailAddr').value = '';
+                            document.getElementById('pwd').value = '';
+                            document.getElementById('rePwd').value = '';
+                            document.getElementById('isUser').checked = true;
+                            document.getElementById('isSProvider').checked = false;
+
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert('Failed to create location: ' + textStatus);
+                        }
+                    });
+                } else {
+                    alert("Re-Check password again");
+                }
+            }
+
+            // isUser
+            // isSProvider
+
+
+
+        }
     </script>
 </body>
 

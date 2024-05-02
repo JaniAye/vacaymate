@@ -22,6 +22,7 @@ class AccountsController extends Controller
         $account = Accounts::create([
             'name' => $request->name,
             'nic' => "-",
+            'base_img' => "-",
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'status' => 1,
