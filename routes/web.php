@@ -35,9 +35,9 @@ Route::get('/signup', function () {
 Route::get('/package', function () {
     return view('package');
 });
-// Route::get('/booking', function () {
-//     return view('package-details');
-// });
+Route::get('/createdPackage', function () {
+    return view('showCreatedPackage');
+});
 
 Route::get('/booking', [PackagesController::class, 'showBookingDetails']);
 
@@ -81,3 +81,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAgancy
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackageDetail/{packageId}', [PackagesController::class, 'getPackageDetail']);
 Route::withoutMiddleware(['web', 'auth'])->post('/package-book', [BookingController::class, 'createBooking'])->name('package.book');
 Route::withoutMiddleware(['web', 'auth'])->post('/book', [BookingController::class, 'bookPackage'])->name('original.book');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getOWnPackages', [PackagesController::class, 'getAllFilterPackages'])->name('package.own');

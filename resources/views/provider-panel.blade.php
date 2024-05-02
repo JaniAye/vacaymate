@@ -156,7 +156,7 @@
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="./view/about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="package.html" class="nav-item nav-link">Packages</a>
+                    <a href="/createdPackage" class="nav-item nav-link">Packages</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Create Package</a>
                         <div class="dropdown-menu m-0 text-center">
