@@ -48,6 +48,9 @@ Route::get('/create-package', function () {
 Route::get('/vehicle-package', function () {
     return view('add-vehicle-package');
 });
+Route::get('/guide-package', function () {
+    return view('add-guidepackage');
+});
 Route::get('/hotel-package', function () {
     return view('add-hotelpackage');
 });
@@ -62,7 +65,7 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicl
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);
 Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createPackage'])->name('package.create');
-Route::withoutMiddleware(['web', 'auth'])->post('/create-package', [PackagesController::class, 'createHtlpackage'])->name('htlpackage.create');
+Route::withoutMiddleware(['web', 'auth'])->post('/create-htlpackage', [PackagesController::class, 'createHtlpackage'])->name('htlpackage.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/create-vehiclepackage', [PackagesController::class, 'createVehiclePackage'])->name('pkgVehicle.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
