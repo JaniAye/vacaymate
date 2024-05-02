@@ -120,7 +120,8 @@
                     <i class="material-icons">&#xE313;</i>
                 </div>
                 <select class="control-field filter-field form-control" id="pkgFilter" onchange="filterAdd()">
-                    <option value="COMPLETE" selected>Packages</option>
+                    <option value="ALL" selected>ALL</option>
+                    <option value="COMPLETE">Packages</option>
                     <option value="VEHICLE">Hire a vehicle</option>
                     <option value="HOTEL">Hotels</option>
                     <option value="GUIDE">Guides</option>
@@ -453,12 +454,24 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            getPackages('ALL');
+
+            const currentUrl = window.location.href;
+            const url = new URL(currentUrl);
+            const type = url.searchParams.get('type');
+            if (type === null) {
+                document.getElementById("pkgFilter").value = 'ALL';
+                getPackages('ALL');
+            } else {
+                document.getElementById("pkgFilter").value = type.toUpperCase();
+                getPackages(type);
+            }
+
         });
 
         function getPackages(filter) {
 
             if (filter === 'ALL') {
+
                 $.ajax({
                     url: '{{ route('package.all') }}',
                     method: 'GET',
@@ -719,7 +732,6 @@
         }
 
         function filterAdd() {
-            // alert("sadasdsa");
             document.getElementById('packageList').innerHTML = '';
             var selected = document.getElementById("pkgFilter").value;
 
