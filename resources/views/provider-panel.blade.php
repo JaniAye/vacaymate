@@ -399,7 +399,6 @@
                             <h3>D & W Tours</h3>
                         </div>
                     </div>
-                    <button onclick="getGuides()">click</button>
                     <h3 class="text-center m-1">- Pending Packages -</h3>
                     <div class="row justify-content-center mt-3" id="tblPending">
                         <div class="col-lg-3  text-center cont-col">
@@ -607,6 +606,7 @@
             if (!logged) {
                 window.location.href = `/signup`;
             }
+            getGuides();
         });
 
         function isNullOrEmpty(value) {
@@ -616,7 +616,7 @@
         function getGuides() {
 
             var packageData = {
-                agancyId: 2,
+                agancyId: localStorage.getItem('user'),
                 status: "PENDING"
             };
 
