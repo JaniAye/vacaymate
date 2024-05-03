@@ -40,6 +40,17 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/delete.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/imageUploader.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/location-uploade.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/add-vehicle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/search-btn.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/add-package.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin-panel.css') }}">
+
     <style>
         /*-=-=-=-=-=-=-=-=-=-=-=- */
         /* Column Grids */
@@ -128,6 +139,58 @@
             display: table;
             color: #4ad1e5;
         }
+
+        .spinnerPerson {
+            width: 60px;
+            margin-left: 5vw;
+        }
+
+        .spinnerPerson input {
+            text-align: right;
+        }
+
+        .spinner {
+            width: 60px;
+            margin-left: 5vw;
+        }
+
+        .spinner input {
+            text-align: right;
+        }
+
+        .input-group-btn-vertical {
+            position: relative;
+            white-space: nowrap;
+            width: 1%;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .input-group-btn-vertical>.btn {
+            display: block;
+            float: none;
+            width: 100%;
+            max-width: 100%;
+            padding: 8px;
+            margin-left: -1px;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .input-group-btn-vertical>.btn:first-child {
+            border-top-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical>.btn:last-child {
+            margin-top: -2px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical i {
+            position: absolute;
+            top: 0;
+            left: 4px;
+        }
     </style>
 </head>
 
@@ -158,7 +221,8 @@
                     <a href="service.html" class="nav-item nav-link">Services</a>
                     <a href="/createdPackage" class="nav-item nav-link">Packages</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Create Package</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Create
+                            Package</a>
                         <div class="dropdown-menu m-0 text-center">
                             <a href="/create-package" class="dropdown-item">Complete Package</a>
                             <a href="/vehicle-package" class="dropdown-item">Vehicle</a>
@@ -233,283 +297,138 @@
     </div>
     <!-- Navbar & Hero End -->
 
-
-    <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt=""
-                            style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to <span class="text-primary">VacyMate</span></h1>
-
-                    <p class="mb-4">At VacayMate, we're your one-stop solution for unforgettable travel experiences
-                        in Sri Lanka. Let us take the stress out of planning your dream vacation. Ready to start your
-                        adventure? Click below to get started or explore more about our services.</p>
-                    <div class="row gy-2 gx-4 mb-4">
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Plan Entire Vacaction
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked Hotels</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Attractive Complete
-                                Packages
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Vehicle Rental
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Find Where to visit
-                                Tours</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Service</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Discover More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="mb-5">Discover Our Services</h1>
-            </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5>Plan Entire Vacation</h5>
-                            <p>Easily plan every aspect of your vacation, from choosing destinations to scheduling
-                                activities and managing transportation.</p>
+                <div class="col-lg-3 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <link href="https://fonts.googleapis.com/css?family=Coda|Open+Sans" rel="stylesheet">
+
+                    <div id="date-picker-section" class="contasssiner">
+                        <div id="date-picker-container">
+
+                            <div class="checkbox-wrapper-46 mb-2">
+                                <input type="checkbox" id="chkAirportPick" class="inp-cbx" />
+                                <label for="chkAirportPick" class="cbx"><span>
+                                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span class="checkboxTxt">Airport Pickup</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-wrapper-46 mb-2">
+                                <input type="checkbox" id="chkAirportDrop" class="inp-cbx" />
+                                <label for="chkAirportDrop" class="cbx"><span>
+                                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span class="checkboxTxt">Airport Drop</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-wrapper-46 mb-2">
+                                <input type="checkbox" id="chkTourGuide" class="inp-cbx" />
+                                <label for="chkTourGuide" class="cbx"><span>
+                                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span class="checkboxTxt">Free Tour Guide</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-wrapper-46 mb-2">
+                                <input type="checkbox" id="ultimateService" class="inp-cbx" />
+                                <label for="ultimateService" class="cbx"><span>
+                                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span><span class="checkboxTxt">24/7 Service</span>
+                                </label>
+                            </div>
+                            <h5>Persons Count : </h5>
+                            <div class="container">
+
+                                <div class="input-group spinnerPerson">
+                                    <input id="personCount" type="text" class="form-control" value="1">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default" type="button"
+                                            onclick="incrementPersons()"><i class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-default" type="button"
+                                            onclick="decrementPersons()"><i class="fa fa-caret-down"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5>Date Count : </h5>
+                            <div class="container">
+
+                                <div class="input-group spinner">
+                                    <input id="dateCount" type="text" class="form-control" value="1">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-default" type="button" onclick="incrementDt()"><i
+                                                class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-default" type="button" onclick="decrementDt()"><i
+                                                class="fa fa-caret-down"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="date-picker-modal" class="hidden-2" style="margin-left: -150px">
+                                <div id="date-picker-top-bar">
+                                    <div id="date-picker-previous-month" class="date-picker-change-month">&lsaquo;
+                                    </div>
+                                    <div id="date-picker-month">December 17</div>
+                                    <div id="date-picker-next-month" class="date-picker-change-month">&rsaquo;</div>
+                                </div>
+                                <div id="date-picker-exit">&times;</div>
+                                <table id="date-picker">
+                                    <tr id="date-picker-weekdays">
+                                        <th>S</th>
+                                        <th>M</th>
+                                        <th>T</th>
+                                        <th>W</th>
+                                        <th>T</th>
+                                        <th>F</th>
+                                        <th>S</th>
+                                    </tr>
+                                    <!-- Actual calendar rows added dynamically -->
+                                    <!--<tr class="date-picker-calendar-row"></tr>-->
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                            <h5>Hotel Reservation</h5>
-                            <p>Quickly find and book accommodations tailored to your preferences and budget, ensuring a
-                                comfortable stay wherever you go.</p>
+                <div class="col-lg-3 col-xl-8 wow fadeInUp " style="background-color: #fff; width : 75%;"
+                    data-wow-delay="0.3s">
+                    <div class="row justify-content-center py-5" id="cont-row">
+                        <div class="col-lg-12  text-center" id="cont-col">
+                            <h3>D & W Tours</h3>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                            <h5>Travel Guides</h5>
-                            <p>Access curated travel guides for insider tips and local insights to enhance your trip.
-                            </p>
+                    <button onclick="getGuides()">click</button>
+                    <h3 class="text-center m-1">- Pending Packages -</h3>
+                    <div class="row justify-content-center mt-3" id="tblPending">
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5>Package Name</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5>Date Range</h5>
+                        </div>
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5>Customer name</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5>count</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5>cust</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5>Action</h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-car text-primary mb-4"></i>
-                            <h5>Vehicle Hiring</h5>
-                            <p>Arrange hassle-free vehicle rentals for seamless transportation during your travels,
-                                whether it's a car, bike, or other modes of transport.</p>
-                        </div>
+                    <div id="tblPendingdata">
                     </div>
+
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                            <h5>Translators</h5>
-                            <p> Break down language barriers with translation services or access to live interpreters to
-                                communicate effectively in any destination.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                            <h5>Direct Contact</h5>
-                            <p>Connect directly with local service providers, tour operators, and accommodation hosts
-                                for personalized assistance and support.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5>Featured Destinations</h5>
-                            <p>Connect directly with local hosts and service providers for personalized support and
-                                assistance during your trip.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item rounded pt-3 inner-containers">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
-                            <h5>Complete Packages</h5>
-                            <p>
-                                Select from pre-arranged travel packages encompassing accommodations, activities,
-                                transportation, and more for a hassle-free vacation.</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
-    <!-- Service End -->
-
-
-    <!-- Destination Start -->
-    <div class="container-xxl py-5 destination">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
-                <h1 class="mb-5">Popular Destination</h1>
-            </div>
-            <div class="row g-3">
-                <div class="col-lg-7 col-md-6">
-                    <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/destination-1.jpg" alt="">
-
-                                <div
-                                    class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Galle</div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/destination-2.jpg" alt="">
-
-                                <div
-                                    class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Nuwara Eliya</div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/destination-3.jpg" alt="">
-
-                                <div
-                                    class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                    Jaffna</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/destination-4.jpg"
-                            alt="" style="object-fit: cover;">
-
-                        <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                            Neluwa</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Destination Start -->
-
-
-    <!-- Package Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
-                <h1 class="mb-5">Awesome Packages</h1>
-            </div>
-            <div class="package-carousel" id="packages-carousel">
-            </div>
-        </div>
-        <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button" onclick="packageAll()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
-                    </path>
-                </svg>
-                <div class="text">
-                    See more
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- Package End -->
-
-    <!-- Hotel Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Hotels</h6>
-                <h1 class="mb-5">Hotel Reservation</h1>
-            </div>
-            <div class="package-carousel" id="hotel-carousel">
-            </div>
-        </div>
-        <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button" onclick="htlPackage()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
-                    </path>
-                </svg>
-                <div class="text">
-                    See more
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- Hotel End -->
-
-    <!-- Vehicle Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Find a vehicle</h6>
-                <h1 class="mb-5">Vehicle Hiring</h1>
-            </div>
-            <div class="package-carousel" id="vehicle-carousel">
-            </div>
-        </div>
-        <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button" onclick="vehiclePackage()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
-                    </path>
-                </svg>
-                <div class="text">
-                    See more
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- Vehicle End -->
 
     <!-- Booking Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -579,158 +498,6 @@
         </div>
     </div>
     <!-- Booking Start -->
-
-
-    <!-- Process Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Process</h6>
-                <h1 class="mb-5">3 Easy Steps</h1>
-            </div>
-            <div class="row gy-5 gx-4 justify-content-center">
-                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow"
-                            style="width: 100px; height: 100px;">
-                            <i class="fa fa-globe fa-3x text-white"></i>
-                        </div>
-                        <h5 class="mt-4">Choose A Destination</h5>
-                        <hr class="w-25 mx-auto bg-primary mb-1">
-                        <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                            ipsum et lorem et sit sed stet lorem sit</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow"
-                            style="width: 100px; height: 100px;">
-                            <i class="fa fa-dollar-sign fa-3x text-white"></i>
-                        </div>
-                        <h5 class="mt-4">Pay Online</h5>
-                        <hr class="w-25 mx-auto bg-primary mb-1">
-                        <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                            ipsum et lorem et sit sed stet lorem sit</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow"
-                            style="width: 100px; height: 100px;">
-                            <i class="fa fa-plane fa-3x text-white"></i>
-                        </div>
-                        <h5 class="mt-4">Fly Today</h5>
-                        <hr class="w-25 mx-auto bg-primary mb-1">
-                        <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                            ipsum et lorem et sit sed stet lorem sit</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Process Start -->
-
-    <!-- guides Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">TRAVEL GUIDE</h6>
-                <h1 class="mb-5">Travel Guides</h1>
-            </div>
-            <div class="package-carousel " id="guides-carousel">
-            </div>
-        </div>
-        <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button" onclick="guidePackage()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
-                    </path>
-                </svg>
-                <div class="text">
-                    See more
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- guides End -->
-
-    <!-- translator Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Translators</h6>
-                <h1 class="mb-5">Translators</h1>
-            </div>
-            <div class="package-carousel " id="translator-carousel">
-            </div>
-        </div>
-        <div style="width:99%; display: flex; justify-content: flex-end;">
-            <button class="button">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
-                    </path>
-                </svg>
-                <div class="text">
-                    See more
-                </div>
-            </button>
-        </div>
-    </div>
-    <!-- Translators End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Clients Say!!!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-1.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-2.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-3.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-4.jpg"
-                        style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">John Doe</h5>
-                    <p>New York, USA</p>
-                    <p class="mt-2 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -843,183 +610,56 @@
         });
 
         function isNullOrEmpty(value) {
-            return value === null || value === undefined || value.trim() === ''; // Check for null, undefined, or empty
+            return value === null || value === undefined || value.trim() === '';
         }
 
         function getGuides() {
+
+
+
             for (var i = 0; i < 6; i++) {
                 var divElement = document.createElement('div');
-                divElement.className = 'col-lg-3 col-md-6 wow fadeInUp guidesDiv';
+                divElement.className = 'row justify-content-center text-center mt-3';
                 divElement.setAttribute('data-wow-delay', '0.1s');
 
-                // Generate dynamic content
-                // <img class="img-fluid" src="img/team-${i + 1}.jpg" alt="">
                 divElement.innerHTML = `
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/team-4.jpg" alt="">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Full Name ${i + 1}</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
+                         <div class="row justify-content-center text-center mt-3">
+                            <div class="col-lg-3  text-center cont-col">
+                                <h6>New Car Package</h6>
+                            </div>
+                            <div class="col-lg-2  text-center cont-coldt">
+                                <h6>2024-03-31</h6>
+                                <h6>2024-04-20</h6>
+                            </div>
+                            <div class="col-lg-3  text-center cont-col">
+                                <h6>Janidu Ayeshan</h6>
+                            </div>
+                            <div class="col-lg-1  text-center cont-col">
+                                <h6>6</h6>
+                            </div>
+                            <div class="col-lg-1  text-center cont-col">
+                                <h6>True</h6>
+                            </div>
+                            <div class="col-lg-2  text-center cont-col">
+                                <div class="row justify-content-center ">
+                                    <div class="col-lg-12  text-center cont-col">
+
+                                        <button onclick="seeMore(event)">See More</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12  text-center cont-col">
+                                        <button onclick="startChat(event)">chat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
             `;
 
-                document.getElementById('guides-carousel').appendChild(divElement);
+                document.getElementById('tblPendingdata').appendChild(divElement);
             }
         }
 
-        function getTranslators() {
-            for (var i = 0; i < 6; i++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'col-lg-3 col-md-6 wow fadeInUp guidesDiv';
-                divElement.setAttribute('data-wow-delay', '0.1s');
-
-                // Generate dynamic content
-                // <img class="img-fluid" src="img/team-${i + 1}.jpg" alt="">
-                divElement.innerHTML = `
-                <div class="team-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/team-4.jpg" alt="">
-                    </div>
-                    <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="text-center p-4">
-                        <h5 class="mb-0">Full Name ${i + 1}</h5>
-                        <small>Designation</small>
-                    </div>
-                </div>
-            `;
-
-                document.getElementById('translator-carousel').appendChild(divElement);
-            }
-        }
-
-        function getPackages() {
-            for (var i = 0; i < 6; i++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'col-lg-4 col-md-6 wow fadeInUp carousel-itm';
-                divElement.setAttribute('data-wow-delay', '0.5s');
-
-                // Generate dynamic content
-                divElement.innerHTML = `
-            <div class="package-item">
-                <div class="overflow-hidden">
-                    <img class="img-fluid" src="img/package-${i + 1}.jpg" alt="">
-                </div>
-                <div class="d-flex border-bottom">
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Malaysia</small>
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3 days</small>
-                    <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
-                </div>
-                <div class="text-center p-4">
-                    <h3 class="mb-0">$189.00</h3>
-                    <div class="mb-3">
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                    </div>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
-                    <div class="d-flex justify-content-center mb-2">
-                        <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                        <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                    </div>
-                </div>
-            </div>
-        `;
-
-                document.getElementById('packages-carousel').appendChild(divElement);
-            }
-        }
-
-        function getHotels() {
-            for (var i = 0; i < 6; i++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'col-lg-4 col-md-6 wow fadeInUp carousel-itm';
-                divElement.setAttribute('data-wow-delay', '0.5s');
-
-                // Generate dynamic content
-                divElement.innerHTML = `
-            <div class="package-item">
-                <div class="overflow-hidden">
-                    <img class="img-fluid" src="img/package-${i + 1}.jpg" alt="">
-                </div>
-                <div class="d-flex border-bottom">
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Malaysia</small>
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3 days</small>
-                    <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
-                </div>
-                <div class="text-center p-4">
-                    <h3 class="mb-0">$189.00</h3>
-                    <div class="mb-3">
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                    </div>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
-                    <div class="d-flex justify-content-center mb-2">
-                        <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                        <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                    </div>
-                </div>
-            </div>
-        `;
-
-                document.getElementById('hotel-carousel').appendChild(divElement);
-            }
-        }
-
-        function getVehicle() {
-            for (var i = 0; i < 6; i++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'col-lg-4 col-md-6 wow fadeInUp carousel-itm';
-                divElement.setAttribute('data-wow-delay', '0.5s');
-
-                // Generate dynamic content
-                divElement.innerHTML = `
-            <div class="package-item">
-                <div class="overflow-hidden">
-                    <img class="img-fluid" src="img/package-${i + 1}.jpg" alt="">
-                </div>
-                <div class="d-flex border-bottom">
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Malaysia</small>
-                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3 days</small>
-                    <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
-                </div>
-                <div class="text-center p-4">
-                    <h3 class="mb-0">$189.00</h3>
-                    <div class="mb-3">
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                        <small class="fa fa-star text-primary"></small>
-                    </div>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
-                    <div class="d-flex justify-content-center mb-2">
-                        <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                        <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                    </div>
-                </div>
-            </div>
-        `;
-
-                document.getElementById('vehicle-carousel').appendChild(divElement);
-            }
-        }
 
         $(document).ready(function() {
             $(".package-carousel").slick({

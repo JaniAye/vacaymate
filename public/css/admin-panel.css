@@ -1,0 +1,18 @@
+#tblPending {
+    height: 1px;
+}
+.cont-col{
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cont-coldt {
+    border-right: 1px solid black;
+
+
+}
+#tblPendingdata{
+    margin-top: 35px !important;
+    background-color: rgb(217, 217, 217);
+}
