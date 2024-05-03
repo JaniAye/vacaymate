@@ -628,82 +628,95 @@
                 },
                 data: packageData,
                 success: function(response) {
-                    console.log(response.data[0].cust_id);
+                    // console.log(response.data.length);
+
+                    for (let i = 0; i < response.data.length; i++) {
+                        var accountData = '';
+                        var packageData = '';
+                        var accid = {
+                            uId: response.data[i].cust_id
+                        };
+                        $.ajax({
+                            url: '{{ route('account.id') }}',
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            data: accid,
+                            success: function(accResponse) {
+                                accountData = accResponse.data;
+
+                                var booked = {
+                                    pkgId: response.data[i].pkg_id
+                                };
+                                $.ajax({
+                                    url: '{{ route('booked.Package') }}',
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    data: booked,
+                                    success: function(pkgResponse) {
+
+                                        var divElement = document.createElement('div');
+                                        divElement.className =
+                                            'row justify-content-center text-center mt-3';
+                                        divElement.setAttribute('data-wow-delay',
+                                            '0.1s');
+                                        divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center mt-3">
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${pkgResponse.data.package_name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-coldt">
+                                                            <h6>${response.data[i].st_date}</h6>
+                                                            <h6>${response.data[i].end_date}</h6>
+                                                        </div>
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${accResponse.data.name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-col">
+                                                            <h6>${pkgResponse.data.person_count}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-col">
+                                                            <h6>True</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <div class="row justify-content-center ">
+                                                                <div class="col-lg-12  text-center cont-col">
+
+                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-lg-12  text-center cont-col">
+                                                                    <button onclick="startChat(event)">chat</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        `;
+                                        document.getElementById('tblPendingdata')
+                                            .appendChild(divElement);
+
+                                    }
+                                });
+                            }
+                        });
 
 
-                    var accid = {
-                        uId: response.data[0].cust_id
-                    };
-                    $.ajax({
-                        url: '{{ route('account.id') }}',
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        data: accid,
-                        success: function(response2) {
-                            console.log(response2.data);
-                        }
-                    });
-                    var booked = {
-                        pkgId: response.data[0].pkg_id
-                    };
-                    $.ajax({
-                        url: '{{ route('booked.Package') }}',
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        data: booked,
-                        success: function(response3) {
-                            console.log(response3.data);
-                        }
-                    });
+
+
+
+                    }
+
 
                 }
             });
 
-            for (var i = 0; i < 6; i++) {
-                var divElement = document.createElement('div');
-                divElement.className = 'row justify-content-center text-center mt-3';
-                divElement.setAttribute('data-wow-delay', '0.1s');
+            // for (var i = 0; i < 6; i++) {
 
-                divElement.innerHTML = `
-                         <div class="row justify-content-center text-center mt-3">
-                            <div class="col-lg-3  text-center cont-col">
-                                <h6>New Car Package</h6>
-                            </div>
-                            <div class="col-lg-2  text-center cont-coldt">
-                                <h6>2024-03-31</h6>
-                                <h6>2024-04-20</h6>
-                            </div>
-                            <div class="col-lg-3  text-center cont-col">
-                                <h6>Janidu Ayeshan</h6>
-                            </div>
-                            <div class="col-lg-1  text-center cont-col">
-                                <h6>6</h6>
-                            </div>
-                            <div class="col-lg-1  text-center cont-col">
-                                <h6>True</h6>
-                            </div>
-                            <div class="col-lg-2  text-center cont-col">
-                                <div class="row justify-content-center ">
-                                    <div class="col-lg-12  text-center cont-col">
-
-                                        <button onclick="seeMore(event)">See More</button>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-12  text-center cont-col">
-                                        <button onclick="startChat(event)">chat</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            `;
-
-                document.getElementById('tblPendingdata').appendChild(divElement);
-            }
+            // }
         }
 
 

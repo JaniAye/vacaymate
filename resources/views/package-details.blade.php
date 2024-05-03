@@ -1236,8 +1236,8 @@
 
             var packageData = {
                 packageId: {{ $packageId }},
-                userId: 1,
-                agancy: 1,
+                userId: localStorage.getItem('user'),
+                agancy: 2,
                 stDate: formattedDate,
                 endDate: futureFormattedDate
 
