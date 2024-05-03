@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("cust_id");
             $table->unsignedBigInteger("pkg_id");
+            $table->unsignedBigInteger("agancy_id");
             $table->string('status');
             $table->string('type');
             $table->date('st_date');
@@ -34,6 +35,7 @@ return new class extends Migration
                 ->on('booked_packages')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+                
         });
     }
 

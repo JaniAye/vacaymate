@@ -164,6 +164,7 @@ class BookingController extends Controller
                 $res = Booking::create([
                     'cust_id' => $request->userId,
                     'pkg_id' =>  $res->id,
+                    'agancy_id' => $package->agancy_id,
                     'status' => "PENDING",
                     'type' => "AAA",
                     'st_date' => $formattedSTDate,
