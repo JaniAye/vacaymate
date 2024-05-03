@@ -24,7 +24,6 @@ class BookingController extends Controller
     public function createBooking(Request $request)
     {
 
-
         $res = BookedPackage::create([
             'pkg_id' => $request->packageId,
             'package_name' => $request->packageName,
@@ -99,8 +98,6 @@ class BookingController extends Controller
 
     public function bookPackage(Request $request)
     {
-
-
         try {
             $package = Packages::find($request->packageId);
             if ($package) {
@@ -145,14 +142,14 @@ class BookingController extends Controller
                 for ($i = 0; $i < count($packageHotels); $i++) {
                     BookedHotels::create([
                         'pkg_id' => $res->id,
-                        'hotel_id' => $packageHotels[$i]->id
+                        'hotel_id' => $packageHotels[$i]->hotel_id
                     ]);
                 }
 
                 for ($i = 0; $i < count($packageGuides); $i++) {
                     BookedGuides::create([
                         'pkg_id' => $res->id,
-                        'guide_id' => $packageGuides[$i]->id
+                        'guide_id' => $packageGuides[$i]->guide_id
                     ]);
                 }
 
@@ -201,8 +198,8 @@ class BookingController extends Controller
 
         try {
             $bookings = Booking::where('agancy_id', $request->agancyId)
-            ->where('status',$request->status)
-            ->get();
+                ->where('status', $request->status)
+                ->get();
 
             if ($bookings->isNotEmpty()) {
 
@@ -223,36 +220,4 @@ class BookingController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
-    // public function gg(Request $request)
-    // {
-
-    //     $bookings = Booking::where('agancy_id', $request->agancyId)
-    //     ->where('status',$request->status)
-    //     ->get();
-    //     try {
-
-    //         $bookings = Booking::where('agancy_id', $request->agancyId)
-    //         ->where('status',$request->status)
-    //         ->get();
-
-    //         if ($bookings->isNotEmpty()) {
-
-    //             return response()->json([
-    //                 'success' => true,
-    //                 'message' => 'bookings',
-    //                 'data' => $bookings
-    //             ], 200);
-    //         } else {
-    //             return response()->json([
-    //                 'success' => true,
-    //                 'message' => 'No packages',
-    //                 'data' => []
-    //             ], 200);
-    //         }
-    //     } catch (\Exception $e) {
-    //         info($e->getMessage());
-    //         return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
-    //     }
-    // }
-
 }
