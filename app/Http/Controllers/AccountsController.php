@@ -76,4 +76,28 @@ class AccountsController extends Controller
             'user' => $user,
         ], 200);
     }
+    public function getAccountById(Request $request)
+    {
+
+        try {
+            $acc = Accounts::find($request->uId);
+            if ($acc) {
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'acc',
+                    'data' => $acc
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }

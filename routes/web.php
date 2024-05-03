@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AgancyController;
+use App\Http\Controllers\BookedPackageController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\GuidesController;
 use App\Http\Controllers\HotelsController;
@@ -59,6 +60,10 @@ Route::get('/provider-home', function () {
     return view('provider-panel');
 });
 
+Route::get('/provider-home', function () {
+    return view('provider-panel');
+});
+
 Route::withoutMiddleware(['web', 'auth'])->post('/location-create', [LocationController::class, 'saveLocation'])->name('product.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-vehicle', [VehicleControler::class, 'saveVehicle'])->name('vehicle.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/signup', [AccountsController::class, 'createAccount'])->name('account.create');
@@ -82,3 +87,6 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackag
 Route::withoutMiddleware(['web', 'auth'])->post('/package-book', [BookingController::class, 'createBooking'])->name('package.book');
 Route::withoutMiddleware(['web', 'auth'])->post('/book', [BookingController::class, 'bookPackage'])->name('original.book');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getOWnPackages', [PackagesController::class, 'getAllFilterPackages'])->name('package.own');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBookingByAgancyId', [BookingController::class, 'getBookingByAgancyId'])->name('booking.agancy');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getAccountById', [AccountsController::class, 'getAccountById'])->name('account.id');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getbookedPackage', [BookedPackageController::class, 'getbookedPackage'])->name('booked.Package');

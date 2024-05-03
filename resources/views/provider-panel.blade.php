@@ -615,7 +615,53 @@
 
         function getGuides() {
 
+            var packageData = {
+                agancyId: 2,
+                status: "PENDING"
+            };
 
+            $.ajax({
+                url: '{{ route('booking.agancy') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    console.log(response.data[0].cust_id);
+
+
+                    var accid = {
+                        uId: response.data[0].cust_id
+                    };
+                    $.ajax({
+                        url: '{{ route('account.id') }}',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: accid,
+                        success: function(response2) {
+                            console.log(response2.data);
+                        }
+                    });
+                    var booked = {
+                        pkgId: response.data[0].pkg_id
+                    };
+                    $.ajax({
+                        url: '{{ route('booked.Package') }}',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: booked,
+                        success: function(response3) {
+                            console.log(response3.data);
+                        }
+                    });
+
+                }
+            });
 
             for (var i = 0; i < 6; i++) {
                 var divElement = document.createElement('div');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\BookedGuides;
 use App\Models\BookedHotels;
 use App\Models\BookedLocations;
@@ -194,4 +195,64 @@ class BookingController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function getBookingByAgancyId(Request $request)
+    {
+
+        try {
+            $bookings = Booking::where('agancy_id', $request->agancyId)
+            ->where('status',$request->status)
+            ->get();
+
+            if ($bookings->isNotEmpty()) {
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'bookings',
+                    'data' => $bookings
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+    // public function gg(Request $request)
+    // {
+
+    //     $bookings = Booking::where('agancy_id', $request->agancyId)
+    //     ->where('status',$request->status)
+    //     ->get();
+    //     try {
+
+    //         $bookings = Booking::where('agancy_id', $request->agancyId)
+    //         ->where('status',$request->status)
+    //         ->get();
+
+    //         if ($bookings->isNotEmpty()) {
+
+    //             return response()->json([
+    //                 'success' => true,
+    //                 'message' => 'bookings',
+    //                 'data' => $bookings
+    //             ], 200);
+    //         } else {
+    //             return response()->json([
+    //                 'success' => true,
+    //                 'message' => 'No packages',
+    //                 'data' => []
+    //             ], 200);
+    //         }
+    //     } catch (\Exception $e) {
+    //         info($e->getMessage());
+    //         return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+    //     }
+    // }
+
 }
