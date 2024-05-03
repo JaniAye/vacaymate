@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 {{-- notifications end --}}
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
+                <a href="/provider-home" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
             </div>
         </nav>
 

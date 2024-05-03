@@ -836,11 +836,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // getGuides();
-            // getHotels();
-            // getVehicle();
-            // getTranslators();
-            // getPackages();
+            var logged = localStorage.getItem('user');
+            if (!logged) {
+                window.location.href = `/signup`;
+            }
         });
 
         function isNullOrEmpty(value) {

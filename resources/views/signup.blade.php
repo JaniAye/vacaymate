@@ -385,7 +385,7 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
+                <a href="/provider-panel" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
             </div>
         </nav>
         <div class="container-fluid bg-primary py-5 mb-1 mt-10px hero-header">
