@@ -512,6 +512,10 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var logged = localStorage.getItem('user');
+            if (!logged) {
+                window.location.href = `/signup`;
+            }
 
             getPackageData({{ $packageId }});
             getLocations();
@@ -978,7 +982,7 @@
                                 document.getElementById("ultimateSerice").checked = false;
                             }
 
-                             var divElementhtl = document.createElement('div');
+                            var divElementhtl = document.createElement('div');
                             divElementhtl.className = 'row g-2 mt-1 justify-content-center';
                             let contenthtl = "";
                             for (var i = 0; i < response.data.hotels.length; i++) {
