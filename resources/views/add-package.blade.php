@@ -1960,9 +1960,11 @@
             // }
 
             function uploadFile(file) {
-                console.log("starting");
+        
+                const path = 'uploads/products';
                 const formData = new FormData();
                 formData.append('file', file);
+                formData.append('path', path);
 
                 $.ajax({
                     url: '{{ route('file.upload') }}',
