@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AgancyController;
 use App\Http\Controllers\BookedPackageController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\GuidesController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\LocationController;
@@ -90,3 +91,4 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getOWnPac
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBookingByAgancyId', [BookingController::class, 'getBookingByAgancyId'])->name('booking.agancy');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getAccountById', [AccountsController::class, 'getAccountById'])->name('account.id');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getbookedPackage', [BookedPackageController::class, 'getbookedPackage'])->name('booked.Package');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/upload', [FileUploadController::class, 'uploadFile'])->name('file.upload');

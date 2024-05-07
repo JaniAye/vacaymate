@@ -1834,7 +1834,9 @@
                 var fileSelect = document.getElementById('file-upload'),
                     fileDrag = document.getElementById('file-drag'),
                     submitButton = document.getElementById('submit-button');
-
+                console.log("--------------++");
+                console.log(fileSelect);
+                console.log("--------------++");
                 fileSelect.addEventListener('change', fileSelectHandler, false);
 
                 // Is XHR2 available?
@@ -1883,7 +1885,7 @@
                 output(
                     '<strong>' + encodeURI(file.name) + '</strong>'
                 );
-
+                console.log(output);
                 // var fileType = file.type;
                 // console.log(fileType);
                 var imageName = file.name;
@@ -1921,42 +1923,65 @@
                 }
             }
 
+            // function uploadFile(file) {
+
+            //     var xhr = new XMLHttpRequest(),
+            //         fileInput = document.getElementById('class-roster-file'),
+            //         pBar = document.getElementById('file-progress'),
+            //         fileSizeLimit = 1024; // In MB
+            //     if (xhr.upload) {
+            //         // Check if file is less than x MB
+            //         if (file.size <= fileSizeLimit * 1024 * 1024) {
+            //             // Progress bar
+            //             pBar.style.display = 'inline';
+            //             xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+            //             xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+            //             // File received / failed
+            //             xhr.onreadystatechange = function(e) {
+            //                 if (xhr.readyState == 4) {
+            //                     // Everything is good!
+
+            //                     // progress.className = (xhr.status == 200 ? "success" : "failure");
+            //                     // document.location.reload(true);
+            //                 }
+            //             };
+
+            //             // Start upload
+            //             xhr.open('POST', document.getElementById('file-upload-form').action, true);
+            //             xhr.setRequestHeader('X-File-Name', file.name);
+            //             xhr.setRequestHeader('X-File-Size', file.size);
+            //             xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+            //             xhr.send(file);
+            //         } else {
+            //             output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+            //         }
+            //     }
+            // }
+
             function uploadFile(file) {
+                console.log("starting");
+                const formData = new FormData();
+                formData.append('file', file);
 
-                var xhr = new XMLHttpRequest(),
-                    fileInput = document.getElementById('class-roster-file'),
-                    pBar = document.getElementById('file-progress'),
-                    fileSizeLimit = 1024; // In MB
-                if (xhr.upload) {
-                    // Check if file is less than x MB
-                    if (file.size <= fileSizeLimit * 1024 * 1024) {
-                        // Progress bar
-                        pBar.style.display = 'inline';
-                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-                        xhr.upload.addEventListener('progress', updateFileProgress, false);
-
-                        // File received / failed
-                        xhr.onreadystatechange = function(e) {
-                            if (xhr.readyState == 4) {
-                                // Everything is good!
-
-                                // progress.className = (xhr.status == 200 ? "success" : "failure");
-                                // document.location.reload(true);
-                            }
-                        };
-
-                        // Start upload
-                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
-                        xhr.setRequestHeader('X-File-Name', file.name);
-                        xhr.setRequestHeader('X-File-Size', file.size);
-                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-                        xhr.send(file);
-                    } else {
-                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        alert('File uploaded successfully: ' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
                     }
-                }
+                });
             }
-
             // Check for the various File API support.
             if (window.File && window.FileList && window.FileReader) {
                 Init();
@@ -1964,7 +1989,9 @@
                 document.getElementById('file-drag').style.display = 'none';
             }
         }
+        console.log("fff2");
         ekUpload();
+        console.log("fff3");
         var dropzone = new Dropzone('#demo-upload', {
             previewTemplate: document.querySelector('#preview-template').innerHTML,
             parallelUploads: 2,
@@ -1976,6 +2003,8 @@
                 if (file.previewElement) {
                     file.previewElement.classList.remove("dz-file-preview");
                     var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+
+                    console.log("////////");
                     for (var i = 0; i < images.length; i++) {
                         var thumbnailElement = images[i];
                         thumbnailElement.alt = file.name;
@@ -3085,7 +3114,7 @@
 
             var packageData = {
                 packageName: document.getElementById("packageName").value,
-                agancy:   localStorage.getItem('user'),
+                agancy: localStorage.getItem('user'),
                 discription: document.getElementById("packageBreifDiscription").value,
                 chkAirportPick: document.getElementById("chkAirportPick").checked ? 1 : 0,
                 chkAirportDrop: document.getElementById("chkAirportDrop").checked ? 1 : 0,
