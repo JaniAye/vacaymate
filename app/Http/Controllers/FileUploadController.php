@@ -14,9 +14,10 @@ class FileUploadController extends Controller
         // ]);
 
         $file = $request->file('file');
-       
-        $destinationPath = $request->input('path');
 
+        $destinationPath = $request->input('path');
+        info($file);
+        info($destinationPath);
         $fileName = time() . '_' . $file->getClientOriginalName();
 
 
