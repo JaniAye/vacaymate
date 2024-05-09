@@ -139,6 +139,19 @@ class PackagesController extends Controller
             }
         }
 
+        if ($res) {
+
+            $images = $request->input('images');
+            for ($i = 0; $i < count($images); $i++) {
+                Images::create([
+                    'image_path' => $images[$i],
+                    'image_type' => 'PACKAGE',
+                    'type_id' => $res->id
+
+                ]);
+            }
+        }
+
 
         return response()->json([
             'success' => true,
