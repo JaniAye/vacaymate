@@ -1087,6 +1087,327 @@
             }
         }
         ekUpload();
+
+        function ekUpload2() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-2'),
+                    fileDrag = document.getElementById('file-drag-2'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-2');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-2').classList.add("hidden");
+                    document.getElementById('response-2').classList.remove("hidden");
+                    document.getElementById('notimage-2').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-2').classList.remove("hidden");
+                    document.getElementById('file-image-2').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-2').classList.add("hidden");
+                    document.getElementById('notimage-2').classList.remove("hidden");
+                    document.getElementById('start-2').classList.remove("hidden");
+                    document.getElementById('response-2').classList.add("hidden");
+                    document.getElementById("file-upload-form-2").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file2 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload2();
+
+        function ekUpload3() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-3'),
+                    fileDrag = document.getElementById('file-drag-3'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-3');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-3').classList.add("hidden");
+                    document.getElementById('response-3').classList.remove("hidden");
+                    document.getElementById('notimage-3').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-3').classList.remove("hidden");
+                    document.getElementById('file-image-3').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-3').classList.add("hidden");
+                    document.getElementById('notimage-3').classList.remove("hidden");
+                    document.getElementById('start-3').classList.remove("hidden");
+                    document.getElementById('response-3').classList.add("hidden");
+                    document.getElementById("file-upload-form-3").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file3 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload3();
+
+        function ekUpload4() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-4'),
+                    fileDrag = document.getElementById('file-drag-4'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-4');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-4').classList.add("hidden");
+                    document.getElementById('response-4').classList.remove("hidden");
+                    document.getElementById('notimage-4').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-4').classList.remove("hidden");
+                    document.getElementById('file-image-4').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-4').classList.add("hidden");
+                    document.getElementById('notimage-4').classList.remove("hidden");
+                    document.getElementById('start-4').classList.remove("hidden");
+                    document.getElementById('response-4').classList.add("hidden");
+                    document.getElementById("file-upload-form-4").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file4 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload4();
         var dropzone = new Dropzone('#demo-upload', {
             previewTemplate: document.querySelector('#preview-template').innerHTML,
             parallelUploads: 2,
@@ -2019,7 +2340,7 @@
         function createPackage() {
             var vehicleNo = [];
 
-           var columnElementsVehi = VehicleList.querySelectorAll(
+            var columnElementsVehi = VehicleList.querySelectorAll(
                 '.col-lg-3.col-md-6.wow.fadeInUp');
             var vehiColumnCount = columnElementsVehi.length;
 
