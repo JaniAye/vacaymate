@@ -78,6 +78,7 @@ class PackagesController extends Controller
             }
         }
 
+
         if ($res) {
             $locIds = $request->input('locIds');
             for ($i = 0; $i < count($locIds); $i++) {
@@ -325,6 +326,19 @@ class PackagesController extends Controller
                 PackageGuides::create([
                     'package_id' => $res->id,
                     'guide_id' => $gidSet[$i]
+                ]);
+            }
+        }
+
+        if ($res) {
+
+            $images = $request->input('images');
+            for ($i = 0; $i < count($images); $i++) {
+                Images::create([
+                    'image_path' => $images[$i],
+                    'image_type' => 'PACKAGE',
+                    'type_id' => $res->id
+
                 ]);
             }
         }

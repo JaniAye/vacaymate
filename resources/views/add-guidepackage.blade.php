@@ -294,9 +294,9 @@
                                                 </div>
                                                 <div id="response" class="hidden">
                                                     <div id="messages"></div>
-                                                    <progress class="progress" id="file-progress" value="0">
+                                                    {{-- <progress class="progress" id="file-progress" value="0">
                                                         <span>0</span>%
-                                                    </progress>
+                                                    </progress> --}}
                                                 </div>
                                             </label>
                                         </div>
@@ -318,9 +318,9 @@
                                                 </div>
                                                 <div id="response-2" class="hidden">
                                                     <div id="messages-2"></div>
-                                                    <progress class="progress" id="file-progress-2" value="0">
+                                                    {{-- <progress class="progress" id="file-progress-2" value="0">
                                                         <span>0</span>%
-                                                    </progress>
+                                                    </progress> --}}
                                                 </div>
                                             </label>
                                         </div>
@@ -342,9 +342,9 @@
                                                 </div>
                                                 <div id="response-3" class="hidden">
                                                     <div id="messages-3"></div>
-                                                    <progress class="progress" id="file-progress-3" value="0">
+                                                    {{-- <progress class="progress" id="file-progress-3" value="0">
                                                         <span>0</span>%
-                                                    </progress>
+                                                    </progress> --}}
                                                 </div>
                                             </label>
                                         </div>
@@ -368,9 +368,9 @@
                                         </div>
                                         <div id="response-4" class="hidden">
                                             <div id="messages-4"></div>
-                                            <progress class="progress" id="file-progress-4" value="0">
+                                            {{-- <progress class="progress" id="file-progress-4" value="0">
                                                 <span>0</span>%
-                                            </progress>
+                                            </progress> --}}
                                         </div>
                                     </label>
                                 </div>
@@ -976,6 +976,11 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        var file1;
+        var file2;
+        var file3;
+        var file4;
+
         function createNewLocation() {
             const type = localStorage.getItem('type');
             console.log(type);
@@ -1760,39 +1765,7 @@
             }
 
             function uploadFile(file) {
-
-                var xhr = new XMLHttpRequest(),
-                    fileInput = document.getElementById('class-roster-file'),
-                    pBar = document.getElementById('file-progress'),
-                    fileSizeLimit = 1024; // In MB
-                if (xhr.upload) {
-                    // Check if file is less than x MB
-                    if (file.size <= fileSizeLimit * 1024 * 1024) {
-                        // Progress bar
-                        pBar.style.display = 'inline';
-                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-                        xhr.upload.addEventListener('progress', updateFileProgress, false);
-
-                        // File received / failed
-                        xhr.onreadystatechange = function(e) {
-                            if (xhr.readyState == 4) {
-                                // Everything is good!
-
-                                // progress.className = (xhr.status == 200 ? "success" : "failure");
-                                // document.location.reload(true);
-                            }
-                        };
-
-                        // Start upload
-                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
-                        xhr.setRequestHeader('X-File-Name', file.name);
-                        xhr.setRequestHeader('X-File-Size', file.size);
-                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-                        xhr.send(file);
-                    } else {
-                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
-                    }
-                }
+                file1 = file;
             }
 
             // Check for the various File API support.
@@ -1803,6 +1776,445 @@
             }
         }
         ekUpload();
+
+        function ekUpload2() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-2'),
+                    fileDrag = document.getElementById('file-drag-2'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-2');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-2').classList.add("hidden");
+                    document.getElementById('response-2').classList.remove("hidden");
+                    document.getElementById('notimage-2').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-2').classList.remove("hidden");
+                    document.getElementById('file-image-2').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-2').classList.add("hidden");
+                    document.getElementById('notimage-2').classList.remove("hidden");
+                    document.getElementById('start-2').classList.remove("hidden");
+                    document.getElementById('response-2').classList.add("hidden");
+                    document.getElementById("file-upload-form-2").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file2 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload2();
+
+        function ekUpload3() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-3'),
+                    fileDrag = document.getElementById('file-drag-3'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-3');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-3').classList.add("hidden");
+                    document.getElementById('response-3').classList.remove("hidden");
+                    document.getElementById('notimage-3').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-3').classList.remove("hidden");
+                    document.getElementById('file-image-3').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-3').classList.add("hidden");
+                    document.getElementById('notimage-3').classList.remove("hidden");
+                    document.getElementById('start-3').classList.remove("hidden");
+                    document.getElementById('response-3').classList.add("hidden");
+                    document.getElementById("file-upload-form-3").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file3 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload3();
+
+        function ekUpload4() {
+
+            function Init() {
+
+
+                var fileSelect = document.getElementById('file-upload-4'),
+                    fileDrag = document.getElementById('file-drag-4'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag-4');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            // Output
+            function output(msg) {
+                // Response
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+
+                output(
+                    '<strong>' + encodeURI(file.name) + '</strong>'
+                );
+
+                var imageName = file.name;
+
+                var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+                if (isGood) {
+
+
+                    document.getElementById('start-4').classList.add("hidden");
+                    document.getElementById('response-4').classList.remove("hidden");
+                    document.getElementById('notimage-4').classList.add("hidden");
+                    // Thumbnail Preview
+                    document.getElementById('file-image-4').classList.remove("hidden");
+                    document.getElementById('file-image-4').src = URL.createObjectURL(file);
+                } else {
+                    document.getElementById('file-image-4').classList.add("hidden");
+                    document.getElementById('notimage-4').classList.remove("hidden");
+                    document.getElementById('start-4').classList.remove("hidden");
+                    document.getElementById('response-4').classList.add("hidden");
+                    document.getElementById("file-upload-form-4").reset();
+                }
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+                file4 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload4();
+
+        function uploadImage1() {
+            console.log('//////////////');
+            return new Promise((resolve, reject) => {
+                var file = file1;
+                const path = 'uploads/products/1';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage2() {
+            return new Promise((resolve, reject) => {
+                var file = file2;
+                const path = 'uploads/products/2';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+
+        function uploadImage3() {
+            return new Promise((resolve, reject) => {
+                var file = file3;
+                const path = 'uploads/products/3';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage4() {
+            return new Promise((resolve, reject) => {
+                var file = file4;
+                const path = 'uploads/products/4';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
         var dropzone = new Dropzone('#demo-upload', {
             previewTemplate: document.querySelector('#preview-template').innerHTML,
             parallelUploads: 2,
@@ -1854,14 +2266,14 @@
                                 bytesSent: (step + 1) * file.size / totalSteps
                             };
 
-                            self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
-                            if (file.upload.progress == 100) {
-                                file.status = Dropzone.SUCCESS;
-                                self.emit("success", file, 'success', null);
-                                self.emit("complete", file);
-                                self.processQueue();
-                                //document.getElementsByClassName("dz-success-mark").style.opacity = "1";
-                            }
+                            // self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
+                            // if (file.upload.progress == 100) {
+                            //     file.status = Dropzone.SUCCESS;
+                            //     self.emit("success", file, 'success', null);
+                            //     self.emit("complete", file);
+                            //     self.processQueue();
+                            //     //document.getElementsByClassName("dz-success-mark").style.opacity = "1";
+                            // }
                         };
                     }(file, totalSteps, step), duration);
                 }
@@ -2840,8 +3252,29 @@
 
 
         // create final package
-        function createPackage() {
+        async function createPackage() {
+
+            var result1;
+            var result2;
+            var result3;
+            var result4;
+            try {
+                result1 = await uploadImage1();
+                result2 = await uploadImage2();
+                result3 = await uploadImage3();
+                result4 = await uploadImage4();
+            } catch (error) {
+                console.error(error);
+            }
+
             var guidsIds = [];
+            var images = [];
+
+            images.push(result1);
+            images.push(result2);
+            images.push(result3);
+            images.push(result4);
+
 
             var columnElementsTrans = translatorsList.querySelectorAll(
                 '.col-lg-3.col-md-6.wow.fadeInUp');
@@ -2872,12 +3305,13 @@
                 personCount: document.getElementById("personCount").value,
                 dateCount: document.getElementById("dateCount").value,
                 gidSet: guidsIds,
+                images: images,
                 price: document.getElementById("price").value,
                 reviews: ''
             };
 
             $.ajax({
-                url: '{{ route('package.create') }}',
+                url: '{{ route('gidpackage.create') }}',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
