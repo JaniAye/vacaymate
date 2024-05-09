@@ -391,7 +391,6 @@
                             </button>
                         </div>
 
-
                     </div>
 
                 </div>
@@ -1138,6 +1137,16 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        var file1;
+        var file2;
+        var file3;
+        var file4;
+
+        var filepath1;
+        var filepath2;
+        var filepath3;
+        var filepath4;
+
         function createNewLocation() {
             const type = localStorage.getItem('type');
             console.log(type);
@@ -1923,29 +1932,7 @@
             }
 
             function uploadFile(file) {
-
-                const path = 'uploads/products/1';
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('path', path);
-
-                $.ajax({
-                    url: '{{ route('file.upload') }}',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        alert('File uploaded successfully: ' + response.file_name);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('File upload failed:', error);
-                        alert('File upload failed');
-                    }
-                });
+                file1 = file;
             }
             // Check for the various File API support.
             if (window.File && window.FileList && window.FileReader) {
@@ -2053,29 +2040,7 @@
             }
 
             function uploadFile(file) {
-
-                const path = 'uploads/products/2';
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('path', path);
-
-                $.ajax({
-                    url: '{{ route('file.upload') }}',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        alert('File uploaded successfully: ' + response.file_name);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('File upload failed:', error);
-                        alert('File upload failed');
-                    }
-                });
+                file2 = file;
             }
             // Check for the various File API support.
             if (window.File && window.FileList && window.FileReader) {
@@ -2182,29 +2147,7 @@
             }
 
             function uploadFile(file) {
-
-                const path = 'uploads/products/3';
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('path', path);
-
-                $.ajax({
-                    url: '{{ route('file.upload') }}',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        alert('File uploaded successfully: ' + response.file_name);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('File upload failed:', error);
-                        alert('File upload failed');
-                    }
-                });
+                file3 = file;
             }
             // Check for the various File API support.
             if (window.File && window.FileList && window.FileReader) {
@@ -2312,7 +2255,108 @@
             }
 
             function uploadFile(file) {
+                file4 = file;
+            }
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        }
+        ekUpload4();
 
+        function uploadImage1() {
+            return new Promise((resolve, reject) => {
+                var file = file1;
+                const path = 'uploads/products/1';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage2() {
+            return new Promise((resolve, reject) => {
+                var file = file2;
+                const path = 'uploads/products/2';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+
+        function uploadImage3() {
+            return new Promise((resolve, reject) => {
+                var file = file3;
+                const path = 'uploads/products/3';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage4() {
+            return new Promise((resolve, reject) => {
+                var file = file4;
                 const path = 'uploads/products/4';
                 const formData = new FormData();
                 formData.append('file', file);
@@ -2328,22 +2372,17 @@
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        alert('File uploaded successfully: ' + response.file_name);
+                        resolve(path + '/' + response.file_name);
                     },
                     error: function(xhr, status, error) {
                         console.error('File upload failed:', error);
                         alert('File upload failed');
+                        reject('');
                     }
                 });
-            }
-            // Check for the various File API support.
-            if (window.File && window.FileList && window.FileReader) {
-                Init();
-            } else {
-                document.getElementById('file-drag').style.display = 'none';
-            }
+            });
         }
-        ekUpload4();
+
         var dropzone = new Dropzone('#demo-upload', {
             previewTemplate: document.querySelector('#preview-template').innerHTML,
             parallelUploads: 2,
@@ -2369,10 +2408,6 @@
             }
 
         });
-
-
-        // Now fake the file upload, since GitHub does not handle file uploads
-        // and returns a 404
 
         var minSteps = 6,
             maxSteps = 60,
@@ -3383,12 +3418,30 @@
 
 
         // create final package
-        function createPackage() {
+        async function createPackage() {
+            var result1;
+            var result2;
+            var result3;
+            var result4;
+            try {
+                result1 = await uploadImage1();
+                result2 = await uploadImage2();
+                result3 = await uploadImage3();
+                result4 = await uploadImage4();
+            } catch (error) {
+                console.error(error);
+            }
 
             var locIds = [];
             var hotelsIds = [];
             var vehicleNo = [];
             var guidsIds = [];
+            var images = [];
+
+            images.push(result1);
+            images.push(result2);
+            images.push(result3);
+            images.push(result4);
 
             var columnElementsLoc = packageList.querySelectorAll(
                 '.col-lg-2.col-md-6.wow.fadeInUp');
@@ -3462,8 +3515,6 @@
 
             }
 
-
-
             var packageData = {
                 packageName: document.getElementById("packageName").value,
                 agancy: localStorage.getItem('user'),
@@ -3479,6 +3530,7 @@
                 hotelsIds: hotelsIds,
                 locIds: locIds,
                 price: document.getElementById("price").value,
+                images: images,
                 reviews: ''
             };
 

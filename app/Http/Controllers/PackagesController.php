@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guides;
 use App\Models\Hotels;
+use App\Models\Images;
 use App\Models\Location;
 use App\Models\PackageGuides;
 use App\Models\PackageHotels;
@@ -83,6 +84,18 @@ class PackagesController extends Controller
                 PackageLocations::create([
                     'package_id' => $res->id,
                     'loc_name' => $locIds[$i]
+                ]);
+            }
+        }
+        if ($res) {
+
+            $images = $request->input('images');
+            for ($i = 0; $i < count($images); $i++) {
+                Images::create([
+                    'image_path' => $images[$i],
+                    'image_type' => 'PACKAGE',
+                    'type_id' => $res->id
+
                 ]);
             }
         }
