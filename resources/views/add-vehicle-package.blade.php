@@ -840,6 +840,11 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        var file1;
+        var file2;
+        var file3;
+        var file4;
+
         function createNewLocation() {
 
             const checkCar = document.getElementById('rdCr').checked;
@@ -1044,40 +1049,9 @@
             }
 
             function uploadFile(file) {
-
-                var xhr = new XMLHttpRequest(),
-                    fileInput = document.getElementById('class-roster-file'),
-                    pBar = document.getElementById('file-progress'),
-                    fileSizeLimit = 1024; // In MB
-                if (xhr.upload) {
-                    // Check if file is less than x MB
-                    if (file.size <= fileSizeLimit * 1024 * 1024) {
-                        // Progress bar
-                        pBar.style.display = 'inline';
-                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-                        xhr.upload.addEventListener('progress', updateFileProgress, false);
-
-                        // File received / failed
-                        xhr.onreadystatechange = function(e) {
-                            if (xhr.readyState == 4) {
-                                // Everything is good!
-
-                                // progress.className = (xhr.status == 200 ? "success" : "failure");
-                                // document.location.reload(true);
-                            }
-                        };
-
-                        // Start upload
-                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
-                        xhr.setRequestHeader('X-File-Name', file.name);
-                        xhr.setRequestHeader('X-File-Size', file.size);
-                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-                        xhr.send(file);
-                    } else {
-                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
-                    }
-                }
+                file1 = file;
             }
+
 
             // Check for the various File API support.
             if (window.File && window.FileList && window.FileReader) {
@@ -1408,6 +1382,124 @@
             }
         }
         ekUpload4();
+
+        function uploadImage1() {
+            console.log('//////////////');
+            return new Promise((resolve, reject) => {
+                var file = file1;
+                const path = 'uploads/products/1';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage2() {
+            return new Promise((resolve, reject) => {
+                var file = file2;
+                const path = 'uploads/products/2';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+
+        function uploadImage3() {
+            return new Promise((resolve, reject) => {
+                var file = file3;
+                const path = 'uploads/products/3';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        function uploadImage4() {
+            return new Promise((resolve, reject) => {
+                var file = file4;
+                const path = 'uploads/products/4';
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('path', path);
+
+                $.ajax({
+                    url: '{{ route('file.upload') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        resolve(path + '/' + response.file_name);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('File upload failed:', error);
+                        alert('File upload failed');
+                        reject('');
+                    }
+                });
+            });
+        }
         var dropzone = new Dropzone('#demo-upload', {
             previewTemplate: document.querySelector('#preview-template').innerHTML,
             parallelUploads: 2,
@@ -2337,8 +2429,28 @@
 
 
         // create final package
-        function createPackage() {
+        async function createPackage() {
+
+            var result1;
+            var result2;
+            var result3;
+            var result4;
+            try {
+                result1 = await uploadImage1();
+                result2 = await uploadImage2();
+                result3 = await uploadImage3();
+                result4 = await uploadImage4();
+            } catch (error) {
+                console.error(error);
+            }
+
             var vehicleNo = [];
+            var images = [];
+
+            images.push(result1);
+            images.push(result2);
+            images.push(result3);
+            images.push(result4);
 
             var columnElementsVehi = VehicleList.querySelectorAll(
                 '.col-lg-3.col-md-6.wow.fadeInUp');
@@ -2368,6 +2480,7 @@
                 personCount: document.getElementById("personCount").value,
                 dateCount: document.getElementById("dateCount").value,
                 vehicleNo: vehicleNo,
+                images: images,
                 price: document.getElementById("price").value,
                 reviews: ''
             };
@@ -2381,14 +2494,14 @@
                 data: packageData,
                 success: function(response) {
                     alert(response.message);
-                    document.getElementById('packageName').value = '';
-                    document.getElementById('packageBreifDiscription').value = '';
-                    document.getElementById('personCount').value = '1';
-                    document.getElementById('dateCount').value = '1';
-                    document.getElementById('chkAirportPick').checked = false;;
-                    document.getElementById('chkAirportDrop').checked = false;
-                    document.getElementById('chkTourGuide').checked = false;
-                    document.getElementById('withDriver').checked = false;
+                    // document.getElementById('packageName').value = '';
+                    // document.getElementById('packageBreifDiscription').value = '';
+                    // document.getElementById('personCount').value = '1';
+                    // document.getElementById('dateCount').value = '1';
+                    // document.getElementById('chkAirportPick').checked = false;;
+                    // document.getElementById('chkAirportDrop').checked = false;
+                    // document.getElementById('chkTourGuide').checked = false;
+                    // document.getElementById('withDriver').checked = false;
                     location.reload();
                     // var overlay = document.getElementById('overlay');
                     // overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
