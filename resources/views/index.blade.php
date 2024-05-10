@@ -68,7 +68,7 @@
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="./view/about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="package.html" class="nav-item nav-link">Packages</a>
+                    <a href="/package" class="nav-item nav-link">Packages</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
@@ -83,7 +83,7 @@
                 </div>
 
                 {{-- notifications --}}
-                <div class="notification">
+                <div class="notification" id="notific">
                     <input type="checkbox" name="uro" id="uro">
                     <input type="checkbox" name="btn" id="btn">
                     <label for="btn">
@@ -107,7 +107,7 @@
                 <a href="/provider-home" style="margin-right: 15px"
                     class="btn btn-primary rounded-pill py-2 px-4 ">User Portal</a>
                 {{-- <div style=""></div> --}}
-                <button class="Btn ">
+                <button class="Btn " onclick="logout()" id="btnLgout">
                     <div class="sign">
                         <svg viewBox="0 0 512 512">
                             <path
@@ -968,6 +968,25 @@
         function guidePackage() {
             window.location.href = `/package?type=guide`;
         }
+
+        function logout() {
+            localStorage.removeItem('user');
+            alert('Logout Successfully...');
+            window.location.href = `/`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logged = localStorage.getItem('user');
+            if (!logged) {
+
+                document.getElementById('btnLgout').style.display = 'none';
+                document.getElementById('notific').style.display = 'none';
+
+                // window.location.href = `/signup`;
+            }
+
+
+        });
     </script>
 </body>
 
