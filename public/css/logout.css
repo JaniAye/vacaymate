@@ -1,4 +1,4 @@
-.Btn {
+.Btnlg {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -29,9 +29,9 @@
   .sign svg path {
     fill: black;
   }
-  .text {
+  .textlg {
     position: absolute;
-    right: -17%;
+    right: 0%;
     width: 0%;
     opacity: 0;
     color: rgb(251, 251, 251);
@@ -39,23 +39,23 @@
     font-weight: 600;
     transition-duration: 0.3s;
   }
-  .Btn:hover {
+  .Btnlg:hover {
     width: 125px;
     border-radius: 40px;
     transition-duration: 0.3s;
   }
 
-  .Btn:hover .sign {
+  .Btnlg:hover .sign {
     width: 30%;
     transition-duration: 0.3s;
     padding-left: 20px;
   }
-  .Btn:hover .text {
+  .Btnlg:hover .textlg {
     opacity: 1;
     width: 70%;
     transition-duration: 0.3s;
     padding-right: 10px;
   }
-  .Btn:active {
+  .Btnlg:active {
     transform: translate(2px, 2px);
   }

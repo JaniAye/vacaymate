@@ -54,7 +54,7 @@
     <!-- Spinner End -->
 
     <!-- Navbar & Hero Start -->
-    <div class="container-fluid position-relative p-0">
+    <div class="container-fluid position-relative p-0" id="home">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>VacyMate</h1>
@@ -65,10 +65,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="./view/about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="/package" class="nav-item nav-link">Packages</a>
+                    <a class="nav-item nav-link active" onclick="homeClick()" id="homeTab">Home</a>
+                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
+                    <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Services</a>
+                    <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">
@@ -78,7 +78,7 @@
                             <a href="/package?type=hotel" class="dropdown-item">hotel Packages</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Contact</a>
                 </div>
 
                 {{-- notifications --}}
@@ -106,7 +106,7 @@
                 <a href="/provider-home" style="margin-right: 15px"
                     class="btn btn-primary rounded-pill py-2 px-4 ">User Portal</a>
                 {{-- <div style=""></div> --}}
-                <button class="Btn " onclick="logout()" id="btnLgout">
+                <button class="Btnlg " onclick="logout()" id="btnLgout">
                     <div class="sign">
                         <svg viewBox="0 0 512 512">
                             <path
@@ -115,7 +115,7 @@
                         </svg>
                     </div>
 
-                    <div class="text">Logout</div>
+                    <div class="textlg">Logout</div>
                 </button>
             </div>
         </nav>
@@ -143,7 +143,7 @@
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="aboutUs">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
@@ -152,6 +152,7 @@
                             style="object-fit: cover;">
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
                     <h1 class="mb-4">Welcome to <span class="text-primary">VacyMate</span></h1>
@@ -193,7 +194,7 @@
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="serviceDv">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
@@ -420,7 +421,7 @@
     <!-- Vehicle End -->
 
     <!-- Booking Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contactUs">
         <div class="container">
             <div class="booking p-5">
                 <div class="row g-5 align-items-center">
@@ -435,7 +436,7 @@
                         <a class="btn btn-outline-light py-3 px-5 mt-2" href="">Read More</a>
                     </div>
                     <div class="col-md-6">
-                        <h1 class="text-white mb-4">Book A Tour</h1>
+                        <h1 class="text-white mb-4">Contact Us</h1>
                         <form>
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -986,6 +987,41 @@
 
 
         });
+
+        function aboutClick() {
+            window.location.href = `/#aboutUs`;
+            setActive('aboutTab');
+        }
+
+        function homeClick() {
+            window.location.href = `/#home`;
+            setActive('homeTab');
+        }
+
+        function servicesClick() {
+            window.location.href = `/#serviceDv`;
+            setActive('servicesTab');
+        }
+
+        function locationsClick() {
+            window.location.href = `/#aboutUs`;
+            setActive('locationTab');
+        }
+
+        function contactClick() {
+            window.location.href = `/#contactUs`;
+            setActive('contactTab');
+        }
+
+        function setActive(tabId) {
+            const tabs = document.querySelectorAll('.nav-item');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+        }
     </script>
 </body>
 
