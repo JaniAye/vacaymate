@@ -409,7 +409,7 @@
                     data-wow-delay="0.3s">
                     <div class="row justify-content-center py-5" id="cont-row">
                         <div class="col-lg-12  text-center" id="cont-col">
-                            <h3>D & W Tours</h3>
+                            <h3 id="uname">D & W Tours</h3>
                         </div>
                     </div>
                     <h3 class="text-center m-1">- Pending Packages -</h3>
@@ -628,8 +628,26 @@
             return value === null || value === undefined || value.trim() === '';
         }
 
-        function getGuides() {
+        function getUserDetails(uid) {
+            var accid = {
+                uId: uid
+            };
+            $.ajax({
+                url: '{{ route('account.id') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: accid,
+                success: function(accResponse) {
+                    document.getElementById('uname').textContent = accResponse.data.name;
+                }
+            });
 
+        }
+
+        function getGuides() {
+            getUserDetails(localStorage.getItem('user'));
             var packageData = {
                 agancyId: localStorage.getItem('user'),
                 status: "PENDING"
@@ -660,7 +678,6 @@
                             data: accid,
                             success: function(accResponse) {
                                 accountData = accResponse.data;
-
                                 var booked = {
                                     pkgId: response.data[i].pkg_id
                                 };
