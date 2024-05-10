@@ -34,6 +34,9 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/logout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/notification.css') }}">
+
 
 </head>
 
@@ -61,23 +64,51 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="package.html" class="nav-item nav-link active">Packages</a>
+                    <a class="nav-item nav-link active" onclick="homeClick()" id="homeTab">Home</a>
+                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
+                    <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Services</a>
+                    <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">Destination</a>
-                            <a href="booking.html" class="dropdown-item">Booking</a>
-                            <a href="team.html" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                        <div class="dropdown-menu m-0 text-center">
+                            <a href="/package?type=complete" class="dropdown-item">Complete Packages</a>
+                            <a href="/package?type=vehicle" class="dropdown-item">Vehicle Packages</a>
+                            <a href="/package?type=guide" class="dropdown-item">Guides Packages</a>
+                            <a href="/package?type=hotel" class="dropdown-item">hotel Packages</a>
                         </div>
                     </div>
+                    {{-- notifications --}}
+                    <div class="notification" id="notific">
+                        <input type="checkbox" name="uro" id="uro">
+                        <input type="checkbox" name="btn" id="btn">
+                        <label for="btn">
+                            <span class="counter">2</span>
+                        </label>
+                        <div class="panel">
+                            <div class="unread-only">Only show unread <label for="uro"></label></div>
+                            <ul>
+                                <li class="unread"><img src="https://i.pravatar.cc/40?img=8"><strong>Tene</strong>
+                                    added your Pen <a href="#">404 Error Room</a> to their Collection</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- notifications end --}}
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
+                <a href="/provider-home" style="margin-right: 15px"
+                    class="btn btn-primary rounded-pill py-2 px-4">User
+                    Portal</a>
+                <button class="Btnlg " onclick="logout()" id="btnLgout">
+                    <div class="sign">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="textlg">Logout</div>
+                </button>
             </div>
         </nav>
 
@@ -556,7 +587,7 @@
                                     url = 'img/package-1.jpg';
                                     // console.error(error);
                                 }
-                                
+
                                 content += `
                                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                         <div class="package-item">
@@ -807,6 +838,60 @@
             var selected = document.getElementById("pkgFilter").value;
 
             getPackages(selected);
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            alert('Logout Successfully...');
+            window.location.href = `/`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var logged = localStorage.getItem('user');
+            if (!logged) {
+
+                document.getElementById('btnLgout').style.display = 'none';
+                document.getElementById('notific').style.display = 'none';
+
+                // window.location.href = `/signup`;
+            }
+
+
+        });
+
+        function aboutClick() {
+            window.location.href = `/#aboutUs`;
+            setActive('aboutTab');
+        }
+
+        function homeClick() {
+            window.location.href = `/#home`;
+            setActive('homeTab');
+        }
+
+        function servicesClick() {
+            window.location.href = `/#serviceDv`;
+            setActive('servicesTab');
+        }
+
+        function locationsClick() {
+            window.location.href = `/#aboutUs`;
+            setActive('locationTab');
+        }
+
+        function contactClick() {
+            window.location.href = `/#contactUs`;
+            setActive('contactTab');
+        }
+
+        function setActive(tabId) {
+            const tabs = document.querySelectorAll('.nav-item');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
         }
     </script>
 </body>
