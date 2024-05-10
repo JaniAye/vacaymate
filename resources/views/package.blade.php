@@ -468,6 +468,68 @@
 
         });
 
+        function getPackageImgs(pkgId) {
+            return new Promise((resolve, reject) => {
+
+                endpointUrl = `/getImages/${pkgId}`;
+                $.ajax({
+                    url: endpointUrl,
+                    method: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+
+                        if (response.success) {
+                            if (response.data[0] == undefined) {
+                                reject('');
+                            } else {
+                                resolve(response.data[0].image_path);
+                            }
+                        } else {
+
+                            console.log('Error: ' + response.message);
+                            reject('');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+
+                        alert('Failed to fetch data: ' + textStatus);
+                        reject('');
+                    }
+                });
+            });
+        }
+
+        // async function getPackageImgs(pkgId) {
+
+        //     endpointUrl = `/getImages/${pkgId}`;
+        //     $.ajax({
+        //         url: endpointUrl,
+        //         method: 'GET',
+        //         headers: {
+        //             'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        //         },
+        //         success: function(response) {
+
+        //             if (response.success) {
+        //                 return response.data[0].image_path;
+        //             } else {
+
+        //                 console.log('Error: ' + response.message);
+        //                 return '';
+        //             }
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown) {
+
+        //             alert('Failed to fetch data: ' + textStatus);
+        //             return '';
+        //         }
+        //     });
+
+        // }
+
+
         function getPackages(filter) {
 
             if (filter === 'ALL') {
@@ -478,7 +540,7 @@
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    success: function(response) {
+                    success: async function(response) {
 
                         if (response.success) {
                             var divElement = document.createElement('div');
@@ -486,11 +548,20 @@
                             let content = "";
 
                             for (let i = 0; i < response.data.length; i++) {
+
+                                var url;
+                                try {
+                                    url = await getPackageImgs(response.data[i].id);
+                                } catch (error) {
+                                    url = 'img/package-1.jpg';
+                                    // console.error(error);
+                                }
+                                
                                 content += `
                                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                         <div class="package-item">
                                             <div class="overflow-hidden">
-                                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                <img class="img-fluid" src="${url}" alt="">
                                             </div>
                                             <div class="d-flex border-bottom">
                                                 <small class="flex-fill text-center border-end py-2"><i
