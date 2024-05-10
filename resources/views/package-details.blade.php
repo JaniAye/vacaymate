@@ -225,7 +225,8 @@
                                 <div class="row g-3">
                                     <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                                         <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-1.jpg" alt="">
+                                            <img class="img-fluid" src="img/destination-1.jpg" alt=""
+                                                id="img1">
                                             {{-- <div
                                                 class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                                                 Thailand</div> --}}
@@ -233,7 +234,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                                         <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-2.jpg" alt="">
+                                            <img class="img-fluid" src="img/destination-2.jpg" alt=""
+                                                id="img2">
 
                                             {{-- <div
                                                 class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
@@ -242,7 +244,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                                         <a class="position-relative d-block overflow-hidden" href="">
-                                            <img class="img-fluid" src="img/destination-3.jpg" alt="">
+                                            <img class="img-fluid" src="img/destination-3.jpg" alt=""
+                                                id="img3">
                                             {{-- <div
                                                 class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                                                 Australia</div> --}}
@@ -254,7 +257,7 @@
                                 style="min-height: 350px;">
                                 <a class="position-relative d-block h-100 overflow-hidden" href="">
                                     <img class="img-fluid position-absolute w-100 h-100" src="img/destination-4.jpg"
-                                        alt="" style="object-fit: cover;">
+                                        id="img4" alt="" style="object-fit: cover;">
 
                                     {{-- <div
                                         class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
@@ -907,7 +910,46 @@
 
         }
 
+        function getPackageImgs(pkgId) {
+
+            endpointUrl = `/getImages/${pkgId}`;
+            $.ajax({
+                url: endpointUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    if (response.success) {
+                        var imgElement = document.getElementById("img1");
+                        imgElement.src = response.data[0].image_path;
+
+                        var imgElement2 = document.getElementById("img2");
+                        imgElement2.src = response.data[2].image_path;
+
+                        var imgElement3 = document.getElementById("img3");
+                        imgElement3.src = response.data[3].image_path;
+
+                        var imgElement4 = document.getElementById("img4");
+                        imgElement4.src = response.data[3   ].image_path;
+
+                    } else {
+
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+                    alert('Failed to fetch data: ' + textStatus);
+                }
+            });
+
+        }
+
         function getPackageData(pkgID) {
+
+            getPackageImgs(pkgID);
             getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
 
             $.ajax({
