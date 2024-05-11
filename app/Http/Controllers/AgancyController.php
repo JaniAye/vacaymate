@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\Agancy;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class AgancyController extends Controller
     public function getAgancyDetails($agancyID)
     {
         try {
-            $agancyData = Agancy::find($agancyID);
+            $agancyData = Accounts::find($agancyID);
 
             return response()->json([
                 'success' => true,
