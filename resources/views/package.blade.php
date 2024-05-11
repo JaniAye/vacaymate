@@ -654,7 +654,7 @@
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     data: filter,
-                    success: function(response) {
+                    success: async function(response) {
 
                         if (response.success) {
                             var divElement = document.createElement('div');
@@ -662,11 +662,19 @@
                             let content = "";
 
                             for (let i = 0; i < response.data.length; i++) {
+
+                                var url;
+                                try {
+                                    url = await getPackageImgs(response.data[i].id);
+                                } catch (error) {
+                                    url = 'img/package-1.jpg';
+                                    // console.error(error);
+                                }
                                 content += `
                                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                                         <div class="package-item">
                                             <div class="overflow-hidden">
-                                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                <img class="img-fluid" src="${url}" alt="">
                                             </div>
                                             <div class="d-flex border-bottom">
                                                 <small class="flex-fill text-center border-end py-2"><i
