@@ -235,7 +235,7 @@
                 </div>
 
                 {{-- notifications --}}
-                <div class="notification">
+                <div class="notification" id="notific">
                     <input type="checkbox" name="uro" id="uro">
                     <input type="checkbox" name="btn" id="btn">
                     <label for="btn">
