@@ -224,14 +224,15 @@
                 </button>
             </div>
 
-            <H3 class="text-center ">D & W Touers</H3>
+
             <div style="height: 25px; width : 100%; color:black">
                 <div class="row " style="position: fixed;">
                     <div class="col-lg-3 ">
                         <img class="img-fluid" src="img/package-1.jpg" alt="">
                     </div>
-                    <div class="col-lg-3 col-md-6" style=" width : 70%">
-                        <p id="packageDisc"></p>
+                    <div class="col-lg-3 col-md-6" style=" width : 70%;">
+                        <H3 class="text-center " id="agancyName">D & W Touers</H3>
+                        <h4 id="packageDisc" class="text-center"></h4>
                         <div style="margin-left: 60px;margin-right:60px">
                             <div class="row ">
                                 <div class="col-sm-6">
@@ -276,7 +277,7 @@
                     </div>
 
                     {{-- locations --}}
-                    <h3 class="text-center mt-3 ">Locations To See</h3>
+                    <h3 class="text-center mt-3 " id="locationsText">Locations To See</h3>
                     <div style="margin-left: 8% ;margin-right:3%">
                         <div class="row " id="locationsList" style="width:72vw">
 
@@ -768,27 +769,33 @@
                                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
                             },
                             success: function(response) {
-                                var divElement = document.querySelector("#locationsList");
-                                if (response.success) {
-                                    for (let i = 0; i < response.data.length; i++) {
-                                        content += `
-                                            <div class="col-sm-4">
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                <h5 class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>${response.data[i]}
-                                                </h5>
-                                            </div>
+                                if (response.data.length > 0) {
+                                    var divElement = document.querySelector("#locationsList");
 
-                                    `;
+                                    if (response.success) {
+                                        for (let i = 0; i < response.data.length; i++) {
+                                            content += `
+                                                    <div class="col-sm-4">
+                                                        <i class="fa-solid fa-location-dot"></i>
+                                                        <h5 class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>${response.data[i]}
+                                                        </h5>
+                                                    </div>
 
+                                            `;
+
+                                        }
+
+
+                                        divElement.innerHTML = content;
+                                        document.getElementById('locationsList').appendChild(
+                                            divElement);
                                     }
 
-
-                                    divElement.innerHTML = content;
-                                    document.getElementById('locationsList').appendChild(
-                                        divElement);
                                 } else {
+                                    document.getElementById('locationsText').style.display = 'none';
+                                    document.getElementById('overlay-content').style.height =
+                                        '70vh';
 
-                                    alert('Error: ' + response.message);
                                 }
                             },
                             error: function(jqXHR, textStatus, errorThrown) {
@@ -809,8 +816,10 @@
                             success: function(response) {
                                 var divElement = document.querySelector("#locationsList");
                                 if (response.success) {
-                                    document.getElementById("innerPdescrip").textContent = response
-                                        .data.discription;
+                                    document.getElementById('agancyName').textContent = response
+                                        .data.name;
+                                    // document.getElementById("innerPdescrip").textContent = response
+                                    //     .data.discription;
 
                                 } else {
 
