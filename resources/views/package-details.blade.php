@@ -1093,6 +1093,48 @@
                             }
                             divElementhtl.innerHTML = contenthtl;
                             document.getElementById('accommodation-list').appendChild(divElementhtl);
+                        } else if (response.data.package.type === 'GUIDE') {
+                            document.getElementById("locDiv").style.display = "none";
+                            document.getElementById("vehiDiv").style.display = "none";
+                            document.getElementById("accDiv").style.display = "none";
+
+                            if (response.data.package.free_guide === 1) {
+                                document.getElementById("ultimateSerice").checked = true;
+                            } else {
+                                document.getElementById("ultimateSerice").checked = false;
+                            }
+
+                            var divElementhtl = document.createElement('div');
+                            divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                            let contenthtl = "";
+                            for (var i = 0; i < response.data.guides.length; i++) {
+                                contenthtl += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data.guides[i].guide_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data.guides[i].discription}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                            }
+                            divElementhtl.innerHTML = contenthtl;
+                            document.getElementById('translators-list').appendChild(divElementhtl);
                         } else {
 
                             var divElement = document.createElement('div');

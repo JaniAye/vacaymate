@@ -254,8 +254,10 @@ class PackagesController extends Controller
 
     public function getPackageDetail($packageId)
     {
+
         try {
             $package = Packages::find($packageId);
+
             if ($package) {
                 $packageLocations = PackageLocations::where('package_id', $packageId)->get();
                 $packageVehicles = PackageVehicleDetails::where('package_id', $packageId)->get();
@@ -279,14 +281,12 @@ class PackagesController extends Controller
                 }
 
                 for ($i = 0; $i < count($packageHotels); $i++) {
-
-                    $relatedHotel = Hotels::where('id', $packageHotels[$i]->id)->get();
-
+                    $relatedHotel = Hotels::where('id', $packageHotels[$i]->hotel_id)->get();
                     $allhotels = array_merge($allhotels, $relatedHotel->toArray());
                 }
 
                 for ($i = 0; $i < count($packageGuides); $i++) {
-                    $relatedGuide = Guides::where('id', $packageGuides[$i]->id)->get();
+                    $relatedGuide = Guides::where('id', $packageGuides[$i]->guide_id)->get();
                     $allGuides = array_merge($allGuides, $relatedGuide->toArray());
                 }
 
