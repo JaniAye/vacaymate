@@ -4,6 +4,14 @@
 #tblConfrim{
     height: 1px;
 }
+
+#tblCancel{
+    height: 1px;
+}
+#tblComplete{
+    height: 1px;
+}
+
 .cont-col{
     border-right: 1px solid black;
     display: flex;
@@ -21,6 +29,14 @@
 }
 
 #tblConfrimData{
+    margin-top: 35px !important;
+    background-color: #f5f6fa;
+}
+#tblCancelData{
+    margin-top: 35px !important;
+    background-color: #f5f6fa;
+}
+#tblCompleteData{
     margin-top: 35px !important;
     background-color: #f5f6fa;
 }

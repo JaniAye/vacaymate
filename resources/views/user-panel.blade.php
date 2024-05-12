@@ -466,6 +466,56 @@
                     <div id="tblConfrimData" style="box-shadow: 0 0 20px #7f8c8d;">
                     </div>
 
+                    <div class="mt-5"></div>
+                    <h3 class="text-center">- Canceled Bookings -</h3>
+                    <div class="row justify-content-center mt-3 mb-5" id="tblCancel">
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5 style="font-size:18px">Package Name</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col" style="width: 10%; ">
+                            <h6 style="font-size:18px">Date Range</h6>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Service name</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Person count</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5 style="font-size:18px">customized</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Action</h5>
+                        </div>
+                    </div>
+                    <div id="tblCancelData" style="box-shadow: 0 0 20px #7f8c8d;">
+                    </div>
+
+                    <div class="mt-5"></div>
+                    <h3 class="text-center">- Completed Bookings -</h3>
+                    <div class="row justify-content-center mt-3 mb-5" id="tblComplete">
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5 style="font-size:18px">Package Name</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col" style="width: 10%; ">
+                            <h6 style="font-size:18px">Date Range</h6>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Service name</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Person count</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5 style="font-size:18px">customized</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Action</h5>
+                        </div>
+                    </div>
+                    <div id="tblCompleteData" style="box-shadow: 0 0 20px #7f8c8d;">
+                    </div>
+
                 </div>
 
             </div>
@@ -653,6 +703,8 @@
             }
             getGuides();
             getConfData();
+            getCancelData();
+            getCompleteData();
         });
 
         function isNullOrEmpty(value) {
@@ -894,6 +946,215 @@
             });
         }
 
+        function getCancelData() {
+            getUserDetails(localStorage.getItem('user'));
+
+            var packageData = {
+                agancyId: localStorage.getItem('user'),
+                status: "PENDING"
+            };
+
+            $.ajax({
+                url: '{{ route('booking.customer') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    // console.log(response.data.length);
+
+                    for (let i = 0; i < response.data.length; i++) {
+                        var accountData = '';
+                        var packageData = '';
+                        var accid = {
+                            uId: response.data[i].agancy_id
+                        };
+                        $.ajax({
+                            url: '{{ route('account.id') }}',
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            data: accid,
+                            success: function(accResponse) {
+                                accountData = accResponse.data;
+                                var booked = {
+                                    pkgId: response.data[i].pkg_id
+                                };
+                                $.ajax({
+                                    url: '{{ route('cancel.Package') }}',
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    data: booked,
+                                    success: function(pkgResponse) {
+                                        if (pkgResponse.data.length === 0) {
+
+                                        } else {
+                                            var divElement = document.createElement(
+                                                'div');
+                                            divElement.className =
+                                                'row justify-content-center text-center mt-3';
+                                            divElement.setAttribute('data-wow-delay',
+                                                '0.1s');
+                                            divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center mt-3" style >
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${pkgResponse.data.package_name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-coldt"  style="width: 10%">
+                                                            <h6>${response.data[i].st_date}</h6>
+                                                            <h6>${response.data[i].end_date}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${accResponse.data.name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${pkgResponse.data.person_count}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-col">
+                                                            <h6>True</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <div class="row justify-content-center ">
+                                                                <div class="col-lg-12  text-center cont-col">
+
+                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-lg-12  text-center cont-col">
+                                                                    <button onclick="startChat(event)">chat</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        `;
+                                            document.getElementById('tblCancelData')
+                                                .appendChild(divElement);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+
+
+
+
+                    }
+
+
+                }
+            });
+        }
+
+        function getCompleteData() {
+            getUserDetails(localStorage.getItem('user'));
+
+            var packageData = {
+                agancyId: localStorage.getItem('user'),
+                status: "PENDING"
+            };
+
+            $.ajax({
+                url: '{{ route('booking.customer') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    // console.log(response.data.length);
+
+                    for (let i = 0; i < response.data.length; i++) {
+                        var accountData = '';
+                        var packageData = '';
+                        var accid = {
+                            uId: response.data[i].agancy_id
+                        };
+                        $.ajax({
+                            url: '{{ route('account.id') }}',
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            data: accid,
+                            success: function(accResponse) {
+                                accountData = accResponse.data;
+                                var booked = {
+                                    pkgId: response.data[i].pkg_id
+                                };
+                                $.ajax({
+                                    url: '{{ route('complete.Package') }}',
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    data: booked,
+                                    success: function(pkgResponse) {
+                                        if (pkgResponse.data.length === 0) {
+
+                                        } else {
+                                            var divElement = document.createElement(
+                                                'div');
+                                            divElement.className =
+                                                'row justify-content-center text-center mt-3';
+                                            divElement.setAttribute('data-wow-delay',
+                                                '0.1s');
+                                            divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center mt-3" style >
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${pkgResponse.data.package_name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-coldt"  style="width: 10%">
+                                                            <h6>${response.data[i].st_date}</h6>
+                                                            <h6>${response.data[i].end_date}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${accResponse.data.name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${pkgResponse.data.person_count}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-col">
+                                                            <h6>True</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <div class="row justify-content-center ">
+                                                                <div class="col-lg-12  text-center cont-col">
+
+                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-lg-12  text-center cont-col">
+                                                                    <button onclick="startChat(event)">chat</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        `;
+                                            document.getElementById('tblCompleteData')
+                                                .appendChild(divElement);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+
+
+
+
+                    }
+
+
+                }
+            });
+        }
 
         $(document).ready(function() {
             $(".package-carousel").slick({

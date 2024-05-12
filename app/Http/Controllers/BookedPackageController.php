@@ -83,4 +83,58 @@ class BookedPackageController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function getCanceledPackage(Request $request)
+    {
+
+        try {
+
+            $pkg = BookedPackage::where('status', 3)
+                ->find($request->pkgId);
+            if ($pkg) {
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'pkg',
+                    'data' => $pkg
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function getCompletePackage(Request $request)
+    {
+
+        try {
+
+            $pkg = BookedPackage::where('status', 4)
+                ->find($request->pkgId);
+            if ($pkg) {
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'pkg',
+                    'data' => $pkg
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }

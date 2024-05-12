@@ -100,4 +100,6 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getAccou
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getbookedPackage', [BookedPackageController::class, 'getbookedPackage'])->name('booked.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getPendingPackage', [BookedPackageController::class, 'getPendingPackage'])->name('pending.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/geConfirmedPackage', [BookedPackageController::class, 'getConfirmedPackage'])->name('confirm.Package');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/geCompletePackage', [BookedPackageController::class, 'getCompletePackage'])->name('complete.Package');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/geCanceledPackage', [BookedPackageController::class, 'getCanceledPackage'])->name('cancel.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/upload', [FileUploadController::class, 'uploadFile'])->name('file.upload');
