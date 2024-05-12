@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filters.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/notification.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/logout.css') }}">
 
 </head>
 
@@ -76,7 +78,42 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">User Portal</a>
+                {{-- notifications --}}
+                <div class="notification">
+                    <input type="checkbox" name="uro" id="uro">
+                    <input type="checkbox" name="btn" id="btn">
+                    <label for="btn">
+                        <span class="counter">2</span>
+                    </label>
+                    <div class="panel">
+                        <div class="unread-only">Only show unread <label for="uro"></label></div>
+                        <ul>
+                            <li class="unread"><img src="https://i.pravatar.cc/40?img=8"><strong>Tene</strong> added
+                                your Pen <a href="#">404 Error Room</a> to their Collection</li>
+                            {{-- <li class="unread"><img src="https://i.pravatar.cc/40?img=11"><strong>Sem</strong> and 14
+                                            others loves your pen <a href="#">Crack Climbing Map</a></li>
+                                        <li class="read"><img src="https://i.pravatar.cc/40?img=3"><strong>Rufo</strong> and 11
+                                            others loves your pen <a href="#">Notification Icon</a></li>
+                                        <li class="read"><img src="https://i.pravatar.cc/40?img=4"><strong>Wirki</strong> and 6
+                                            others followed you</li> --}}
+                        </ul>
+                    </div>
+                </div>
+                {{-- notifications end --}}
+                <a href="/provider-home" class="btn btn-primary rounded-pill py-2 px-4"
+                    style="margin-right: 15px">User
+                    Portal</a>
+                <button class="Btnlg " onclick="logout()" id="btnLgout">
+                    <div class="sign">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="textlg">Logout</div>
+                </button>
             </div>
         </nav>
 
@@ -517,9 +554,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             var logged = localStorage.getItem('user');
             if (!logged) {
+                document.getElementById('btnLgout').style.display = 'none';
+                document.getElementById('notific').style.display = 'none';
                 window.location.href = `/signup`;
             }
-
             getPackageData({{ $packageId }});
             getLocations();
             getVehicles();
@@ -1305,9 +1343,12 @@
                 }
             });
 
+        }
 
-
-
+        function logout() {
+            localStorage.removeItem('user');
+            alert('Logout Successfully...');
+            window.location.href = `/`;
         }
     </script>
 </body>
