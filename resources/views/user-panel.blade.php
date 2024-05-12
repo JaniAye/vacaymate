@@ -440,6 +440,8 @@
                     </div>
                     <div id="tblPendingdata" style="box-shadow: 0 0 20px #7f8c8d;">
                     </div>
+                    <h6 class="text-center" id="noPending" style="font-style: italic; color: #7f8fa6">- No Pending
+                        Bookings Available -</h6>
 
                     <div class="mt-5"></div>
                     <h3 class="text-center">- Confirmed Bookings -</h3>
@@ -465,6 +467,8 @@
                     </div>
                     <div id="tblConfrimData" style="box-shadow: 0 0 20px #7f8c8d;">
                     </div>
+                    <h6 class="text-center" id="noConfirme" style="font-style: italic; color: #7f8fa6">- No Confirmed
+                        Bookings Available -</h6>
 
                     <div class="mt-5"></div>
                     <h3 class="text-center">- Canceled Bookings -</h3>
@@ -490,6 +494,9 @@
                     </div>
                     <div id="tblCancelData" style="box-shadow: 0 0 20px #7f8c8d;">
                     </div>
+                    <h6 class="text-center" id="noCancel" style="font-style: italic; color: #7f8fa6">- No Canceled
+                        Bookings
+                        Available -</h6>
 
                     <div class="mt-5"></div>
                     <h3 class="text-center">- Completed Bookings -</h3>
@@ -514,7 +521,11 @@
                         </div>
                     </div>
                     <div id="tblCompleteData" style="box-shadow: 0 0 20px #7f8c8d;">
+
                     </div>
+                    <h6 class="text-center" id="noComplete" style="font-style: italic; color: #7f8fa6">- No Completed
+                        Bookings
+                        Available -</h6>
 
                 </div>
 
@@ -778,6 +789,8 @@
 
                                         } else {
 
+                                            document.getElementById('noPending').style
+                                                .display = 'none';
                                             var divElement = document.createElement(
                                                 'div');
                                             divElement.className =
@@ -888,6 +901,8 @@
                                         if (pkgResponse.data.length === 0) {
 
                                         } else {
+                                            document.getElementById('noConfirme').style
+                                                .display = 'none';
                                             var divElement = document.createElement(
                                                 'div');
                                             divElement.className =
@@ -993,6 +1008,8 @@
                                         if (pkgResponse.data.length === 0) {
 
                                         } else {
+                                            document.getElementById('noCancel').style
+                                                .display = 'none';
                                             var divElement = document.createElement(
                                                 'div');
                                             divElement.className =
@@ -1098,6 +1115,8 @@
                                         if (pkgResponse.data.length === 0) {
 
                                         } else {
+                                            document.getElementById('noComplete').style
+                                                .display = 'none';
                                             var divElement = document.createElement(
                                                 'div');
                                             divElement.className =
