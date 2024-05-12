@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\Guides;
 use App\Models\Hotels;
 use App\Models\Images;
@@ -260,6 +261,7 @@ class PackagesController extends Controller
                 $packageVehicles = PackageVehicleDetails::where('package_id', $packageId)->get();
                 $packageHotels = PackageHotels::where('package_id', $packageId)->get();
                 $packageGuides = PackageGuides::where('package_id', $packageId)->get();
+                $account = Accounts::find($package->agancy_id);
 
                 $allRelatedLocations = [];
                 $allVehicles = [];
@@ -290,6 +292,7 @@ class PackagesController extends Controller
 
                 $packageDetails = [
                     'package' => $package,
+                    'account' => $account,
                     'locations' => $allRelatedLocations,
                     'vehicles' => $allVehicles,
                     'hotels' => $allhotels,

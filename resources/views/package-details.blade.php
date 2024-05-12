@@ -206,7 +206,7 @@
                 <div class="col-lg-3 col-xl-8 wow fadeInUp " style="background-color: #fff; width : 75%;"
                     data-wow-delay="0.3s">
                     <div class="m-3">
-                        <h3 class="m-0">D & W Touers</h3>
+                        <h3 class="m-0" id="agancyName">D & W Touers</h3>
                         <div class="mb-3">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -932,7 +932,7 @@
                         imgElement3.src = response.data[3].image_path;
 
                         var imgElement4 = document.getElementById("img4");
-                        imgElement4.src = response.data[3   ].image_path;
+                        imgElement4.src = response.data[3].image_path;
 
                     } else {
 
@@ -961,7 +961,7 @@
                 success: function(response) {
                     var divElement = document.querySelector("#locationsList");
                     if (response.success) {
-
+                        document.getElementById('agancyName').textContent = response.data.account.name;
                         // log.
                         if (response.data.package.type === 'VEHICLE') {
                             document.getElementById("locDiv").style.display = "none";
