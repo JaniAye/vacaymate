@@ -1051,7 +1051,7 @@
                         } else if (response.data.package.type === 'HOTEL') {
                             document.getElementById("locDiv").style.display = "none";
                             document.getElementById("gidDiv").style.display = "none";
-                            document.getElementById("accDiv").style.display = "none";
+                            document.getElementById("vehiDiv").style.display = "none";
 
 
 
