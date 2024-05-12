@@ -7,6 +7,40 @@ use Illuminate\Http\Request;
 
 class BookedPackageController extends Controller
 {
+    public function updateBookedPackageStatus(Request $request)
+    {
+        try {
+            $pkg = BookedPackage::find($request->packageId);
+
+            if ($pkg) {
+
+                $pkg->update(['status' => $request->status]);
+                $msg = 'Booking Confirmed Successfully';
+                if ($request->status == 3) {
+                    $msg = 'Booking Rejected';
+                }
+                return response()->json([
+                    'success' => true,
+                    'message' => $msg,
+                    'data' => $pkg
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Package not found',
+                    'data' => null
+                ], 404);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to update package status',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
     public function getbookedPackage(Request $request)
     {
         try {
