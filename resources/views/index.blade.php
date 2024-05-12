@@ -103,8 +103,8 @@
                     </div>
                 </div>
                 {{-- notifications end --}}
-                <a href="/provider-home" style="margin-right: 15px"
-                    class="btn btn-primary rounded-pill py-2 px-4 ">User Portal</a>
+                <a style="margin-right: 15px" class="btn btn-primary rounded-pill py-2 px-4 "
+                    onclick="userPortal()">User Portal</a>
                 {{-- <div style=""></div> --}}
                 <button class="Btnlg " onclick="logout()" id="btnLgout">
                     <div class="sign">
@@ -1021,6 +1021,19 @@
             });
 
             document.getElementById(tabId).classList.add('active');
+        }
+
+        function userPortal() {
+            var logged = localStorage.getItem('userType');
+
+            if (logged == 'SERVICE') {
+                window.location.href = '/provider-home';
+            } else if (logged == 'USER') {
+                window.location.href = '/user-home';
+            } else {
+                window.location.href = '/signup';
+            }
+
         }
     </script>
 </body>

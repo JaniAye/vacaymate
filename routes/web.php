@@ -61,6 +61,9 @@ Route::get('/hotel-package', function () {
 Route::get('/provider-home', function () {
     return view('provider-panel');
 });
+Route::get('/user-home', function () {
+    return view('user-panel');
+});
 
 Route::get('/provider-home', function () {
     return view('provider-panel');

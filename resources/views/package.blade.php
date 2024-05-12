@@ -95,8 +95,8 @@
                     {{-- notifications end --}}
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="/provider-home" style="margin-right: 15px"
-                    class="btn btn-primary rounded-pill py-2 px-4">User
+                <a style="margin-right: 15px" class="btn btn-primary rounded-pill py-2 px-4"
+                    onclick="userPortal()">User
                     Portal</a>
                 <button class="Btnlg " onclick="logout()" id="btnLgout">
                     <div class="sign">
@@ -919,6 +919,11 @@
             });
 
             document.getElementById(tabId).classList.add('active');
+        }
+
+        function userPortal() {
+            var logged = localStorage.getItem('user');
+            alert(logged);
         }
     </script>
 </body>
