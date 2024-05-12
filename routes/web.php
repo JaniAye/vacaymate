@@ -95,6 +95,7 @@ Route::withoutMiddleware(['web', 'auth'])->post('/package-book', [BookingControl
 Route::withoutMiddleware(['web', 'auth'])->post('/book', [BookingController::class, 'bookPackage'])->name('original.book');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getOWnPackages', [PackagesController::class, 'getAllFilterPackages'])->name('package.own');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBookingByAgancyId', [BookingController::class, 'getBookingByAgancyId'])->name('booking.agancy');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBookingByCustomerId', [BookingController::class, 'getBookingByCustId'])->name('booking.customer');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getAccountById', [AccountsController::class, 'getAccountById'])->name('account.id');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getbookedPackage', [BookedPackageController::class, 'getbookedPackage'])->name('booked.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/upload', [FileUploadController::class, 'uploadFile'])->name('file.upload');

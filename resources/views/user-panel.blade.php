@@ -467,7 +467,7 @@
                         <a class="btn btn-outline-light py-3 px-5 mt-2" href="">Read More</a>
                     </div>
                     <div class="col-md-6">
-                        <h1 class="text-white mb-4">Book A Tour</h1>
+                        <h1 class="text-white mb-4">Contact Us</h1>
                         <form>
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -657,13 +657,14 @@
 
         function getGuides() {
             getUserDetails(localStorage.getItem('user'));
+
             var packageData = {
                 agancyId: localStorage.getItem('user'),
                 status: "PENDING"
             };
 
             $.ajax({
-                url: '{{ route('booking.agancy') }}',
+                url: '{{ route('booking.customer') }}',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
