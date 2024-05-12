@@ -9,7 +9,6 @@ class BookedPackageController extends Controller
 {
     public function getbookedPackage(Request $request)
     {
-
         try {
             $pkg = BookedPackage::find($request->pkgId);
             if ($pkg) {

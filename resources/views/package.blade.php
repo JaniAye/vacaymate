@@ -672,7 +672,7 @@
                                     // console.error(error);
                                 }
                                 content += `
-                                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s" >
                                         <div class="package-item">
                                             <div class="overflow-hidden">
                                                 <img class="img-fluid" src="${url}" alt="">
@@ -922,8 +922,16 @@
         }
 
         function userPortal() {
-            var logged = localStorage.getItem('user');
-            alert(logged);
+            var logged = localStorage.getItem('userType');
+
+            if (logged == 'SERVICE') {
+                window.location.href = '/provider-home';
+            } else if (logged == 'USER') {
+                window.location.href = '/user-home';
+            } else {
+                window.location.href = '/signup';
+            }
+
         }
     </script>
 </body>
