@@ -1,6 +1,9 @@
 #tblPending {
     height: 1px;
 }
+#tblConfrim{
+    height: 1px;
+}
 .cont-col{
     border-right: 1px solid black;
     display: flex;
@@ -14,5 +17,10 @@
 }
 #tblPendingdata{
     margin-top: 35px !important;
-    background-color: rgb(217, 217, 217);
+    background-color: #f5f6fa;
+}
+
+#tblConfrimData{
+    margin-top: 35px !important;
+    background-color: #f5f6fa;
 }

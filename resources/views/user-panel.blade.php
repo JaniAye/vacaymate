@@ -53,10 +53,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin-panel.css') }}">
 
     <style>
-        /*-=-=-=-=-=-=-=-=-=-=-=- */
-        /* Column Grids */
-        /*-=-=-=-=-=-=-=-=-=-=-=- */
-
         .col_half {
             width: 49%;
         }
@@ -322,7 +318,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                {{-- <div class="col-lg-3 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <link href="https://fonts.googleapis.com/css?family=Coda|Open+Sans" rel="stylesheet">
 
                     <div id="date-picker-section" class="contasssiner">
@@ -413,8 +409,8 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-xl-8 wow fadeInUp " style="background-color: #fff; width : 75%;"
+                </div> --}}
+                <div class="col-lg-12 col-xl-12 wow fadeInUp " style="background-color: #fff; width : 100%;"
                     data-wow-delay="0.3s">
                     <div class="row justify-content-center py-5" id="cont-row">
                         <div class="col-lg-12  text-center" id="cont-col">
@@ -422,27 +418,52 @@
                         </div>
                     </div>
                     <h3 class="text-center m-1">- Pending Bookings -</h3>
-                    <div class="row justify-content-center mt-3" id="tblPending">
+                    <div class="row justify-content-center mt-3 mb-5" id="tblPending">
                         <div class="col-lg-3  text-center cont-col">
-                            <h5>Package Name</h5>
+                            <h5 style="font-size:18px">Package Name</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col" style="width: 10%; ">
+                            <h6 style="font-size:18px">Date Range</h6>
                         </div>
                         <div class="col-lg-2  text-center cont-col">
-                            <h5>Date Range</h5>
-                        </div>
-                        <div class="col-lg-3  text-center cont-col">
-                            <h5>Customer name</h5>
-                        </div>
-                        <div class="col-lg-1  text-center cont-col">
-                            <h5>count</h5>
-                        </div>
-                        <div class="col-lg-1  text-center cont-col">
-                            <h5>cust</h5>
+                            <h5 style="font-size:18px">Service name</h5>
                         </div>
                         <div class="col-lg-2  text-center cont-col">
-                            <h5>Action</h5>
+                            <h5 style="font-size:18px">Person count</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5 style="font-size:18px">customized</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Action</h5>
                         </div>
                     </div>
-                    <div id="tblPendingdata">
+                    <div id="tblPendingdata" style="box-shadow: 0 0 20px #7f8c8d;">
+                    </div>
+
+                    <div class="mt-5"></div>
+                    <h3 class="text-center">- Confirmed Bookings -</h3>
+                    <div class="row justify-content-center mt-3 mb-5" id="tblConfrim">
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5 style="font-size:18px">Package Name</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col" style="width: 10%; ">
+                            <h6 style="font-size:18px">Date Range</h6>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Service name</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Person count</h5>
+                        </div>
+                        <div class="col-lg-1  text-center cont-col">
+                            <h5 style="font-size:18px">customized</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Action</h5>
+                        </div>
+                    </div>
+                    <div id="tblConfrimData" style="box-shadow: 0 0 20px #7f8c8d;">
                     </div>
 
                 </div>
@@ -631,6 +652,7 @@
                 window.location.href = `/signup`;
             }
             getGuides();
+            getConfData();
         });
 
         function isNullOrEmpty(value) {
@@ -677,7 +699,7 @@
                         var accountData = '';
                         var packageData = '';
                         var accid = {
-                            uId: response.data[i].cust_id
+                            uId: response.data[i].agancy_id
                         };
                         $.ajax({
                             url: '{{ route('account.id') }}',
@@ -692,7 +714,7 @@
                                     pkgId: response.data[i].pkg_id
                                 };
                                 $.ajax({
-                                    url: '{{ route('booked.Package') }}',
+                                    url: '{{ route('pending.Package') }}',
                                     method: 'POST',
                                     headers: {
                                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -700,24 +722,29 @@
                                     data: booked,
                                     success: function(pkgResponse) {
 
-                                        var divElement = document.createElement('div');
-                                        divElement.className =
-                                            'row justify-content-center text-center mt-3';
-                                        divElement.setAttribute('data-wow-delay',
-                                            '0.1s');
-                                        divElement.innerHTML = `
-                                                    <div class="row justify-content-center text-center mt-3">
+                                        if (pkgResponse.data.length === 0) {
+
+                                        } else {
+
+                                            var divElement = document.createElement(
+                                                'div');
+                                            divElement.className =
+                                                'row justify-content-center text-center mt-3';
+                                            divElement.setAttribute('data-wow-delay',
+                                                '0.1s');
+                                            divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center mt-3" style >
                                                         <div class="col-lg-3  text-center cont-col">
                                                             <h6>${pkgResponse.data.package_name}</h6>
                                                         </div>
-                                                        <div class="col-lg-2  text-center cont-coldt">
+                                                        <div class="col-lg-1  text-center cont-coldt"  style="width: 10%">
                                                             <h6>${response.data[i].st_date}</h6>
                                                             <h6>${response.data[i].end_date}</h6>
                                                         </div>
-                                                        <div class="col-lg-3  text-center cont-col">
+                                                        <div class="col-lg-2  text-center cont-col">
                                                             <h6>${accResponse.data.name}</h6>
                                                         </div>
-                                                        <div class="col-lg-1  text-center cont-col">
+                                                        <div class="col-lg-2  text-center cont-col">
                                                             <h6>${pkgResponse.data.person_count}</h6>
                                                         </div>
                                                         <div class="col-lg-1  text-center cont-col">
@@ -738,9 +765,10 @@
                                                         </div>
                                                     </div>
                                         `;
-                                        document.getElementById('tblPendingdata')
-                                            .appendChild(divElement);
+                                            document.getElementById('tblPendingdata')
+                                                .appendChild(divElement);
 
+                                        }
                                     }
                                 });
                             }
@@ -759,6 +787,111 @@
             // for (var i = 0; i < 6; i++) {
 
             // }
+        }
+
+        function getConfData() {
+            getUserDetails(localStorage.getItem('user'));
+
+            var packageData = {
+                agancyId: localStorage.getItem('user'),
+                status: "PENDING"
+            };
+
+            $.ajax({
+                url: '{{ route('booking.customer') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    // console.log(response.data.length);
+
+                    for (let i = 0; i < response.data.length; i++) {
+                        var accountData = '';
+                        var packageData = '';
+                        var accid = {
+                            uId: response.data[i].agancy_id
+                        };
+                        $.ajax({
+                            url: '{{ route('account.id') }}',
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            data: accid,
+                            success: function(accResponse) {
+                                accountData = accResponse.data;
+                                var booked = {
+                                    pkgId: response.data[i].pkg_id
+                                };
+                                $.ajax({
+                                    url: '{{ route('confirm.Package') }}',
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    data: booked,
+                                    success: function(pkgResponse) {
+                                        if (pkgResponse.data.length === 0) {
+
+                                        } else {
+                                            var divElement = document.createElement(
+                                                'div');
+                                            divElement.className =
+                                                'row justify-content-center text-center mt-3';
+                                            divElement.setAttribute('data-wow-delay',
+                                                '0.1s');
+                                            divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center mt-3" style >
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${pkgResponse.data.package_name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-coldt"  style="width: 10%">
+                                                            <h6>${response.data[i].st_date}</h6>
+                                                            <h6>${response.data[i].end_date}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${accResponse.data.name}</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <h6>${pkgResponse.data.person_count}</h6>
+                                                        </div>
+                                                        <div class="col-lg-1  text-center cont-col">
+                                                            <h6>True</h6>
+                                                        </div>
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <div class="row justify-content-center ">
+                                                                <div class="col-lg-12  text-center cont-col">
+
+                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-lg-12  text-center cont-col">
+                                                                    <button onclick="startChat(event)">chat</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        `;
+                                            document.getElementById('tblConfrimData')
+                                                .appendChild(divElement);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+
+
+
+
+                    }
+
+
+                }
+            });
         }
 
 
