@@ -228,7 +228,7 @@
             <div style="height: 25px; width : 100%; color:black">
                 <div class="row " style="position: fixed;">
                     <div class="col-lg-3 ">
-                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                        <img class="img-fluid" src="img/package-1.jpg" alt="" id="imgSeeMore">
                     </div>
                     <div class="col-lg-3 col-md-6" style=" width : 70%;">
                         <H3 class="text-center " id="agancyName">D & W Touers</H3>
@@ -743,7 +743,7 @@
 
         }
 
-        function seeMore(clickedData) {
+        async function seeMore(clickedData) {
             endpointUrl = `http://localhost:8000/getPackage/${clickedData}`;
 
             $.ajax({
@@ -757,7 +757,8 @@
                     if (response.success) {
                         console.log(response.data.discription);
                         document.getElementById("packageDisc").textContent = response.data.discription;
-                        document.getElementById("insidePriceH2").textContent = "only for : $" + response.data
+                        document.getElementById("insidePriceH2").textContent = "only for : $" + response
+                            .data
                             .price;
 
                         getLocUrl = `http://localhost:8000/getLocationsByPackage/${clickedData}`;
@@ -792,7 +793,8 @@
                                     }
 
                                 } else {
-                                    document.getElementById('locationsText').style.display = 'none';
+                                    document.getElementById('locationsText').style.display =
+                                        'none';
                                     document.getElementById('overlay-content').style.height =
                                         '70vh';
 
@@ -843,7 +845,15 @@
                 }
             });
 
+            var url;
+            try {
+                url = await getPackageImgs(clickedData);
+            } catch (error) {
+                url = 'img/package-1.jpg';
+                // console.error(error);
+            }
 
+            document.getElementById('imgSeeMore').src = url;
             var overlay = document.getElementById('overlay');
             overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
             seeMoreClicked = true;
