@@ -256,7 +256,7 @@
                     </div>
                 </div>
                 {{-- notifications end --}}
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 15px">User
+                <a href="" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 15px">Admin
                     Portal</a>
                 <button class="Btnlg " onclick="logout()" id="btnLgout">
                     <div class="sign">
@@ -276,6 +276,7 @@
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h5 class="display-5 text-white animated slideInDown">Admin Portal</h5>
 
 
                         <div class="wrapper">

@@ -217,10 +217,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link ">Home</a>
                     <a href="./view/about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="/createdPackage" class="nav-item nav-link">Packages</a>
+                    <a href="/createdPackage" class="nav-item nav-link">Created Packages</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Create
                             Package</a>
@@ -270,13 +270,22 @@
                     <div class="textlg">Logout</div>
                 </button>
             </div>
+
         </nav>
+
 
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-
+                        <h5 class="display-5 text-white animated slideInDown">User Portal</h5>
+                        {{-- <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">Packages</li>
+                            </ol>
+                        </nav> --}}
 
                         <div class="wrapper">
                             <div class="counterDiv col_fourth">
