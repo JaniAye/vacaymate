@@ -331,7 +331,7 @@ class PackagesController extends Controller
             'free_guide' => (int)  $request->chkTourGuide,
             'ultimate_service' => (int)  $request->ultimateService,
             'price' => $request->price,
-            'type' => "COMPLETE",
+            'type' => "GUIDE",
             'status' => 1
 
             // 'reviews' => $request->reviews

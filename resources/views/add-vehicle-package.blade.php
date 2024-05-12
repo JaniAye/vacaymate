@@ -2539,7 +2539,7 @@
 
             var packageData = {
                 packageName: document.getElementById("packageName").value,
-                agancy: 1,
+                agancy: localStorage.getItem('user'),
                 discription: document.getElementById("packageBreifDiscription").value,
                 chkAirportPick: document.getElementById("chkAirportPick").checked ? 1 : 0,
                 chkAirportDrop: document.getElementById("chkAirportDrop").checked ? 1 : 0,

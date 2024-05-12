@@ -2238,8 +2238,8 @@
 
             var packageData = {
                 packageId: {{ $packageId }},
-                packageName: "sukk",
-                agancy: 1,
+                packageName: "Test",
+                agancy: localStorage.getItem('user'),
                 discription: "--",
                 chkAirportPick: document.getElementById("chkAirportPick").checked ? 1 : 0,
                 chkAirportDrop: document.getElementById("chkAirportDrop").checked ? 1 : 0,
