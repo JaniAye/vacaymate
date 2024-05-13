@@ -1397,7 +1397,7 @@
         function confirmBk() {
             var bookingStatus = {
                 packageId: {{ $packageId }},
-                status: 2
+                status: 4
             };
 
             $.ajax({
