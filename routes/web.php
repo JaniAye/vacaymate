@@ -100,6 +100,7 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBooki
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getBookingByCustomerId', [BookingController::class, 'getBookingByCustId'])->name('booking.customer');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getAccountById', [AccountsController::class, 'getAccountById'])->name('account.id');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getbookedPackage', [BookedPackageController::class, 'getbookedPackage'])->name('booked.Package');
+// Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getImages/{packageId}', [ImageController::class, 'getImages']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/getPendingPackage', [BookedPackageController::class, 'getPendingPackage'])->name('pending.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/geConfirmedPackage', [BookedPackageController::class, 'getConfirmedPackage'])->name('confirm.Package');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->post('/geCompletePackage', [BookedPackageController::class, 'getCompletePackage'])->name('complete.Package');

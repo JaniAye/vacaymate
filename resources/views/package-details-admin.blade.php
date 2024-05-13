@@ -367,6 +367,10 @@
             <div class="row g-4 mt-2">
                 <h2 class="text-center">Package Price : <span class="text-primary" id="pkgPrice">$187.52</span>
                 </h2>
+                <h2 class="text-center">Booking Status : <span class="text-primary" id="statusPkg">Confirmed</span>
+                </h2>
+                {{-- <h2 class="text-center">Booking Status : <span class="text-danger" id="statusPkg">Rejected</span>
+                    </h2> --}}
                 {{-- <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
                     data-wow-delay="0.4s">
                     <button class="animated-button" onclick="customizePkg()">
@@ -385,10 +389,10 @@
                     </button>
                 </div> --}}
                 <div class="text-center">
-                    <button class="confBtn" onclick="confirmBk()">
+                    <button class="confBtn" onclick="confirmBk()" id="confBk">
                         Confirm Booking
                     </button>
-                    <button class="confBtn" onclick="rejectBk()">
+                    <button class="confBtn" onclick="rejectBk()" id="rejectBk">
                         Reject Booking
                     </button>
                 </div>
@@ -929,8 +933,53 @@
 
         }
 
-        function getPackageData(pkgID) {
+        function getBookedPackage(pkgID) {
 
+            var packageData = {
+                pkgId: pkgID
+            };
+
+            $.ajax({
+                url: '{{ route('booked.Package') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    if (response.data.status === 1) {
+                        document.getElementById('confBk').style.display = 'inline';
+                        document.getElementById('rejectBk').style.display = 'inline';
+
+                        document.getElementById('statusPkg').textContent = 'Pending';
+                        document.getElementById('statusPkg').className = 'text-primary';
+                    } else if (response.data.status === 2) {
+                        document.getElementById('rejectBk').style.display = 'inline';
+                        document.getElementById('confBk').style.display = 'none';
+                        document.getElementById('statusPkg').textContent = 'Confirmed';
+                        document.getElementById('statusPkg').className = 'text-primary';
+                    } else if (response.data.status === 3) {
+                        document.getElementById('confBk').style.display = 'inline';
+                        document.getElementById('rejectBk').style.display = 'none';
+                        document.getElementById('statusPkg').textContent = 'Rejected';
+                        document.getElementById('statusPkg').className = 'text-danger';
+                    } else if (response.data.status === 4) {
+                        document.getElementById('rejectBk').style.display = 'none';
+                        document.getElementById('confBk').style.display = 'none';
+
+                        document.getElementById('statusPkg').textContent = 'Booking Completed';
+                        document.getElementById('statusPkg').className = 'text-primary';
+
+                    }
+
+                }
+            });
+
+        }
+
+
+        function getPackageData(pkgID) {
+            getBookedPackage(pkgID);
             getPackageImgs(pkgID);
             getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
 
