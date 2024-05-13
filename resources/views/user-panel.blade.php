@@ -820,7 +820,7 @@
                                                             <div class="row justify-content-center ">
                                                                 <div class="col-lg-12  text-center cont-col">
 
-                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                    <button id="${pkgResponse.data.id}" onclick="seeMore(event)">See More</button>
                                                                 </div>
                                                             </div>
                                                             <div class="row justify-content-center">
@@ -932,7 +932,7 @@
                                                             <div class="row justify-content-center ">
                                                                 <div class="col-lg-12  text-center cont-col">
 
-                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                    <button id="${pkgResponse.data.id}" onclick="seeMore(event)">See More</button>
                                                                 </div>
                                                             </div>
                                                             <div class="row justify-content-center">
@@ -1039,7 +1039,7 @@
                                                             <div class="row justify-content-center ">
                                                                 <div class="col-lg-12  text-center cont-col">
 
-                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                    <button id="${pkgResponse.data.id}" onclick="seeMore(event)">See More</button>
                                                                 </div>
                                                             </div>
                                                             <div class="row justify-content-center">
@@ -1145,8 +1145,7 @@
                                                         <div class="col-lg-2  text-center cont-col">
                                                             <div class="row justify-content-center ">
                                                                 <div class="col-lg-12  text-center cont-col">
-
-                                                                    <button onclick="seeMore(event)">See More</button>
+                                                                    <button id="${pkgResponse.data.id}" onclick="seeMore(event)">See More</button>
                                                                 </div>
                                                             </div>
                                                             <div class="row justify-content-center">
@@ -1321,6 +1320,14 @@
             localStorage.removeItem('user');
             alert('Logout Successfully...');
             window.location.href = `/`;
+        }
+
+        function seeMore(event) {
+            event.preventDefault();
+            var id = event.target.id;
+            var url = '/userBooking?id=' + id;
+            window.open(url, '_blank');
+            // window.location.href = `/`;
         }
     </script>
 </body>

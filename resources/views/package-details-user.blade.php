@@ -390,10 +390,10 @@
                 </div> --}}
                 <div class="text-center">
                     <button class="confBtn" onclick="confirmBk()" id="confBk">
-                        Confirm Booking
+                        Booking Completed
                     </button>
                     <button class="confBtn" onclick="rejectBk()" id="rejectBk">
-                        Reject Booking
+                        Cancel Booking
                     </button>
                 </div>
             </div>
@@ -948,18 +948,18 @@
                 data: packageData,
                 success: function(response) {
                     if (response.data.status === 1) {
-                        document.getElementById('confBk').style.display = 'inline';
+                        document.getElementById('confBk').style.display = 'none';
                         document.getElementById('rejectBk').style.display = 'inline';
 
                         document.getElementById('statusPkg').textContent = 'Pending';
                         document.getElementById('statusPkg').className = 'text-primary';
                     } else if (response.data.status === 2) {
                         document.getElementById('rejectBk').style.display = 'inline';
-                        document.getElementById('confBk').style.display = 'none';
+                        document.getElementById('confBk').style.display = 'inline';
                         document.getElementById('statusPkg').textContent = 'Confirmed';
                         document.getElementById('statusPkg').className = 'text-primary';
                     } else if (response.data.status === 3) {
-                        document.getElementById('confBk').style.display = 'inline';
+                        document.getElementById('confBk').style.display = 'none';
                         document.getElementById('rejectBk').style.display = 'none';
                         document.getElementById('statusPkg').textContent = 'Rejected';
                         document.getElementById('statusPkg').className = 'text-danger';
@@ -969,6 +969,13 @@
 
                         document.getElementById('statusPkg').textContent = 'Booking Completed';
                         document.getElementById('statusPkg').className = 'text-primary';
+
+                    } else if (response.data.status === 5) {
+                        document.getElementById('rejectBk').style.display = 'none';
+                        document.getElementById('confBk').style.display = 'none';
+
+                        document.getElementById('statusPkg').textContent = 'Canceled';
+                        document.getElementById('statusPkg').className = 'text-danger';
 
                     }
 
@@ -981,7 +988,6 @@
         function getPackageData(pkgID) {
             getBookedPackage(pkgID);
             getPackageImgs(pkgID);
-            // getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
             getLocUrl = `/getBookPackage/${pkgID}`;
 
             $.ajax({
@@ -991,6 +997,7 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 success: function(response) {
+
                     var divElement = document.querySelector("#locationsList");
                     if (response.success) {
                         document.getElementById('agancyName').textContent = response.data.account.name;
@@ -1412,7 +1419,7 @@
         function rejectBk() {
             var bookingStatus = {
                 packageId: {{ $packageId }},
-                status: 3
+                status: 5
             };
 
             $.ajax({

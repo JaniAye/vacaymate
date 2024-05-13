@@ -31,6 +31,13 @@ class PackagesController extends Controller
 
         return view('package-details-admin', ['packageId' => $packageId]);
     }
+
+    public function showBookedPackageToUser(Request $request)
+    {
+        $packageId = $request->query('id', 0);
+
+        return view('package-details-user', ['packageId' => $packageId]);
+    }
     public function custormizepkg(Request $request)
     {
         $packageId = $request->query('id', 0);
@@ -263,7 +270,6 @@ class PackagesController extends Controller
 
         try {
             $package = Packages::find($packageId);
-
             if ($package) {
                 $packageLocations = PackageLocations::where('package_id', $packageId)->get();
                 $packageVehicles = PackageVehicleDetails::where('package_id', $packageId)->get();
