@@ -1402,6 +1402,7 @@
                 data: bookingStatus,
                 success: function(response) {
                     alert(response.message);
+                    location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Failed to create location: ' + textStatus);
@@ -1424,6 +1425,7 @@
                 data: bookingStatus,
                 success: function(response) {
                     alert(response.message);
+                    location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Failed to create location: ' + textStatus);

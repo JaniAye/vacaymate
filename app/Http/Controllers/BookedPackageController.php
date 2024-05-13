@@ -27,7 +27,13 @@ class BookedPackageController extends Controller
                 $pkg->update(['status' => $request->status]);
                 $msg = 'Booking Confirmed Successfully';
                 if ($request->status == 3) {
-                    $msg = 'Booking Rejected';
+                    $msg = 'Booking Rejected Successfully';
+                }
+                if ($request->status == 4) {
+                    $msg = 'Booking Completed Successfully';
+                }
+                if ($request->status == 5) {
+                    $msg = 'Booking Canceled Successfully';
                 }
                 return response()->json([
                     'success' => true,

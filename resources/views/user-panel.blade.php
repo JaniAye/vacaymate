@@ -1323,11 +1323,11 @@
         }
 
         function seeMore(event) {
-            event.preventDefault();
+            // event.preventDefault();
             var id = event.target.id;
             var url = '/userBooking?id=' + id;
-            window.open(url, '_blank');
-            // window.location.href = `/`;
+            // window.open(url, '_blank');
+            window.location.href = url;
         }
     </script>
 </body>
