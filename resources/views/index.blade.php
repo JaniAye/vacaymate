@@ -66,9 +66,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a class="nav-item nav-link active" onclick="homeClick()" id="homeTab">Home</a>
-                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
                     <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Vehicles</a>
+                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">Hotels</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">
@@ -989,7 +989,7 @@
         });
 
         function aboutClick() {
-            window.location.href = `/#aboutUs`;
+            window.location.href = `/hotels`;
             setActive('aboutTab');
         }
 
