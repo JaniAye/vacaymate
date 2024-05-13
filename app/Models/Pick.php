@@ -13,6 +13,7 @@ class Pick extends Model
         'hotel',
         'vehicle',
         'guide',
-        'package'
+        'package',
+        'user_id'
     ];
 }
