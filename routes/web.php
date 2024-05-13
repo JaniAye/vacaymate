@@ -10,6 +10,7 @@ use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PickController;
 use App\Http\Controllers\VehicleControler;
 use App\Models\Agancy;
 use App\Models\PackageLocations;
@@ -90,6 +91,7 @@ Route::withoutMiddleware(['web', 'auth'])->post('/signup', [AccountsController::
 Route::withoutMiddleware(['web', 'auth'])->post('/login', [AccountsController::class, 'loginAccount'])->name('account.login');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-hotel', [HotelsController::class, 'saveHotel'])->name('hotel.create');
 Route::withoutMiddleware(['web', 'auth'])->post('/add-guide', [GuidesController::class, 'saveGuide'])->name('guide.create');
+Route::withoutMiddleware(['web', 'auth'])->post('/pick-add', [PickController::class, 'savePick'])->name('picks.add');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocations/{location}', [LocationController::class, 'getAllLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationById/{location}', [LocationController::class, 'getLocationById']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicles/{vehicle}', [VehicleControler::class, 'getAllVehicles']);
