@@ -248,4 +248,26 @@ class BookingController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function getBookingByPkgId($packageId)
+    {
+        try {
+            $booking = Booking::where('pkg_id', $packageId)->first();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Success',
+                'data' => $booking
+            ], 200);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'No packages',
+                'data' => []
+            ], 200);
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }
