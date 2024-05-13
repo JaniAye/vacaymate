@@ -127,8 +127,7 @@ class LocationController extends Controller
             $allPackages = Location::all();
 
             if ($allPackages->isNotEmpty()) {
-                info('-------00------------000---------');
-                info($allPackages);
+
                 return response()->json([
                     'success' => true,
                     'message' => 'Success',

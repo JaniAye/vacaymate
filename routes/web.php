@@ -41,6 +41,9 @@ Route::get('/package', function () {
 Route::get('/location', function () {
     return view('locations');
 });
+Route::get('/vehicles', function () {
+    return view('vehicles');
+});
 Route::get('/createdPackage', function () {
     return view('showCreatedPackage');
 });
@@ -92,6 +95,7 @@ Route::withoutMiddleware(['web', 'auth'])->post('/create-htlpackage', [PackagesC
 Route::withoutMiddleware(['web', 'auth'])->post('/create-vehiclepackage', [PackagesController::class, 'createVehiclePackage'])->name('pkgVehicle.create');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPackages', [PackagesController::class, 'getAllPackages'])->name('package.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationDataAll', [LocationController::class, 'getLocationData'])->name('locations.all');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehiclesAllData', [VehicleControler::class, 'getVehiclesAllData'])->name('vehicles.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllFilterPackages', [PackagesController::class, 'getAllFilterdPackages'])->name('package.filter');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getBooking/{packageId}', [BookingController::class, 'getBookingByPkgId']);
