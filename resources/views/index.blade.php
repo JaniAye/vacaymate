@@ -69,6 +69,7 @@
                     <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Vehicles</a>
                     <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">Hotels</a>
+                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Guides</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">
@@ -78,7 +79,6 @@
                             <a href="/package?type=hotel" class="dropdown-item">hotel Packages</a>
                         </div>
                     </div>
-                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Contact</a>
                 </div>
 
                 {{-- notifications --}}
@@ -1009,7 +1009,7 @@
         }
 
         function contactClick() {
-            window.location.href = `/#contactUs`;
+            window.location.href = `/guides`;
             setActive('contactTab');
         }
 

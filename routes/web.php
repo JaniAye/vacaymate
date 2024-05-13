@@ -47,6 +47,10 @@ Route::get('/vehicles', function () {
 Route::get('/hotels', function () {
     return view('hotels');
 });
+
+Route::get('/guides', function () {
+    return view('guides');
+});
 Route::get('/createdPackage', function () {
     return view('showCreatedPackage');
 });
@@ -100,6 +104,7 @@ Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllPac
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationDataAll', [LocationController::class, 'getLocationData'])->name('locations.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehiclesAllData', [VehicleControler::class, 'getVehiclesAllData'])->name('vehicles.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotelsAllData', [HotelsController::class, 'getHotelsAllData'])->name('hotels.all');
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuidesAllData', [GuidesController::class, 'getGuidesAllData'])->name('guides.all');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getAllFilterPackages', [PackagesController::class, 'getAllFilterdPackages'])->name('package.filter');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getPackage/{packageId}', [PackagesController::class, 'getPackage']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getBooking/{packageId}', [BookingController::class, 'getBookingByPkgId']);
