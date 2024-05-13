@@ -120,4 +120,30 @@ class LocationController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function getLocationData()
+    {
+        try {
+            $allPackages = Location::all();
+
+            if ($allPackages->isNotEmpty()) {
+                info('-------00------------000---------');
+                info($allPackages);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $allPackages
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }

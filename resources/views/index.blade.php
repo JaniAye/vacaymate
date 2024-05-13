@@ -1004,7 +1004,7 @@
         }
 
         function locationsClick() {
-            window.location.href = `/#aboutUs`;
+            window.location.href = `location`;
             setActive('locationTab');
         }
 
