@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotels;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HotelsController extends Controller
 {
@@ -90,6 +91,34 @@ class HotelsController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function getHotelByName($hotel)
+    {
+
+        $values = Str::of($hotel)->explode(',');
+
+        try {
+
+            $htls = Hotels::whereIn('id', $values)->get();
+            info($htls);
+            if ($htls !== null) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $htls
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
                     'data' => []
                 ], 200);
             }

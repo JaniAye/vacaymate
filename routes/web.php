@@ -61,6 +61,8 @@ Route::get('/vehicleDetails', [VehicleControler::class, 'showVehicleDetails']);
 Route::get('/adminBooking', [PackagesController::class, 'showBookedPackageToAdmin']);
 Route::get('/userBooking', [PackagesController::class, 'showBookedPackageToUser']);
 
+Route::delete('/pickDelete/{id}', [PickController::class, 'destroy']);
+
 Route::get('/custormize', [PackagesController::class, 'custormizepkg']);
 
 Route::get('/create-package', function () {
@@ -95,6 +97,9 @@ Route::withoutMiddleware(['web', 'auth'])->post('/add-guide', [GuidesController:
 Route::withoutMiddleware(['web', 'auth'])->post('/pick-add', [PickController::class, 'savePick'])->name('picks.add');
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocations/{location}', [LocationController::class, 'getAllLocations']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationById/{location}', [LocationController::class, 'getLocationById']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getLocationByName/{location}', [LocationController::class, 'getLocationByName']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotelByName/{hotel}', [HotelsController::class, 'getHotelByName']);
+Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuideByName/{guide}', [GuidesController::class, 'getGuideByName']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getVehicles/{vehicle}', [VehicleControler::class, 'getAllVehicles']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getHotels/{hotel}', [HotelsController::class, 'getAllhotels']);
 Route::middleware([\App\Http\Middleware\CorsMiddleware::class])->get('/getGuides/{guide}', [GuidesController::class, 'getAllGuides']);

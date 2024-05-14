@@ -6,6 +6,8 @@ use App\Models\Location;
 use App\Models\PackageLocations;
 use Illuminate\Http\Request;
 use Locale;
+use Illuminate\Support\Str;
+
 
 class LocationController extends Controller
 {
@@ -78,6 +80,34 @@ class LocationController extends Controller
                     'success' => true,
                     'message' => 'Success',
                     'data' => $location
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+    public function getLocationByName($locationName)
+    {
+
+        $values = Str::of($locationName)->explode(',');
+
+        try {
+
+            // $location = Location::where('name', $locationName)->first();
+            $locations = Location::whereIn('name', $values)->get();
+            info($locations);
+            if ($locations !== null) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $locations
                 ], 200);
             } else {
                 return response()->json([

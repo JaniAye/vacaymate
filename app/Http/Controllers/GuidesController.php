@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Guides;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Guid\Guid;
+use Illuminate\Support\Str;
 
 class GuidesController extends Controller
 {
@@ -92,6 +94,34 @@ class GuidesController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function getGuideByName($guide)
+    {
+
+        $values = Str::of($guide)->explode(',');
+
+        try {
+
+            $htls = Guides::whereIn('id', $values)->get();
+            info($htls);
+            if ($htls !== null) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success',
+                    'data' => $htls
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Invalid location',
                     'data' => []
                 ], 200);
             }

@@ -107,4 +107,15 @@ class PickController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+    public function destroy($id)
+    {
+        try {
+            $resource = Pick::findOrFail($id);
+            $resource->delete();
+
+            return response()->json(['message' => 'Pick deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed to delete Pick', 'error' => $e->getMessage()], 500);
+        }
+    }
 }

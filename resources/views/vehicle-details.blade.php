@@ -331,7 +331,7 @@
         <div class="container">
             <div class="row g-4" id="locDiv">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-12 col-sm-4 wow fadeInUp mb-5" data-wow-delay="0.1s">
 
                     <h5 class="text-center">You Can Simply plan your vaction here...You Just have to use your picks.You
                         can go to locations page and add you needed loactions, hotels and guides then you can send them
@@ -361,7 +361,8 @@
             </div>
             <div class="row g-4" id="locDiv">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s" style="display: none"
+                    id="locText">
                     <h3 class="text-center">Locations Covers From This Package</h3>
                     <div id="packageList">
                     </div>
@@ -369,7 +370,7 @@
             </div>
             <div class="row g-4" id="vehiDiv">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s" style="display: none">
                     <h3 class="text-center mt-5">Vehicles That Brings You In Entire Vacation </h3>
                     <div id="Vehicle-list">
                     </div>
@@ -378,7 +379,8 @@
 
             <div class="row g-4" id="accDiv">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s" style="display: none"
+                    id="accom">
                     <h3 class="text-center mt-5">Accommodation That You Stays In Entire Vacation </h3>
                     <div id="accommodation-list">
                     </div>
@@ -387,7 +389,8 @@
 
             <div class="row g-4" id="gidDiv">
 
-                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.3s" style="display: none"
+                    id="gidDt">
                     <h3 class="text-center mt-5">Guides And Language Translators</h3>
                     <div id="translators-list">
                     </div>
@@ -406,6 +409,22 @@
                         tweak every detail from destinations and accommodations to vehicles and activities. The choice
                         is yours! Either way, we’re excited to help you create unforgettable memories.</p>
                 </div>
+            </div>
+            <div class="col-lg-12 col-sm-4 wow fadeInUp text-center mt-4 mb-2 ml-25px" data-wow-delay="0.4s">
+                <button class="animated-button text-center" onclick="bookpkg()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
+                    </svg>
+                    <span class="text" style="font-size: 20px">Request</span>
+                    <span class="circle"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
+                    </svg>
+                </button>
             </div>
             <h3 class="text-center mb-3 mt-4">Clients Thoughts</h3>
             <div class="owl-carousel testimonial-carousel position-relative mb-5">
@@ -443,12 +462,12 @@
                 </div>
             </div>
             <div class="row g-4">
-                <h2 class="text-center">For this Complete Package Price Only :<span class="text-primary"
-                        id="pkgPrice">$187.52</span>
+                <h2 class="text-center" style="display: none">For this Complete Package Price Only :<span
+                        class="text-primary" id="pkgPrice">$187.52</span>
                 </h2>
                 <div class="col-lg-6 col-sm-4 wow fadeInUp" style=" display: flex; justify-content: flex-end;"
                     data-wow-delay="0.4s">
-                    <button class="animated-button" onclick="customizePkg()">
+                    {{-- <button class="animated-button" onclick="customizePkg()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -461,16 +480,16 @@
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                             </path>
                         </svg>
-                    </button>
+                    </button> --}}
                 </div>
-                <div class="col-lg-6 col-sm-4 wow fadeInUp text-center" data-wow-delay="0.4s">
-                    <button class="animated-button" onclick="bookpkg()">
+                {{-- <div class="col-lg-12 col-sm-4 wow fadeInUp text-center" data-wow-delay="0.4s">
+                    <button class="animated-button text-center" onclick="bookpkg()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                             <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                             </path>
                         </svg>
-                        <span class="text" style="font-size: 20px">Book Now</span>
+                        <span class="text" style="font-size: 20px">Request</span>
                         <span class="circle"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
                             <path
@@ -478,7 +497,7 @@
                             </path>
                         </svg>
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -1016,10 +1035,163 @@
 
         }
 
+        function pickData(event) {
+
+            document.getElementById('locText').style.display = 'block';
+            document.getElementById('use').disabled = true;
+            var loc = document.getElementById('locationDt').textContent;
+            var htl = document.getElementById('htlDt').textContent;
+            var gid = document.getElementById('guideDt').textContent;
+
+            getLocUrl = `/getLocationByName/${loc}`;
+
+            $.ajax({
+                url: getLocUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    var divElement = document.createElement('div');
+                    divElement.className = 'row g-2 mt-1 justify-content-center';
+                    let content = "";
+                    for (var i = 0; i < response.data.length; i++) {
+
+                        content += `
+                                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="package-item">
+                                                <div class="overflow-hidden">
+                                                    <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                </div>
+
+                                                <div class="text-center p-2">
+                                                    <h4 class="mb-0">${ response.data[i].name}</h4>
+                                                    <div class="mb-3">
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                        <small class="fa fa-star text-primary"></small>
+                                                    </div>
+                                                    <p>${ response.data[i].discription}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            `;
+
+                    }
+                    divElement.innerHTML = content;
+                    document.getElementById('packageList').appendChild(divElement);
+                }
+            });
+            gethtl(htl);
+            getGid(gid);
+        }
+
+        function getGid(event) {
+            document.getElementById('gidDt').style.display = 'block';
+            var gid = document.getElementById('guideDt').textContent;
+
+            getLocUrl = `/getGuideByName/${gid}`;
+
+            $.ajax({
+                url: getLocUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+
+                    var divElementhtl = document.createElement('div');
+                    divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                    let contenthtl = "";
+                    for (var i = 0; i < response.data.length; i++) {
+                        contenthtl += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data[i].guide_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data[i].discription}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                    }
+                    divElementhtl.innerHTML = contenthtl;
+                    document.getElementById('translators-list').appendChild(divElementhtl);
+                }
+            });
+        }
+
+        function gethtl(event) {
+            document.getElementById('accom').style.display = 'block';
+            var htl = document.getElementById('htlDt').textContent;
+
+            getLocUrl = `/getHotelByName/${htl}`;
+
+            $.ajax({
+                url: getLocUrl,
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    var divElementhtl = document.createElement('div');
+                    divElementhtl.className = 'row g-2 mt-1 justify-content-center';
+                    let contenthtl = "";
+                    for (var i = 0; i < response.data.length; i++) {
+                        contenthtl += `
+                                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                                <div class="package-item">
+                                                    <div class="overflow-hidden">
+                                                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                                    </div>
+
+                                                    <div class="text-center p-2">
+                                                        <h4 class="mb-0">${ response.data[i].hotel_name}</h4>
+                                                        <div class="mb-3">
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                            <small class="fa fa-star text-primary"></small>
+                                                        </div>
+                                                        <p>${ response.data[i].discription}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                `;
+
+                    }
+                    divElementhtl.innerHTML = contenthtl;
+                    document.getElementById('accommodation-list').appendChild(divElementhtl);
+                }
+            });
+        }
+
         function getPackageData(pkgID) {
 
             getPackageImgs(pkgID);
             getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
+            // getLocUrl = `/getLocationById/${pkgID}`;
 
             $.ajax({
                 url: getLocUrl,
@@ -1466,12 +1638,15 @@
                                                             <div class="row justify-content-center ">
                                                                 <div class="col-lg-12  text-center cont-col">
 
-                                                                    <button id="1" onclick="UseThis(event)">Use This</button>
-                                                                </div>
+                                                                    <button  id="use" onclick="pickData(event)">Use This</button>
+                                                                    <p style="display:none" id="locationDt">${response.data[0].location}</p>
+                                                                    <p style="display:none" id="htlDt">${response.data[0].hotel}</p>
+                                                                    <p style="display:none" id="guideDt">${response.data[0].guide}</p>
+                                                                    </div>
                                                             </div>
                                                             <div class="row justify-content-center">
                                                                 <div class="col-lg-12  text-center cont-col">
-                                                                    <button onclick="startChat(event)">Remove</button>
+                                                                    <button id="${response.data[0].id}" onclick="remove(event)">Remove</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1483,6 +1658,24 @@
                 }
             });
 
+
+        }
+
+        function remove(event) {
+            $.ajax({
+                url: '/pickDelete/' + event.target.id,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert(response.message);
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to delete resource:', error);
+                }
+            });
 
         }
     </script>
