@@ -37,6 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datePicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/notification.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/logout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin-panel.css') }}">
 
 </head>
 
@@ -331,6 +332,36 @@
             <div class="row g-4" id="locDiv">
 
                 <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
+
+                    <h5 class="text-center">You Can Simply plan your vaction here...You Just have to use your picks.You
+                        can go to locations page and add you needed loactions, hotels and guides then you can send them
+                        to Rental services and get Quatation for package </h5>
+                    <h2 class="text-center mt-4">- Your Picks -</h2>
+
+                    <div class="row justify-content-center mt-3 mb-1" id="tblPending">
+                        <div class="col-lg-4  text-center cont-col">
+                            <h5 style="font-size:18px">Locations</h5>
+                        </div>
+                        <div class="col-lg-3  text-center cont-col" style="width: 10%; ">
+                            <h6 style="font-size:18px">Guides</h6>
+                        </div>
+                        <div class="col-lg-3  text-center cont-col">
+                            <h5 style="font-size:18px">Hotels</h5>
+                        </div>
+                        <div class="col-lg-2  text-center cont-col">
+                            <h5 style="font-size:18px">Action</h5>
+                        </div>
+                    </div>
+                    <div id="tblPendingdata" style="box-shadow: 0 0 20px #7f8c8d;" class="mb-5">
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="row g-4" id="locDiv">
+
+                <div class="col-lg-12 col-sm-4 wow fadeInUp" data-wow-delay="0.1s">
                     <h3 class="text-center">Locations Covers From This Package</h3>
                     <div id="packageList">
                     </div>
@@ -558,11 +589,11 @@
                 document.getElementById('notific').style.display = 'none';
                 window.location.href = `/signup`;
             }
-            getPackageData({{ $packageId }});
-            getLocations();
-            getVehicles();
-            getAccommodation();
-            getTranslators();
+            getPicks();
+            // getLocations();
+            // getVehicles();
+            // getAccommodation();
+            // getTranslators();
         });
 
         var monthFormatter = new Intl.DateTimeFormat("en-us", {
@@ -1320,7 +1351,7 @@
         }
 
         function customizePkg() {
-            var pkgid = {{ $packageId }};
+            var pkgid = {{ $vehicle }};
             var bookingUrl = `http://localhost:8000/custormize?id=${pkgid}`;
 
             window.location.href = bookingUrl;
@@ -1357,7 +1388,7 @@
             var futureFormattedDate = getFutureFormattedDate(formattedDate, parseInt(fdate));
 
             var packageData = {
-                packageId: {{ $packageId }},
+                packageId: {{ $vehicle }},
                 userId: localStorage.getItem('user'),
                 agancy: 2,
                 stDate: formattedDate,
@@ -1391,6 +1422,68 @@
             localStorage.removeItem('user');
             alert('Logout Successfully...');
             window.location.href = `/`;
+        }
+
+        function getPicks() {
+
+            // getUserDetails(localStorage.getItem('user'));
+            var packageData = {
+                userId: localStorage.getItem('user')
+            };
+
+            $.ajax({
+                url: '{{ route('get.picks') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: packageData,
+                success: function(response) {
+                    // document.getElementById('noPending')
+                    //     .style
+                    //     .display = 'none';
+                    var divElement = document.createElement(
+                        'div');
+                    divElement.className =
+                        'row justify-content-center text-center';
+                    divElement.setAttribute(
+                        'data-wow-delay',
+                        '0.1s');
+                    divElement.innerHTML = `
+                                                    <div class="row justify-content-center text-center " style >
+                                                        <div class="col-lg-4  text-center cont-col">
+                                                            <h6>${response.data[0].location}</h6>
+                                                        </div>
+                                                        <div class="col-lg-3  text-center cont-coldt"  style="width: 10%">
+                                                            <h6>${response.data[0].guide}</h6>
+
+                                                        </div>
+                                                        <div class="col-lg-3  text-center cont-col">
+                                                            <h6>${response.data[0].hotel}</h6>
+                                                        </div>
+
+                                                        <div class="col-lg-2  text-center cont-col">
+                                                            <div class="row justify-content-center ">
+                                                                <div class="col-lg-12  text-center cont-col">
+
+                                                                    <button id="1" onclick="UseThis(event)">Use This</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-lg-12  text-center cont-col">
+                                                                    <button onclick="startChat(event)">Remove</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        `;
+                    document.getElementById(
+                            'tblPendingdata')
+                        .appendChild(divElement);
+                }
+            });
+
+
         }
     </script>
 </body>

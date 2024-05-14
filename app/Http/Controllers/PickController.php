@@ -78,4 +78,33 @@ class PickController extends Controller
             'message' => $existingPick ? 'Pick Updated' : 'New Pick Added'
         ], 201);
     }
+    public function getPickByUser(Request $request)
+    {
+
+        try {
+            $bookings = Pick::where('user_id', $request->userId)
+                ->get();
+
+            info('----');
+            info($bookings);
+
+            if ($bookings->isNotEmpty()) {
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'bookings',
+                    'data' => $bookings
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'No packages',
+                    'data' => []
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            info($e->getMessage());
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
 }

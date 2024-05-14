@@ -614,7 +614,7 @@
                                                         <button id="seeMoreBtn${i}" class="btn btn-sm btn-primary px-3 border-end"
                                                             style="border-radius: 30px 0 0 30px;" onclick="seeMore(${response.data[i].vehicle_no})">Read More</button>
                                                     <button id="${response.data[i].vehicle_no}" class="btn btn-sm btn-primary px-3"
-                                                        style="border-radius: 0 30px 30px 0;" onclick="pickNow(event)">Pick Now</button>
+                                                        style="border-radius: 0 30px 30px 0;" onclick="rent(event)">Rent</button>
                                                     </div>
                                             </div>
                                         </div>
@@ -931,27 +931,28 @@
 
         }
 
-        function pickNow(event) {
+        function rent(event) {
+            window.location.href = '/vehicleDetails?no=' + event.target.id;
+            // /booking?id=${response.data[i].id}
+            // var picknow = {
+            //     vehicle: event.target.id,
+            //     userId: localStorage.getItem('user')
+            // };
 
-            var picknow = {
-                vehicle: event.target.id,
-                userId: localStorage.getItem('user')
-            };
-
-            $.ajax({
-                url: '{{ route('picks.add') }}',
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                data: picknow,
-                success: function(response) {
-                    alert(response.message);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Failed to create location: ' + textStatus);
-                }
-            });
+            // $.ajax({
+            //     url: '{{ route('picks.add') }}',
+            //     method: 'POST',
+            //     headers: {
+            //         'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            //     },
+            //     data: picknow,
+            //     success: function(response) {
+            //         alert(response.message);
+            //     },
+            //     error: function(jqXHR, textStatus, errorThrown) {
+            //         alert('Failed to create location: ' + textStatus);
+            //     }
+            // });
         }
     </script>
 </body>

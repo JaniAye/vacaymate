@@ -97,4 +97,10 @@ class VehicleControler extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+    public function showVehicleDetails(Request $request)
+    {
+        $vehicleNo = $request->query('no', 0);
+
+        return view('vehicle-details', ['vehicle' => $vehicleNo]);
+    }
 }
