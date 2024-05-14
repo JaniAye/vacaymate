@@ -611,8 +611,8 @@
                                                     <div class="d-flex justify-content-center mb-2">
                                                         <button id="seeMoreBtn${i}" class="btn btn-sm btn-primary px-3 border-end"
                                                             style="border-radius: 30px 0 0 30px;" onclick="seeMore(${response.data[i].vehicle_no})">Read More</button>
-                                                        <a href="/booking?id=${response.data[i].vehicle_no}" class="btn btn-sm btn-primary px-3"
-                                                            style="border-radius: 0 30px 30px 0;">Pick Now</a>
+                                                    <button id="${response.data[i].vehicle_no}" class="btn btn-sm btn-primary px-3"
+                                                        style="border-radius: 0 30px 30px 0;" onclick="pickNow(event)">Pick Now</button>
                                                     </div>
                                             </div>
                                         </div>
@@ -927,6 +927,29 @@
                 window.location.href = '/signup';
             }
 
+        }
+
+        function pickNow(event) {
+
+            var picknow = {
+                vehicle: event.target.id,
+                userId: localStorage.getItem('user')
+            };
+
+            $.ajax({
+                url: '{{ route('picks.add') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: picknow,
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Failed to create location: ' + textStatus);
+                }
+            });
         }
     </script>
 </body>

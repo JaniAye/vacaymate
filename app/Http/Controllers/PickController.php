@@ -13,18 +13,54 @@ class PickController extends Controller
 
         if ($existingPick) {
 
-            $location = $existingPick->location . "," . $request->location;
-            $hotel = $existingPick->hotel . "," . $request->hotel;
-            $vehicle = $existingPick->vehicle . "," . $request->vehicle;
-            $guide = $existingPick->guide . "," . $request->guide;
-            $package = $existingPick->package . "," . $request->package;
+            if ($request->location) {
+                if (empty($existingPick->location)) {
+                    $location = $request->location;
+                } else {
+                    $location = $existingPick->location . "," . $request->location;
+                }
+            }
 
+            if ($request->hotel) {
+
+                if (empty($existingPick->hotel)) {
+
+                    $hotel = $request->hotel;
+                } else {
+
+                    $hotel = $existingPick->hotel . "," . $request->hotel;
+                }
+            }
+
+            if ($request->vehicle) {
+                if (empty($existingPick->vehicle)) {
+                    $vehicle = $request->vehicle;
+                } else {
+                    $vehicle = $existingPick->vehicle . "," . $request->vehicle;
+                }
+            }
+
+            if ($request->guide) {
+                if (empty($existingPick->guide)) {
+                    $guide = $request->guide;
+                } else {
+                    $guide = $existingPick->guide . "," . $request->guide;
+                }
+            }
+
+            if ($request->package) {
+                if (empty($existingPick->package)) {
+                    $package =  $request->package;
+                } else {
+                    $package = $existingPick->package . "," . $request->package;
+                }
+            }
             $existingPick->update([
-                'location' => $location,
-                'hotel' => $hotel,
-                'vehicle' => $vehicle,
-                'guide' => $guide,
-                'package' => $package
+                'location' => $location ?? $existingPick->location,
+                'hotel' => $hotel ?? $existingPick->hotel,
+                'vehicle' => $vehicle ?? $existingPick->vehicle,
+                'guide' => $guide ?? $existingPick->guide,
+                'package' => $package ?? $existingPick->package
             ]);
         } else {
             Pick::create([
