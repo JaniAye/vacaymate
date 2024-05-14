@@ -64,10 +64,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a class="nav-item nav-link active" onclick="homeClick()" id="homeTab">Home</a>
-                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
-                    <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Services</a>
+                    <a class="nav-item nav-link " onclick="homeClick()" id="homeTab">Home</a>
                     <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
+                    <a class="nav-item nav-link active" onclick="servicesClick()" id="servicesTab">Vehicles</a>
+                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">Hotels</a>
+                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Guides</a>
+                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Plan</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">
@@ -116,7 +118,7 @@
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white animated slideInDown">Locations</h1>
+                        <h1 class="display-3 text-white animated slideInDown">Vehicles</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -882,27 +884,27 @@
         });
 
         function aboutClick() {
-            window.location.href = `/#aboutUs`;
+            window.location.href = `/hotels`;
             setActive('aboutTab');
         }
 
         function homeClick() {
-            window.location.href = `/#home`;
+            window.location.href = `/`;
             setActive('homeTab');
         }
 
         function servicesClick() {
-            window.location.href = `/#serviceDv`;
+            window.location.href = `/vehicles`;
             setActive('servicesTab');
         }
 
         function locationsClick() {
-            window.location.href = `/#aboutUs`;
+            window.location.href = `/location`;
             setActive('locationTab');
         }
 
         function contactClick() {
-            window.location.href = `/#contactUs`;
+            window.location.href = `/guides`;
             setActive('contactTab');
         }
 
