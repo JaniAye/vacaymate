@@ -62,18 +62,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="/" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="package.html" class="nav-item nav-link active">Packages</a>
+                    <a class="nav-item nav-link " onclick="homeClick()" id="homeTab">Home</a>
+                    <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
+                    <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Services</a>
+                    <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">Destination</a>
-                            <a href="booking.html" class="dropdown-item">Booking</a>
-                            <a href="team.html" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Packages</a>
+                        <div class="dropdown-menu m-0 text-center">
+                            <a href="/package?type=complete" class="dropdown-item">Complete Packages</a>
+                            <a href="/package?type=vehicle" class="dropdown-item">Vehicle Packages</a>
+                            <a href="/package?type=guide" class="dropdown-item">Guides Packages</a>
+                            <a href="/package?type=hotel" class="dropdown-item">hotel Packages</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -555,7 +554,7 @@
             var logged = localStorage.getItem('user');
             if (!logged) {
                 document.getElementById('btnLgout').style.display = 'none';
-                document.getElementById('notific').style.display = 'none';
+                // document.getElementById('notific').style.display = 'none';
                 window.location.href = `/signup`;
             }
             getPackageData({{ $packageId }});
@@ -986,7 +985,7 @@
         }
 
         function getPackageData(pkgID) {
-
+            console.log('-------------');
             getPackageImgs(pkgID);
             getLocUrl = `http://localhost:8000/getPackageDetail/${pkgID}`;
 
@@ -997,6 +996,8 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 success: function(response) {
+
+                    console.log(response.data);
                     var divElement = document.querySelector("#locationsList");
                     if (response.success) {
                         document.getElementById('agancyName').textContent = response.data.account.name;

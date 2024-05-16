@@ -64,12 +64,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a class="nav-item nav-link active" onclick="homeClick()" id="homeTab">Home</a>
+                    <a class="nav-item nav-link " onclick="homeClick()" id="homeTab">Home</a>
                     <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">About</a>
                     <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Services</a>
                     <a class="nav-item nav-link" onclick="locationsClick()" id="locationTab">Locations</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">
                             <a href="/package?type=complete" class="dropdown-item">Complete Packages</a>
                             <a href="/package?type=vehicle" class="dropdown-item">Vehicle Packages</a>

@@ -70,7 +70,7 @@
                     <a class="nav-item nav-link" onclick="servicesClick()" id="servicesTab">Vehicles</a>
                     <a class="nav-item nav-link" onclick="aboutClick()" id="aboutTab">Hotels</a>
                     <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Guides</a>
-                    <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Plan</a>
+                    {{-- <a class="nav-item nav-link" onclick="contactClick()" id="contactTab">Plan</a> --}}
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
                         <div class="dropdown-menu m-0 text-center">

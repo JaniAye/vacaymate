@@ -24,6 +24,8 @@ class BookingController extends Controller
     public function createBooking(Request $request)
     {
 
+        $package = Packages::find($request->packageId);
+
         $res = BookedPackage::create([
             'pkg_id' => $request->packageId,
             'package_name' => $request->packageName,
@@ -80,8 +82,9 @@ class BookingController extends Controller
         }
 
         $res = Booking::create([
-            'cust_id' => 1,
+            'cust_id' =>  $request->agancy,
             'pkg_id' => $res->id,
+            'agancy_id' => $package->agancy_id,
             'status' => "PENDING",
             'type' => "AAA",
             'st_date' => "2023-04-05",
